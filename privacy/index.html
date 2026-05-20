@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Privacy Policy – Prime Clock App</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --blue: #192962;
+      --blue-light: #1e3478;
+      --blue-mid: #243f8f;
+      --accent: #4a6fd8;
+      --accent-soft: #e8ecf8;
+      --text: #1a1f36;
+      --muted: #5a6380;
+      --bg: #f5f7fc;
+      --white: #ffffff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* Header */
+    header {
+      background: var(--blue);
+      padding: 48px 0 36px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 260px; height: 260px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; left: 10%;
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .header-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .logo-icon {
+      width: 40px; height: 40px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .logo-icon svg { width: 22px; height: 22px; fill: white; }
+
+    .logo-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(28px, 5vw, 42px);
+      color: white;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    .header-sub {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      font-weight: 400;
+    }
+
+    /* Main */
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 32px 80px;
+    }
+
+    /* Intro card */
+    .intro-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 40px;
+      border-left: 4px solid var(--blue);
+      box-shadow: 0 2px 12px rgba(25,41,98,0.06);
+    }
+
+    .intro-card p {
+      font-size: 15.5px;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+
+    /* Sections */
+    .section {
+      margin-bottom: 32px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .section-icon {
+      width: 38px; height: 38px;
+      background: var(--blue);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .section-icon svg {
+      width: 18px; height: 18px;
+      fill: white;
+    }
+
+    .section h2 {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--blue);
+      letter-spacing: -0.01em;
+    }
+
+    .section-body {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 22px 26px;
+      box-shadow: 0 1px 8px rgba(25,41,98,0.05);
+    }
+
+    .section-body p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: #3d4562;
+    }
+
+    /* List items */
+    .item-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 13px 16px;
+      background: var(--accent-soft);
+      border-radius: 9px;
+    }
+
+    .item-dot {
+      width: 8px; height: 8px;
+      background: var(--blue);
+      border-radius: 50%;
+      margin-top: 7px;
+      flex-shrink: 0;
+    }
+
+    .item span {
+      font-size: 14.5px;
+      line-height: 1.65;
+      color: var(--text);
+    }
+
+    .item strong {
+      color: var(--blue);
+      font-weight: 600;
+    }
+
+    /* Highlight box */
+    .highlight-box {
+      background: var(--blue);
+      border-radius: 12px;
+      padding: 22px 26px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .highlight-box svg {
+      width: 26px; height: 26px;
+      fill: rgba(255,255,255,0.8);
+      flex-shrink: 0;
+    }
+
+    .highlight-box p {
+      font-size: 14.5px;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.88);
+      font-weight: 400;
+    }
+
+    /* Contact */
+    .contact-box {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 22px 26px;
+      box-shadow: 0 1px 8px rgba(25,41,98,0.05);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .contact-box a {
+      color: var(--blue);
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1.5px solid var(--accent-soft);
+      transition: border-color 0.2s;
+    }
+
+    .contact-box a:hover {
+      border-color: var(--blue);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--blue);
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.04em;
+    }
+
+    @media (max-width: 520px) {
+      main { padding: 32px 20px 60px; }
+      .header-inner { padding: 0 20px; }
+      .intro-card { padding: 22px 20px; }
+      .section-body { padding: 18px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo-row">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+      </div>
+      <span class="logo-name">Prime Facility Services Group</span>
+    </div>
+    <h1>Privacy Policy</h1>
+    <p class="header-sub">Prime Clock App &nbsp;·&nbsp; Effective as of publication date</p>
+  </div>
+</header>
+
+<main>
+
+  <div class="intro-card">
+    <p>Prime Clock App is designed to help employees clock in and out of their work shifts. This policy describes how we collect, use, and protect the information gathered through the app.</p>
+  </div>
+
+  <!-- Information We Collect -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+      </div>
+      <h2>Information We Collect</h2>
+    </div>
+    <div class="section-body">
+      <p style="margin-bottom:14px;">The app may access the following information:</p>
+      <div class="item-list">
+        <div class="item">
+          <div class="item-dot"></div>
+          <span><strong>Location data</strong> — to verify job site attendance</span>
+        </div>
+        <div class="item">
+          <div class="item-dot"></div>
+          <span><strong>Camera</strong> — to capture photos for clock-in verification</span>
+        </div>
+      </div>
+      <p style="margin-top:16px; font-size:13.5px; color:#7a84a0;">This information is used strictly for attendance tracking and verification purposes.</p>
+    </div>
+  </div>
+
+  <!-- How We Use Information -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">
+        <svg viewBox="0 0 24 24"><path d="M9 11.24V7.5C9 6.12 10.12 5 11.5 5S14 6.12 14 7.5v3.74c1.21-.81 2-2.18 2-3.74C16 5.01 13.99 3 11.5 3S7 5.01 7 7.5c0 1.56.79 2.93 2 3.74zm9.84 4.63l-4.54-2.26c-.17-.07-.35-.11-.54-.11H13v-6c0-.83-.67-1.5-1.5-1.5S10 6.67 10 7.5v10.74l-3.43-.72c-.08-.01-.15-.03-.24-.03-.31 0-.59.13-.79.33l-.79.8 4.94 4.94c.27.27.65.44 1.06.44h6.79c.75 0 1.33-.55 1.44-1.28l.75-5.27c.01-.07.02-.14.02-.2 0-.62-.38-1.16-.91-1.38z"/></svg>
+      </div>
+      <h2>How We Use Information</h2>
+    </div>
+    <div class="section-body">
+      <div class="item-list">
+        <div class="item">
+          <div class="item-dot"></div>
+          <span>To confirm employee presence at job sites</span>
+        </div>
+        <div class="item">
+          <div class="item-dot"></div>
+          <span>To ensure accurate time tracking</span>
+        </div>
+        <div class="item">
+          <div class="item-dot"></div>
+          <span>To prevent misuse of the system</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Data Sharing -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">
+        <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+      </div>
+      <h2>Data Sharing</h2>
+    </div>
+    <div class="highlight-box">
+      <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 4c1.4 0 2.8 1.1 2.8 2.5V9c.6 0 1.2.6 1.2 1.2v3.5c0 .7-.6 1.3-1.3 1.3H9.3C8.6 15 8 14.4 8 13.7v-3.5C8 9.6 8.6 9 9.2 9V7.5C9.2 6.1 10.6 5 12 5z"/></svg>
+      <p>We do not sell or share personal data with third parties. Your information stays within Prime Facility Services Group's systems.</p>
+    </div>
+  </div>
+
+  <!-- Data Security -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">
+        <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+      </div>
+      <h2>Data Security</h2>
+    </div>
+    <div class="section-body">
+      <p>We take reasonable measures to protect user data against unauthorized access, alteration, disclosure, or destruction.</p>
+    </div>
+  </div>
+
+  <!-- User Consent -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">
+        <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+      </div>
+      <h2>User Consent</h2>
+    </div>
+    <div class="section-body">
+      <p>By using the app, users consent to the collection and use of information as described in this Privacy Policy.</p>
+    </div>
+  </div>
+
+  <!-- Contact -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      </div>
+      <h2>Contact</h2>
+    </div>
+    <div class="contact-box">
+      <p style="font-size:14.5px; color:#5a6380;">If you have any questions about this policy, reach out at&nbsp;
+        <a href="mailto:its@primefacilityservicesgroup.com">its@primefacilityservicesgroup.com</a>
+      </p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  &copy; Prime Facility Services Group &nbsp;·&nbsp; Prime Clock App
+</footer>
+
+</body>
+</html>

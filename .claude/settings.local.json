@@ -1,0 +1,42 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:primefacilityservicesgroup.com)",
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "Bash(git rm:*)",
+      "Bash(rm:*)",
+      "Bash(git push:*)",
+      "Bash(rg:*)",
+      "Bash(open contact.html)",
+      "Bash(open index.html)",
+      "Bash(open about.html)",
+      "Bash(open cleaning.html)",
+      "Bash(sed:*)",
+      "Bash(mkdir:*)",
+      "Bash(chmod:*)",
+      "Bash(for file in santiago norma claudia christian daniela sergio rafael kleiber irelmis francisco angel johana dory)",
+      "Bash(do echo \"=== $file/index.html ===\")",
+      "Bash(done)",
+      "Bash(for file in claudia christian daniela sergio rafael kleiber irelmis francisco angel johana dory)",
+      "Bash(head:*)",
+      "Bash(bash:*)",
+      "Bash(do echo -n \"$file: \")",
+      "Bash(cp:*)",
+      "Bash(mv:*)",
+      "Bash(node:*)",
+      "Bash(for page in cleaning valet)",
+      "Bash(do)",
+      "Bash(echo:*)",
+      "Bash(open:*)",
+      "Bash(git restore:*)",
+      "Bash(awk:*)",
+      "Bash(curl:*)",
+      "Bash(git commit:*)"
+    ]
+  },
+  "enableAllProjectMcpServers": false
+}

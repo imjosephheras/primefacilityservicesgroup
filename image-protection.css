@@ -1,0 +1,75 @@
+/* Image Protection Styles */
+
+/* Disable image selection and drag */
+img {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+    pointer-events: none;
+}
+
+/* Re-enable pointer events for clickable images */
+a img {
+    pointer-events: auto;
+}
+
+/* Disable text selection on the entire page */
+body {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Allow text selection for input fields and textareas */
+input, textarea, select {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+/* Protected image container with overlay */
+.protected-img-container {
+    position: relative;
+    display: inline-block;
+}
+
+.protected-img-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Transparent overlay for extra protection */
+.img-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: 2;
+    pointer-events: auto;
+}
+
+/* Disable print for images */
+@media print {
+    img {
+        display: none !important;
+    }
+}
