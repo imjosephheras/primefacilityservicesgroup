@@ -1316,6 +1316,40 @@
             .hero-h1 { font-size: 40px; }
             .filter-card { width: 260px; }
         }
+
+        /* ══════════════════════════════════════════════════════
+           VIDEO SECTION
+        ══════════════════════════════════════════════════════ */
+        #video-section {
+            background: var(--white);
+            padding: 100px 40px;
+        }
+
+        .video-section-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .video-wrapper {
+            width: 50%;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-200);
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            #video-section { padding: 60px 20px; }
+            .video-wrapper { width: 90%; }
+        }
     </style>
 </head>
 <body>
@@ -1472,6 +1506,24 @@
         <div class="scroll-track"></div>
     </div>
 </section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     VIDEO SECTION
+══════════════════════════════════════════════════════════ -->
+<section id="video-section">
+    <div class="video-section-inner">
+        <div class="section-label reveal" style="justify-content:center;margin-bottom:16px;">Hood Cleaning</div>
+        <h2 class="section-title reveal reveal-delay-1" style="text-align:center;margin-bottom:40px;">See It In Action</h2>
+        <div class="video-wrapper reveal reveal-delay-2">
+            <video controls playsinline>
+                <source src="/hood-cleaning/hood-cleaning.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+</section>
+
+<div class="arch-divider"></div>
 
 
 <!-- ══════════════════════════════════════════════════════════
