@@ -338,10 +338,14 @@
         .hero-video-placeholder video,
         .hero-video-placeholder iframe {
             position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
             opacity: 1;
             pointer-events: none;
         }
