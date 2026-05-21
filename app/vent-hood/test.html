@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Vent Hood Calculator</title>
+</head>
+<body>
+    <h1>Test Vent Hood Calculator</h1>
+    
+    <div>
+        <label>Number of Hoods: <input type="number" id="numberOfHoods" value="1"></label><br>
+        <label>Frequency: <input type="number" id="hoodFrequency" value="1"></label><br>
+        <label>Selling Price: <input type="number" id="sellingPrice" value="650"></label><br>
+        <label>Subcontractor Cost: <input type="number" id="subcontractorCostPerHood" value="225"></label><br>
+    </div>
+    
+    <h2>Results:</h2>
+    <div>Labor Cost: <span id="laborCost">$0.00</span></div>
+    <div>Total SC: <span id="totalSC">$0.00</span></div>
+    <div>Total Price: <span id="totalPrice">$0.00</span></div>
+    <div>Net Profit: <span id="netProfit">$0.00</span></div>
+    <div>Profit Margin: <span id="profitMargin">0%</span></div>
+    
+    <script>
+        function calculate() {
+            const numberOfHoods = parseFloat(document.getElementById('numberOfHoods').value) || 1;
+            const hoodFrequency = parseFloat(document.getElementById('hoodFrequency').value) || 1;
+            const sellingPrice = parseFloat(document.getElementById('sellingPrice').value) || 650;
+            const subcontractorCostPerHood = parseFloat(document.getElementById('subcontractorCostPerHood').value) || 225;
+            
+            const scTotal = numberOfHoods * subcontractorCostPerHood;
+            const spTotal = numberOfHoods * sellingPrice * hoodFrequency;
+            const laborCost = scTotal * 0.455;
+            const netProfit = spTotal - scTotal;
+            const profitMargin = (netProfit / spTotal * 100).toFixed(1);
+            
+            document.getElementById('laborCost').textContent = '$' + laborCost.toFixed(2);
+            document.getElementById('totalSC').textContent = '$' + scTotal.toFixed(2);
+            document.getElementById('totalPrice').textContent = '$' + spTotal.toFixed(2);
+            document.getElementById('netProfit').textContent = '$' + netProfit.toFixed(2);
+            document.getElementById('profitMargin').textContent = profitMargin + '%';
+        }
+        
+        // Add event listeners
+        document.getElementById('numberOfHoods').addEventListener('input', calculate);
+        document.getElementById('hoodFrequency').addEventListener('input', calculate);
+        document.getElementById('sellingPrice').addEventListener('input', calculate);
+        document.getElementById('subcontractorCostPerHood').addEventListener('input', calculate);
+        
+        // Initial calculation
+        calculate();
+    </script>
+</body>
+</html>

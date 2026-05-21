@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Manual Grand Total - Kitchen Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .test-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .test-steps {
+            margin: 10px 0;
+        }
+        .test-steps li {
+            margin: 5px 0;
+        }
+        .expected {
+            background-color: #e8f5e9;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .note {
+            background-color: #fff3cd;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        code {
+            background-color: #f5f5f5;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Manual Grand Total Testing - Kitchen Calculator</h1>
+    
+    <div class="test-section">
+        <div class="test-title">Test 1: Basic Manual Grand Total Edit</div>
+        <div class="test-steps">
+            <ol>
+                <li>Open kitchen/index.html</li>
+                <li>Set basic parameters:
+                    <ul>
+                        <li>Workers: 2</li>
+                        <li>Hours: 8</li>
+                        <li>Days: 1</li>
+                    </ul>
+                </li>
+                <li>Note the calculated Grand Total</li>
+                <li>Click the edit button next to Grand Total</li>
+                <li>Enter a different value (e.g., if it shows $2,500, enter 3000)</li>
+                <li>Press Enter or click outside the input</li>
+            </ol>
+        </div>
+        <div class="expected">
+            <strong>Expected Result:</strong>
+            <ul>
+                <li>The Grand Total should update to exactly $3,000</li>
+                <li>The Markup percentage should automatically adjust</li>
+                <li>A "Manual Adjustment" indicator should appear</li>
+                <li>The Markup row should briefly highlight</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <div class="test-title">Test 2: Manual Edit with Rounding Enabled</div>
+        <div class="test-steps">
+            <ol>
+                <li>Ensure "Round to nearest $50" is checked in Pricing Options</li>
+                <li>Set parameters to get a non-rounded total</li>
+                <li>Edit the Grand Total to a specific value like $4,250</li>
+            </ol>
+        </div>
+        <div class="expected">
+            <strong>Expected Result:</strong>
+            <ul>
+                <li>The system should calculate the correct markup to achieve exactly $4,250</li>
+                <li>The total should remain at $4,250 (not rounded further)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <div class="test-title">Test 3: Manual Edit with Insurance and Fees</div>
+        <div class="test-steps">
+            <ol>
+                <li>Enable "Include Insurance" in the options</li>
+                <li>Enable "Initial Service Fee" and set it to $200</li>
+                <li>Calculate a quote</li>
+                <li>Edit the Grand Total to a specific amount (e.g., $5,000)</li>
+            </ol>
+        </div>
+        <div class="expected">
+            <strong>Expected Result:</strong>
+            <ul>
+                <li>The system should correctly account for insurance and fees</li>
+                <li>The final Grand Total should be exactly $5,000</li>
+                <li>All components (base price, insurance, fees) should adjust proportionally</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <div class="test-title">Test 4: Edge Cases</div>
+        <div class="test-steps">
+            <ol>
+                <li>Try entering a very low Grand Total (e.g., $100)</li>
+                <li>Try entering a very high Grand Total (e.g., $50,000)</li>
+                <li>Try entering the exact same value as currently shown</li>
+                <li>Try entering 0 or negative values</li>
+            </ol>
+        </div>
+        <div class="expected">
+            <strong>Expected Result:</strong>
+            <ul>
+                <li>Very low values: Should set markup to 0% if necessary</li>
+                <li>Very high values: Should calculate high markup percentage</li>
+                <li>Same value: Should maintain current state</li>
+                <li>Invalid values: Should be rejected or ignored</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <div class="test-title">Test 5: Interaction with Other Features</div>
+        <div class="test-steps">
+            <ol>
+                <li>Set a manual Grand Total</li>
+                <li>Change other parameters (workers, hours, etc.)</li>
+                <li>Observe what happens to the Grand Total</li>
+            </ol>
+        </div>
+        <div class="expected">
+            <strong>Expected Result:</strong>
+            <ul>
+                <li>Changing other parameters should recalculate with the custom markup</li>
+                <li>The Grand Total will change based on the new costs</li>
+                <li>The custom markup percentage should remain the same</li>
+            </ul>
+        </div>
+        <div class="note">
+            <strong>Note:</strong> If you want to maintain a specific Grand Total while changing parameters, 
+            you'll need to re-edit the Grand Total after making changes.
+        </div>
+    </div>
+
+    <div class="test-section">
+        <div class="test-title">Known Issues Fixed</div>
+        <ul>
+            <li>✓ Franchise tax (0.75%) is now correctly included in calculations</li>
+            <li>✓ Precision improved for more accurate Grand Total targeting</li>
+            <li>✓ Iterative adjustment ensures the target is hit even with rounding</li>
+            <li>✓ Decimal markup values are preserved for better accuracy</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <div class="test-title">Technical Details</div>
+        <p>The manual Grand Total edit works by:</p>
+        <ol>
+            <li>Calculating the required markup percentage to achieve the target Grand Total</li>
+            <li>Accounting for all factors: insurance, franchise tax, initial fees, rounding</li>
+            <li>Using an iterative approach when rounding is enabled to find the exact value</li>
+            <li>Performing a verification step after calculation to ensure accuracy</li>
+            <li>Fine-tuning the markup if the result doesn't match the target</li>
+        </ol>
+    </div>
+</body>
+</html>
