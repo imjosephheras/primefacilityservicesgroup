@@ -425,6 +425,171 @@ fclose($fp);
                 min-width: 320px;
             }
         }
+
+        /* Landing Selection Overlay */
+        .landing-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        .landing-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        .landing-overlay-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #03143A 0%, #0a2060 50%, #03143A 100%);
+        }
+        .landing-cards-wrapper {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 2rem 1rem;
+            width: 100%;
+            max-width: 1000px;
+        }
+        .landing-logo {
+            margin-bottom: 1.5rem;
+        }
+        .landing-subtitle {
+            color: rgba(255,255,255,0.7);
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 2.5rem;
+        }
+        .landing-cards {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .landing-card {
+            position: relative;
+            width: 340px;
+            min-height: 420px;
+            border-radius: 1.25rem;
+            overflow: hidden;
+            cursor: pointer;
+            border: none;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.4s ease;
+            text-decoration: none;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+        .landing-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+        }
+        .landing-card-hood {
+            background: url('/images/kitchen-cleaning-service.jpg') center/cover no-repeat;
+        }
+        .landing-card-staff {
+            background: url('/images/Services-pic-2.png') center/cover no-repeat;
+        }
+        .landing-card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(3,20,58,0.97) 0%, rgba(3,20,58,0.6) 50%, rgba(3,20,58,0.2) 100%);
+            transition: background 0.4s ease;
+        }
+        .landing-card-hood .landing-card-overlay {
+            background: linear-gradient(to top, rgba(199,5,50,0.97) 0%, rgba(199,5,50,0.55) 50%, rgba(199,5,50,0.15) 100%);
+        }
+        .landing-card:hover .landing-card-overlay {
+            background: linear-gradient(to top, rgba(3,20,58,0.99) 0%, rgba(3,20,58,0.75) 60%, rgba(3,20,58,0.3) 100%);
+        }
+        .landing-card-hood:hover .landing-card-overlay {
+            background: linear-gradient(to top, rgba(199,5,50,0.99) 0%, rgba(199,5,50,0.75) 60%, rgba(199,5,50,0.3) 100%);
+        }
+        .landing-card-content {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            min-height: 420px;
+            justify-content: flex-end;
+        }
+        .landing-card-icon {
+            width: 3.5rem;
+            height: 3.5rem;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            backdrop-filter: blur(4px);
+        }
+        .landing-card-icon svg {
+            width: 1.75rem;
+            height: 1.75rem;
+            color: white;
+        }
+        .landing-card-content h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: white;
+            line-height: 1.25;
+            margin-bottom: 0.75rem;
+        }
+        .landing-card-content p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            max-width: none;
+        }
+        .landing-card-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 0.75rem 1.25rem;
+            background: rgba(255,255,255,0.15);
+            border-radius: 0.6rem;
+            border: 1px solid rgba(255,255,255,0.25);
+            backdrop-filter: blur(8px);
+            transition: background 0.3s ease;
+        }
+        .landing-card:hover .landing-card-btn {
+            background: rgba(255,255,255,0.25);
+        }
+        .landing-card-btn svg {
+            width: 1rem;
+            height: 1rem;
+            transition: transform 0.3s ease;
+        }
+        .landing-card:hover .landing-card-btn svg {
+            transform: translateX(4px);
+        }
+        @media (max-width: 720px) {
+            .landing-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+            .landing-card {
+                width: 100%;
+                max-width: 380px;
+                min-height: 320px;
+            }
+            .landing-card-content {
+                min-height: 320px;
+            }
+        }
         
         /* YouTube Video Background Styles */
         @media (max-aspect-ratio: 16/9) {
@@ -831,6 +996,47 @@ fclose($fp);
 </head>
 <body class="bg-white">
     <!-- Preloader will be injected here by preloader.js -->
+
+    <!-- Landing Selection Overlay -->
+    <div id="landing-overlay" class="landing-overlay">
+        <div class="landing-overlay-bg"></div>
+        <div class="landing-cards-wrapper">
+            <div class="landing-logo">
+                <img src="/logo-prime-facility-white.png" alt="Prime Facility Services Group" style="height:60px;object-fit:contain;">
+            </div>
+            <p class="landing-subtitle">Select a service to continue</p>
+            <div class="landing-cards">
+                <!-- Hood System Cleaning Card -->
+                <a href="/hood-cleaning/" class="landing-card landing-card-hood">
+                    <div class="landing-card-overlay"></div>
+                    <div class="landing-card-content">
+                        <div class="landing-card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1.5M12 19.5V21M4.22 4.22l1.06 1.06M18.72 18.72l1.06 1.06M3 12h1.5M19.5 12H21M4.22 19.78l1.06-1.06M18.72 5.28l1.06-1.06M9 12a3 3 0 106 0 3 3 0 00-6 0z" />
+                            </svg>
+                        </div>
+                        <h2>Hood System<br>Cleaning</h2>
+                        <p>Professional commercial kitchen exhaust hood cleaning & fire suppression services</p>
+                        <span class="landing-card-btn">Explore Service <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></span>
+                    </div>
+                </a>
+                <!-- Staff Card -->
+                <button onclick="closeLandingOverlay()" class="landing-card landing-card-staff">
+                    <div class="landing-card-overlay"></div>
+                    <div class="landing-card-content">
+                        <div class="landing-card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+                            </svg>
+                        </div>
+                        <h2>Staffing &<br>Facility Services</h2>
+                        <p>Professional staffing, commercial cleaning, and valet parking services for your facility</p>
+                        <span class="landing-card-btn">Explore Services <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- Navbar will be injected here by navbar.js -->
 
@@ -3107,6 +3313,18 @@ fclose($fp);
             });
         });
     </script>
-    
+
+    <script>
+        function closeLandingOverlay() {
+            const overlay = document.getElementById('landing-overlay');
+            overlay.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        (function() {
+            document.body.style.overflow = 'hidden';
+        })();
+    </script>
+
 </body>
 </html>
