@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <meta name="description" content="Professional business calculators for Prime Facility Services Group - Kitchen Cleaning and Timesheet Management">
+    <title>Business Calculators - Prime Facility Services Group</title>
+
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-blue': '#03143A',
+                        'brand-red': '#C70532',
+                        'brand-light': '#EBF2FA'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', '-apple-system', 'BlinkMacSystemFont', 'SF Pro Display', 'system-ui', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'sm': '0 1px 2px rgba(0, 0, 0, 0.05)',
+                        'md': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+                        'lg': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+                        'xl': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+                    },
+                    animation: {
+                        'float': 'float 15s linear infinite',
+                        'spin-slow': 'spin 0.8s linear infinite',
+                        'slide-down': 'slideDown 0.3s ease',
+                        'fade-in-up': 'fadeInUp 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(360deg)' }
+                        },
+                        slideDown: {
+                            'from': { opacity: '0', transform: 'translateY(-10px)' },
+                            'to': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        fadeInUp: {
+                            'from': { opacity: '0', transform: 'translateY(30px)' },
+                            'to': { opacity: '1', transform: 'translateY(0)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* iOS 18 Flat Design System - 8pt Grid */
+        :root {
+            /* Brand Colors Only */
+            --brand-blue: #03143A;
+            --brand-red: #C70532;
+            --brand-light: #EBF2FA;
+            
+            /* Grayscale */
+            --gray-50: #FAFAFA;
+            --gray-100: #F5F5F5;
+            --gray-200: #E5E5E5;
+            --gray-300: #D4D4D4;
+            --gray-400: #A3A3A3;
+            --gray-500: #737373;
+            --gray-600: #525252;
+            --gray-700: #404040;
+            --gray-800: #262626;
+            --gray-900: #171717;
+            
+            /* Spacing - 8pt Grid */
+            --space-1: 8px;
+            --space-2: 16px;
+            --space-3: 24px;
+            --space-4: 32px;
+            --space-5: 40px;
+            --space-6: 48px;
+            --space-8: 64px;
+            --space-10: 80px;
+            
+                /* Typography Scale - Clear Progression */
+            --text-xs: 0.75rem;   /* 12px */
+            --text-sm: 0.875rem;  /* 14px */
+            --text-base: 1rem;    /* 16px */
+            --text-lg: 1.125rem;  /* 18px */
+            --text-xl: 1.25rem;   /* 20px */
+            --text-2xl: 1.5rem;   /* 24px */
+            --text-3xl: 2rem;     /* 32px */
+            --text-4xl: 2.5rem;   /* 40px */
+            --text-5xl: 3rem;     /* 48px */
+            --text-6xl: 4rem;     /* 64px */
+            
+            /* Border Radius - Consistent */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+            
+            /* Shadows - Flat Style */
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        /* Base 8pt Grid */
+        * {
+            box-sizing: border-box;
+        }
+        
+        /* Flat Button Style */
+        .btn {
+            padding: var(--space-2) var(--space-4);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: var(--brand-blue);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--brand-red);
+        }
+        
+        .btn-secondary {
+            background: var(--gray-100);
+            color: var(--gray-800);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--gray-200);
+        }
+        
+        /* Custom styles for animations */
+        .bg-pattern::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .auth-card-accent::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--brand-red);
+        }
+
+        .auth-logo-shine::after {
+            content: '';
+            position: absolute;
+            inset: 2px;
+            background: rgba(255,255,255,0.1);
+            border-radius: calc(1.25rem - 2px);
+            pointer-events: none;
+        }
+
+        .floating-animation::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 15s linear infinite;
+        }
+
+        .transition-smooth {
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .transition-quick {
+            transition: all 0.2s ease;
+        }
+
+        /* Focus styles */
+        .focus-brand:focus {
+            outline: none;
+            border-color: #007AFF;
+            box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.1);
+        }
+    </style>
+</head>
+
+<body class="font-inter bg-white text-gray-900 min-h-screen">
+    
+    <!-- Authentication Container -->
+    <div class="min-h-screen flex items-center justify-center p-4" id="authContainer">
+        <div class="w-full max-w-md bg-white rounded-2xl p-8 shadow-lg">
+            
+            <div class="text-center mb-8">
+                <div class="w-16 h-16 mx-auto mb-4 bg-brand-blue rounded-2xl flex items-center justify-center">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                    </svg>
+                </div>
+                <h1 class="text-2xl font-bold text-gray-900 mb-2">Calculator Suite</h1>
+                <p class="text-sm text-gray-600">Enter password to continue</p>
+            </div>
+            
+            <form id="authForm" onsubmit="handleAuth(event)">
+                <div class="mb-6">
+                    <label for="password" class="block text-sm font-semibold text-black mb-2">Enter Password</label>
+                    <div class="relative">
+                        <input 
+                            type="password" 
+                            id="password" 
+                            class="w-full h-12 px-4 text-base border border-gray-300 rounded-xl bg-gray-50 focus:bg-white focus:border-brand-blue focus:outline-none transition-colors" 
+                            placeholder="Password"
+                            autocomplete="current-password"
+                            required
+                        >
+                        <button type="button" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-transparent border-none text-gray-500 cursor-pointer p-2 rounded-md transition-quick hover:text-gray-700 hover:bg-gray-100 flex items-center justify-center" onclick="togglePassword()" aria-label="Toggle password visibility">
+                            <i class="fas fa-eye" id="passwordIcon"></i>
+                        </button>
+                    </div>
+                    <div class="hidden mt-2 px-3 py-2 bg-red-50 border-l-4 border-red-500 text-red-500 text-sm font-medium rounded-lg animate-slide-down" id="errorMessage">
+                        <i class="fas fa-exclamation-triangle mr-2"></i>Incorrect password. Please try again.
+                    </div>
+                </div>
+                
+                <button type="submit" class="w-full btn btn-primary text-base flex items-center justify-center gap-2" id="submitBtn">
+                    <span id="btnText">Access Calculators</span>
+                    <i class="fas fa-arrow-right" id="btnIcon"></i>
+                    <span class="hidden w-5 h-5 border-2 border-white/30 rounded-full border-t-white animate-spin-slow" id="btnLoading"></span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="min-h-screen opacity-0 translate-y-5 pointer-events-none transition-smooth" id="mainContainer">
+        
+        <!-- Navigation - Flat iOS Style -->
+        <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+            <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+                <div class="bg-brand-blue px-3 py-2 rounded-lg">
+                    <img src="https://primefacilityservicesgroup.com/wp-content/uploads/2024/02/Logo-Prime-Facility-White-No-Background-1.png" 
+                        alt="Prime Facility Services" class="h-6 w-auto">
+                </div>
+                <div class="flex items-center gap-2">
+                    <a href="#" class="px-4 py-2 rounded-lg text-white bg-brand-blue font-semibold text-sm transition-all hover:bg-brand-red">
+                        <svg class="w-5 h-5 inline-block mr-2" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                        </svg>
+                        <span class="hidden sm:inline">Home</span>
+                    </a>
+                    <a href="timesheet/" class="px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 font-semibold text-sm transition-all">
+                        <svg class="w-5 h-5 inline-block mr-2" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span class="hidden sm:inline">Timesheet</span>
+                    </a>
+                    <a href="kitchen/" class="px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 font-semibold text-sm transition-all">
+                        <svg class="w-5 h-5 inline-block mr-2" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"></path>
+                        </svg>
+                        <span class="hidden sm:inline">Kitchen</span>
+                    </a>
+                    <a href="vent-hood/" class="px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 font-semibold text-sm transition-all">
+                        <svg class="w-5 h-5 inline-block mr-2" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0M3.124 7.5A8.969 8.969 0 015.292 3m13.416 0a8.969 8.969 0 012.168 4.5"></path>
+                        </svg>
+                        <span class="hidden sm:inline">Vent Hood</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Hero Section - Clean Flat Design -->
+        <header class="bg-white py-20">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <div class="inline-flex items-center gap-2 px-4 py-2 bg-brand-blue/10 rounded-full mb-6">
+                    <span class="w-2 h-2 bg-brand-red rounded-full animate-pulse"></span>
+                    <span class="text-sm font-semibold text-brand-blue">Professional Suite</span>
+                </div>
+                <h1 class="text-5xl font-black text-brand-blue mb-4 tracking-tight">
+                    Business Calculators
+                </h1>
+                <p class="text-xl text-gray-700 max-w-2xl mx-auto font-medium">
+                    Instant quotes. Maximum profit. Zero complexity.
+                </p>
+            </div>
+        </header>
+
+        <!-- Calculator Cards - 8pt Grid -->
+        <section class="py-20 px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                
+                <!-- Kitchen Calculator Card -->
+                <div class="bg-white rounded-2xl shadow-md overflow-hidden cursor-pointer transition-all hover:shadow-lg" onclick="launchCalculator('kitchen/')">
+                    <div class="bg-brand-blue p-8 text-white">
+                        <i class="fas fa-broom text-4xl mb-3"></i>
+                        <h2 class="text-2xl font-bold">Kitchen Calculator</h2>
+                        <p class="text-blue-100">Commercial kitchen cleaning quotes</p>
+                    </div>
+                    <div class="p-8">
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-center gap-3 text-sm text-gray-600">
+                                <div class="w-8 h-8 rounded-lg bg-brand-blue/10 flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-check text-brand-blue text-xs"></i>
+                                </div>
+                                <span>Smart pricing optimization</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-sm text-gray-600">
+                                <div class="w-8 h-8 rounded-lg bg-brand-blue/10 flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-chart-line text-brand-blue text-xs"></i>
+                                </div>
+                                <span>Automated profit targeting</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-sm text-gray-600">
+                                <div class="w-8 h-8 rounded-lg bg-brand-blue/10 flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-file-pdf text-brand-blue text-xs"></i>
+                                </div>
+                                <span>Professional PDF exports</span>
+                            </div>
+                        </div>
+                        <button class="w-full py-3 px-6 bg-brand-blue text-white rounded-lg font-semibold flex items-center justify-center gap-2 group transition-all hover:bg-brand-red">
+                            Start Calculating <i class="fas fa-arrow-right transition-transform group-hover:translate-x-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Timesheet Calculator Card -->
+                <div class="bg-white rounded-2xl shadow-md overflow-hidden cursor-pointer transition-all hover:shadow-lg" onclick="launchCalculator('timesheet/')">
+                    <div class="bg-brand-blue p-8 text-white">
+                        <i class="fas fa-clock text-4xl mb-3"></i>
+                        <h2 class="text-2xl font-bold">Timesheet Calculator</h2>
+                        <p class="text-blue-100">Labor cost tracking & analysis</p>
+                    </div>
+                    <div class="p-8">
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-center gap-3 text-sm text-gray-600">
+                                <div class="w-8 h-8 rounded-lg bg-brand-red/10 flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-users text-brand-red text-xs"></i>
+                                </div>
+                                <span>Multi-position tracking</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-sm text-gray-600">
+                                <div class="w-8 h-8 rounded-lg bg-brand-red/10 flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-calculator text-brand-red text-xs"></i>
+                                </div>
+                                <span>Texas tax compliance</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-sm text-gray-600">
+                                <div class="w-8 h-8 rounded-lg bg-brand-red/10 flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-chart-pie text-brand-red text-xs"></i>
+                                </div>
+                                <span>Visual analytics</span>
+                            </div>
+                        </div>
+                        <button class="w-full py-3 px-6 bg-brand-blue text-white rounded-lg font-semibold flex items-center justify-center gap-2 group transition-all hover:bg-brand-red">
+                            Open Timesheet <i class="fas fa-arrow-right transition-transform group-hover:translate-x-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Vent Hood Calculator Card -->
+                <div class="bg-white rounded-2xl shadow-md overflow-hidden cursor-pointer transition-all hover:shadow-lg" onclick="launchCalculator('vent-hood/')">
+                    <div class="bg-brand-blue p-8 text-white">
+                        <i class="fas fa-wind text-4xl mb-3"></i>
+                        <h2 class="text-2xl font-bold">Vent Hood Calculator</h2>
+                        <p class="text-blue-100">Professional vent hood cleaning quotes</p>
+                    </div>
+                    <div class="p-8">
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-center gap-3 text-sm text-gray-600">
+                                <div class="w-8 h-8 rounded-lg bg-brand-blue/10 flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-fire text-brand-blue text-xs"></i>
+                                </div>
+                                <span>Specialized hood cleaning</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-sm text-gray-600">
+                                <div class="w-8 h-8 rounded-lg bg-brand-blue/10 flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-shield-alt text-brand-blue text-xs"></i>
+                                </div>
+                                <span>Safety-compliant pricing</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-sm text-gray-600">
+                                <div class="w-8 h-8 rounded-lg bg-brand-blue/10 flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-file-invoice text-brand-blue text-xs"></i>
+                                </div>
+                                <span>Instant quote generation</span>
+                            </div>
+                        </div>
+                        <button class="w-full py-3 px-6 bg-brand-blue text-white rounded-lg font-semibold flex items-center justify-center gap-2 group transition-all hover:bg-brand-red">
+                            Calculate Quote <i class="fas fa-arrow-right transition-transform group-hover:translate-x-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Work Order Generator Card -->
+                <div class="bg-white rounded-2xl shadow-md overflow-hidden cursor-pointer transition-all hover:shadow-lg" onclick="launchCalculator('work-order/')">
+                    <div class="bg-brand-blue p-8 text-white">
+                        <i class="fas fa-file-alt text-4xl mb-3"></i>
+                        <h2 class="text-2xl font-bold">Work Order Generator</h2>
+                        <p class="text-blue-100">Create professional work orders</p>
+                    </div>
+                    <div class="p-8">
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-center gap-3 text-sm text-gray-600">
+                                <div class="w-8 h-8 rounded-lg bg-brand-red/10 flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-list-alt text-brand-red text-xs"></i>
+                                </div>
+                                <span>Standalone work order creation</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-sm text-gray-600">
+                                <div class="w-8 h-8 rounded-lg bg-brand-red/10 flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-save text-brand-red text-xs"></i>
+                                </div>
+                                <span>Template save/load functionality</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-sm text-gray-600">
+                                <div class="w-8 h-8 rounded-lg bg-brand-red/10 flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-file-pdf text-brand-red text-xs"></i>
+                                </div>
+                                <span>Professional PDF generation</span>
+                            </div>
+                        </div>
+                        <button class="w-full py-3 px-6 bg-brand-blue text-white rounded-lg font-semibold flex items-center justify-center gap-2 group transition-all hover:bg-brand-red">
+                            Create Work Order <i class="fas fa-arrow-right transition-transform group-hover:translate-x-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="py-16 px-6 bg-gray-50">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-center text-3xl font-bold text-brand-blue mb-4">Why Choose Our Suite?</h2>
+                <p class="text-center text-gray-700 mb-12 max-w-2xl mx-auto">Built for professionals who demand accuracy, speed, and reliability</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
+                
+                <div class="bg-gray-50 p-8 rounded-xl text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-brand-red rounded-xl flex items-center justify-center">
+                        <i class="fas fa-lightning-bolt text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Lightning Fast</h3>
+                    <p class="text-gray-700">Generate accurate quotes in seconds</p>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-xl text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-brand-blue rounded-xl flex items-center justify-center">
+                        <i class="fas fa-chart-line text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Profit Optimization</h3>
+                    <p class="text-gray-700">Maximize margins with smart calculations</p>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-xl text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-brand-red rounded-xl flex items-center justify-center">
+                        <i class="fas fa-award text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Professional Quality</h3>
+                    <p class="text-gray-700">Export polished PDFs for clients</p>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-xl text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-brand-blue rounded-xl flex items-center justify-center">
+                        <i class="fas fa-mobile-alt text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Mobile First</h3>
+                    <p class="text-gray-700">Works perfectly on any device</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-brand-blue text-white py-12 px-6">
+            <div class="max-w-6xl mx-auto text-center">
+                <img src="https://primefacilityservicesgroup.com/wp-content/uploads/2024/02/Logo-Prime-Facility-White-No-Background-1.png"
+                    alt="Prime Facility Services Group" class="h-12 mx-auto mb-6 opacity-50">
+                <p class="mb-2">Developed by <span class="font-semibold">Christian Reyes</span> for Prime Facility Services Group</p>
+                <p class="text-sm text-blue-200">© 2024 All rights reserved</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Configuration
+        const CORRECT_PASSWORD = 'Prime2024';
+        const AUTH_STORAGE_KEY = 'pfsg_calculator_auth';
+        const AUTH_DURATION = 24 * 60 * 60 * 1000; // 24 hours
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            checkAuth();
+            
+            const passwordInput = document.getElementById('password');
+            if (passwordInput && !isMainContentVisible()) {
+                setTimeout(() => passwordInput.focus(), 100);
+            }
+        });
+
+        function isMainContentVisible() {
+            return document.getElementById('mainContainer').classList.contains('opacity-100');
+        }
+
+        function checkAuth() {
+            const authData = localStorage.getItem(AUTH_STORAGE_KEY);
+            if (authData) {
+                try {
+                    const { timestamp } = JSON.parse(authData);
+                    const now = Date.now();
+                    
+                    if (now - timestamp < AUTH_DURATION) {
+                        showMainContent();
+                        return;
+                    }
+                } catch (e) {
+                    console.warn('Invalid auth data');
+                }
+                
+                localStorage.removeItem(AUTH_STORAGE_KEY);
+            }
+        }
+
+        function handleAuth(event) {
+            event.preventDefault();
+            
+            const password = document.getElementById('password').value.trim();
+            const submitBtn = document.getElementById('submitBtn');
+            const btnText = document.getElementById('btnText');
+            const btnIcon = document.getElementById('btnIcon');
+            const btnLoading = document.getElementById('btnLoading');
+            const errorMessage = document.getElementById('errorMessage');
+            const passwordInput = document.getElementById('password');
+            
+            if (!password) {
+                showError('Please enter a password');
+                return;
+            }
+            
+            // Show loading state
+            setButtonLoading(true);
+            
+            // Simulate authentication with realistic delay
+            setTimeout(() => {
+                if (password === CORRECT_PASSWORD) {
+                    // Save authentication
+                    localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify({
+                        timestamp: Date.now()
+                    }));
+                    
+                    // Clear any errors
+                    passwordInput.classList.remove('border-red-500', 'bg-red-50');
+                    errorMessage.classList.add('hidden');
+                    
+                    // Smooth transition to main content
+                    const authContainer = document.getElementById('authContainer');
+                    authContainer.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
+                    
+                    setTimeout(() => {
+                        authContainer.style.display = 'none';
+                        showMainContent();
+                    }, 400);
+                } else {
+                    showError('Incorrect password. Please try again.');
+                    passwordInput.value = '';
+                    passwordInput.focus();
+                    setButtonLoading(false);
+                }
+            }, 800);
+        }
+
+        function setButtonLoading(loading) {
+            const submitBtn = document.getElementById('submitBtn');
+            const btnText = document.getElementById('btnText');
+            const btnIcon = document.getElementById('btnIcon');
+            const btnLoading = document.getElementById('btnLoading');
+            
+            submitBtn.disabled = loading;
+            
+            if (loading) {
+                btnText.classList.add('hidden');
+                btnIcon.classList.add('hidden');
+                btnLoading.classList.remove('hidden');
+            } else {
+                btnText.classList.remove('hidden');
+                btnIcon.classList.remove('hidden');
+                btnLoading.classList.add('hidden');
+            }
+        }
+
+        function showError(message) {
+            const passwordInput = document.getElementById('password');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            passwordInput.classList.add('border-red-500', 'bg-red-50');
+            errorMessage.textContent = message;
+            errorMessage.classList.remove('hidden');
+        }
+
+        function showMainContent() {
+            const mainContainer = document.getElementById('mainContainer');
+            const authContainer = document.getElementById('authContainer');
+            
+            authContainer.style.display = 'none';
+            mainContainer.classList.remove('opacity-0', 'translate-y-5', 'pointer-events-none');
+            mainContainer.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+            
+            // Animate calculator cards
+            const cards = document.querySelectorAll('.grid > div');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 150 + 200);
+            });
+        }
+
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const passwordIcon = document.getElementById('passwordIcon');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                passwordIcon.className = 'fas fa-eye-slash';
+            } else {
+                passwordInput.type = 'password';
+                passwordIcon.className = 'fas fa-eye';
+            }
+        }
+
+        function launchCalculator(path) {
+            const card = event.currentTarget;
+            card.style.transform = 'scale(0.95)';
+            
+            setTimeout(() => {
+                window.location.href = path;
+            }, 150);
+        }
+
+        // Event listeners
+        document.getElementById('password').addEventListener('input', () => {
+            const passwordInput = document.getElementById('password');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            if (passwordInput.classList.contains('border-red-500')) {
+                passwordInput.classList.remove('border-red-500', 'bg-red-50');
+                errorMessage.classList.add('hidden');
+            }
+        });
+
+        document.getElementById('password').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                handleAuth(e);
+            }
+        });
+
+        // Performance optimization
+        document.addEventListener('visibilitychange', () => {
+            if (document.visibilityState === 'visible') {
+                checkAuth();
+            }
+        });
+
+        // Touch device optimization
+        if ('ontouchstart' in window) {
+            document.addEventListener('touchstart', function() {}, {passive: true});
+        }
+    </script>
+</body>
+
+</html>

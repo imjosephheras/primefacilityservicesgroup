@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Shared Modules</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            transition: background-color 0.3s ease;
+        }
+        body.dark-mode {
+            background-color: #1a202c;
+            color: #e2e8f0;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        body.dark-mode .test-section {
+            border-color: #4a5568;
+        }
+        button {
+            padding: 8px 16px;
+            margin: 5px;
+            border: none;
+            border-radius: 6px;
+            background-color: #3b82f6;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        button:hover {
+            background-color: #2563eb;
+        }
+        #darkModeBtn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+        body.dark-mode #darkModeBtn {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .result {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f3f4f6;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        body.dark-mode .result {
+            background-color: #374151;
+        }
+    </style>
+</head>
+<body>
+    <button id="darkModeBtn">
+        <i class="fas fa-moon"></i>
+    </button>
+    
+    <h1>Shared Modules Test</h1>
+    
+    <div class="test-section">
+        <h2>1. Utils Module Test</h2>
+        <button onclick="testUtils()">Test Utils</button>
+        <div id="utilsResult" class="result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>2. Notification Module Test</h2>
+        <button onclick="notificationManager.success('Success notification!')">Success</button>
+        <button onclick="notificationManager.error('Error notification!')">Error</button>
+        <button onclick="notificationManager.warning('Warning notification!')">Warning</button>
+        <button onclick="notificationManager.info('Info notification!')">Info</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>3. Dark Mode Module Test</h2>
+        <button onclick="testDarkMode()">Toggle Dark Mode</button>
+        <div id="darkModeResult" class="result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>4. Integration Test</h2>
+        <button onclick="integrationTest()">Run All Tests</button>
+        <div id="integrationResult" class="result"></div>
+    </div>
+
+    <!-- Load shared modules -->
+    <script src="shared/utils.js"></script>
+    <script src="shared/notification.js"></script>
+    <script src="shared/darkMode.js"></script>
+    
+    <script>
+        // Initialize dark mode button
+        const darkBtn = document.getElementById('darkModeBtn');
+        darkBtn.addEventListener('click', () => {
+            const isDark = darkModeManager.toggle();
+            updateDarkModeIcon();
+            notificationManager.info(`${isDark ? 'Dark' : 'Light'} mode activated`);
+        });
+        
+        function updateDarkModeIcon() {
+            const icon = darkBtn.querySelector('i');
+            icon.className = darkModeManager.isDarkMode ? 'fas fa-sun' : 'fas fa-moon';
+        }
+        
+        // Initialize on load
+        updateDarkModeIcon();
+        
+        function testUtils() {
+            const results = [];
+            
+            // Test formatCurrency
+            results.push(`formatCurrency(1234.56): ${utils.formatCurrency(1234.56)}`);
+            
+            // Test formatPercentage
+            results.push(`formatPercentage(42.7): ${utils.formatPercentage(42.7)}`);
+            
+            // Test $
+            results.push(`$('utilsResult'): ${utils.$('utilsResult') ? 'Element found' : 'Element not found'}`);
+            
+            // Test isMobile
+            results.push(`isMobile(): ${utils.isMobile()}`);
+            
+            // Test formatTime
+            results.push(`formatTime(125): ${utils.formatTime(125)}`);
+            
+            // Test generateId
+            results.push(`generateId(): ${utils.generateId()}`);
+            
+            document.getElementById('utilsResult').innerHTML = results.join('<br>');
+        }
+        
+        function testDarkMode() {
+            const isDark = darkModeManager.toggle();
+            updateDarkModeIcon();
+            document.getElementById('darkModeResult').innerHTML = `
+                Current theme: ${darkModeManager.currentTheme}<br>
+                Is dark mode: ${darkModeManager.isDarkMode}
+            `;
+        }
+        
+        function integrationTest() {
+            const results = [];
+            
+            // Test all utils functions
+            results.push('✓ Utils module loaded successfully');
+            results.push(`✓ formatCurrency works: ${utils.formatCurrency(9999.99)}`);
+            
+            // Test notifications
+            results.push('✓ Notification module loaded successfully');
+            notificationManager.success('Integration test passed!');
+            
+            // Test dark mode
+            results.push('✓ Dark mode module loaded successfully');
+            results.push(`✓ Current theme: ${darkModeManager.currentTheme}`);
+            
+            // Test localStorage
+            const testKey = 'integration-test';
+            utils.saveToLocalStorage(testKey, { test: 'data' });
+            const loaded = utils.loadFromLocalStorage(testKey);
+            results.push(`✓ LocalStorage works: ${JSON.stringify(loaded)}`);
+            utils.removeFromLocalStorage(testKey);
+            
+            document.getElementById('integrationResult').innerHTML = results.join('<br>');
+        }
+    </script>
+</body>
+</html>

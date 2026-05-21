@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Timesheet Calculation Formula</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .calculation {
+            background: #f5f5f5;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .formula {
+            background: #e3f2fd;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+        .result {
+            font-weight: bold;
+            color: #1976d2;
+        }
+        .match {
+            color: green;
+        }
+        .mismatch {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Timesheet Calculation Formula Test</h1>
+    
+    <div class="formula">
+        <strong>Formula:</strong><br>
+        Costo Total = Salario × [1 + 0.062(FICA SS) + 0.0145(FICA Medicare) + 0.006(FUTA) + 0.027(SUTA) + 0.025(Workers' Comp) + 0.00733(GL) + 0.0075(Franchise Tax) + 0.05(Overhead)]
+    </div>
+    
+    <div class="calculation">
+        <h3>Test Example: $1,000 Weekly Labor Cost</h3>
+        <p>Base Salary: <span class="result">$1,000.00</span></p>
+        
+        <h4>Individual Cost Components:</h4>
+        <ul>
+            <li>FICA Social Security (6.2%): <span id="ss"></span></li>
+            <li>FICA Medicare (1.45%): <span id="medicare"></span></li>
+            <li>FUTA (0.6%): <span id="futa"></span></li>
+            <li>SUTA (2.7%): <span id="suta"></span></li>
+            <li>Workers' Comp (2.5%): <span id="workcomp"></span></li>
+            <li>General Liability ($7.33/$1,000): <span id="liability"></span></li>
+            <li>Franchise Tax (0.75%): <span id="franchise"></span></li>
+            <li>Overhead (5%): <span id="overhead"></span></li>
+        </ul>
+        
+        <h4>Total Additional Costs:</h4>
+        <p>Sum of all percentages: <span id="totalPercent"></span></p>
+        <p>Total additional costs: <span id="additionalCosts"></span></p>
+        
+        <h4>Final Total Cost:</h4>
+        <p>Using individual calculations: <span id="totalIndividual"></span></p>
+        <p>Using formula (Salary × multiplier): <span id="totalFormula"></span></p>
+        <p>Verification: <span id="verification"></span></p>
+    </div>
+    
+    <script>
+        // Test with $1,000 base salary
+        const baseSalary = 1000;
+        
+        // Individual calculations
+        const ss = baseSalary * 0.062;
+        const medicare = baseSalary * 0.0145;
+        const futa = baseSalary * 0.006;
+        const suta = baseSalary * 0.027;
+        const workcomp = baseSalary * 0.025;
+        const liability = (baseSalary / 1000) * 7.33;
+        const franchise = baseSalary * 0.0075;
+        const overhead = baseSalary * 0.05;
+        
+        // Display individual costs
+        document.getElementById('ss').textContent = `$${ss.toFixed(2)}`;
+        document.getElementById('medicare').textContent = `$${medicare.toFixed(2)}`;
+        document.getElementById('futa').textContent = `$${futa.toFixed(2)}`;
+        document.getElementById('suta').textContent = `$${suta.toFixed(2)}`;
+        document.getElementById('workcomp').textContent = `$${workcomp.toFixed(2)}`;
+        document.getElementById('liability').textContent = `$${liability.toFixed(2)}`;
+        document.getElementById('franchise').textContent = `$${franchise.toFixed(2)}`;
+        document.getElementById('overhead').textContent = `$${overhead.toFixed(2)}`;
+        
+        // Calculate totals
+        const totalAdditional = ss + medicare + futa + suta + workcomp + liability + franchise + overhead;
+        const totalIndividual = baseSalary + totalAdditional;
+        
+        // Calculate using formula
+        const percentageSum = 0.062 + 0.0145 + 0.006 + 0.027 + 0.025 + 0.00733 + 0.0075 + 0.05;
+        const multiplier = 1 + percentageSum;
+        const totalFormula = baseSalary * multiplier;
+        
+        // Display totals
+        document.getElementById('totalPercent').textContent = `${(percentageSum * 100).toFixed(2)}%`;
+        document.getElementById('additionalCosts').textContent = `$${totalAdditional.toFixed(2)}`;
+        document.getElementById('totalIndividual').textContent = `$${totalIndividual.toFixed(2)}`;
+        document.getElementById('totalFormula').textContent = `$${totalFormula.toFixed(2)}`;
+        
+        // Verify they match
+        const difference = Math.abs(totalIndividual - totalFormula);
+        if (difference < 0.01) {
+            document.getElementById('verification').innerHTML = '<span class="match">✓ Calculations match!</span>';
+        } else {
+            document.getElementById('verification').innerHTML = `<span class="mismatch">✗ Difference: $${difference.toFixed(2)}</span>`;
+        }
+        
+        console.log('Multiplier:', multiplier);
+        console.log('Total percentage:', percentageSum);
+    </script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Total Manual Edit - Test Summary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #555;
+            margin-top: 30px;
+        }
+        .fix-section {
+            background-color: #e7f3ff;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .improvement {
+            background-color: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 10px 15px;
+            margin: 10px 0;
+        }
+        .warning {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 10px 15px;
+            margin: 10px 0;
+        }
+        .console-tip {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 10px;
+            margin: 10px 0;
+            font-family: monospace;
+            font-size: 14px;
+        }
+        ul {
+            line-height: 1.8;
+        }
+        code {
+            background-color: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Grand Total Manual Edit - Fixes Applied</h1>
+        
+        <div class="fix-section">
+            <h2>🔧 Problems Fixed</h2>
+            <ul>
+                <li><strong>Franchise Tax Calculation:</strong> Now correctly includes the 0.75% franchise tax in the reverse calculation</li>
+                <li><strong>Precision Issues:</strong> Markup values now maintain decimal precision for more accurate calculations</li>
+                <li><strong>Double Processing:</strong> Added a flag to prevent the blur and keydown events from processing twice</li>
+                <li><strong>Validation:</strong> Added proper validation to prevent invalid or negative values</li>
+                <li><strong>Iterative Adjustment:</strong> Added a second pass to fine-tune the markup if the first calculation doesn't hit the exact target</li>
+            </ul>
+        </div>
+
+        <div class="improvement">
+            <h2>✅ New Feature: Minimum Value Restriction</h2>
+            <p>The manual Grand Total can now only be <strong>increased</strong>, not decreased. This ensures profitability is maintained.</p>
+            <ul>
+                <li>If you try to enter a value lower than the calculated total, you'll see a warning</li>
+                <li>The input field shows the minimum allowed value</li>
+                <li>This prevents accidentally setting unprofitable prices</li>
+            </ul>
+        </div>
+
+        <h2>🧪 How to Test</h2>
+        <ol>
+            <li>Open <code>kitchen/index.html</code></li>
+            <li>Enter some basic values (workers, hours, days)</li>
+            <li>Note the calculated Grand Total</li>
+            <li>Click the edit button next to Grand Total</li>
+            <li>Enter a higher value (e.g., if it shows $2,500, enter 3000)</li>
+            <li>Press Enter or click outside</li>
+        </ol>
+
+        <div class="warning">
+            <h3>⚠️ Expected Behavior</h3>
+            <ul>
+                <li>The Grand Total should update to your exact value</li>
+                <li>The Service Markup % should automatically adjust</li>
+                <li>A "Manual Adjustment" indicator should appear</li>
+                <li>The markup row will briefly highlight in blue</li>
+                <li>If you try to enter a lower value, it will show a warning and reject it</li>
+            </ul>
+        </div>
+
+        <h2>🐛 Debugging Tips</h2>
+        <p>If you still experience issues, open the browser console (F12) to see helpful debug messages:</p>
+        
+        <div class="console-tip">
+            <p>Key console messages to look for:</p>
+            <ul>
+                <li><code>Processing manual grand total: [value]</code> - Shows when processing starts</li>
+                <li><code>calculateRequiredMarkup - Target: [value]</code> - Shows the target being calculated</li>
+                <li><code>Required markup calculated: [value]</code> - Shows the calculated markup percentage</li>
+                <li><code>Validation failed in calculateAll</code> - Indicates invalid input values somewhere</li>
+            </ul>
+        </div>
+
+        <h2>📋 Summary of Changes</h2>
+        <ul>
+            <li>Improved <code>calculateRequiredMarkup()</code> to handle franchise tax correctly</li>
+            <li>Added <code>processManualGrandTotal()</code> to handle the input processing with validation</li>
+            <li>Modified input handlers to use <code>parseFloat</code> instead of <code>parseInt</code> for decimal precision</li>
+            <li>Added minimum value validation to prevent setting prices below calculated cost</li>
+            <li>Added iterative refinement in <code>applyManualGrandTotal()</code> for better accuracy</li>
+            <li>Improved error handling and user feedback</li>
+        </ul>
+
+        <div class="improvement">
+            <h3>✨ Best Practices</h3>
+            <ul>
+                <li>Always ensure basic parameters (workers, hours, days) are set before editing Grand Total</li>
+                <li>The manual adjustment only changes the markup percentage - all other calculations remain accurate</li>
+                <li>If you change other parameters after setting a manual Grand Total, you'll need to re-adjust it</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

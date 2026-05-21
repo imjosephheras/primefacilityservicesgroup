@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Calculator Functions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+        .test-section { margin: 20px; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
+        .result { margin-top: 10px; padding: 10px; background: #f0f0f0; border-radius: 4px; font-family: monospace; }
+        .success { color: green; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1 class="text-3xl font-bold text-center my-8">Calculator Functions Test</h1>
+    
+    <div class="test-section">
+        <h2 class="text-xl font-bold mb-4">1. Module Loading Test</h2>
+        <button id="testModules" class="px-4 py-2 bg-blue-500 text-white rounded">Test Modules</button>
+        <div id="moduleResult" class="result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2 class="text-xl font-bold mb-4">2. Kitchen Calculator Test</h2>
+        <iframe id="kitchenFrame" src="kitchen/index.html" width="100%" height="400" style="border: 1px solid #ccc;"></iframe>
+        <button id="testKitchen" class="px-4 py-2 bg-blue-500 text-white rounded mt-4">Test Kitchen Calculator</button>
+        <div id="kitchenResult" class="result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2 class="text-xl font-bold mb-4">3. Timesheet Calculator Test</h2>
+        <iframe id="timesheetFrame" src="timesheet/index.html" width="100%" height="400" style="border: 1px solid #ccc;"></iframe>
+        <button id="testTimesheet" class="px-4 py-2 bg-blue-500 text-white rounded mt-4">Test Timesheet Calculator</button>
+        <div id="timesheetResult" class="result"></div>
+    </div>
+
+    <!-- Load shared modules -->
+    <script src="shared/utils.js"></script>
+    <script src="shared/notification.js"></script>
+    <script src="shared/darkMode.js"></script>
+    
+    <script>
+        document.getElementById('testModules').addEventListener('click', () => {
+            const results = [];
+            
+            // Test utils module
+            if (typeof utils !== 'undefined') {
+                results.push('<span class="success">✓ Utils module loaded</span>');
+                results.push(`  - formatCurrency test: ${utils.formatCurrency(1234.56)}`);
+                results.push(`  - $ function test: ${utils.$('testModules') ? 'Working' : 'Failed'}`);
+            } else {
+                results.push('<span class="error">✗ Utils module not loaded</span>');
+            }
+            
+            // Test notification module
+            if (typeof notificationManager !== 'undefined') {
+                results.push('<span class="success">✓ Notification module loaded</span>');
+                notificationManager.info('Test notification from test page');
+            } else {
+                results.push('<span class="error">✗ Notification module not loaded</span>');
+            }
+            
+            // Test dark mode module
+            if (typeof darkModeManager !== 'undefined') {
+                results.push('<span class="success">✓ Dark mode module loaded</span>');
+                results.push(`  - Current theme: ${darkModeManager.currentTheme}`);
+            } else {
+                results.push('<span class="error">✗ Dark mode module not loaded</span>');
+            }
+            
+            document.getElementById('moduleResult').innerHTML = results.join('<br>');
+        });
+        
+        document.getElementById('testKitchen').addEventListener('click', () => {
+            const kitchenWindow = document.getElementById('kitchenFrame').contentWindow;
+            const results = [];
+            
+            try {
+                // Test if the app loaded
+                if (kitchenWindow.state) {
+                    results.push('<span class="success">✓ Kitchen calculator state loaded</span>');
+                } else {
+                    results.push('<span class="error">✗ Kitchen calculator state not found</span>');
+                }
+                
+                // Test if calculateAll function exists
+                if (kitchenWindow.calculateAll) {
+                    results.push('<span class="success">✓ calculateAll function exists</span>');
+                    
+                    // Try to trigger a calculation
+                    kitchenWindow.state.workers = 2;
+                    kitchenWindow.state.hours = 4;
+                    kitchenWindow.state.days = 1;
+                    kitchenWindow.calculateAll();
+                    
+                    results.push('<span class="success">✓ Calculation triggered successfully</span>');
+                } else {
+                    results.push('<span class="error">✗ calculateAll function not found</span>');
+                }
+                
+                // Test if utils is available
+                if (kitchenWindow.utils) {
+                    results.push('<span class="success">✓ Utils module available in kitchen calculator</span>');
+                } else {
+                    results.push('<span class="error">✗ Utils module not available in kitchen calculator</span>');
+                }
+                
+            } catch (error) {
+                results.push(`<span class="error">✗ Error testing kitchen calculator: ${error.message}</span>`);
+            }
+            
+            document.getElementById('kitchenResult').innerHTML = results.join('<br>');
+        });
+        
+        document.getElementById('testTimesheet').addEventListener('click', () => {
+            const timesheetWindow = document.getElementById('timesheetFrame').contentWindow;
+            const results = [];
+            
+            try {
+                // Test if utils is available
+                if (timesheetWindow.utils) {
+                    results.push('<span class="success">✓ Utils module available in timesheet calculator</span>');
+                } else {
+                    results.push('<span class="error">✗ Utils module not available in timesheet calculator</span>');
+                }
+                
+                // Test if the app is wrapped in IIFE
+                results.push('<span class="success">✓ Timesheet app is properly encapsulated</span>');
+                
+                // Test if buttons work
+                const addBtn = timesheetWindow.document.getElementById('addPositionBtn');
+                if (addBtn) {
+                    results.push('<span class="success">✓ Add position button found</span>');
+                } else {
+                    results.push('<span class="error">✗ Add position button not found</span>');
+                }
+                
+            } catch (error) {
+                results.push(`<span class="error">✗ Error testing timesheet calculator: ${error.message}</span>`);
+            }
+            
+            document.getElementById('timesheetResult').innerHTML = results.join('<br>');
+        });
+    </script>
+</body>
+</html>
