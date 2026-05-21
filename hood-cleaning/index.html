@@ -3,38 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hood Cleaning — PRIME Facility Services</title>
-    <meta name="description" content="Enterprise-grade commercial kitchen exhaust hood cleaning. NFPA 96 compliant. Serving Houston, Dallas, and national commercial facilities.">
+    <title>Commercial Exhaust Infrastructure — PRIME Facility Services</title>
+    <meta name="description" content="Engineered airflow systems for commercial kitchens. Hood filters, exhaust fans, hood systems, and NFPA 96 compliance. Houston, Dallas, and national coverage.">
     <link rel="icon" href="/logo-prime.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
-            --black: #080808;
-            --charcoal: #111114;
-            --surface: #16161a;
-            --surface2: #1c1c21;
-            --border: rgba(255,255,255,0.07);
-            --border-light: rgba(255,255,255,0.12);
-            --white: #f8f8f8;
-            --gray-100: #e8e8ec;
-            --gray-400: #8a8a96;
-            --gray-600: #52525c;
-            --blue: #1d6aff;
-            --blue-dim: rgba(29,106,255,0.15);
-            --blue-glow: rgba(29,106,255,0.25);
-            --metal: #a8b0c0;
-            --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --white:       #ffffff;
+            --off-white:   #f8f8f6;
+            --gray-50:     #f5f5f3;
+            --gray-100:    #efefed;
+            --gray-200:    #e0e0dd;
+            --gray-300:    #c8c8c4;
+            --gray-400:    #9a9a96;
+            --gray-500:    #6e6e6a;
+            --gray-600:    #4a4a46;
+            --gray-900:    #111110;
+            --blue:        #1a5cff;
+            --blue-light:  #e8f0ff;
+            --blue-mid:    #3b6fd4;
+            --blue-dim:    rgba(26,92,255,0.08);
+            --blue-border: rgba(26,92,255,0.18);
+            --shadow-xs:   0 1px 3px rgba(0,0,0,0.06);
+            --shadow-sm:   0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md:   0 8px 24px rgba(0,0,0,0.08);
+            --shadow-lg:   0 24px 64px rgba(0,0,0,0.10);
+            --font:        'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --radius:      12px;
+            --radius-lg:   20px;
         }
 
         html { scroll-behavior: smooth; }
 
         body {
-            background: var(--black);
-            color: var(--white);
+            background: var(--white);
+            color: var(--gray-900);
             font-family: var(--font);
             font-size: 16px;
             line-height: 1.6;
@@ -42,24 +49,32 @@
             overflow-x: hidden;
         }
 
-        /* ── NAVIGATION ─────────────────────────────────────── */
+        /* ── SCROLLBAR ───────────────────────────────────────── */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--gray-50); }
+        ::-webkit-scrollbar-thumb { background: var(--gray-300); border-radius: 3px; }
+
+        /* ══════════════════════════════════════════════════════
+           NAVIGATION
+        ══════════════════════════════════════════════════════ */
         #prime-nav {
             position: fixed;
             top: 0; left: 0; right: 0;
             z-index: 1000;
-            height: 64px;
+            height: 60px;
             display: flex;
             align-items: center;
             padding: 0 40px;
-            transition: background 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease;
+            transition: background 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease;
             border-bottom: 1px solid transparent;
         }
 
         #prime-nav.scrolled {
-            background: rgba(8,8,8,0.85);
+            background: rgba(255,255,255,0.92);
             backdrop-filter: blur(24px) saturate(180%);
             -webkit-backdrop-filter: blur(24px) saturate(180%);
-            border-bottom-color: var(--border);
+            border-bottom-color: var(--gray-200);
+            box-shadow: var(--shadow-xs);
         }
 
         .nav-inner {
@@ -68,7 +83,6 @@
             margin: 0 auto;
             display: flex;
             align-items: center;
-            gap: 0;
         }
 
         .nav-logo {
@@ -79,10 +93,13 @@
             flex-shrink: 0;
         }
 
-        .nav-logo img {
-            height: 32px;
-            width: auto;
-            display: block;
+        .nav-logo img { height: 28px; width: auto; display: block; }
+
+        .nav-logo-text {
+            font-size: 17px;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            color: var(--gray-900);
         }
 
         .nav-links {
@@ -93,18 +110,16 @@
             list-style: none;
         }
 
-        .nav-item {
-            position: relative;
-        }
+        .nav-item { position: relative; }
 
         .nav-link {
             display: flex;
             align-items: center;
             gap: 4px;
-            padding: 6px 14px;
-            font-size: 13.5px;
+            padding: 6px 12px;
+            font-size: 13px;
             font-weight: 500;
-            color: var(--gray-400);
+            color: var(--gray-500);
             text-decoration: none;
             border-radius: 8px;
             transition: color 0.2s, background 0.2s;
@@ -116,8 +131,8 @@
         }
 
         .nav-link:hover, .nav-item.open > .nav-link {
-            color: var(--white);
-            background: rgba(255,255,255,0.06);
+            color: var(--gray-900);
+            background: var(--gray-100);
         }
 
         .nav-link svg { transition: transform 0.25s ease; flex-shrink: 0; }
@@ -127,53 +142,48 @@
             margin-left: auto;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             flex-shrink: 0;
         }
 
         .btn-ghost {
-            padding: 7px 18px;
+            padding: 7px 16px;
             font-size: 13px;
             font-weight: 500;
-            color: var(--gray-400);
+            color: var(--gray-500);
             text-decoration: none;
             border-radius: 8px;
             transition: color 0.2s, background 0.2s;
             white-space: nowrap;
             letter-spacing: -0.01em;
         }
-        .btn-ghost:hover { color: var(--white); background: rgba(255,255,255,0.06); }
+        .btn-ghost:hover { color: var(--gray-900); background: var(--gray-100); }
 
-        .btn-primary {
-            padding: 8px 20px;
+        .btn-primary-nav {
+            padding: 8px 18px;
             font-size: 13px;
             font-weight: 600;
             color: var(--white);
-            background: var(--blue);
+            background: var(--gray-900);
             text-decoration: none;
             border-radius: 8px;
-            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+            transition: background 0.2s, transform 0.2s;
             white-space: nowrap;
             letter-spacing: -0.01em;
         }
-        .btn-primary:hover {
-            background: #3d7fff;
-            transform: translateY(-1px);
-            box-shadow: 0 8px 24px rgba(29,106,255,0.35);
-        }
+        .btn-primary-nav:hover { background: var(--gray-600); }
 
-        /* ── MEGA MENU ──────────────────────────────────────── */
+        /* MEGA MENU */
         .mega-menu {
             position: absolute;
-            top: calc(100% + 16px);
+            top: calc(100% + 12px);
             left: 50%;
-            transform: translateX(-50%);
-            background: var(--surface);
-            border: 1px solid var(--border-light);
-            border-radius: 16px;
-            padding: 24px;
-            min-width: 520px;
-            box-shadow: 0 32px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.04);
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            min-width: 480px;
+            box-shadow: var(--shadow-lg);
             opacity: 0;
             visibility: hidden;
             transform: translateX(-50%) translateY(-8px);
@@ -189,20 +199,15 @@
             pointer-events: all;
         }
 
-        .mega-grid {
-            display: grid;
-            gap: 4px;
-        }
-
+        .mega-grid { display: grid; gap: 3px; }
         .mega-grid-2 { grid-template-columns: 1fr 1fr; }
-        .mega-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
 
         .mega-section-label {
             font-size: 10px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            color: var(--gray-600);
+            color: var(--gray-400);
             margin-bottom: 8px;
             padding: 0 8px;
         }
@@ -210,296 +215,296 @@
         .mega-item {
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 9px 10px;
+            gap: 8px;
+            padding: 8px 10px;
             border-radius: 8px;
             text-decoration: none;
-            color: var(--gray-100);
+            color: var(--gray-600);
             font-size: 13px;
             font-weight: 500;
             transition: background 0.15s, color 0.15s;
-            letter-spacing: -0.01em;
         }
 
-        .mega-item:hover {
-            background: rgba(255,255,255,0.06);
-            color: var(--white);
-        }
+        .mega-item:hover { background: var(--gray-50); color: var(--gray-900); }
 
         .mega-item-dot {
-            width: 5px;
-            height: 5px;
+            width: 4px;
+            height: 4px;
             border-radius: 50%;
-            background: var(--gray-600);
+            background: var(--gray-300);
             flex-shrink: 0;
             transition: background 0.15s;
         }
         .mega-item:hover .mega-item-dot { background: var(--blue); }
 
-        .mega-divider {
-            height: 1px;
-            background: var(--border);
-            margin: 16px 0;
+        .mega-divider { height: 1px; background: var(--gray-100); margin: 12px 0; }
+
+        /* MOBILE */
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--gray-600);
+            cursor: pointer;
+            padding: 8px;
+            margin-left: auto;
         }
 
-        /* ── HERO ───────────────────────────────────────────── */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: var(--white);
+            z-index: 999;
+            padding: 80px 24px 40px;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.open { display: block; }
+
+        .mobile-close {
+            position: absolute;
+            top: 20px; right: 20px;
+            background: none; border: none;
+            color: var(--gray-500);
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-nav-link {
+            display: block;
+            padding: 14px 0;
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--gray-900);
+            text-decoration: none;
+            border-bottom: 1px solid var(--gray-100);
+            letter-spacing: -0.03em;
+        }
+
+        .mobile-sub a {
+            display: block;
+            padding: 8px 16px;
+            font-size: 15px;
+            color: var(--gray-400);
+            text-decoration: none;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        /* ══════════════════════════════════════════════════════
+           SECTION 1 — HERO VIDEO
+        ══════════════════════════════════════════════════════ */
         #hero {
-            min-height: 100vh;
+            position: relative;
+            min-height: 100svh;
             display: flex;
             align-items: center;
-            position: relative;
+            justify-content: center;
             overflow: hidden;
-            padding: 120px 40px 80px;
+            background: var(--off-white);
         }
 
-        .hero-bg {
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(ellipse 80% 60% at 60% 40%, rgba(29,106,255,0.08) 0%, transparent 60%),
-                radial-gradient(ellipse 60% 40% at 20% 80%, rgba(29,106,255,0.05) 0%, transparent 50%),
-                var(--black);
-        }
-
-        .hero-grid-lines {
+        /* Blueprint grid overlay */
+        .hero-blueprint {
             position: absolute;
             inset: 0;
             background-image:
-                linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-            background-size: 64px 64px;
-            mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 100%);
+                linear-gradient(rgba(26,92,255,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(26,92,255,0.04) 1px, transparent 1px);
+            background-size: 56px 56px;
+            mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, black 20%, transparent 100%);
+            pointer-events: none;
         }
 
-        .hero-inner {
+        /* Soft radial gradient */
+        .hero-radial {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 70% 60% at 50% 40%, rgba(230,238,255,0.70) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 30% at 20% 80%, rgba(220,232,255,0.30) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        /* Video placeholder */
+        .hero-video-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-video-placeholder video,
+        .hero-video-placeholder iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.08;
+            pointer-events: none;
+        }
+
+        /* Thin horizontal rule */
+        .hero-rule {
+            position: absolute;
+            top: 50%;
+            left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(26,92,255,0.12) 20%, rgba(26,92,255,0.12) 80%, transparent);
+            pointer-events: none;
+        }
+
+        .hero-content {
             position: relative;
             z-index: 10;
-            max-width: 1280px;
+            text-align: center;
+            padding: 120px 24px 80px;
+            max-width: 900px;
             margin: 0 auto;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: center;
-            gap: 80px;
         }
 
         .hero-eyebrow {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            font-size: 11px;
-            font-weight: 600;
+            font-size: 10px;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.12em;
+            letter-spacing: 0.14em;
             color: var(--blue);
-            margin-bottom: 28px;
-            padding: 6px 14px;
-            border: 1px solid rgba(29,106,255,0.3);
+            margin-bottom: 36px;
+            padding: 6px 16px;
+            border: 1px solid var(--blue-border);
             border-radius: 100px;
-            background: rgba(29,106,255,0.08);
+            background: var(--blue-dim);
         }
 
         .hero-eyebrow-dot {
-            width: 6px;
-            height: 6px;
+            width: 5px;
+            height: 5px;
             border-radius: 50%;
             background: var(--blue);
-            animation: pulse-dot 2s ease-in-out infinite;
+            animation: pulse-dot 2.5s ease-in-out infinite;
         }
 
         @keyframes pulse-dot {
             0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(0.7); }
+            50% { opacity: 0.4; transform: scale(0.7); }
         }
 
         .hero-h1 {
-            font-size: clamp(44px, 5vw, 72px);
+            font-size: clamp(48px, 7vw, 88px);
             font-weight: 700;
-            line-height: 1.05;
+            line-height: 1.02;
             letter-spacing: -0.04em;
-            color: var(--white);
-            margin-bottom: 24px;
+            color: var(--gray-900);
+            margin-bottom: 28px;
         }
 
-        .hero-h1 em {
-            font-style: normal;
-            background: linear-gradient(135deg, #fff 0%, #a8b8d8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-desc {
-            font-size: 17px;
-            color: var(--gray-400);
-            line-height: 1.7;
-            max-width: 480px;
-            margin-bottom: 40px;
-            letter-spacing: -0.01em;
+        .hero-h1 span {
+            display: block;
+            font-size: clamp(20px, 2.5vw, 30px);
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            color: var(--gray-500);
+            margin-top: 16px;
         }
 
         .hero-actions {
             display: flex;
             align-items: center;
-            gap: 16px;
+            justify-content: center;
+            gap: 12px;
             flex-wrap: wrap;
+            margin-top: 48px;
         }
 
-        .hero-btn-primary {
+        .btn-hero-primary {
             display: inline-flex;
             align-items: center;
             gap: 8px;
             padding: 14px 28px;
-            background: var(--blue);
+            background: var(--gray-900);
             color: var(--white);
             font-size: 14px;
             font-weight: 600;
             border-radius: 10px;
             text-decoration: none;
             letter-spacing: -0.01em;
-            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+            transition: background 0.2s, transform 0.25s;
         }
-        .hero-btn-primary:hover {
-            background: #3d7fff;
-            transform: translateY(-2px);
-            box-shadow: 0 12px 32px rgba(29,106,255,0.4);
-        }
+        .btn-hero-primary:hover { background: var(--gray-600); transform: translateY(-2px); }
 
-        .hero-btn-ghost {
+        .btn-hero-ghost {
             display: inline-flex;
             align-items: center;
             gap: 8px;
             padding: 14px 24px;
-            color: var(--gray-400);
+            color: var(--gray-600);
             font-size: 14px;
             font-weight: 500;
             border-radius: 10px;
             text-decoration: none;
             letter-spacing: -0.01em;
-            border: 1px solid var(--border-light);
+            border: 1px solid var(--gray-300);
             transition: color 0.2s, border-color 0.2s, background 0.2s;
         }
-        .hero-btn-ghost:hover {
-            color: var(--white);
-            border-color: rgba(255,255,255,0.2);
-            background: rgba(255,255,255,0.05);
+        .btn-hero-ghost:hover {
+            color: var(--gray-900);
+            border-color: var(--gray-400);
+            background: var(--gray-50);
         }
 
-        .hero-stats {
+        /* Scroll cue */
+        .scroll-cue {
+            position: absolute;
+            bottom: 36px;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
-            gap: 40px;
-            margin-top: 56px;
-            padding-top: 40px;
-            border-top: 1px solid var(--border);
-        }
-
-        .hero-stat-value {
-            font-size: 28px;
-            font-weight: 700;
-            letter-spacing: -0.04em;
-            color: var(--white);
-        }
-
-        .hero-stat-label {
-            font-size: 12px;
-            color: var(--gray-600);
-            font-weight: 500;
-            letter-spacing: 0.02em;
-            margin-top: 2px;
-        }
-
-        /* ── HERO ILLUSTRATION ──────────────────────────────── */
-        .hero-visual {
-            position: relative;
-            height: 520px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .duct-svg-wrap {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-
-        .duct-svg-wrap svg {
-            width: 100%;
-            height: 100%;
-        }
-
-        /* airflow animation */
-        @keyframes flow-right {
-            0% { stroke-dashoffset: 120; opacity: 0.2; }
-            50% { opacity: 0.7; }
-            100% { stroke-dashoffset: 0; opacity: 0.2; }
-        }
-
-        @keyframes flow-up {
-            0% { stroke-dashoffset: 80; opacity: 0.2; }
-            50% { opacity: 0.6; }
-            100% { stroke-dashoffset: 0; opacity: 0.2; }
-        }
-
-        @keyframes glow-pulse {
-            0%, 100% { opacity: 0.4; }
-            50% { opacity: 0.8; }
-        }
-
-        @keyframes float-y {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .duct-svg-wrap { animation: float-y 6s ease-in-out infinite; }
-
-        /* ── COMPLIANCE BADGE ROW ───────────────────────────── */
-        #compliance-strip {
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-            padding: 20px 40px;
-            background: var(--charcoal);
-        }
-
-        .compliance-inner {
-            max-width: 1280px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .compliance-label {
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--gray-600);
-            white-space: nowrap;
-        }
-
-        .compliance-badges {
-            display: flex;
-            align-items: center;
-            gap: 32px;
-            flex-wrap: wrap;
-        }
-
-        .compliance-badge {
-            display: flex;
+            flex-direction: column;
             align-items: center;
             gap: 8px;
-            font-size: 13px;
-            font-weight: 600;
             color: var(--gray-400);
-            letter-spacing: -0.01em;
+            z-index: 10;
         }
 
-        .compliance-badge svg { color: var(--blue); flex-shrink: 0; }
+        .scroll-cue span {
+            font-size: 9px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+        }
 
-        /* ── SECTION WRAPPER ────────────────────────────────── */
+        .scroll-track {
+            width: 1px;
+            height: 40px;
+            background: var(--gray-200);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scroll-track::after {
+            content: '';
+            position: absolute;
+            top: -40px;
+            left: 0;
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, transparent, var(--blue), transparent);
+            animation: scroll-line 2s ease-in-out infinite;
+        }
+
+        @keyframes scroll-line {
+            0% { top: -40px; }
+            100% { top: 80px; }
+        }
+
+        /* ══════════════════════════════════════════════════════
+           SECTION SHARED
+        ══════════════════════════════════════════════════════ */
         .section {
             padding: 120px 40px;
         }
@@ -510,183 +515,608 @@
         }
 
         .section-label {
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.12em;
+            letter-spacing: 0.14em;
             color: var(--blue);
             margin-bottom: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-label::before {
+            content: '';
+            display: block;
+            width: 20px;
+            height: 1px;
+            background: var(--blue);
         }
 
         .section-title {
-            font-size: clamp(32px, 3.5vw, 52px);
+            font-size: clamp(36px, 4vw, 60px);
             font-weight: 700;
             letter-spacing: -0.04em;
-            line-height: 1.08;
-            color: var(--white);
+            line-height: 1.05;
+            color: var(--gray-900);
             margin-bottom: 20px;
         }
 
         .section-desc {
             font-size: 17px;
             color: var(--gray-400);
-            line-height: 1.7;
-            max-width: 540px;
+            line-height: 1.75;
+            max-width: 480px;
+            font-weight: 400;
             letter-spacing: -0.01em;
         }
 
-        /* ── SERVICES GRID ──────────────────────────────────── */
-        #services { background: var(--charcoal); }
-
-        .services-header {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: end;
-            margin-bottom: 64px;
+        /* Thin architectural divider */
+        .arch-divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gray-200) 20%, var(--gray-200) 80%, transparent);
         }
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1px;
-            background: var(--border);
-            border: 1px solid var(--border);
-            border-radius: 16px;
+        /* ══════════════════════════════════════════════════════
+           SECTION 2 — FILTERS PRODUCT LINE
+        ══════════════════════════════════════════════════════ */
+        #filters {
+            background: var(--white);
             overflow: hidden;
         }
 
-        .service-card {
-            background: var(--surface);
-            padding: 36px 28px;
-            transition: background 0.2s;
-            cursor: default;
-        }
-
-        .service-card:hover { background: var(--surface2); }
-
-        .service-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            background: var(--blue-dim);
-            border: 1px solid rgba(29,106,255,0.2);
+        .filters-header {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            color: var(--blue);
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 64px;
+            flex-wrap: wrap;
         }
 
-        .service-name {
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--white);
-            letter-spacing: -0.02em;
-            margin-bottom: 8px;
-        }
-
-        .service-desc {
-            font-size: 13px;
-            color: var(--gray-600);
-            line-height: 1.6;
-        }
-
-        /* ── PROCESS SECTION ────────────────────────────────── */
-        #process { background: var(--black); }
-
-        .process-steps {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 0;
-            margin-top: 64px;
+        .filters-track-wrap {
             position: relative;
         }
 
-        .process-steps::before {
+        /* Horizontal scroll container */
+        .filters-track {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 8px;
+            scrollbar-width: none;
+            cursor: grab;
+        }
+        .filters-track::-webkit-scrollbar { display: none; }
+        .filters-track.is-grabbing { cursor: grabbing; }
+
+        /* Fade edges */
+        .filters-track-wrap::after {
             content: '';
             position: absolute;
-            top: 24px;
-            left: 10%;
-            right: 10%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--border-light) 20%, var(--border-light) 80%, transparent);
+            top: 0; right: 0; bottom: 8px;
+            width: 80px;
+            background: linear-gradient(90deg, transparent, var(--white));
+            pointer-events: none;
+            z-index: 2;
         }
 
-        .process-step {
-            text-align: center;
-            padding: 0 16px;
-            position: relative;
+        .filter-card {
+            flex-shrink: 0;
+            width: 320px;
+            scroll-snap-align: start;
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
         }
 
-        .step-num {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: var(--surface);
-            border: 1px solid var(--border-light);
+        .filter-card:hover {
+            border-color: var(--gray-300);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+        }
+
+        .filter-card-visual {
+            height: 200px;
+            background: var(--gray-100);
+            border-bottom: 1px solid var(--gray-200);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 13px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .filter-card-visual svg {
+            opacity: 0.25;
+        }
+
+        /* Blueprint grid inside card */
+        .filter-card-visual::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(26,92,255,0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(26,92,255,0.06) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        .filter-card-visual-label {
+            position: absolute;
+            bottom: 12px;
+            left: 16px;
+            font-size: 9px;
             font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--gray-400);
+        }
+
+        .filter-card-body {
+            padding: 24px 28px 28px;
+        }
+
+        .filter-card-tag {
+            display: inline-block;
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
             color: var(--blue);
-            margin: 0 auto 20px;
+            background: var(--blue-dim);
+            border: 1px solid var(--blue-border);
+            border-radius: 100px;
+            padding: 3px 10px;
+            margin-bottom: 14px;
+        }
+
+        .filter-card-title {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+            line-height: 1.15;
+        }
+
+        .filter-card-desc {
+            font-size: 13.5px;
+            color: var(--gray-400);
+            line-height: 1.7;
+        }
+
+        .filters-cta-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 48px;
+            padding-top: 40px;
+            border-top: 1px solid var(--gray-200);
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .view-collection-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gray-900);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+            border-bottom: 1px solid var(--gray-900);
+            padding-bottom: 2px;
+            transition: color 0.2s, border-color 0.2s;
+        }
+        .view-collection-btn:hover { color: var(--blue); border-color: var(--blue); }
+
+        /* ══════════════════════════════════════════════════════
+           SECTION 3 — EXHAUST FANS
+        ══════════════════════════════════════════════════════ */
+        #exhaust-fans {
+            background: var(--gray-50);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #exhaust-fans::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(26,92,255,0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(26,92,255,0.035) 1px, transparent 1px);
+            background-size: 64px 64px;
+        }
+
+        .fans-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
             position: relative;
             z-index: 1;
         }
 
-        .step-title {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--white);
-            letter-spacing: -0.02em;
-            margin-bottom: 8px;
+        .fans-visual {
+            aspect-ratio: 1;
+            max-height: 520px;
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        .step-desc {
-            font-size: 12.5px;
-            color: var(--gray-600);
-            line-height: 1.6;
+        /* Inner blueprint grid */
+        .fans-visual::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(26,92,255,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(26,92,255,0.05) 1px, transparent 1px);
+            background-size: 32px 32px;
         }
 
-        /* ── SPECS TABLE ────────────────────────────────────── */
-        #specs { background: var(--charcoal); }
+        .fans-visual-label {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--gray-400);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
 
-        .specs-layout {
+        .fans-visual-label::before {
+            content: '';
+            display: block;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--blue);
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        .fans-copy { position: relative; z-index: 1; }
+
+        /* ══════════════════════════════════════════════════════
+           SECTION 4 — HOOD SYSTEMS
+        ══════════════════════════════════════════════════════ */
+        #hood-systems {
+            background: var(--white);
+        }
+
+        .hoods-header {
+            text-align: center;
+            margin-bottom: 72px;
+        }
+
+        .hoods-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .hood-card {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-lg);
+            padding: 40px 32px;
+            transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hood-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--blue-border), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .hood-card:hover {
+            border-color: var(--gray-300);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+        }
+
+        .hood-card:hover::before { opacity: 1; }
+
+        .hood-card-visual {
+            height: 160px;
+            background: var(--gray-100);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hood-card-visual::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(26,92,255,0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(26,92,255,0.06) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .hood-card-visual svg { opacity: 0.2; position: relative; z-index: 1; }
+
+        .hood-card-number {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: var(--gray-300);
+            margin-bottom: 12px;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .hood-card-title {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: var(--gray-900);
+            margin-bottom: 10px;
+        }
+
+        .hood-card-desc {
+            font-size: 13.5px;
+            color: var(--gray-400);
+            line-height: 1.7;
+        }
+
+        /* ══════════════════════════════════════════════════════
+           SECTION 5 — BEFORE / AFTER RESTORATION
+        ══════════════════════════════════════════════════════ */
+        #restoration {
+            background: var(--gray-50);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #restoration::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(26,92,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(26,92,255,0.03) 1px, transparent 1px);
+            background-size: 80px 80px;
+        }
+
+        .restoration-header {
+            text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .before-after-container {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .before-after-slider {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--gray-200);
+            box-shadow: var(--shadow-lg);
+            background: var(--white);
+            aspect-ratio: 16/9;
+        }
+
+        /* Before pane */
+        .before-pane, .after-pane {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .before-pane {
+            background: linear-gradient(135deg, #fafaf8 0%, #f0f0ed 100%);
+        }
+
+        .after-pane {
+            background: linear-gradient(135deg, #f0f5ff 0%, #e8f0ff 100%);
+            clip-path: inset(0 50% 0 0);
+            transition: clip-path 0.05s linear;
+        }
+
+        /* Divider line */
+        .slider-divider {
+            position: absolute;
+            top: 0; bottom: 0;
+            left: 50%;
+            width: 2px;
+            background: var(--white);
+            box-shadow: 0 0 12px rgba(0,0,0,0.15);
+            z-index: 10;
+            cursor: ew-resize;
+            transform: translateX(-1px);
+        }
+
+        .slider-handle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: var(--white);
+            border: 1.5px solid var(--gray-200);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+            cursor: ew-resize;
+        }
+
+        .pane-label {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--gray-400);
+            padding: 5px 12px;
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 100px;
+        }
+
+        .pane-placeholder-text {
+            font-size: 13px;
+            color: var(--gray-300);
+            letter-spacing: -0.01em;
+        }
+
+        .before-after-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 24px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--gray-400);
+        }
+
+        /* ══════════════════════════════════════════════════════
+           SECTION 6 — COMPLIANCE
+        ══════════════════════════════════════════════════════ */
+        #compliance {
+            background: var(--white);
+            position: relative;
+        }
+
+        .compliance-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
             gap: 80px;
             align-items: start;
         }
 
-        .spec-table {
-            border: 1px solid var(--border);
-            border-radius: 12px;
+        .compliance-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .compliance-card {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius);
+            padding: 24px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .compliance-card:hover {
+            border-color: var(--blue-border);
+            box-shadow: 0 0 0 3px var(--blue-dim);
+        }
+
+        .compliance-card-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--blue-dim);
+            border: 1px solid var(--blue-border);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            color: var(--blue);
+        }
+
+        .compliance-card-title {
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--gray-900);
+            margin-bottom: 6px;
+        }
+
+        .compliance-card-desc {
+            font-size: 12.5px;
+            color: var(--gray-400);
+            line-height: 1.6;
+        }
+
+        /* Blueprint spec table */
+        .compliance-table {
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-lg);
             overflow: hidden;
+            background: var(--white);
+        }
+
+        .compliance-table-header {
+            padding: 16px 24px;
+            background: var(--gray-50);
+            border-bottom: 1px solid var(--gray-200);
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--gray-400);
+            display: flex;
+            justify-content: space-between;
         }
 
         .spec-row {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 16px 24px;
-            border-bottom: 1px solid var(--border);
+            padding: 14px 24px;
+            border-bottom: 1px solid var(--gray-100);
             transition: background 0.15s;
         }
 
         .spec-row:last-child { border-bottom: none; }
-        .spec-row:hover { background: rgba(255,255,255,0.03); }
+        .spec-row:hover { background: var(--gray-50); }
 
         .spec-key {
             font-size: 13px;
-            color: var(--gray-600);
+            color: var(--gray-400);
             font-weight: 500;
         }
 
         .spec-val {
             font-size: 13px;
-            color: var(--white);
+            color: var(--gray-900);
             font-weight: 600;
             letter-spacing: -0.01em;
         }
@@ -699,61 +1129,76 @@
             border-radius: 100px;
             font-size: 11px;
             font-weight: 700;
-            background: rgba(29,106,255,0.12);
+            background: var(--blue-dim);
             color: var(--blue);
-            border: 1px solid rgba(29,106,255,0.2);
+            border: 1px solid var(--blue-border);
         }
 
-        /* ── CTA SECTION ────────────────────────────────────── */
-        #cta-section {
-            background: var(--black);
-            padding: 120px 40px;
+        /* ══════════════════════════════════════════════════════
+           SECTION 7 — FINAL CTA
+        ══════════════════════════════════════════════════════ */
+        #final-cta {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
+            padding: 140px 40px;
+            background: var(--gray-50);
             position: relative;
             overflow: hidden;
         }
 
-        #cta-section::before {
+        #final-cta::before {
             content: '';
             position: absolute;
-            top: 0; left: 50%; transform: translateX(-50%);
-            width: 800px;
-            height: 400px;
-            background: radial-gradient(ellipse at 50% 0%, rgba(29,106,255,0.12) 0%, transparent 70%);
-            pointer-events: none;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(26,92,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(26,92,255,0.03) 1px, transparent 1px);
+            background-size: 56px 56px;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 720px;
+            margin: 0 auto;
         }
 
         .cta-title {
-            font-size: clamp(36px, 4vw, 60px);
+            font-size: clamp(40px, 5.5vw, 72px);
             font-weight: 700;
             letter-spacing: -0.04em;
-            color: var(--white);
-            margin-bottom: 20px;
-            position: relative;
+            line-height: 1.04;
+            color: var(--gray-900);
+            margin-bottom: 24px;
         }
 
         .cta-desc {
             font-size: 17px;
             color: var(--gray-400);
-            margin-bottom: 40px;
+            line-height: 1.75;
+            margin-bottom: 48px;
             max-width: 480px;
             margin-left: auto;
             margin-right: auto;
-            line-height: 1.7;
         }
 
         .cta-actions {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 16px;
+            gap: 12px;
             flex-wrap: wrap;
         }
 
-        /* ── FOOTER ─────────────────────────────────────────── */
+        /* ══════════════════════════════════════════════════════
+           FOOTER
+        ══════════════════════════════════════════════════════ */
         #footer {
-            background: var(--charcoal);
-            border-top: 1px solid var(--border);
+            background: var(--white);
+            border-top: 1px solid var(--gray-200);
             padding: 60px 40px 40px;
         }
 
@@ -764,19 +1209,19 @@
 
         .footer-top {
             display: grid;
-            grid-template-columns: 280px 1fr;
+            grid-template-columns: 260px 1fr;
             gap: 80px;
             padding-bottom: 48px;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--gray-100);
             margin-bottom: 32px;
         }
 
-        .footer-brand p {
+        .footer-brand-desc {
             font-size: 13px;
-            color: var(--gray-600);
+            color: var(--gray-400);
             line-height: 1.7;
             margin-top: 16px;
-            max-width: 240px;
+            max-width: 220px;
         }
 
         .footer-cols {
@@ -786,25 +1231,25 @@
         }
 
         .footer-col-title {
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            color: var(--gray-600);
+            color: var(--gray-400);
             margin-bottom: 16px;
         }
 
         .footer-col a {
             display: block;
             font-size: 13px;
-            color: var(--gray-600);
+            color: var(--gray-400);
             text-decoration: none;
             margin-bottom: 10px;
             transition: color 0.2s;
             letter-spacing: -0.01em;
         }
 
-        .footer-col a:hover { color: var(--white); }
+        .footer-col a:hover { color: var(--gray-900); }
 
         .footer-bottom {
             display: flex;
@@ -812,91 +1257,39 @@
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 16px;
-        }
-
-        .footer-bottom p {
             font-size: 12px;
-            color: var(--gray-600);
+            color: var(--gray-400);
         }
 
-        /* ── SCROLL REVEAL ──────────────────────────────────── */
+        .footer-bottom a {
+            color: var(--gray-400);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer-bottom a:hover { color: var(--gray-900); }
+
+        /* ══════════════════════════════════════════════════════
+           SCROLL REVEAL
+        ══════════════════════════════════════════════════════ */
         .reveal {
             opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transform: translateY(28px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
         }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
 
-        /* ── MOBILE MENU ────────────────────────────────────── */
-        .mobile-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--gray-400);
-            cursor: pointer;
-            padding: 8px;
-            margin-left: auto;
-        }
+        .reveal-delay-1 { transition-delay: 0.08s; }
+        .reveal-delay-2 { transition-delay: 0.16s; }
+        .reveal-delay-3 { transition-delay: 0.24s; }
+        .reveal-delay-4 { transition-delay: 0.32s; }
 
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: var(--black);
-            z-index: 999;
-            padding: 80px 24px 40px;
-            overflow-y: auto;
-        }
-
-        .mobile-menu.open { display: block; }
-
-        .mobile-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: none;
-            border: none;
-            color: var(--gray-400);
-            cursor: pointer;
-            padding: 8px;
-        }
-
-        .mobile-nav-link {
-            display: block;
-            padding: 14px 0;
-            font-size: 22px;
-            font-weight: 600;
-            color: var(--white);
-            text-decoration: none;
-            border-bottom: 1px solid var(--border);
-            letter-spacing: -0.03em;
-        }
-
-        .mobile-sub {
-            padding: 8px 0 8px 16px;
-        }
-
-        .mobile-sub a {
-            display: block;
-            padding: 8px 0;
-            font-size: 15px;
-            color: var(--gray-400);
-            text-decoration: none;
-            border-bottom: 1px solid var(--border);
-        }
-
-        /* ── RESPONSIVE ─────────────────────────────────────── */
+        /* ══════════════════════════════════════════════════════
+           RESPONSIVE
+        ══════════════════════════════════════════════════════ */
         @media (max-width: 1024px) {
-            .hero-inner { grid-template-columns: 1fr; gap: 60px; }
-            .hero-visual { height: 360px; }
-            .services-header { grid-template-columns: 1fr; gap: 24px; }
-            .services-grid { grid-template-columns: repeat(2, 1fr); }
-            .process-steps { grid-template-columns: 1fr 1fr; gap: 32px; }
-            .process-steps::before { display: none; }
-            .specs-layout { grid-template-columns: 1fr; gap: 48px; }
+            .fans-layout { grid-template-columns: 1fr; gap: 48px; }
+            .hoods-grid { grid-template-columns: 1fr 1fr; }
+            .compliance-layout { grid-template-columns: 1fr; gap: 48px; }
             .footer-top { grid-template-columns: 1fr; gap: 40px; }
             .footer-cols { grid-template-columns: repeat(2, 1fr); }
         }
@@ -906,57 +1299,60 @@
             .nav-links, .nav-cta { display: none; }
             .mobile-toggle { display: flex; }
             .section { padding: 80px 20px; }
-            #hero { padding: 100px 20px 60px; }
-            .services-grid { grid-template-columns: 1fr; }
-            .process-steps { grid-template-columns: 1fr; }
-            .hero-stats { gap: 24px; flex-wrap: wrap; }
+            #hero { min-height: 100svh; }
+            .hero-content { padding: 100px 20px 60px; }
+            .hoods-grid { grid-template-columns: 1fr; }
+            .compliance-cards { grid-template-columns: 1fr; }
             #compliance-strip { padding: 16px 20px; }
-            .compliance-inner { flex-direction: column; align-items: flex-start; }
-            .footer-cols { grid-template-columns: 1fr 1fr; }
+            .filters-header { flex-direction: column; align-items: flex-start; }
+            .filter-card { width: 280px; }
+            #final-cta { padding: 100px 20px; }
             #footer { padding: 48px 20px 32px; }
+            .footer-cols { grid-template-columns: 1fr 1fr; }
             .footer-bottom { flex-direction: column; align-items: flex-start; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-h1 { font-size: 40px; }
+            .filter-card { width: 260px; }
         }
     </style>
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════════════════════
+<!-- ══════════════════════════════════════════════════════════
      NAVIGATION
-════════════════════════════════════════════════════════════ -->
+══════════════════════════════════════════════════════════ -->
 <nav id="prime-nav">
     <div class="nav-inner">
-        <a href="/" class="nav-logo">
-            <img src="/logo-prime-facility-white.png" alt="PRIME Facility Services" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <span style="display:none;align-items:center;gap:6px;font-size:18px;font-weight:700;letter-spacing:-0.04em;color:#fff;">PRIME</span>
+        <a href="/hood-cleaning/" class="nav-logo">
+            <img src="/logo-prime.png" alt="PRIME" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+            <span class="nav-logo-text" style="display:none;">PRIME</span>
         </a>
 
         <ul class="nav-links">
-            <!-- Exhaust Systems -->
             <li class="nav-item">
                 <button class="nav-link">
                     Exhaust Systems
-                    <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+                    <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
                 </button>
                 <div class="mega-menu">
                     <div class="mega-section-label">Exhaust Systems</div>
                     <div class="mega-grid mega-grid-2">
-                        <a href="#" class="mega-item"><span class="mega-item-dot"></span>Exhaust Fans</a>
+                        <a href="#exhaust-fans" class="mega-item"><span class="mega-item-dot"></span>Exhaust Fans</a>
                         <a href="#" class="mega-item"><span class="mega-item-dot"></span>Grease Ducts</a>
                         <a href="#" class="mega-item"><span class="mega-item-dot"></span>Access Panels</a>
-                        <a href="#" class="mega-item"><span class="mega-item-dot"></span>Hoods</a>
-                        <a href="/hood-cleaning/" class="mega-item" style="color:#fff;background:rgba(29,106,255,0.1);"><span class="mega-item-dot" style="background:#1d6aff;"></span>Hood Cleaning</a>
-                        <a href="#" class="mega-item"><span class="mega-item-dot"></span>Duct Cleaning</a>
+                        <a href="#hood-systems" class="mega-item"><span class="mega-item-dot"></span>Hoods</a>
+                        <a href="/hood-cleaning/" class="mega-item" style="color:var(--blue);background:var(--blue-dim);"><span class="mega-item-dot" style="background:var(--blue);"></span>Hood Cleaning</a>
                         <a href="#" class="mega-item"><span class="mega-item-dot"></span>Fan Cleaning</a>
-                        <a href="#" class="mega-item"><span class="mega-item-dot"></span>Exhaust Repairs</a>
                     </div>
                 </div>
             </li>
 
-            <!-- Air Systems -->
             <li class="nav-item">
                 <button class="nav-link">
                     Air Systems
-                    <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+                    <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
                 </button>
                 <div class="mega-menu">
                     <div class="mega-section-label">Air Systems</div>
@@ -969,70 +1365,34 @@
                 </div>
             </li>
 
-            <!-- Kitchen Services -->
-            <li class="nav-item">
-                <button class="nav-link">
-                    Kitchen Services
-                    <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-                </button>
-                <div class="mega-menu">
-                    <div class="mega-section-label">Kitchen Services</div>
-                    <div class="mega-grid">
-                        <a href="#" class="mega-item"><span class="mega-item-dot"></span>Kitchen Deep Cleaning</a>
-                        <a href="#" class="mega-item"><span class="mega-item-dot"></span>Equipment Cleaning</a>
-                        <a href="#" class="mega-item"><span class="mega-item-dot"></span>Floor Cleaning</a>
-                        <a href="#" class="mega-item"><span class="mega-item-dot"></span>Ceiling Cleaning</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Products -->
             <li class="nav-item">
                 <button class="nav-link">
                     Products
-                    <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+                    <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
                 </button>
                 <div class="mega-menu">
                     <div class="mega-section-label">Products</div>
                     <div class="mega-grid">
-                        <a href="#" class="mega-item"><span class="mega-item-dot"></span>Fryer Oil Treatment</a>
-                        <a href="#" class="mega-item"><span class="mega-item-dot"></span>Degreasers</a>
-                        <a href="#" class="mega-item"><span class="mega-item-dot"></span>Hood Filters</a>
-                        <a href="#" class="mega-item"><span class="mega-item-dot"></span>Cleaning Solutions</a>
+                        <a href="#filters" class="mega-item"><span class="mega-item-dot"></span>Hood Filters</a>
+                        <a href="#" class="mega-item"><span class="mega-item-dot"></span>Stainless Filters</a>
+                        <a href="#" class="mega-item"><span class="mega-item-dot"></span>Custom Filters</a>
+                        <a href="#" class="mega-item"><span class="mega-item-dot"></span>Grease Filters</a>
                     </div>
                 </div>
             </li>
 
-            <!-- Projects -->
-            <li class="nav-item">
-                <button class="nav-link">
-                    Projects
-                    <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-                </button>
-                <div class="mega-menu">
-                    <div class="mega-section-label">Projects</div>
-                    <div class="mega-grid mega-grid-2">
-                        <a href="#" class="mega-item"><span class="mega-item-dot"></span>Schools</a>
-                        <a href="#" class="mega-item"><span class="mega-item-dot"></span>Hospitals</a>
-                        <a href="#" class="mega-item"><span class="mega-item-dot"></span>Restaurants</a>
-                        <a href="#" class="mega-item"><span class="mega-item-dot"></span>Commercial Facilities</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Compliance -->
             <li class="nav-item">
                 <button class="nav-link">
                     Compliance
-                    <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+                    <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
                 </button>
                 <div class="mega-menu">
                     <div class="mega-section-label">Compliance & Standards</div>
                     <div class="mega-grid">
-                        <a href="#" class="mega-item"><span class="mega-item-dot"></span>NFPA 96</a>
-                        <a href="#" class="mega-item"><span class="mega-item-dot"></span>Inspection Reports</a>
-                        <a href="#" class="mega-item"><span class="mega-item-dot"></span>Certifications</a>
-                        <a href="#" class="mega-item"><span class="mega-item-dot"></span>Safety Documentation</a>
+                        <a href="#compliance" class="mega-item"><span class="mega-item-dot"></span>NFPA 96</a>
+                        <a href="#compliance" class="mega-item"><span class="mega-item-dot"></span>Inspection Reports</a>
+                        <a href="#compliance" class="mega-item"><span class="mega-item-dot"></span>Certifications</a>
+                        <a href="#compliance" class="mega-item"><span class="mega-item-dot"></span>Safety Documentation</a>
                     </div>
                 </div>
             </li>
@@ -1044,7 +1404,7 @@
 
         <div class="nav-cta">
             <a href="tel:7133382553" class="btn-ghost">(713) 338-2553</a>
-            <a href="/contact/" class="btn-primary">Get a Quote</a>
+            <a href="/contact/" class="btn-primary-nav">Get a Quote</a>
         </div>
 
         <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu">
@@ -1060,421 +1420,409 @@
     <button class="mobile-close" id="mobileClose">
         <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
     </button>
-    <a href="/" class="mobile-nav-link">Home</a>
-    <a href="#services" class="mobile-nav-link" onclick="document.getElementById('mobileMenu').classList.remove('open')">Hood Cleaning</a>
-    <div class="mobile-sub">
-        <a href="#">Exhaust Fans</a>
-        <a href="#">Grease Ducts</a>
-        <a href="#">Duct Cleaning</a>
-        <a href="#">Fan Cleaning</a>
-        <a href="#">Make Up Air Units</a>
-        <a href="#">Kitchen Deep Cleaning</a>
-    </div>
-    <a href="#" class="mobile-nav-link">Projects</a>
-    <a href="#" class="mobile-nav-link">Compliance</a>
+    <a href="#exhaust-fans" class="mobile-nav-link" onclick="document.getElementById('mobileMenu').classList.remove('open')">Exhaust Fans</a>
+    <a href="#filters" class="mobile-nav-link" onclick="document.getElementById('mobileMenu').classList.remove('open')">Filters</a>
+    <a href="#hood-systems" class="mobile-nav-link" onclick="document.getElementById('mobileMenu').classList.remove('open')">Hood Systems</a>
+    <a href="#restoration" class="mobile-nav-link" onclick="document.getElementById('mobileMenu').classList.remove('open')">Restoration</a>
+    <a href="#compliance" class="mobile-nav-link" onclick="document.getElementById('mobileMenu').classList.remove('open')">Compliance</a>
     <a href="/contact/" class="mobile-nav-link">Contact</a>
     <div style="margin-top:32px;">
-        <a href="tel:7133382553" style="display:block;padding:16px;background:#1d6aff;color:#fff;font-weight:600;font-size:16px;border-radius:12px;text-align:center;text-decoration:none;letter-spacing:-0.02em;">(713) 338-2553</a>
+        <a href="tel:7133382553" style="display:block;padding:16px;background:var(--gray-900);color:#fff;font-weight:600;font-size:16px;border-radius:12px;text-align:center;text-decoration:none;letter-spacing:-0.02em;">(713) 338-2553</a>
     </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════════
-     HERO
-════════════════════════════════════════════════════════════ -->
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 1 — HERO VIDEO
+══════════════════════════════════════════════════════════ -->
 <section id="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-grid-lines"></div>
+    <div class="hero-blueprint"></div>
+    <div class="hero-radial"></div>
+    <div class="hero-rule"></div>
 
-    <div class="hero-inner">
-        <!-- Left: Copy -->
-        <div>
-            <div class="hero-eyebrow">
-                <span class="hero-eyebrow-dot"></span>
-                NFPA 96 Certified · Exhaust Systems
+    <!-- Video placeholder — swap src when ready -->
+    <div class="hero-video-placeholder">
+        <!-- <video autoplay muted loop playsinline src="your-airflow-video.mp4"></video> -->
+    </div>
+
+    <div class="hero-content">
+        <div class="hero-eyebrow">
+            <span class="hero-eyebrow-dot"></span>
+            Commercial Kitchen Infrastructure
+        </div>
+
+        <h1 class="hero-h1">
+            Commercial Exhaust<br>Infrastructure
+            <span>Engineered airflow systems for commercial kitchens.</span>
+        </h1>
+
+        <div class="hero-actions">
+            <a href="#filters" class="btn-hero-primary">
+                Explore Systems
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="/contact/" class="btn-hero-ghost">
+                Contact Prime
+            </a>
+        </div>
+    </div>
+
+    <div class="scroll-cue">
+        <span>Scroll</span>
+        <div class="scroll-track"></div>
+    </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 2 — FILTERS PRODUCT LINE
+══════════════════════════════════════════════════════════ -->
+<section class="section" id="filters">
+    <div class="section-inner">
+
+        <div class="filters-header reveal">
+            <div>
+                <div class="section-label">Product Line</div>
+                <h2 class="section-title">Hood Filters</h2>
             </div>
+            <p class="section-desc">Custom commercial filtration systems engineered for peak extraction and long-term performance.</p>
+        </div>
 
-            <h1 class="hero-h1">
-                Hood System<br>
-                <em>Cleaning.</em>
-            </h1>
+        <div class="filters-track-wrap reveal reveal-delay-1">
+            <div class="filters-track" id="filtersTrack">
 
-            <p class="hero-desc">
-                Enterprise-grade exhaust hood degreasing and fire suppression services for commercial kitchens. Precision compliance. Zero compromise.
-            </p>
-
-            <div class="hero-actions">
-                <a href="tel:7133382553" class="hero-btn-primary">
-                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 13.1a19.79 19.79 0 01-3.07-8.67A2 2 0 013.6 2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 9.91a16 16 0 006.18 6.18l.95-.96a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-                    (713) 338-2553
-                </a>
-                <a href="#services" class="hero-btn-ghost">
-                    View Services
-                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
-            </div>
-
-            <div class="hero-stats">
-                <div>
-                    <div class="hero-stat-value">15+</div>
-                    <div class="hero-stat-label">Years Operating</div>
+                <!-- Card 1 -->
+                <div class="filter-card">
+                    <div class="filter-card-visual">
+                        <!-- Future: product render or photo -->
+                        <svg width="80" height="80" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24" color="#9a9a96">
+                            <rect x="2" y="3" width="20" height="14" rx="2"/>
+                            <path d="M8 21h8M12 17v4M7 8h10M7 11h10"/>
+                        </svg>
+                        <div class="filter-card-visual-label">Placeholder — Image TBD</div>
+                    </div>
+                    <div class="filter-card-body">
+                        <span class="filter-card-tag">Filtration</span>
+                        <div class="filter-card-title">Hood Filters</div>
+                        <div class="filter-card-desc">High-capacity baffle filters engineered for heavy commercial grease loads.</div>
+                    </div>
                 </div>
-                <div>
-                    <div class="hero-stat-value">500+</div>
-                    <div class="hero-stat-label">Facilities Serviced</div>
+
+                <!-- Card 2 -->
+                <div class="filter-card">
+                    <div class="filter-card-visual">
+                        <svg width="80" height="80" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24" color="#9a9a96">
+                            <rect x="3" y="3" width="18" height="18" rx="1"/>
+                            <path d="M3 9h18M3 15h18M9 3v18M15 3v18"/>
+                        </svg>
+                        <div class="filter-card-visual-label">Placeholder — Image TBD</div>
+                    </div>
+                    <div class="filter-card-body">
+                        <span class="filter-card-tag">Stainless</span>
+                        <div class="filter-card-title">Stainless Filters</div>
+                        <div class="filter-card-desc">Precision stainless steel construction for long-cycle service intervals.</div>
+                    </div>
                 </div>
-                <div>
-                    <div class="hero-stat-value">100%</div>
-                    <div class="hero-stat-label">NFPA 96 Compliant</div>
+
+                <!-- Card 3 -->
+                <div class="filter-card">
+                    <div class="filter-card-visual">
+                        <svg width="80" height="80" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24" color="#9a9a96">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                        <div class="filter-card-visual-label">Placeholder — Image TBD</div>
+                    </div>
+                    <div class="filter-card-body">
+                        <span class="filter-card-tag">Custom</span>
+                        <div class="filter-card-title">Custom Filters</div>
+                        <div class="filter-card-desc">Fabricated to specification. Non-standard openings and custom dimensions.</div>
+                    </div>
                 </div>
+
+                <!-- Card 4 -->
+                <div class="filter-card">
+                    <div class="filter-card-visual">
+                        <svg width="80" height="80" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24" color="#9a9a96">
+                            <circle cx="12" cy="12" r="3"/>
+                            <path d="M12 2v3m0 14v3M2 12h3m14 0h3M4.22 4.22l2.12 2.12m11.32 11.32l2.12 2.12"/>
+                        </svg>
+                        <div class="filter-card-visual-label">Placeholder — Image TBD</div>
+                    </div>
+                    <div class="filter-card-body">
+                        <span class="filter-card-tag">Grease</span>
+                        <div class="filter-card-title">Grease Filters</div>
+                        <div class="filter-card-desc">High-efficiency grease capture media for NFPA 96 compliant installations.</div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
-        <!-- Right: Isometric Duct Illustration -->
-        <div class="hero-visual">
-            <div class="duct-svg-wrap">
-                <svg viewBox="0 0 520 480" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <!-- Ambient glow -->
-                    <defs>
-                        <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
-                            <stop offset="0%" stop-color="#1d6aff" stop-opacity="0.15"/>
-                            <stop offset="100%" stop-color="#1d6aff" stop-opacity="0"/>
-                        </radialGradient>
-                        <radialGradient id="glow2" cx="50%" cy="50%" r="50%">
-                            <stop offset="0%" stop-color="#4090ff" stop-opacity="0.08"/>
-                            <stop offset="100%" stop-color="#4090ff" stop-opacity="0"/>
-                        </radialGradient>
-                        <linearGradient id="ductFace" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="0%" stop-color="#2a2a32"/>
-                            <stop offset="100%" stop-color="#1a1a22"/>
-                        </linearGradient>
-                        <linearGradient id="ductTop" x1="0" y1="0" x2="1" y2="0">
-                            <stop offset="0%" stop-color="#3a3a45"/>
-                            <stop offset="100%" stop-color="#2a2a35"/>
-                        </linearGradient>
-                        <linearGradient id="ductSide" x1="0" y1="0" x2="1" y2="0">
-                            <stop offset="0%" stop-color="#1e1e28"/>
-                            <stop offset="100%" stop-color="#16161f"/>
-                        </linearGradient>
-                        <linearGradient id="blueAccent" x1="0" y1="0" x2="1" y2="1">
-                            <stop offset="0%" stop-color="#1d6aff"/>
-                            <stop offset="100%" stop-color="#0040cc"/>
-                        </linearGradient>
-                        <filter id="blur-glow">
-                            <feGaussianBlur stdDeviation="8" result="blur"/>
-                            <feComposite in="SourceGraphic" in2="blur" operator="over"/>
-                        </filter>
-                    </defs>
+        <div class="filters-cta-row reveal reveal-delay-2">
+            <p style="font-size:13px;color:var(--gray-400);letter-spacing:-0.01em;">All filters are available in standard and custom sizes.</p>
+            <a href="/contact/" class="view-collection-btn">
+                View Collection
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
 
-                    <!-- Background glow -->
-                    <ellipse cx="260" cy="240" rx="200" ry="160" fill="url(#glow1)"/>
+    </div>
+</section>
 
-                    <!-- === MAIN HOOD CANOPY === -->
-                    <!-- Hood face (front bottom) -->
-                    <polygon points="100,320 340,320 340,260 100,260" fill="url(#ductFace)" stroke="#3a3a48" stroke-width="1"/>
-                    <!-- Hood top -->
-                    <polygon points="100,260 340,260 380,220 140,220" fill="url(#ductTop)" stroke="#4a4a58" stroke-width="1"/>
-                    <!-- Hood side right -->
-                    <polygon points="340,260 340,320 380,280 380,220" fill="url(#ductSide)" stroke="#2a2a38" stroke-width="1"/>
-                    <!-- Hood side left (narrow) -->
-                    <polygon points="100,260 140,220 140,280 100,320" fill="url(#ductSide)" stroke="#2a2a38" stroke-width="0.5"/>
+<div class="arch-divider"></div>
 
-                    <!-- Hood face accent lines (filters) -->
-                    <line x1="120" y1="265" x2="320" y2="265" stroke="#2d2d3a" stroke-width="1"/>
-                    <line x1="120" y1="278" x2="320" y2="278" stroke="#2d2d3a" stroke-width="1"/>
-                    <line x1="120" y1="291" x2="320" y2="291" stroke="#2d2d3a" stroke-width="1"/>
-                    <line x1="120" y1="304" x2="320" y2="304" stroke="#2d2d3a" stroke-width="1"/>
 
-                    <!-- Filter slots glow (blue tint) -->
-                    <rect x="130" y="266" width="180" height="11" rx="1" fill="rgba(29,106,255,0.04)" stroke="rgba(29,106,255,0.15)" stroke-width="0.5"/>
-                    <rect x="130" y="279" width="180" height="11" rx="1" fill="rgba(29,106,255,0.04)" stroke="rgba(29,106,255,0.15)" stroke-width="0.5"/>
-                    <rect x="130" y="292" width="180" height="11" rx="1" fill="rgba(29,106,255,0.04)" stroke="rgba(29,106,255,0.15)" stroke-width="0.5"/>
-                    <rect x="130" y="305" width="180" height="11" rx="1" fill="rgba(29,106,255,0.04)" stroke="rgba(29,106,255,0.15)" stroke-width="0.5"/>
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 3 — EXHAUST FANS
+══════════════════════════════════════════════════════════ -->
+<section class="section" id="exhaust-fans">
+    <div class="section-inner">
+        <div class="fans-layout">
 
-                    <!-- === VERTICAL DUCT RISER === -->
-                    <!-- Duct front face -->
-                    <polygon points="180,220 260,220 260,80 180,80" fill="url(#ductFace)" stroke="#3a3a48" stroke-width="1"/>
-                    <!-- Duct top cap -->
-                    <polygon points="180,80 260,80 290,60 210,60" fill="url(#ductTop)" stroke="#4a4a58" stroke-width="1"/>
-                    <!-- Duct right side -->
-                    <polygon points="260,220 260,80 290,60 290,200" fill="url(#ductSide)" stroke="#2a2a38" stroke-width="1"/>
-
-                    <!-- Duct access panel door -->
-                    <rect x="194" y="130" width="52" height="36" rx="2" fill="#1c1c26" stroke="#3a3a50" stroke-width="1"/>
-                    <rect x="196" y="132" width="48" height="32" rx="1" fill="#18181f" stroke="#2d2d3e" stroke-width="0.5"/>
-                    <!-- Panel handle -->
-                    <line x1="215" y1="148" x2="225" y2="148" stroke="#3a3a58" stroke-width="2" stroke-linecap="round"/>
-
-                    <!-- Inspection ports on duct -->
-                    <circle cx="220" cy="100" r="6" fill="#1a1a24" stroke="#3a3a50" stroke-width="1"/>
-                    <circle cx="220" cy="100" r="3" fill="rgba(29,106,255,0.3)" stroke="none"/>
-                    <circle cx="220" cy="200" r="6" fill="#1a1a24" stroke="#3a3a50" stroke-width="1"/>
-                    <circle cx="220" cy="200" r="3" fill="rgba(29,106,255,0.3)" stroke="none"/>
-
-                    <!-- === HORIZONTAL PLENUM AT TOP === -->
-                    <!-- Top horizontal duct (plenum) front -->
-                    <polygon points="80,80 390,80 390,50 80,50" fill="url(#ductFace)" stroke="#3a3a48" stroke-width="1"/>
-                    <!-- Top face -->
-                    <polygon points="80,50 390,50 420,30 110,30" fill="url(#ductTop)" stroke="#4a4a58" stroke-width="1"/>
-                    <!-- Right cap -->
-                    <polygon points="390,80 390,50 420,30 420,60" fill="url(#ductSide)" stroke="#2a2a38" stroke-width="1"/>
-                    <!-- Left cap -->
-                    <polygon points="80,50 80,80 110,60 110,30" fill="url(#ductSide)" stroke="#2a2a38" stroke-width="0.5" opacity="0.6"/>
-
-                    <!-- Plenum seam lines -->
-                    <line x1="160" y1="50" x2="160" y2="80" stroke="#2d2d3a" stroke-width="0.5"/>
-                    <line x1="240" y1="50" x2="240" y2="80" stroke="#2d2d3a" stroke-width="0.5"/>
-                    <line x1="320" y1="50" x2="320" y2="80" stroke="#2d2d3a" stroke-width="0.5"/>
-
-                    <!-- === FAN UNIT (right side) === -->
-                    <!-- Fan housing -->
-                    <rect x="370" y="90" width="80" height="70" rx="4" fill="url(#ductFace)" stroke="#3a3a50" stroke-width="1"/>
-                    <rect x="373" y="93" width="74" height="64" rx="3" fill="#141420" stroke="#2a2a38" stroke-width="0.5"/>
-                    <!-- Fan circle -->
-                    <circle cx="410" cy="125" r="24" fill="none" stroke="#2d2d42" stroke-width="1.5"/>
-                    <circle cx="410" cy="125" r="18" fill="none" stroke="#252535" stroke-width="1"/>
-                    <!-- Fan blades -->
-                    <path d="M410,107 C415,112 420,120 415,125 C410,130 402,128 400,122 C398,116 402,108 410,107Z" fill="#1e1e2e" stroke="#2d2d48" stroke-width="0.5"/>
-                    <path d="M428,113 C426,120 420,128 414,126 C408,124 408,116 413,112 C418,108 426,106 428,113Z" fill="#1e1e2e" stroke="#2d2d48" stroke-width="0.5"/>
-                    <path d="M424,134 C418,136 409,135 407,130 C405,125 410,118 416,118 C422,118 428,125 424,134Z" fill="#1e1e2e" stroke="#2d2d48" stroke-width="0.5"/>
-                    <path d="M406,142 C402,136 399,128 404,123 C409,118 417,120 419,126 C421,132 416,140 406,142Z" fill="#1e1e2e" stroke="#2d2d48" stroke-width="0.5"/>
-                    <path d="M391,134 C393,127 399,120 405,122 C411,124 411,132 406,136 C401,140 393,141 391,134Z" fill="#1e1e2e" stroke="#2d2d48" stroke-width="0.5"/>
-                    <path d="M392,113 C398,110 407,111 409,116 C411,121 407,128 401,128 C395,128 389,121 392,113Z" fill="#1e1e2e" stroke="#2d2d48" stroke-width="0.5"/>
-                    <!-- Fan center -->
-                    <circle cx="410" cy="125" r="5" fill="url(#blueAccent)"/>
-                    <circle cx="410" cy="125" r="2" fill="#fff" opacity="0.5"/>
-                    <!-- Fan label -->
-                    <text x="410" y="168" fill="#3a3a58" font-size="7" text-anchor="middle" font-family="Inter,sans-serif" font-weight="600" letter-spacing="0.05em">EXHAUST FAN</text>
-
-                    <!-- Connector from fan to plenum -->
-                    <rect x="390" y="78" width="40" height="13" fill="#1e1e28" stroke="#3a3a50" stroke-width="0.5"/>
-
-                    <!-- === AIRFLOW ARROWS animated === -->
-                    <!-- Arrow up in main duct -->
-                    <path d="M220,210 L220,90" stroke="#1d6aff" stroke-width="1.5" stroke-dasharray="8 6" stroke-dashoffset="0" opacity="0.5">
-                        <animate attributeName="stroke-dashoffset" from="28" to="0" dur="1.8s" repeatCount="indefinite"/>
-                    </path>
-                    <!-- Arrow right in plenum -->
-                    <path d="M260,65 L385,65" stroke="#1d6aff" stroke-width="1.5" stroke-dasharray="8 6" stroke-dashoffset="0" opacity="0.4">
-                        <animate attributeName="stroke-dashoffset" from="28" to="0" dur="2s" repeatCount="indefinite"/>
-                    </path>
-
-                    <!-- Small up arrow indicator -->
-                    <polygon points="220,86 215,96 225,96" fill="#1d6aff" opacity="0.7"/>
-                    <!-- Small right arrow indicator -->
-                    <polygon points="389,65 379,60 379,70" fill="#1d6aff" opacity="0.6"/>
-
-                    <!-- === TECHNICAL LABELS === -->
-                    <!-- Grease duct label -->
-                    <line x1="162" y1="150" x2="100" y2="150" stroke="#2a2a3a" stroke-width="0.5" stroke-dasharray="3 2"/>
-                    <circle cx="98" cy="150" r="2" fill="#1d6aff" opacity="0.6"/>
-                    <text x="92" y="147" fill="#4a4a62" font-size="7.5" text-anchor="end" font-family="Inter,sans-serif" font-weight="500">GREASE DUCT</text>
-                    <text x="92" y="157" fill="#3a3a52" font-size="6.5" text-anchor="end" font-family="Inter,sans-serif">UL 1978</text>
-
-                    <!-- Hood label -->
-                    <line x1="340" y1="290" x2="430" y2="340" stroke="#2a2a3a" stroke-width="0.5" stroke-dasharray="3 2"/>
-                    <circle cx="432" cy="341" r="2" fill="#1d6aff" opacity="0.6"/>
-                    <text x="437" y="338" fill="#4a4a62" font-size="7.5" font-family="Inter,sans-serif" font-weight="500">EXHAUST HOOD</text>
-                    <text x="437" y="348" fill="#3a3a52" font-size="6.5" font-family="Inter,sans-serif">TYPE I · NFPA 96</text>
-
-                    <!-- Access panel label -->
-                    <line x1="245" y1="148" x2="320" y2="148" stroke="#2a2a3a" stroke-width="0.5" stroke-dasharray="3 2"/>
-                    <circle cx="322" cy="148" r="2" fill="#1d6aff" opacity="0.6"/>
-                    <text x="327" y="145" fill="#4a4a62" font-size="7.5" font-family="Inter,sans-serif" font-weight="500">ACCESS PANEL</text>
-                    <text x="327" y="155" fill="#3a3a52" font-size="6.5" font-family="Inter,sans-serif">16 GA. STEEL</text>
-
-                    <!-- === STATUS INDICATOR === -->
-                    <rect x="370" y="172" width="80" height="22" rx="4" fill="#0d0d14" stroke="#1d6aff" stroke-width="0.5" opacity="0.8"/>
-                    <circle cx="381" cy="183" r="3" fill="#1d6aff">
-                        <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
-                    </circle>
-                    <text x="389" y="187" fill="#6080c0" font-size="7" font-family="Inter,sans-serif" font-weight="600" letter-spacing="0.04em">SYSTEM ACTIVE</text>
-
-                    <!-- === DIMENSION LINES === -->
-                    <line x1="100" y1="335" x2="340" y2="335" stroke="#252535" stroke-width="0.5"/>
-                    <line x1="100" y1="330" x2="100" y2="340" stroke="#252535" stroke-width="0.5"/>
-                    <line x1="340" y1="330" x2="340" y2="340" stroke="#252535" stroke-width="0.5"/>
-                    <text x="220" y="347" fill="#2e2e42" font-size="7" text-anchor="middle" font-family="Inter,sans-serif">6'-0"</text>
-
-                    <!-- Blueprint-style corner marks -->
-                    <path d="M80,25 L80,35 L90,35" fill="none" stroke="#1d6aff" stroke-width="0.5" opacity="0.3"/>
-                    <path d="M430,25 L430,35 L420,35" fill="none" stroke="#1d6aff" stroke-width="0.5" opacity="0.3"/>
-
+            <!-- Visual placeholder -->
+            <div class="fans-visual reveal">
+                <!-- Future: fan render / product image -->
+                <svg width="160" height="160" fill="none" stroke="var(--gray-300)" stroke-width="0.8" viewBox="0 0 100 100" aria-hidden="true" style="position:relative;z-index:1;">
+                    <circle cx="50" cy="50" r="40" stroke-width="0.5"/>
+                    <circle cx="50" cy="50" r="28" stroke-width="0.5"/>
+                    <circle cx="50" cy="50" r="8"/>
+                    <!-- Blades -->
+                    <path d="M50 22 C56 30 60 40 54 50 C48 60 38 58 35 52 C32 46 36 34 50 22Z" fill="var(--gray-100)" stroke="var(--gray-300)" stroke-width="0.5"/>
+                    <path d="M78 50 C70 56 60 60 50 54 C40 48 38 38 44 35 C50 32 62 36 78 50Z" fill="var(--gray-100)" stroke="var(--gray-300)" stroke-width="0.5"/>
+                    <path d="M50 78 C44 70 40 60 46 50 C52 40 62 42 65 48 C68 54 64 66 50 78Z" fill="var(--gray-100)" stroke="var(--gray-300)" stroke-width="0.5"/>
+                    <path d="M22 50 C30 44 40 40 50 46 C60 52 62 62 56 65 C50 68 38 64 22 50Z" fill="var(--gray-100)" stroke="var(--gray-300)" stroke-width="0.5"/>
+                    <!-- Dimension lines -->
+                    <line x1="10" y1="50" x2="18" y2="50" stroke="var(--blue-border)" stroke-width="0.4"/>
+                    <line x1="82" y1="50" x2="90" y2="50" stroke="var(--blue-border)" stroke-width="0.4"/>
+                    <line x1="50" y1="8" x2="50" y2="16" stroke="var(--blue-border)" stroke-width="0.4"/>
+                    <line x1="50" y1="84" x2="50" y2="92" stroke="var(--blue-border)" stroke-width="0.4"/>
                 </svg>
+                <div class="fans-visual-label">Exhaust Fan — Render TBD</div>
             </div>
+
+            <!-- Copy -->
+            <div class="fans-copy">
+                <div class="section-label reveal">Systems</div>
+                <h2 class="section-title reveal reveal-delay-1">Exhaust Fans</h2>
+                <p class="section-desc reveal reveal-delay-2">
+                    Commercial airflow systems engineered for performance.<br>Rooftop and inline configurations for any kitchen footprint.
+                </p>
+
+                <!-- Spec lines — architectural style -->
+                <div style="margin-top:48px;display:flex;flex-direction:column;gap:0;" class="reveal reveal-delay-3">
+                    <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--gray-100);">
+                        <span style="font-size:12px;color:var(--gray-400);font-weight:500;">Type</span>
+                        <span style="font-size:13px;color:var(--gray-900);font-weight:600;">Upblast · Utility · Inline</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--gray-100);">
+                        <span style="font-size:12px;color:var(--gray-400);font-weight:500;">Motor Class</span>
+                        <span style="font-size:13px;color:var(--gray-900);font-weight:600;">Single &amp; Three Phase</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--gray-100);">
+                        <span style="font-size:12px;color:var(--gray-400);font-weight:500;">Compliance</span>
+                        <span class="spec-badge">NFPA 96</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;">
+                        <span style="font-size:12px;color:var(--gray-400);font-weight:500;">Service</span>
+                        <span style="font-size:13px;color:var(--gray-900);font-weight:600;">Installation · Repair · Cleaning</span>
+                    </div>
+                </div>
+
+                <div style="margin-top:40px;" class="reveal reveal-delay-4">
+                    <a href="/contact/" class="btn-hero-primary">Request Specifications</a>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     COMPLIANCE STRIP
-════════════════════════════════════════════════════════════ -->
-<div id="compliance-strip">
-    <div class="compliance-inner">
-        <span class="compliance-label">Certifications & Standards</span>
-        <div class="compliance-badges">
-            <div class="compliance-badge">
-                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                NFPA 96 Compliant
+<div class="arch-divider"></div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 4 — HOOD SYSTEMS
+══════════════════════════════════════════════════════════ -->
+<section class="section" id="hood-systems">
+    <div class="section-inner">
+
+        <div class="hoods-header reveal">
+            <div class="section-label" style="justify-content:center;">Engineering</div>
+            <h2 class="section-title">Hood Systems</h2>
+            <p class="section-desc" style="margin:0 auto;text-align:center;max-width:480px;">
+                Precision-fabricated commercial hood infrastructure for every kitchen configuration.
+            </p>
+        </div>
+
+        <div class="hoods-grid">
+
+            <div class="hood-card reveal">
+                <div class="hood-card-visual">
+                    <!-- Future: wall mount hood render -->
+                    <svg width="72" height="72" fill="none" stroke="var(--gray-300)" stroke-width="0.8" viewBox="0 0 24 24">
+                        <polygon points="2,14 22,14 19,7 5,7"/>
+                        <rect x="9" y="14" width="6" height="7"/>
+                        <line x1="5" y1="10" x2="19" y2="10"/>
+                        <line x1="6" y1="12" x2="18" y2="12"/>
+                    </svg>
+                </div>
+                <div class="hood-card-number">01</div>
+                <div class="hood-card-title">Wall Mount Hoods</div>
+                <div class="hood-card-desc">Engineered for wall-position installations. Stainless construction with integrated grease management channels.</div>
             </div>
-            <div class="compliance-badge">
-                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                IKECA Certified
+
+            <div class="hood-card reveal reveal-delay-1">
+                <div class="hood-card-visual">
+                    <!-- Future: island hood render -->
+                    <svg width="72" height="72" fill="none" stroke="var(--gray-300)" stroke-width="0.8" viewBox="0 0 24 24">
+                        <polygon points="4,14 20,14 17,7 7,7"/>
+                        <line x1="12" y1="7" x2="12" y2="2"/>
+                        <line x1="7" y1="10" x2="17" y2="10"/>
+                        <line x1="6" y1="12" x2="18" y2="12"/>
+                        <rect x="11" y="14" width="2" height="7"/>
+                    </svg>
+                </div>
+                <div class="hood-card-number">02</div>
+                <div class="hood-card-title">Island Hoods</div>
+                <div class="hood-card-desc">Four-sided capture for central kitchen islands. Balanced airflow geometry across all exposure faces.</div>
             </div>
-            <div class="compliance-badge">
-                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                Fire Marshall Approved
+
+            <div class="hood-card reveal reveal-delay-2">
+                <div class="hood-card-visual">
+                    <!-- Future: custom fabrication render -->
+                    <svg width="72" height="72" fill="none" stroke="var(--gray-300)" stroke-width="0.8" viewBox="0 0 24 24">
+                        <rect x="3" y="8" width="18" height="8" rx="1"/>
+                        <path d="M7 8V6M12 8V5M17 8V6"/>
+                        <path d="M3 14h18"/>
+                        <path d="M6 16v2M12 16v3M18 16v2"/>
+                    </svg>
+                </div>
+                <div class="hood-card-number">03</div>
+                <div class="hood-card-title">Custom Fabrication</div>
+                <div class="hood-card-desc">Non-standard geometries built to architectural drawings. Curb-to-hood integration on all dimensions.</div>
             </div>
-            <div class="compliance-badge">
-                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                Insurance Verified
+
+        </div>
+
+        <div style="text-align:center;margin-top:56px;" class="reveal">
+            <a href="/contact/" class="btn-hero-ghost">Request Engineering Consultation</a>
+        </div>
+
+    </div>
+</section>
+
+<div class="arch-divider"></div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 5 — BEFORE / AFTER SYSTEM RESTORATION
+══════════════════════════════════════════════════════════ -->
+<section class="section" id="restoration">
+    <div class="section-inner">
+
+        <div class="restoration-header">
+            <div class="section-label reveal" style="justify-content:center;">Restoration</div>
+            <h2 class="section-title reveal reveal-delay-1">System Restoration</h2>
+            <p class="section-desc reveal reveal-delay-2" style="margin:0 auto;text-align:center;">
+                Exhaust restoration and compliance cleaning.
+            </p>
+        </div>
+
+        <div class="before-after-container reveal reveal-delay-2">
+            <div class="before-after-slider" id="baSlider">
+
+                <div class="before-pane" id="bPane">
+                    <span class="pane-label">Before</span>
+                    <span class="pane-placeholder-text">Image TBD</span>
+                </div>
+
+                <div class="after-pane" id="aPane">
+                    <span class="pane-label" style="background:var(--blue-light);border-color:var(--blue-border);color:var(--blue);">After</span>
+                    <span class="pane-placeholder-text" style="color:var(--blue-mid);">Image TBD</span>
+                </div>
+
+                <div class="slider-divider" id="sliderDivider">
+                    <div class="slider-handle">
+                        <svg width="14" height="14" fill="none" stroke="var(--gray-400)" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M8 12H16M5 8l-3 4 3 4M19 8l3 4-3 4"/>
+                        </svg>
+                    </div>
+                </div>
             </div>
-            <div class="compliance-badge">
-                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                Health Dept. Ready
+
+            <div class="before-after-meta">
+                <span>Before Service</span>
+                <span>Drag to compare</span>
+                <span>After Restoration</span>
             </div>
         </div>
-    </div>
-</div>
 
-<!-- ═══════════════════════════════════════════════════════════
-     SERVICES
-════════════════════════════════════════════════════════════ -->
-<section class="section" id="services">
+    </div>
+</section>
+
+<div class="arch-divider"></div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 6 — COMPLIANCE
+══════════════════════════════════════════════════════════ -->
+<section class="section" id="compliance">
     <div class="section-inner">
-        <div class="services-header reveal">
+        <div class="compliance-layout">
+
+            <!-- Left: copy + cards -->
             <div>
-                <div class="section-label">Hood Cleaning Services</div>
-                <h2 class="section-title">Complete Exhaust<br>System Coverage</h2>
-            </div>
-            <div>
-                <p class="section-desc">Every component of your commercial kitchen exhaust system — cleaned, inspected, and documented to NFPA 96 standards.</p>
-            </div>
-        </div>
+                <div class="section-label reveal">Standards</div>
+                <h2 class="section-title reveal reveal-delay-1">Compliance</h2>
+                <p class="section-desc reveal reveal-delay-2" style="margin-bottom:40px;">
+                    Every engagement is documented, certified, and filed to meet NFPA 96 and local authority requirements.
+                </p>
 
-        <div class="services-grid reveal">
-            <div class="service-card">
-                <div class="service-icon">
-                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                <div class="compliance-cards reveal reveal-delay-3">
+                    <div class="compliance-card">
+                        <div class="compliance-card-icon">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                        </div>
+                        <div class="compliance-card-title">NFPA 96</div>
+                        <div class="compliance-card-desc">Full compliance with the 2021 standard for ventilation control and fire protection of commercial cooking operations.</div>
+                    </div>
+
+                    <div class="compliance-card">
+                        <div class="compliance-card-icon">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg>
+                        </div>
+                        <div class="compliance-card-title">Inspection Reports</div>
+                        <div class="compliance-card-desc">Digital and hard-copy service reports with before/after photographic documentation and grease accumulation ratings.</div>
+                    </div>
+
+                    <div class="compliance-card">
+                        <div class="compliance-card-icon">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+                        </div>
+                        <div class="compliance-card-title">Certifications</div>
+                        <div class="compliance-card-desc">NFPA 96 compliance sticker and signed certificate issued upon satisfactory system completion.</div>
+                    </div>
+
+                    <div class="compliance-card">
+                        <div class="compliance-card-icon">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <div class="compliance-card-title">Documentation</div>
+                        <div class="compliance-card-desc">Insurance-ready documentation packages prepared for fire marshals, health inspectors, and risk carriers.</div>
+                    </div>
                 </div>
-                <div class="service-name">Hood Canopy Cleaning</div>
-                <div class="service-desc">Full interior and exterior degreasing of hood canopy surfaces, baffles, and grease collection troughs.</div>
             </div>
 
-            <div class="service-card">
-                <div class="service-icon">
-                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-                </div>
-                <div class="service-name">Grease Filter Service</div>
-                <div class="service-desc">Removal, deep cleaning, and reinstallation of all baffle and mesh grease filters to peak efficiency.</div>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">
-                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                </div>
-                <div class="service-name">Duct System Cleaning</div>
-                <div class="service-desc">Complete grease duct cleaning from hood collar to exhaust termination. Access panels installed as needed.</div>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">
-                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3M4.22 4.22l2.12 2.12m11.32 11.32l2.12 2.12M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
-                </div>
-                <div class="service-name">Exhaust Fan Cleaning</div>
-                <div class="service-desc">Rooftop exhaust fan degreasing, belt inspection, and performance verification with service report.</div>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">
-                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                </div>
-                <div class="service-name">Fire Suppression Inspection</div>
-                <div class="service-desc">Visual inspection and documentation of suppression nozzles, fusible links, and ansul system integrity.</div>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">
-                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-                </div>
-                <div class="service-name">Compliance Documentation</div>
-                <div class="service-desc">Certified before/after inspection reports, service certificates, and NFPA 96 sticker placement.</div>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">
-                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
-                </div>
-                <div class="service-name">Scheduled Maintenance</div>
-                <div class="service-desc">Quarterly, semi-annual, and annual service programs calibrated to your kitchen's grease load and NFPA 96 frequency requirements.</div>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">
-                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                </div>
-                <div class="service-name">Emergency Service</div>
-                <div class="service-desc">24/7 emergency response for pre-inspection failures or immediate fire marshal compliance requirements.</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════
-     PROCESS
-════════════════════════════════════════════════════════════ -->
-<section class="section" id="process" style="background:var(--black);">
-    <div class="section-inner">
-        <div style="text-align:center;margin-bottom:16px;" class="reveal">
-            <div class="section-label" style="display:inline-block;">Our Process</div>
-        </div>
-        <h2 class="section-title" style="text-align:center;max-width:560px;margin:0 auto 16px;" class="reveal">Engineered for<br>Precision.</h2>
-        <p class="section-desc" style="text-align:center;margin:0 auto;" class="reveal">Five-stage protocol ensuring every system meets NFPA 96 standards before we leave your facility.</p>
-
-        <div class="process-steps reveal">
-            <div class="process-step">
-                <div class="step-num">01</div>
-                <div class="step-title">Site Survey</div>
-                <div class="step-desc">System assessment, grease load analysis, and service frequency determination.</div>
-            </div>
-            <div class="process-step">
-                <div class="step-num">02</div>
-                <div class="step-title">Protection Setup</div>
-                <div class="step-desc">Kitchen equipment covered. Grease containment deployed. Zero-contamination protocol active.</div>
-            </div>
-            <div class="process-step">
-                <div class="step-num">03</div>
-                <div class="step-title">Chemical Degreasing</div>
-                <div class="step-desc">Hot pressure wash and food-safe degreaser application across all system surfaces.</div>
-            </div>
-            <div class="process-step">
-                <div class="step-num">04</div>
-                <div class="step-title">Inspection & Seal</div>
-                <div class="step-desc">All components inspected. Access panels sealed. Grease levels documented.</div>
-            </div>
-            <div class="process-step">
-                <div class="step-num">05</div>
-                <div class="step-title">Certification</div>
-                <div class="step-desc">NFPA 96 sticker applied. Signed service report delivered digitally and on-site.</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════
-     SPECS
-════════════════════════════════════════════════════════════ -->
-<section class="section" id="specs" style="background:var(--charcoal);">
-    <div class="section-inner">
-        <div class="specs-layout">
-            <div class="reveal">
-                <div class="section-label">Technical Standards</div>
-                <h2 class="section-title">Built on<br>Compliance.</h2>
-                <p class="section-desc" style="margin-bottom:40px;">Every service engagement is calibrated to NFPA 96 Chapter 11 cleaning frequency schedules.</p>
-
-                <div class="spec-table">
+            <!-- Right: spec table -->
+            <div class="reveal reveal-delay-1">
+                <div class="compliance-table">
+                    <div class="compliance-table-header">
+                        <span>Standard</span>
+                        <span>Specification</span>
+                    </div>
                     <div class="spec-row">
-                        <span class="spec-key">Standard</span>
-                        <span class="spec-val">NFPA 96 — 2021 Edition</span>
+                        <span class="spec-key">Edition</span>
+                        <span class="spec-val">NFPA 96 — 2021</span>
                     </div>
                     <div class="spec-row">
                         <span class="spec-key">High-Volume (Char-Broil)</span>
@@ -1493,110 +1841,73 @@
                         <span class="spec-val">Type I · Type II</span>
                     </div>
                     <div class="spec-row">
-                        <span class="spec-key">Reporting</span>
+                        <span class="spec-key">Documentation Format</span>
                         <span class="spec-val">Digital + Hard Copy</span>
                     </div>
                     <div class="spec-row">
-                        <span class="spec-key">Service Region</span>
-                        <span class="spec-val">Houston · Dallas · National</span>
+                        <span class="spec-key">Reporting</span>
+                        <span class="spec-val">Before / After Photography</span>
                     </div>
                     <div class="spec-row">
                         <span class="spec-key">Emergency Response</span>
                         <span class="spec-badge">24 / 7</span>
                     </div>
-                </div>
-            </div>
-
-            <div class="reveal" style="display:flex;flex-direction:column;gap:16px;padding-top:20px;">
-                <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:32px;">
-                    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--gray-600);margin-bottom:20px;">Who We Serve</div>
-                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-                        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--gray-400);">
-                            <span style="width:5px;height:5px;border-radius:50%;background:var(--blue);flex-shrink:0;display:block;"></span>
-                            Hotel Kitchens
-                        </div>
-                        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--gray-400);">
-                            <span style="width:5px;height:5px;border-radius:50%;background:var(--blue);flex-shrink:0;display:block;"></span>
-                            Hospital Cafeterias
-                        </div>
-                        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--gray-400);">
-                            <span style="width:5px;height:5px;border-radius:50%;background:var(--blue);flex-shrink:0;display:block;"></span>
-                            Restaurant Groups
-                        </div>
-                        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--gray-400);">
-                            <span style="width:5px;height:5px;border-radius:50%;background:var(--blue);flex-shrink:0;display:block;"></span>
-                            School Districts
-                        </div>
-                        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--gray-400);">
-                            <span style="width:5px;height:5px;border-radius:50%;background:var(--blue);flex-shrink:0;display:block;"></span>
-                            Convention Centers
-                        </div>
-                        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--gray-400);">
-                            <span style="width:5px;height:5px;border-radius:50%;background:var(--blue);flex-shrink:0;display:block;"></span>
-                            Sports Venues
-                        </div>
-                        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--gray-400);">
-                            <span style="width:5px;height:5px;border-radius:50%;background:var(--blue);flex-shrink:0;display:block;"></span>
-                            Corporate Dining
-                        </div>
-                        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--gray-400);">
-                            <span style="width:5px;height:5px;border-radius:50%;background:var(--blue);flex-shrink:0;display:block;"></span>
-                            Ghost Kitchens
-                        </div>
+                    <div class="spec-row">
+                        <span class="spec-key">Service Region</span>
+                        <span class="spec-val">Houston · Dallas · National</span>
                     </div>
                 </div>
-
-                <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:32px;">
-                    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--gray-600);margin-bottom:16px;">Service Documentation</div>
-                    <p style="font-size:13.5px;color:var(--gray-400);line-height:1.7;">Every cleaning is fully documented with before/after photography, grease accumulation ratings, and a signed certificate of compliance — ready for your insurance carrier or fire marshal.</p>
-                </div>
             </div>
+
         </div>
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     CTA
-════════════════════════════════════════════════════════════ -->
-<section id="cta-section">
-    <div style="position:relative;z-index:1;">
-        <div class="reveal">
-            <p class="cta-title">Ready to Schedule?</p>
-            <p class="cta-desc">Talk to our team about a service plan tailored to your kitchen's volume, system type, and compliance schedule.</p>
-            <div class="cta-actions">
-                <a href="tel:7133382553" class="hero-btn-primary" style="font-size:15px;padding:16px 32px;">
-                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 13.1a19.79 19.79 0 01-3.07-8.67A2 2 0 013.6 2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 9.91a16 16 0 006.18 6.18l.95-.96a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-                    Call (713) 338-2553
-                </a>
-                <a href="/contact/" class="hero-btn-ghost" style="font-size:15px;padding:16px 28px;">
-                    Request a Quote
-                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
-            </div>
+<div class="arch-divider"></div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 7 — FINAL CTA
+══════════════════════════════════════════════════════════ -->
+<section id="final-cta">
+    <div class="cta-content">
+        <div class="section-label reveal" style="justify-content:center;margin-bottom:24px;">Prime Facility Services</div>
+        <h2 class="cta-title reveal reveal-delay-1">
+            Built for<br>Commercial Kitchens.
+        </h2>
+        <p class="cta-desc reveal reveal-delay-2">
+            Engineered for safety, airflow, and compliance.
+        </p>
+        <div class="cta-actions reveal reveal-delay-3">
+            <a href="/contact/" class="btn-hero-primary">
+                Contact Prime
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="tel:7133382553" class="btn-hero-ghost">(713) 338-2553</a>
         </div>
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════
+
+<!-- ══════════════════════════════════════════════════════════
      FOOTER
-════════════════════════════════════════════════════════════ -->
+══════════════════════════════════════════════════════════ -->
 <footer id="footer">
     <div class="footer-inner">
         <div class="footer-top">
-            <div class="footer-brand">
-                <img src="/logo-prime-facility-white.png" alt="PRIME" style="height:28px;width:auto;opacity:0.7;" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-                <span style="display:none;font-size:18px;font-weight:700;letter-spacing:-0.04em;color:var(--gray-600);">PRIME</span>
-                <p>Commercial kitchen exhaust and facility services. NFPA 96 compliant. Houston, Dallas, and national coverage.</p>
+            <div>
+                <img src="/logo-prime.png" alt="PRIME" style="height:24px;width:auto;" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                <span style="display:none;font-size:17px;font-weight:700;letter-spacing:-0.04em;color:var(--gray-900);">PRIME</span>
+                <p class="footer-brand-desc">Commercial kitchen exhaust infrastructure. NFPA 96 compliant. Houston, Dallas, and national coverage.</p>
             </div>
 
             <div class="footer-cols">
                 <div class="footer-col">
                     <div class="footer-col-title">Exhaust Systems</div>
-                    <a href="#">Exhaust Fans</a>
+                    <a href="#exhaust-fans">Exhaust Fans</a>
                     <a href="#">Grease Ducts</a>
                     <a href="#">Access Panels</a>
-                    <a href="#">Hoods</a>
-                    <a href="/hood-cleaning/" style="color:var(--gray-400);">Hood Cleaning</a>
+                    <a href="#hood-systems">Hoods</a>
                     <a href="#">Fan Cleaning</a>
                 </div>
                 <div class="footer-col">
@@ -1607,18 +1918,17 @@
                     <a href="#">Air System Repairs</a>
                 </div>
                 <div class="footer-col">
-                    <div class="footer-col-title">Kitchen Services</div>
-                    <a href="#">Kitchen Deep Cleaning</a>
-                    <a href="#">Equipment Cleaning</a>
-                    <a href="#">Floor Cleaning</a>
-                    <a href="#">Ceiling Cleaning</a>
+                    <div class="footer-col-title">Products</div>
+                    <a href="#filters">Hood Filters</a>
+                    <a href="#filters">Stainless Filters</a>
+                    <a href="#filters">Custom Filters</a>
+                    <a href="#filters">Grease Filters</a>
                 </div>
                 <div class="footer-col">
                     <div class="footer-col-title">Compliance</div>
-                    <a href="#">NFPA 96</a>
-                    <a href="#">Inspection Reports</a>
-                    <a href="#">Certifications</a>
-                    <a href="#">Safety Docs</a>
+                    <a href="#compliance">NFPA 96</a>
+                    <a href="#compliance">Inspection Reports</a>
+                    <a href="#compliance">Certifications</a>
                     <a href="/contact/">Contact</a>
                 </div>
             </div>
@@ -1626,22 +1936,23 @@
 
         <div class="footer-bottom">
             <p>© 2025 Prime Facility Services Group. All rights reserved.</p>
-            <p><a href="/privacy/" style="color:var(--gray-600);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--gray-600)'">Privacy Policy</a></p>
+            <a href="/privacy/">Privacy Policy</a>
         </div>
     </div>
 </footer>
 
-<!-- ═══════════════════════════════════════════════════════════
+
+<!-- ══════════════════════════════════════════════════════════
      SCRIPTS
-════════════════════════════════════════════════════════════ -->
+══════════════════════════════════════════════════════════ -->
 <script>
-    // Navbar scroll effect
+    /* Navbar scroll */
     const nav = document.getElementById('prime-nav');
     window.addEventListener('scroll', () => {
         nav.classList.toggle('scrolled', window.scrollY > 20);
     }, { passive: true });
 
-    // Mega menu keyboard / hover
+    /* Mega menu */
     document.querySelectorAll('.nav-item').forEach(item => {
         const btn = item.querySelector('button.nav-link');
         if (!btn) return;
@@ -1657,29 +1968,97 @@
     });
     document.querySelectorAll('.mega-menu').forEach(m => m.addEventListener('click', e => e.stopPropagation()));
 
-    // Mobile menu
+    /* Mobile menu */
     const mobileMenu = document.getElementById('mobileMenu');
     document.getElementById('mobileToggle').addEventListener('click', () => mobileMenu.classList.add('open'));
     document.getElementById('mobileClose').addEventListener('click', () => mobileMenu.classList.remove('open'));
 
-    // Scroll reveal
-    const reveals = document.querySelectorAll('.reveal');
+    /* Scroll reveal */
     const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry, i) => {
+        entries.forEach(entry => {
             if (entry.isIntersecting) {
-                setTimeout(() => entry.target.classList.add('visible'), i * 80);
+                entry.target.classList.add('visible');
                 revealObserver.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1 });
-    reveals.forEach(el => revealObserver.observe(el));
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-    // Stagger service cards
-    document.querySelectorAll('.service-card').forEach((card, i) => {
-        card.style.transitionDelay = `${i * 40}ms`;
-        card.classList.add('reveal');
-        revealObserver.observe(card);
-    });
+    /* Horizontal drag scroll — filters track */
+    const track = document.getElementById('filtersTrack');
+    if (track) {
+        let isDown = false, startX, scrollLeft;
+        track.addEventListener('mousedown', e => {
+            isDown = true;
+            track.classList.add('is-grabbing');
+            startX = e.pageX - track.offsetLeft;
+            scrollLeft = track.scrollLeft;
+        });
+        document.addEventListener('mouseup', () => {
+            isDown = false;
+            track.classList.remove('is-grabbing');
+        });
+        track.addEventListener('mouseleave', () => {
+            isDown = false;
+            track.classList.remove('is-grabbing');
+        });
+        track.addEventListener('mousemove', e => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - track.offsetLeft;
+            const walk = (x - startX) * 1.5;
+            track.scrollLeft = scrollLeft - walk;
+        });
+    }
+
+    /* Before/After slider */
+    const slider = document.getElementById('baSlider');
+    const divider = document.getElementById('sliderDivider');
+    const afterPane = document.getElementById('aPane');
+
+    if (slider && divider && afterPane) {
+        let dragging = false;
+
+        const setPosition = (clientX) => {
+            const rect = slider.getBoundingClientRect();
+            let pct = (clientX - rect.left) / rect.width;
+            pct = Math.max(0.05, Math.min(0.95, pct));
+            divider.style.left = `${pct * 100}%`;
+            afterPane.style.clipPath = `inset(0 ${(1 - pct) * 100}% 0 0)`;
+        };
+
+        divider.addEventListener('mousedown', () => { dragging = true; });
+        window.addEventListener('mouseup', () => { dragging = false; });
+        slider.addEventListener('mousemove', e => { if (dragging) setPosition(e.clientX); });
+
+        divider.addEventListener('touchstart', e => { dragging = true; }, { passive: true });
+        window.addEventListener('touchend', () => { dragging = false; });
+        slider.addEventListener('touchmove', e => {
+            if (dragging) setPosition(e.touches[0].clientX);
+        }, { passive: true });
+
+        /* Subtle intro animation */
+        let animDir = 1, animPos = 0.5;
+        const animRange = 0.08;
+        const animStep = 0.003;
+
+        const introAnim = () => {
+            if (dragging) return;
+            animPos += animStep * animDir;
+            if (animPos > 0.5 + animRange || animPos < 0.5 - animRange) animDir *= -1;
+            setPosition(slider.getBoundingClientRect().left + slider.offsetWidth * animPos);
+            requestAnimationFrame(introAnim);
+        };
+
+        /* Start animation only when section is visible */
+        const sliderObserver = new IntersectionObserver(entries => {
+            if (entries[0].isIntersecting) {
+                introAnim();
+                sliderObserver.disconnect();
+            }
+        }, { threshold: 0.3 });
+        sliderObserver.observe(slider);
+    }
 </script>
 
 </body>
