@@ -557,28 +557,17 @@ fclose($fp);
             border-color: #fff;
         }
         
-        /* YouTube Video Background Styles */
-        @media (max-aspect-ratio: 16/9) {
-            .hero-video iframe {
-                height: 100%;
-                width: 177.77vh;
-            }
-        }
-        
-        /* Fallback for browsers that don't support aspect-ratio */
-        .hero-video {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 */
-            height: 0;
-            overflow: hidden;
-        }
-        
-        .hero-video iframe {
+        /* Local Video Background Styles */
+        #hero-video {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
         }
         
         /* Split Container Styles */
@@ -1019,19 +1008,19 @@ fclose($fp);
 
     <!-- Hero Section Professional Design -->
     <section class="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-[#03143A]">
-        <!-- YouTube Video Background -->
+        <!-- Local Video Background -->
         <div class="absolute inset-0 w-full h-full overflow-hidden">
-            <div class="absolute inset-0 w-full h-full hero-video-container">
-                <iframe 
-                    id="hero-video"
-                    src="https://www.youtube.com/embed/LOMnpo1Ye_o?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&modestbranding=1&playlist=LOMnpo1Ye_o&enablejsapi=1&origin=https://primefacilityservicesgroup.com&rel=0&playsinline=1&iv_load_policy=3&color=white&disablekb=1"
-                    frameborder="0"
-                    allow="autoplay; fullscreen"
-                    class="absolute top-1/2 left-1/2 w-[177.77vh] min-w-full h-[56.25vw] min-h-full max-w-none -translate-x-1/2 -translate-y-1/2 opacity-0 transition-opacity duration-1000"
-                    style="pointer-events: none;"
-                    loading="lazy"
-                ></iframe>
-            </div>
+            <video
+                id="hero-video"
+                autoplay
+                muted
+                loop
+                playsinline
+                class="absolute top-1/2 left-1/2 w-[177.77vh] min-w-full h-[56.25vw] min-h-full max-w-none -translate-x-1/2 -translate-y-1/2 object-cover"
+                style="pointer-events: none;"
+            >
+                <source src="WhatsApp Video 2026-05-18 at 4.13.11 PM.mp4" type="video/mp4">
+            </video>
         </div>
         
         <!-- Gradient Overlay -->
@@ -3194,21 +3183,19 @@ fclose($fp);
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const heroVideo = document.getElementById('hero-video');
-            
+
             if (heroVideo) {
-                // Add a timeout to ensure video has started loading
-                setTimeout(() => {
-                    heroVideo.classList.add('opacity-100');
-                    heroVideo.classList.remove('opacity-0');
-                }, 1500);
-                
-                // Alternative: Listen for iframe load event
-                heroVideo.addEventListener('load', function() {
-                    setTimeout(() => {
-                        this.classList.add('opacity-100');
-                        this.classList.remove('opacity-0');
-                    }, 500);
+                heroVideo.style.opacity = '0';
+                heroVideo.style.transition = 'opacity 1s ease';
+
+                heroVideo.addEventListener('canplay', function() {
+                    this.style.opacity = '1';
                 });
+
+                // Fallback in case canplay already fired
+                if (heroVideo.readyState >= 3) {
+                    heroVideo.style.opacity = '1';
+                }
             }
         });
     </script>
