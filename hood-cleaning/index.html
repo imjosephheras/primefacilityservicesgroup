@@ -1656,17 +1656,30 @@
         }
 
         /* ══════════════════════════════════════════════════════
-           SECTION 2 — WORKFLOW / SYSTEM VIDEOS
+           SECTION 2 — SYSTEM VIDEOS (CINEMATIC GALLERY)
         ══════════════════════════════════════════════════════ */
         #workflow-videos {
-            background: var(--gray-50);
-            padding: 120px 40px;
+            background: #f5f5f7;
+            padding: 120px 0;
             overflow: hidden;
+            position: relative;
+        }
+
+        #workflow-videos::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(26,92,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(26,92,255,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
         }
 
         .workflow-inner {
-            max-width: 1280px;
+            max-width: 1320px;
             margin: 0 auto;
+            padding: 0 40px;
         }
 
         .workflow-header {
@@ -1674,107 +1687,380 @@
             align-items: flex-end;
             justify-content: space-between;
             gap: 40px;
-            margin-bottom: 64px;
+            margin-bottom: 80px;
             flex-wrap: wrap;
         }
 
-        .workflow-grid {
+        /* ── Cinematic Gallery Layout ── */
+        .cinema-gallery {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            grid-template-rows: auto auto;
-            gap: 16px;
+            gap: 48px;
+            align-items: center;
         }
 
-        .workflow-cell {
+        /* ── Vertical Carousel (Left) ── */
+        .cinema-col-vertical {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .cinema-carousel-vertical {
             position: relative;
-            border-radius: var(--radius-lg);
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            overflow: visible;
+        }
+
+        .cinema-stage-vertical {
+            position: relative;
+            width: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Side ghost cards */
+        .cinema-ghost {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 200px;
+            aspect-ratio: 9/16;
+            border-radius: 20px;
             overflow: hidden;
             background: var(--gray-100);
             border: 1px solid var(--gray-200);
+            opacity: 0;
+            filter: blur(3px);
+            transition: opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease;
+            pointer-events: none;
+            z-index: 1;
         }
-
-        .workflow-cell--hero {
-            grid-column: 1 / 2;
-            grid-row: 1 / 3;
-            aspect-ratio: 9/16;
-            max-height: 700px;
+        .cinema-ghost.ghost-left {
+            right: calc(100% + 12px);
+            transform: translateY(-50%) scale(0.92);
         }
-
-        .workflow-cell--sm {
-            aspect-ratio: 16/9;
+        .cinema-ghost.ghost-right {
+            left: calc(100% + 12px);
+            transform: translateY(-50%) scale(0.92);
         }
-
-        .workflow-cell-bg {
+        .cinema-ghost.visible {
+            opacity: 0.45;
+        }
+        .cinema-ghost-bg {
             position: absolute;
             inset: 0;
             background-image:
                 linear-gradient(rgba(26,92,255,0.05) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(26,92,255,0.05) 1px, transparent 1px);
-            background-size: 32px 32px;
+            background-size: 24px 24px;
+        }
+        .cinema-ghost-label {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gray-400);
+            background: rgba(255,255,255,0.8);
+            border: 1px solid var(--gray-200);
+            border-radius: 100px;
+            padding: 3px 10px;
+            backdrop-filter: blur(8px);
+        }
+        .cinema-ghost video {
+            width: 100%; height: 100%; object-fit: cover; display: block;
         }
 
-        .workflow-cell video {
+        /* ── Main vertical video frame (minimal, premium) ── */
+        .cinema-frame-v {
+            position: relative;
+            width: 260px;
+            background: #1c1c1e;
+            border-radius: 40px;
+            padding: 10px 8px;
+            box-shadow:
+                0 0 0 1px rgba(255,255,255,0.12) inset,
+                0 0 0 1.5px #3a3a3c,
+                0 32px 80px rgba(0,0,0,0.18),
+                0 8px 24px rgba(0,0,0,0.10);
+            z-index: 2;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        box-shadow 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .cinema-frame-v:hover {
+            transform: translateY(-6px) scale(1.015);
+            box-shadow:
+                0 0 0 1px rgba(255,255,255,0.12) inset,
+                0 0 0 1.5px #3a3a3c,
+                0 48px 100px rgba(0,0,0,0.22),
+                0 16px 40px rgba(0,0,0,0.14);
+        }
+
+        /* Side button details */
+        .cinema-frame-v::before {
+            content: '';
+            position: absolute;
+            left: -3px;
+            top: 88px;
+            width: 3px;
+            height: 28px;
+            background: #48484a;
+            border-radius: 2px 0 0 2px;
+            box-shadow: 0 38px 0 #48484a, 0 68px 0 #48484a;
+        }
+        .cinema-frame-v::after {
+            content: '';
+            position: absolute;
+            right: -3px;
+            top: 120px;
+            width: 3px;
+            height: 52px;
+            background: #48484a;
+            border-radius: 0 2px 2px 0;
+        }
+
+        .cinema-frame-v-screen {
+            background: #000;
+            border-radius: 32px;
+            overflow: hidden;
+            aspect-ratio: 9/19.5;
+            position: relative;
+        }
+        .cinema-frame-v-screen video {
+            width: 100%; height: 100%; object-fit: cover; display: block;
+        }
+
+        /* Play overlay */
+        .cinema-play-overlay {
             position: absolute;
             inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .workflow-cell-label {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            z-index: 2;
             display: flex;
-            flex-direction: column;
-            gap: 4px;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 3;
+            border-radius: 32px;
+        }
+        .cinema-frame-v:hover .cinema-play-overlay {
+            opacity: 1;
+        }
+        .cinema-play-btn {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+        .cinema-play-btn:hover {
+            transform: scale(1.1);
+            background: rgba(255,255,255,0.25);
         }
 
-        .workflow-cell-tag {
+        .cinema-frame-v-tag {
+            position: absolute;
+            bottom: 22px;
+            left: 50%;
+            transform: translateX(-50%);
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            font-size: 9px;
+            font-size: 8px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--gray-400);
-            background: rgba(255,255,255,0.85);
-            border: 1px solid var(--gray-200);
+            letter-spacing: 0.14em;
+            color: rgba(255,255,255,0.85);
+            background: rgba(0,0,0,0.45);
+            border: 1px solid rgba(255,255,255,0.15);
             border-radius: 100px;
             padding: 4px 12px;
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(10px);
+            white-space: nowrap;
+            z-index: 4;
         }
 
-        .workflow-cell-placeholder {
+        /* Navigation arrows for vertical carousel */
+        .cinema-nav {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .cinema-arrow {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.9);
+            border: 1px solid var(--gray-200);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+        .cinema-arrow:hover {
+            background: #fff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.14);
+            transform: scale(1.08);
+        }
+        .cinema-arrow svg {
+            stroke: var(--gray-600);
+        }
+        .cinema-counter {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: var(--gray-400);
+            min-width: 36px;
+            text-align: center;
+        }
+
+        /* ── Right column: horizontal carousel ── */
+        .cinema-col-horizontal {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .cinema-h-carousel-wrap {
+            position: relative;
+        }
+
+        .cinema-h-stage {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cinema-h-track {
+            display: flex;
+            gap: 16px;
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .cinema-h-card {
+            flex-shrink: 0;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            background: var(--gray-100);
+            border: 1px solid var(--gray-200);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        box-shadow 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        opacity 0.5s ease,
+                        filter 0.5s ease;
+        }
+        .cinema-h-card.is-center {
+            transform: scale(1);
+            opacity: 1;
+            filter: none;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+            z-index: 2;
+        }
+        .cinema-h-card.is-side {
+            transform: scale(0.94);
+            opacity: 0.5;
+            filter: blur(1px);
+            z-index: 1;
+        }
+
+        .cinema-h-card--main {
+            width: 100%;
+            aspect-ratio: 16/9;
+        }
+        .cinema-h-card--preview {
+            width: 75%;
+            aspect-ratio: 16/9;
+        }
+
+        .cinema-h-bg {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(26,92,255,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(26,92,255,0.05) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        .cinema-h-placeholder {
             position: absolute;
             inset: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 16px;
+            gap: 12px;
         }
-
-        .workflow-cell-placeholder svg {
-            opacity: 0.2;
-        }
-
-        .workflow-cell-placeholder-text {
-            font-size: 10px;
+        .cinema-h-placeholder svg { opacity: 0.15; }
+        .cinema-h-placeholder-text {
+            font-size: 9px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.12em;
             color: var(--gray-300);
         }
 
+        .cinema-h-card video {
+            position: absolute; inset: 0;
+            width: 100%; height: 100%;
+            object-fit: cover; display: block;
+        }
+
+        .cinema-h-label {
+            position: absolute;
+            bottom: 14px;
+            left: 14px;
+            z-index: 3;
+        }
+        .cinema-h-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--gray-500);
+            background: rgba(255,255,255,0.88);
+            border: 1px solid var(--gray-200);
+            border-radius: 100px;
+            padding: 3px 10px;
+            backdrop-filter: blur(8px);
+        }
+
+        .cinema-h-nav {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        @media (max-width: 1024px) {
+            .cinema-gallery { grid-template-columns: 1fr; gap: 64px; }
+            .cinema-col-vertical { align-items: center; }
+        }
         @media (max-width: 768px) {
-            #workflow-videos { padding: 80px 20px; }
-            .workflow-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
-            .workflow-cell--hero { grid-column: 1; grid-row: auto; aspect-ratio: 4/3; max-height: none; }
+            #workflow-videos { padding: 80px 0; }
+            .workflow-inner { padding: 0 20px; }
             .workflow-header { flex-direction: column; align-items: flex-start; }
+            .cinema-frame-v { width: 220px; }
+            .cinema-ghost { width: 160px; }
         }
 
         /* ══════════════════════════════════════════════════════
@@ -1905,89 +2191,7 @@
             .components-header { flex-direction: column; align-items: flex-start; }
         }
 
-        /* ── iPhone Mockup ── */
-        .iphone-section {
-            margin-top: 80px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .iphone-label {
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: .12em;
-            text-transform: uppercase;
-            color: var(--blue);
-            margin-bottom: 24px;
-        }
-
-        .iphone-frame {
-            position: relative;
-            width: 300px;
-            background: #1a1a1a;
-            border-radius: 50px;
-            padding: 14px 10px;
-            box-shadow:
-                0 0 0 2px #3a3a3c,
-                0 0 0 4px #1a1a1a,
-                0 0 0 6px #3a3a3c,
-                0 30px 80px rgba(0,0,0,.45),
-                inset 0 0 0 1px rgba(255,255,255,.08);
-        }
-
-        .iphone-frame::before {
-            content: '';
-            position: absolute;
-            left: -4px;
-            top: 100px;
-            width: 4px;
-            height: 34px;
-            background: #3a3a3c;
-            border-radius: 2px 0 0 2px;
-            box-shadow: 0 44px 0 #3a3a3c, 0 88px 0 #3a3a3c;
-        }
-
-        .iphone-frame::after {
-            content: '';
-            position: absolute;
-            right: -4px;
-            top: 140px;
-            width: 4px;
-            height: 62px;
-            background: #3a3a3c;
-            border-radius: 0 2px 2px 0;
-        }
-
-        .iphone-island {
-            width: 90px;
-            height: 28px;
-            background: #000;
-            border-radius: 20px;
-            margin: 0 auto 10px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .iphone-screen {
-            background: #000;
-            border-radius: 38px;
-            overflow: hidden;
-            aspect-ratio: 9/19.5;
-            position: relative;
-        }
-
-        .iphone-screen video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        @media (max-width: 480px) {
-            .iphone-frame { width: 240px; border-radius: 40px; }
-            .iphone-screen { border-radius: 30px; }
-        }
+        /* iPhone mockup styles removed — replaced by cinema-frame-v */
     </style>
 </head>
 <body>
@@ -2146,7 +2350,7 @@
 
 
 <!-- ══════════════════════════════════════════════════════════
-     SECTION 2 — WORKFLOW / SYSTEM VIDEOS
+     SECTION 2 — SYSTEM VIDEOS (CINEMATIC GALLERY)
 ══════════════════════════════════════════════════════════ -->
 <section id="workflow-videos">
     <div class="workflow-inner">
@@ -2159,61 +2363,230 @@
             <p class="section-desc">Live documentation from the field — airflow systems, rooftop work, hood operations.</p>
         </div>
 
-        <div class="workflow-grid">
+        <div class="cinema-gallery">
 
-            <!-- Hero cell — tall vertical (phone footage) -->
-            <div class="workflow-cell workflow-cell--hero reveal">
-                <div class="workflow-cell-bg"></div>
-                <div class="iphone-section" style="margin:0;position:absolute;inset:0;justify-content:center;display:flex;flex-direction:column;align-items:center;">
-                    <div class="iphone-frame" style="transform:scale(0.82);transform-origin:center center;">
-                        <div class="iphone-island"></div>
-                        <div class="iphone-screen">
-                            <video controls playsinline muted loop>
-                                <source src="Hood cleaning.mp4" type="video/mp4">
-                            </video>
+            <!-- ── LEFT: Vertical carousel ── -->
+            <div class="cinema-col-vertical reveal">
+
+                <div class="cinema-carousel-vertical">
+                    <div class="cinema-stage-vertical">
+
+                        <!-- Ghost left (prev) -->
+                        <div class="cinema-ghost ghost-left" id="vGhostLeft">
+                            <div class="cinema-ghost-bg"></div>
+                            <span class="cinema-ghost-label" id="vGhostLeftLabel">—</span>
+                        </div>
+
+                        <!-- Main vertical frame -->
+                        <div class="cinema-frame-v" id="vMainFrame">
+                            <div class="cinema-frame-v-screen" id="vScreen">
+                                <video id="vVideo" playsinline muted loop>
+                                    <source src="Hood cleaning.mp4" type="video/mp4">
+                                </video>
+                                <div class="cinema-play-overlay" id="vPlayOverlay">
+                                    <div class="cinema-play-btn" id="vPlayBtn">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+                                            <polygon points="5,3 19,12 5,21"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cinema-frame-v-tag" id="vTag">
+                                <span style="width:5px;height:5px;border-radius:50%;background:#22c55e;display:inline-block;flex-shrink:0;"></span>
+                                <span id="vTagText">Hood Cleaning</span>
+                            </div>
+                        </div>
+
+                        <!-- Ghost right (next) -->
+                        <div class="cinema-ghost ghost-right" id="vGhostRight">
+                            <div class="cinema-ghost-bg"></div>
+                            <span class="cinema-ghost-label" id="vGhostRightLabel">—</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="cinema-nav">
+                    <button class="cinema-arrow" id="vPrev" aria-label="Previous video">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15,18 9,12 15,6"/>
+                        </svg>
+                    </button>
+                    <span class="cinema-counter" id="vCounter">1 / 1</span>
+                    <button class="cinema-arrow" id="vNext" aria-label="Next video">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9,18 15,12 9,6"/>
+                        </svg>
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- ── RIGHT: Horizontal carousel ── -->
+            <div class="cinema-col-horizontal reveal reveal-delay-1">
+
+                <div class="cinema-h-carousel-wrap">
+                    <div class="cinema-h-stage" id="hStage">
+                        <div class="cinema-h-track" id="hTrack">
+
+                            <!-- Card 1: Airflow (placeholder) -->
+                            <div class="cinema-h-card cinema-h-card--main is-center" data-label="Airflow Systems">
+                                <div class="cinema-h-bg"></div>
+                                <div class="cinema-h-placeholder">
+                                    <svg width="40" height="40" fill="none" stroke="var(--gray-300)" stroke-width="1" viewBox="0 0 24 24">
+                                        <path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/>
+                                    </svg>
+                                    <span class="cinema-h-placeholder-text">Airflow Systems — Video TBD</span>
+                                </div>
+                                <div class="cinema-h-label">
+                                    <span class="cinema-h-tag">Airflow Systems</span>
+                                </div>
+                            </div>
+
+                            <!-- Card 2: Rooftop (placeholder) -->
+                            <div class="cinema-h-card cinema-h-card--main is-side" data-label="Rooftop Operations">
+                                <div class="cinema-h-bg"></div>
+                                <div class="cinema-h-placeholder">
+                                    <svg width="40" height="40" fill="none" stroke="var(--gray-300)" stroke-width="1" viewBox="0 0 24 24">
+                                        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+                                    </svg>
+                                    <span class="cinema-h-placeholder-text">Rooftop Work — Video TBD</span>
+                                </div>
+                                <div class="cinema-h-label">
+                                    <span class="cinema-h-tag">Rooftop Operations</span>
+                                </div>
+                            </div>
+
+                            <!-- Card 3: Exhaust (placeholder) -->
+                            <div class="cinema-h-card cinema-h-card--main is-side" data-label="Exhaust Operations">
+                                <div class="cinema-h-bg"></div>
+                                <div class="cinema-h-placeholder">
+                                    <svg width="40" height="40" fill="none" stroke="var(--gray-300)" stroke-width="1" viewBox="0 0 24 24">
+                                        <path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/><path d="M12 8v4l3 3"/>
+                                    </svg>
+                                    <span class="cinema-h-placeholder-text">Exhaust Operations — Video TBD</span>
+                                </div>
+                                <div class="cinema-h-label">
+                                    <span class="cinema-h-tag">Exhaust Operations</span>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
-                <div class="workflow-cell-label">
-                    <span class="workflow-cell-tag">
-                        <span style="width:5px;height:5px;border-radius:50%;background:#22c55e;display:inline-block;"></span>
-                        Hood Cleaning
-                    </span>
-                </div>
-            </div>
 
-            <!-- Top-right: airflow placeholder -->
-            <div class="workflow-cell workflow-cell--sm reveal reveal-delay-1">
-                <div class="workflow-cell-bg"></div>
-                <div class="workflow-cell-placeholder">
-                    <svg width="48" height="48" fill="none" stroke="var(--gray-300)" stroke-width="1" viewBox="0 0 24 24">
-                        <path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/>
-                    </svg>
-                    <span class="workflow-cell-placeholder-text">Airflow Systems — Video TBD</span>
+                <!-- Navigation -->
+                <div class="cinema-h-nav">
+                    <button class="cinema-arrow" id="hPrev" aria-label="Previous">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15,18 9,12 15,6"/>
+                        </svg>
+                    </button>
+                    <span class="cinema-counter" id="hCounter">1 / 3</span>
+                    <button class="cinema-arrow" id="hNext" aria-label="Next">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9,18 15,12 9,6"/>
+                        </svg>
+                    </button>
                 </div>
-                <div class="workflow-cell-label">
-                    <span class="workflow-cell-tag">Airflow Systems</span>
-                </div>
-            </div>
 
-            <!-- Bottom-right: rooftop placeholder -->
-            <div class="workflow-cell workflow-cell--sm reveal reveal-delay-2">
-                <div class="workflow-cell-bg"></div>
-                <div class="workflow-cell-placeholder">
-                    <svg width="48" height="48" fill="none" stroke="var(--gray-300)" stroke-width="1" viewBox="0 0 24 24">
-                        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
-                    </svg>
-                    <span class="workflow-cell-placeholder-text">Rooftop Work — Video TBD</span>
-                </div>
-                <div class="workflow-cell-label">
-                    <span class="workflow-cell-tag">Rooftop Operations</span>
-                </div>
             </div>
 
         </div>
 
     </div>
 </section>
+
+<script>
+/* ── Vertical carousel (single video for now, extensible) ── */
+(function() {
+    const vSlides = [
+        { src: 'Hood cleaning.mp4', label: 'Hood Cleaning', dot: '#22c55e' },
+        /* Add more vertical videos here */
+    ];
+    let vIdx = 0;
+    const vVideo = document.getElementById('vVideo');
+    const vTagText = document.getElementById('vTagText');
+    const vCounter = document.getElementById('vCounter');
+    const vGhostLeft = document.getElementById('vGhostLeft');
+    const vGhostRight = document.getElementById('vGhostRight');
+    const vGhostLeftLabel = document.getElementById('vGhostLeftLabel');
+    const vGhostRightLabel = document.getElementById('vGhostRightLabel');
+
+    function updateV() {
+        const cur = vSlides[vIdx];
+        vVideo.src = cur.src;
+        vVideo.load();
+        vVideo.play().catch(() => {});
+        vTagText.textContent = cur.label;
+        vCounter.textContent = (vIdx + 1) + ' / ' + vSlides.length;
+
+        const prev = vSlides[(vIdx - 1 + vSlides.length) % vSlides.length];
+        const next = vSlides[(vIdx + 1) % vSlides.length];
+
+        if (vSlides.length > 1) {
+            vGhostLeft.classList.add('visible');
+            vGhostRight.classList.add('visible');
+            vGhostLeftLabel.textContent = prev.label;
+            vGhostRightLabel.textContent = next.label;
+        }
+    }
+
+    document.getElementById('vPrev').addEventListener('click', function() {
+        vIdx = (vIdx - 1 + vSlides.length) % vSlides.length;
+        updateV();
+    });
+    document.getElementById('vNext').addEventListener('click', function() {
+        vIdx = (vIdx + 1) % vSlides.length;
+        updateV();
+    });
+
+    /* Play/pause toggle */
+    document.getElementById('vPlayBtn').addEventListener('click', function() {
+        if (vVideo.paused) { vVideo.play(); } else { vVideo.pause(); }
+    });
+
+    updateV();
+})();
+
+/* ── Horizontal carousel ── */
+(function() {
+    const track = document.getElementById('hTrack');
+    const cards = Array.from(track.querySelectorAll('.cinema-h-card'));
+    const counter = document.getElementById('hCounter');
+    let hIdx = 0;
+
+    function updateH() {
+        cards.forEach(function(c, i) {
+            c.classList.toggle('is-center', i === hIdx);
+            c.classList.toggle('is-side', i !== hIdx);
+        });
+        counter.textContent = (hIdx + 1) + ' / ' + cards.length;
+
+        /* Slide track so active card is centered */
+        const stageW = document.getElementById('hStage').offsetWidth;
+        const cardW = cards[hIdx].offsetWidth;
+        let offset = 0;
+        for (let i = 0; i < hIdx; i++) {
+            offset += cards[i].offsetWidth + 16;
+        }
+        offset -= (stageW - cardW) / 2;
+        track.style.transform = 'translateX(' + (-Math.max(0, offset)) + 'px)';
+    }
+
+    document.getElementById('hPrev').addEventListener('click', function() {
+        hIdx = (hIdx - 1 + cards.length) % cards.length;
+        updateH();
+    });
+    document.getElementById('hNext').addEventListener('click', function() {
+        hIdx = (hIdx + 1) % cards.length;
+        updateH();
+    });
+
+    updateH();
+})();
+</script>
 
 <div class="arch-divider"></div>
 
