@@ -928,25 +928,87 @@
             z-index: 1;
         }
 
-        /* Restoration grid */
-        .restoration-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-            max-width: 1100px;
+        /* Restoration carousel */
+        .restoration-carousel-wrapper {
+            position: relative;
+            max-width: 680px;
             margin: 0 auto;
         }
 
-        @media (max-width: 768px) {
-            .restoration-grid {
-                grid-template-columns: 1fr;
-            }
+        .restoration-grid {
+            overflow: hidden;
+        }
+
+        .restoration-track {
+            display: flex;
+            transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .restoration-card {
+            min-width: 100%;
             display: flex;
             flex-direction: column;
             gap: 12px;
+        }
+
+        /* Carousel arrows */
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-60%);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 1.5px solid var(--gray-200);
+            box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 5;
+            transition: background 0.2s, box-shadow 0.2s;
+        }
+
+        .carousel-arrow:hover {
+            background: var(--gray-50);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .carousel-arrow.prev { left: -60px; }
+        .carousel-arrow.next { right: -60px; }
+
+        @media (max-width: 900px) {
+            .carousel-arrow.prev { left: -36px; }
+            .carousel-arrow.next { right: -36px; }
+        }
+
+        @media (max-width: 640px) {
+            .carousel-arrow { width: 36px; height: 36px; }
+            .carousel-arrow.prev { left: -20px; }
+            .carousel-arrow.next { right: -20px; }
+        }
+
+        /* Carousel dots */
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 24px;
+        }
+
+        .carousel-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--gray-300);
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .carousel-dot.active {
+            background: var(--blue);
+            transform: scale(1.25);
         }
 
         .restoration-card-title {
@@ -1007,12 +1069,12 @@
             position: absolute;
             top: 0; bottom: 0;
             left: 50%;
-            width: 2px;
+            width: 3px;
             background: var(--white);
-            box-shadow: 0 0 12px rgba(0,0,0,0.15);
+            box-shadow: 0 0 12px rgba(0,0,0,0.3);
             z-index: 10;
             cursor: ew-resize;
-            transform: translateX(-1px);
+            transform: translateX(-50%);
         }
 
         .slider-handle {
@@ -1889,7 +1951,18 @@
             </p>
         </div>
 
-        <div class="restoration-grid reveal reveal-delay-2">
+        <div class="restoration-carousel-wrapper reveal reveal-delay-2">
+            <!-- Prev arrow -->
+            <button class="carousel-arrow prev" aria-label="Previous">
+                <svg width="18" height="18" fill="none" stroke="var(--gray-600)" stroke-width="2.2" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <!-- Next arrow -->
+            <button class="carousel-arrow next" aria-label="Next">
+                <svg width="18" height="18" fill="none" stroke="var(--gray-600)" stroke-width="2.2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+
+            <div class="restoration-grid">
+            <div class="restoration-track">
 
             <!-- Card 1: Hood -->
             <div class="restoration-card">
@@ -2080,7 +2153,13 @@
                 </div>
             </div>
 
-        </div>
+            </div><!-- /.restoration-track -->
+            </div><!-- /.restoration-grid -->
+
+            <!-- Dots -->
+            <div class="carousel-dots" id="restorationDots"></div>
+
+        </div><!-- /.restoration-carousel-wrapper -->
 
     </div>
 </section>
@@ -2387,6 +2466,46 @@
         }, { threshold: 0.3 });
         sliderObserver.observe(slider);
     });
+
+    /* Restoration carousel */
+    (function () {
+        const wrapper   = document.querySelector('.restoration-carousel-wrapper');
+        if (!wrapper) return;
+        const restorationTrack  = wrapper.querySelector('.restoration-track');
+        const cards     = Array.from(restorationTrack.querySelectorAll('.restoration-card'));
+        const dotsEl    = document.getElementById('restorationDots');
+        const prevBtn   = wrapper.querySelector('.carousel-arrow.prev');
+        const nextBtn   = wrapper.querySelector('.carousel-arrow.next');
+        let current = 0;
+        const total = cards.length;
+
+        /* Build dots */
+        cards.forEach((_, i) => {
+            const d = document.createElement('span');
+            d.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+            d.addEventListener('click', () => goTo(i));
+            dotsEl.appendChild(d);
+        });
+
+        function goTo(idx) {
+            current = (idx + total) % total;
+            restorationTrack.style.transform = `translateX(-${current * 100}%)`;
+            dotsEl.querySelectorAll('.carousel-dot').forEach((d, i) => {
+                d.classList.toggle('active', i === current);
+            });
+        }
+
+        prevBtn.addEventListener('click', () => goTo(current - 1));
+        nextBtn.addEventListener('click', () => goTo(current + 1));
+
+        /* Swipe support */
+        let touchStartX = 0;
+        restorationTrack.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+        restorationTrack.addEventListener('touchend', e => {
+            const dx = e.changedTouches[0].clientX - touchStartX;
+            if (Math.abs(dx) > 40) goTo(current + (dx < 0 ? 1 : -1));
+        });
+    })();
 </script>
 
 </body>
