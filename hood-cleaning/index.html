@@ -1137,9 +1137,22 @@
 
         .compliance-layout {
             display: grid;
-            grid-template-columns: 1fr 1.4fr;
-            gap: 80px;
-            align-items: start;
+            grid-template-columns: 0.8fr 1fr 1.4fr;
+            gap: 60px;
+            align-items: stretch;
+        }
+
+        .compliance-image-col {
+            position: relative;
+            min-height: 100%;
+        }
+
+        .compliance-image-col img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: var(--radius-lg);
+            display: block;
         }
 
         .compliance-cards {
@@ -1402,7 +1415,8 @@
         @media (max-width: 1024px) {
             .fans-layout { grid-template-columns: 1fr; gap: 48px; }
             .hoods-grid { grid-template-columns: 1fr 1fr; }
-            .compliance-layout { grid-template-columns: 1fr; gap: 48px; }
+            .compliance-layout { grid-template-columns: 1fr 1.4fr; gap: 48px; }
+            .compliance-image-col { display: none; }
             .footer-top { grid-template-columns: 1fr; gap: 40px; }
             .footer-cols { grid-template-columns: repeat(2, 1fr); }
         }
@@ -2174,7 +2188,12 @@
     <div class="section-inner">
         <div class="compliance-layout">
 
-            <!-- Left: copy + cards -->
+            <!-- Far Left: inspection image -->
+            <div class="compliance-image-col reveal">
+                <img src="Inspeccion de hood.png" alt="Hood inspection documentation" loading="lazy">
+            </div>
+
+            <!-- Center: copy + cards -->
             <div>
                 <div class="section-label reveal">Standards</div>
                 <h2 class="section-title reveal reveal-delay-1">Compliance</h2>
