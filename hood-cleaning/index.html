@@ -1342,30 +1342,37 @@
         #compliance {
             background: var(--white);
             position: relative;
+            padding: 0;
+            overflow: hidden;
         }
 
-        #compliance {
-            padding: 90px 40px;
+        #compliance .section-inner {
+            max-width: none;
+            margin: 0;
+            padding: 0;
         }
 
         .compliance-layout {
             display: grid;
-            grid-template-columns: 1.2fr 1fr 1.4fr;
-            gap: 60px;
+            grid-template-columns: 38% 1fr 1.4fr;
+            gap: 0;
             align-items: stretch;
+            min-height: 600px;
         }
 
         .compliance-image-col {
             display: flex;
-            align-items: flex-start;
+            align-items: stretch;
+            overflow: hidden;
         }
 
         .compliance-image-col img {
             width: 100%;
-            height: auto;
-            object-fit: contain;
-            border-radius: var(--radius-lg);
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
             display: block;
+            border-radius: 0;
         }
 
         .compliance-cards {
@@ -1630,8 +1637,11 @@
             .hoods-lineup { grid-template-columns: 1fr; gap: 2px; }
             .hood-panel:first-child  { border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
             .hood-panel:last-child   { border-radius: 0 0 var(--radius-lg) var(--radius-lg); }
-            .compliance-layout { grid-template-columns: 1fr 1.4fr; gap: 48px; }
+            .compliance-layout { grid-template-columns: 1fr 1.4fr; gap: 0; }
             .compliance-image-col { display: none; }
+            #compliance .section-inner { max-width: none; }
+            #compliance .section-inner > .compliance-layout > div:nth-child(2) { padding: 60px 40px 60px 40px; }
+            #compliance .section-inner > .compliance-layout > div:last-child { padding: 60px 40px 60px 0; }
             .footer-top { grid-template-columns: 1fr; gap: 40px; }
             .footer-cols { grid-template-columns: repeat(2, 1fr); }
         }
@@ -1641,6 +1651,9 @@
             .nav-links, .nav-cta { display: none; }
             .mobile-toggle { display: flex; }
             .section { padding: 80px 20px; }
+            #compliance { padding: 0; }
+            #compliance .section-inner > .compliance-layout > div:nth-child(2) { padding: 60px 20px 60px 20px; }
+            #compliance .section-inner > .compliance-layout > div:last-child { padding: 60px 20px 60px 0; }
             #hood-systems { padding: 80px 20px; }
             #hero { min-height: 100svh; }
             .hero-content { padding: 100px 20px 60px; }
@@ -3276,7 +3289,7 @@
             </div>
 
             <!-- Center: copy + cards -->
-            <div>
+            <div style="padding: 80px 48px 80px 56px;">
                 <div class="section-label reveal">Standards</div>
                 <h2 class="section-title reveal reveal-delay-1">Compliance</h2>
                 <p class="section-desc reveal reveal-delay-2" style="margin-bottom:40px;">
@@ -3319,7 +3332,7 @@
             </div>
 
             <!-- Right: spec table -->
-            <div class="reveal reveal-delay-1">
+            <div class="reveal reveal-delay-1" style="padding: 80px 56px 80px 0; display: flex; align-items: center;">
                 <div class="compliance-table">
                     <div class="compliance-table-header">
                         <span>Standard</span>
