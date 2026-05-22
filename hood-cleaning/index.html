@@ -1656,37 +1656,253 @@
         }
 
         /* ══════════════════════════════════════════════════════
-           VIDEO SECTION
+           SECTION 2 — WORKFLOW / SYSTEM VIDEOS
         ══════════════════════════════════════════════════════ */
-        #video-section {
-            background: var(--white);
-            padding: 100px 40px;
+        #workflow-videos {
+            background: var(--gray-50);
+            padding: 120px 40px;
+            overflow: hidden;
         }
 
-        .video-section-inner {
+        .workflow-inner {
             max-width: 1280px;
             margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
 
-        .video-wrapper {
-            width: 50%;
+        .workflow-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 64px;
+            flex-wrap: wrap;
+        }
+
+        .workflow-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 16px;
+        }
+
+        .workflow-cell {
+            position: relative;
             border-radius: var(--radius-lg);
             overflow: hidden;
-            box-shadow: var(--shadow-lg);
+            background: var(--gray-100);
             border: 1px solid var(--gray-200);
         }
 
-        .video-wrapper video {
+        .workflow-cell--hero {
+            grid-column: 1 / 2;
+            grid-row: 1 / 3;
+            aspect-ratio: 9/16;
+            max-height: 700px;
+        }
+
+        .workflow-cell--sm {
+            aspect-ratio: 16/9;
+        }
+
+        .workflow-cell-bg {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(26,92,255,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(26,92,255,0.05) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+
+        .workflow-cell video {
+            position: absolute;
+            inset: 0;
             width: 100%;
+            height: 100%;
+            object-fit: cover;
             display: block;
         }
 
+        .workflow-cell-label {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .workflow-cell-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--gray-400);
+            background: rgba(255,255,255,0.85);
+            border: 1px solid var(--gray-200);
+            border-radius: 100px;
+            padding: 4px 12px;
+            backdrop-filter: blur(8px);
+        }
+
+        .workflow-cell-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .workflow-cell-placeholder svg {
+            opacity: 0.2;
+        }
+
+        .workflow-cell-placeholder-text {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--gray-300);
+        }
+
         @media (max-width: 768px) {
-            #video-section { padding: 60px 20px; }
-            .video-wrapper { width: 90%; }
+            #workflow-videos { padding: 80px 20px; }
+            .workflow-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+            .workflow-cell--hero { grid-column: 1; grid-row: auto; aspect-ratio: 4/3; max-height: none; }
+            .workflow-header { flex-direction: column; align-items: flex-start; }
+        }
+
+        /* ══════════════════════════════════════════════════════
+           SECTION 7 — FEATURED COMPONENTS
+        ══════════════════════════════════════════════════════ */
+        #featured-components {
+            background: var(--white);
+            padding: 120px 40px;
+            overflow: hidden;
+        }
+
+        .components-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .components-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 64px;
+            flex-wrap: wrap;
+        }
+
+        .components-track-wrap {
+            position: relative;
+        }
+
+        .components-track {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 8px;
+            scrollbar-width: none;
+            cursor: grab;
+        }
+        .components-track::-webkit-scrollbar { display: none; }
+        .components-track.is-grabbing { cursor: grabbing; }
+
+        .components-track-wrap::after {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; bottom: 8px;
+            width: 80px;
+            background: linear-gradient(90deg, transparent, var(--white));
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .component-card {
+            flex-shrink: 0;
+            width: 220px;
+            scroll-snap-align: start;
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+        }
+
+        .component-card:hover {
+            border-color: var(--gray-300);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+        }
+
+        .component-card-visual {
+            height: 160px;
+            background: var(--gray-100);
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .component-card-visual::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(26,92,255,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(26,92,255,0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .component-card-visual img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .component-card-visual svg {
+            opacity: 0.2;
+            position: relative;
+            z-index: 1;
+        }
+
+        .component-card-body {
+            padding: 20px 22px 24px;
+        }
+
+        .component-card-index {
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gray-300);
+            margin-bottom: 8px;
+        }
+
+        .component-card-name {
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--gray-900);
+            line-height: 1.2;
+        }
+
+        @media (max-width: 768px) {
+            #featured-components { padding: 80px 20px; }
+            .components-header { flex-direction: column; align-items: flex-start; }
         }
 
         /* ── iPhone Mockup ── */
@@ -1720,7 +1936,6 @@
                 inset 0 0 0 1px rgba(255,255,255,.08);
         }
 
-        /* Side buttons */
         .iphone-frame::before {
             content: '';
             position: absolute;
@@ -1744,7 +1959,6 @@
             border-radius: 0 2px 2px 0;
         }
 
-        /* Dynamic Island */
         .iphone-island {
             width: 90px;
             height: 28px;
@@ -1932,108 +2146,70 @@
 
 
 <!-- ══════════════════════════════════════════════════════════
-     VIDEO SECTION
+     SECTION 2 — WORKFLOW / SYSTEM VIDEOS
 ══════════════════════════════════════════════════════════ -->
-<section id="video-section">
-    <div class="video-section-inner">
-        <div class="section-label reveal" style="justify-content:center;margin-bottom:16px;">Hood Cleaning</div>
-        <h2 class="section-title reveal reveal-delay-1" style="text-align:center;margin-bottom:40px;">See It In Action</h2>
-        <!-- iPhone vertical video -->
-        <div class="iphone-section reveal reveal-delay-2">
-            <div class="iphone-label">Behind the scenes</div>
-            <div class="iphone-frame">
-                <div class="iphone-island"></div>
-                <div class="iphone-screen">
-                    <video controls playsinline muted loop>
-                        <source src="Hood cleaning.mp4" type="video/mp4">
-                    </video>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<section id="workflow-videos">
+    <div class="workflow-inner">
 
-<div class="arch-divider"></div>
-
-
-<!-- ══════════════════════════════════════════════════════════
-     SECTION 2 — FILTERS PRODUCT LINE
-══════════════════════════════════════════════════════════ -->
-<section class="section" id="filters">
-    <div class="section-inner">
-
-        <div class="filters-header reveal">
+        <div class="workflow-header reveal">
             <div>
-                <div class="section-label">Product Line</div>
-                <h2 class="section-title">Hood Filters</h2>
+                <div class="section-label">Field Operations</div>
+                <h2 class="section-title">System Videos</h2>
             </div>
-            <p class="section-desc">Custom commercial filtration systems engineered for peak extraction and long-term performance.</p>
+            <p class="section-desc">Live documentation from the field — airflow systems, rooftop work, hood operations.</p>
         </div>
 
-        <div class="filters-track-wrap reveal reveal-delay-1">
-            <div class="filters-track" id="filtersTrack">
+        <div class="workflow-grid">
 
-                <!-- Card 1 -->
-                <div class="filter-card">
-                    <div class="filter-card-visual">
-                        <img src="Filtro Hood.png" alt="Hood Filters" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
-                    </div>
-                    <div class="filter-card-body">
-                        <span class="filter-card-tag">Filtration</span>
-                        <div class="filter-card-title">Hood Filters</div>
-                        <div class="filter-card-desc">High-capacity baffle filters engineered for heavy commercial grease loads.</div>
+            <!-- Hero cell — tall vertical (phone footage) -->
+            <div class="workflow-cell workflow-cell--hero reveal">
+                <div class="workflow-cell-bg"></div>
+                <div class="iphone-section" style="margin:0;position:absolute;inset:0;justify-content:center;display:flex;flex-direction:column;align-items:center;">
+                    <div class="iphone-frame" style="transform:scale(0.82);transform-origin:center center;">
+                        <div class="iphone-island"></div>
+                        <div class="iphone-screen">
+                            <video controls playsinline muted loop>
+                                <source src="Hood cleaning.mp4" type="video/mp4">
+                            </video>
+                        </div>
                     </div>
                 </div>
-
-                <!-- Card 2 -->
-                <div class="filter-card">
-                    <div class="filter-card-visual">
-                        <img src="Filtro Hood Aluminio.png" alt="Stainless Filters" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
-                    </div>
-                    <div class="filter-card-body">
-                        <span class="filter-card-tag">Stainless</span>
-                        <div class="filter-card-title">Stainless Filters</div>
-                        <div class="filter-card-desc">Precision stainless steel construction for long-cycle service intervals.</div>
-                    </div>
+                <div class="workflow-cell-label">
+                    <span class="workflow-cell-tag">
+                        <span style="width:5px;height:5px;border-radius:50%;background:#22c55e;display:inline-block;"></span>
+                        Hood Cleaning
+                    </span>
                 </div>
-
-                <!-- Card 3 -->
-                <div class="filter-card">
-                    <div class="filter-card-visual">
-                        <img src="Filtro de malla.png" alt="Custom Filters" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
-                    </div>
-                    <div class="filter-card-body">
-                        <span class="filter-card-tag">Custom</span>
-                        <div class="filter-card-title">Custom Filters</div>
-                        <div class="filter-card-desc">Fabricated to specification. Non-standard openings and custom dimensions.</div>
-                    </div>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="filter-card">
-                    <div class="filter-card-visual">
-                        <svg width="80" height="80" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24" color="#9a9a96">
-                            <circle cx="12" cy="12" r="3"/>
-                            <path d="M12 2v3m0 14v3M2 12h3m14 0h3M4.22 4.22l2.12 2.12m11.32 11.32l2.12 2.12"/>
-                        </svg>
-                        <div class="filter-card-visual-label">Placeholder — Image TBD</div>
-                    </div>
-                    <div class="filter-card-body">
-                        <span class="filter-card-tag">Grease</span>
-                        <div class="filter-card-title">Grease Filters</div>
-                        <div class="filter-card-desc">High-efficiency grease capture media for NFPA 96 compliant installations.</div>
-                    </div>
-                </div>
-
             </div>
-        </div>
 
-        <div class="filters-cta-row reveal reveal-delay-2">
-            <p style="font-size:13px;color:var(--gray-400);letter-spacing:-0.01em;">All filters are available in standard and custom sizes.</p>
-            <a href="/primefacilityservicesgroup/contact/" class="view-collection-btn">
-                View Collection
-                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
+            <!-- Top-right: airflow placeholder -->
+            <div class="workflow-cell workflow-cell--sm reveal reveal-delay-1">
+                <div class="workflow-cell-bg"></div>
+                <div class="workflow-cell-placeholder">
+                    <svg width="48" height="48" fill="none" stroke="var(--gray-300)" stroke-width="1" viewBox="0 0 24 24">
+                        <path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/>
+                    </svg>
+                    <span class="workflow-cell-placeholder-text">Airflow Systems — Video TBD</span>
+                </div>
+                <div class="workflow-cell-label">
+                    <span class="workflow-cell-tag">Airflow Systems</span>
+                </div>
+            </div>
+
+            <!-- Bottom-right: rooftop placeholder -->
+            <div class="workflow-cell workflow-cell--sm reveal reveal-delay-2">
+                <div class="workflow-cell-bg"></div>
+                <div class="workflow-cell-placeholder">
+                    <svg width="48" height="48" fill="none" stroke="var(--gray-300)" stroke-width="1" viewBox="0 0 24 24">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+                    </svg>
+                    <span class="workflow-cell-placeholder-text">Rooftop Work — Video TBD</span>
+                </div>
+                <div class="workflow-cell-label">
+                    <span class="workflow-cell-tag">Rooftop Operations</span>
+                </div>
+            </div>
+
         </div>
 
     </div>
@@ -2043,59 +2219,7 @@
 
 
 <!-- ══════════════════════════════════════════════════════════
-     SECTION 3 — EXHAUST FANS
-══════════════════════════════════════════════════════════ -->
-<section class="section" id="exhaust-fans">
-    <div class="section-inner">
-        <div class="fans-layout">
-
-            <!-- Visual placeholder -->
-            <div class="fans-visual reveal">
-                <img src="Exhaust Fans.png" alt="Exhaust Fans" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;border-radius:var(--radius-lg);">
-            </div>
-
-            <!-- Copy -->
-            <div class="fans-copy">
-                <div class="section-label reveal">Systems</div>
-                <h2 class="section-title reveal reveal-delay-1">Exhaust Fans</h2>
-                <p class="section-desc reveal reveal-delay-2">
-                    Commercial airflow systems engineered for performance.<br>Rooftop and inline configurations for any kitchen footprint.
-                </p>
-
-                <!-- Spec lines — architectural style -->
-                <div style="margin-top:48px;display:flex;flex-direction:column;gap:0;" class="reveal reveal-delay-3">
-                    <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--gray-100);">
-                        <span style="font-size:12px;color:var(--gray-400);font-weight:500;">Type</span>
-                        <span style="font-size:13px;color:var(--gray-900);font-weight:600;">Upblast · Utility · Inline</span>
-                    </div>
-                    <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--gray-100);">
-                        <span style="font-size:12px;color:var(--gray-400);font-weight:500;">Motor Class</span>
-                        <span style="font-size:13px;color:var(--gray-900);font-weight:600;">Single &amp; Three Phase</span>
-                    </div>
-                    <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--gray-100);">
-                        <span style="font-size:12px;color:var(--gray-400);font-weight:500;">Compliance</span>
-                        <span class="spec-badge">NFPA 96</span>
-                    </div>
-                    <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;">
-                        <span style="font-size:12px;color:var(--gray-400);font-weight:500;">Service</span>
-                        <span style="font-size:13px;color:var(--gray-900);font-weight:600;">Installation · Repair · Cleaning</span>
-                    </div>
-                </div>
-
-                <div style="margin-top:40px;" class="reveal reveal-delay-4">
-                    <a href="/primefacilityservicesgroup/contact/" class="btn-hero-primary">Request Specifications</a>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<div class="arch-divider"></div>
-
-
-<!-- ══════════════════════════════════════════════════════════
-     SECTION 4 — HOOD SYSTEMS  (redesigned)
+     SECTION 3 — COMMERCIAL HOOD SYSTEMS
 ══════════════════════════════════════════════════════════ -->
 <section id="hood-systems">
     <div class="section-inner">
@@ -2265,7 +2389,7 @@
 
 
 <!-- ══════════════════════════════════════════════════════════
-     SECTION 5 — BEFORE / AFTER SYSTEM RESTORATION
+     SECTION 4 — BEFORE / AFTER SYSTEM RESTORATION
 ══════════════════════════════════════════════════════════ -->
 <section class="section" id="restoration">
     <div class="section-inner">
@@ -2495,7 +2619,243 @@
 
 
 <!-- ══════════════════════════════════════════════════════════
-     SECTION 6 — COMPLIANCE
+     SECTION 5 — FILTER SYSTEMS
+══════════════════════════════════════════════════════════ -->
+<section class="section" id="filters">
+    <div class="section-inner">
+
+        <div class="filters-header reveal">
+            <div>
+                <div class="section-label">Product Line</div>
+                <h2 class="section-title">Filter Systems</h2>
+            </div>
+            <p class="section-desc">Custom commercial filtration systems engineered for peak extraction and long-term performance.</p>
+        </div>
+
+        <div class="filters-track-wrap reveal reveal-delay-1">
+            <div class="filters-track" id="filtersTrack">
+
+                <div class="filter-card">
+                    <div class="filter-card-visual">
+                        <img src="Filtro Hood.png" alt="Hood Filters" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+                    </div>
+                    <div class="filter-card-body">
+                        <span class="filter-card-tag">Filtration</span>
+                        <div class="filter-card-title">Hood Filters</div>
+                        <div class="filter-card-desc">High-capacity baffle filters engineered for heavy commercial grease loads.</div>
+                    </div>
+                </div>
+
+                <div class="filter-card">
+                    <div class="filter-card-visual">
+                        <img src="Filtro Hood Aluminio.png" alt="Stainless Filters" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+                    </div>
+                    <div class="filter-card-body">
+                        <span class="filter-card-tag">Stainless</span>
+                        <div class="filter-card-title">Stainless Filters</div>
+                        <div class="filter-card-desc">Precision stainless steel construction for long-cycle service intervals.</div>
+                    </div>
+                </div>
+
+                <div class="filter-card">
+                    <div class="filter-card-visual">
+                        <img src="Filtro de malla.png" alt="Custom Filters" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+                    </div>
+                    <div class="filter-card-body">
+                        <span class="filter-card-tag">Custom</span>
+                        <div class="filter-card-title">Custom Filters</div>
+                        <div class="filter-card-desc">Fabricated to specification. Non-standard openings and custom dimensions.</div>
+                    </div>
+                </div>
+
+                <div class="filter-card">
+                    <div class="filter-card-visual">
+                        <svg width="80" height="80" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24" color="#9a9a96">
+                            <circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3M4.22 4.22l2.12 2.12m11.32 11.32l2.12 2.12"/>
+                        </svg>
+                        <div class="filter-card-visual-label">Placeholder — Image TBD</div>
+                    </div>
+                    <div class="filter-card-body">
+                        <span class="filter-card-tag">Grease</span>
+                        <div class="filter-card-title">Grease Filters</div>
+                        <div class="filter-card-desc">High-efficiency grease capture media for NFPA 96 compliant installations.</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="filters-cta-row reveal reveal-delay-2">
+            <p style="font-size:13px;color:var(--gray-400);letter-spacing:-0.01em;">All filters are available in standard and custom sizes.</p>
+            <a href="/primefacilityservicesgroup/contact/" class="view-collection-btn">
+                View Collection
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<div class="arch-divider"></div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 6 — EXHAUST FANS
+══════════════════════════════════════════════════════════ -->
+<section class="section" id="exhaust-fans">
+    <div class="section-inner">
+        <div class="fans-layout">
+
+            <div class="fans-visual reveal">
+                <img src="Exhaust Fans.png" alt="Exhaust Fans" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;border-radius:var(--radius-lg);">
+            </div>
+
+            <div class="fans-copy">
+                <div class="section-label reveal">Systems</div>
+                <h2 class="section-title reveal reveal-delay-1">Exhaust Fans</h2>
+                <p class="section-desc reveal reveal-delay-2">
+                    Commercial airflow systems engineered for performance.<br>Rooftop and inline configurations for any kitchen footprint.
+                </p>
+
+                <div style="margin-top:48px;display:flex;flex-direction:column;gap:0;" class="reveal reveal-delay-3">
+                    <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--gray-100);">
+                        <span style="font-size:12px;color:var(--gray-400);font-weight:500;">Type</span>
+                        <span style="font-size:13px;color:var(--gray-900);font-weight:600;">Upblast · Utility · Inline</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--gray-100);">
+                        <span style="font-size:12px;color:var(--gray-400);font-weight:500;">Motor Class</span>
+                        <span style="font-size:13px;color:var(--gray-900);font-weight:600;">Single &amp; Three Phase</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--gray-100);">
+                        <span style="font-size:12px;color:var(--gray-400);font-weight:500;">Compliance</span>
+                        <span class="spec-badge">NFPA 96</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;">
+                        <span style="font-size:12px;color:var(--gray-400);font-weight:500;">Service</span>
+                        <span style="font-size:13px;color:var(--gray-900);font-weight:600;">Installation · Repair · Cleaning</span>
+                    </div>
+                </div>
+
+                <div style="margin-top:40px;" class="reveal reveal-delay-4">
+                    <a href="/primefacilityservicesgroup/contact/" class="btn-hero-primary">Request Specifications</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<div class="arch-divider"></div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 7 — FEATURED COMPONENTS
+══════════════════════════════════════════════════════════ -->
+<section id="featured-components">
+    <div class="components-inner">
+
+        <div class="components-header reveal">
+            <div>
+                <div class="section-label">Components</div>
+                <h2 class="section-title">Featured Components</h2>
+            </div>
+            <p class="section-desc">System-level components. Engineered to specification.</p>
+        </div>
+
+        <div class="components-track-wrap reveal reveal-delay-1">
+            <div class="components-track" id="componentsTrack">
+
+                <!-- Motors -->
+                <div class="component-card">
+                    <div class="component-card-visual">
+                        <img src="Impeller.png" alt="Motors" onerror="this.style.display='none'">
+                        <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24" color="#c8c8c4">
+                            <circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3M4.22 4.22l2.12 2.12m11.32 11.32l2.12 2.12M4.22 19.78l2.12-2.12m11.32-11.32l2.12-2.12"/>
+                        </svg>
+                    </div>
+                    <div class="component-card-body">
+                        <div class="component-card-index">01 / 06</div>
+                        <div class="component-card-name">Motors</div>
+                    </div>
+                </div>
+
+                <!-- Fan Blades -->
+                <div class="component-card">
+                    <div class="component-card-visual">
+                        <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24" color="#c8c8c4">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 8v8M8 12h8"/>
+                        </svg>
+                    </div>
+                    <div class="component-card-body">
+                        <div class="component-card-index">02 / 06</div>
+                        <div class="component-card-name">Fan Blades</div>
+                    </div>
+                </div>
+
+                <!-- Hood Filters -->
+                <div class="component-card">
+                    <div class="component-card-visual">
+                        <img src="Filtro Hood.png" alt="Hood Filters" onerror="this.style.display='none'">
+                        <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24" color="#c8c8c4">
+                            <rect x="3" y="3" width="18" height="4"/><rect x="3" y="9" width="18" height="4"/><rect x="3" y="15" width="18" height="4"/>
+                        </svg>
+                    </div>
+                    <div class="component-card-body">
+                        <div class="component-card-index">03 / 06</div>
+                        <div class="component-card-name">Hood Filters</div>
+                    </div>
+                </div>
+
+                <!-- Access Panels -->
+                <div class="component-card">
+                    <div class="component-card-visual">
+                        <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24" color="#c8c8c4">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
+                        </svg>
+                    </div>
+                    <div class="component-card-body">
+                        <div class="component-card-index">04 / 06</div>
+                        <div class="component-card-name">Access Panels</div>
+                    </div>
+                </div>
+
+                <!-- Hinges -->
+                <div class="component-card">
+                    <div class="component-card-visual">
+                        <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24" color="#c8c8c4">
+                            <rect x="8" y="2" width="8" height="20" rx="1"/><circle cx="12" cy="7" r="1.5"/><circle cx="12" cy="17" r="1.5"/>
+                        </svg>
+                    </div>
+                    <div class="component-card-body">
+                        <div class="component-card-index">05 / 06</div>
+                        <div class="component-card-name">Hinges</div>
+                    </div>
+                </div>
+
+                <!-- Belts -->
+                <div class="component-card">
+                    <div class="component-card-visual">
+                        <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24" color="#c8c8c4">
+                            <circle cx="7" cy="12" r="4"/><circle cx="17" cy="12" r="4"/><line x1="7" y1="8" x2="17" y2="8"/><line x1="7" y1="16" x2="17" y2="16"/>
+                        </svg>
+                    </div>
+                    <div class="component-card-body">
+                        <div class="component-card-index">06 / 06</div>
+                        <div class="component-card-name">Belts</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<div class="arch-divider"></div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 8 — COMPLIANCE
 ══════════════════════════════════════════════════════════ -->
 <section class="section" id="compliance">
     <div class="section-inner">
@@ -2719,6 +3079,23 @@
         });
     }, { threshold: 0.08 });
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    /* Horizontal drag scroll — components track */
+    (function() {
+        const ct = document.getElementById('componentsTrack');
+        if (!ct) return;
+        let isDown = false, startX, scrollLeft;
+        ct.addEventListener('mousedown', e => {
+            isDown = true; ct.classList.add('is-grabbing');
+            startX = e.pageX - ct.offsetLeft; scrollLeft = ct.scrollLeft;
+        });
+        document.addEventListener('mouseup', () => { isDown = false; ct.classList.remove('is-grabbing'); });
+        ct.addEventListener('mouseleave', () => { isDown = false; ct.classList.remove('is-grabbing'); });
+        ct.addEventListener('mousemove', e => {
+            if (!isDown) return; e.preventDefault();
+            ct.scrollLeft = scrollLeft - (e.pageX - ct.offsetLeft - startX) * 1.5;
+        });
+    })();
 
     /* Horizontal drag scroll — filters track */
     const track = document.getElementById('filtersTrack');
