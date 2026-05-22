@@ -928,11 +928,39 @@
             z-index: 1;
         }
 
+        /* Restoration grid */
+        .restoration-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .restoration-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .restoration-card {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .restoration-card-title {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--gray-500);
+            text-align: center;
+        }
+
         .before-after-container {
             position: relative;
             z-index: 1;
-            max-width: 900px;
-            margin: 0 auto;
         }
 
         .before-after-slider {
@@ -942,7 +970,7 @@
             border: 1px solid var(--gray-200);
             box-shadow: var(--shadow-lg);
             background: var(--white);
-            aspect-ratio: 16/9;
+            aspect-ratio: 4/3;
         }
 
         /* Before pane */
@@ -958,6 +986,14 @@
 
         .before-pane {
             background: linear-gradient(135deg, #fafaf8 0%, #f0f0ed 100%);
+        }
+
+        .before-pane img, .after-pane img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .after-pane {
@@ -1006,19 +1042,23 @@
             background: var(--white);
             border: 1px solid var(--gray-200);
             border-radius: 100px;
+            position: relative;
+            z-index: 2;
         }
 
         .pane-placeholder-text {
             font-size: 13px;
             color: var(--gray-300);
             letter-spacing: -0.01em;
+            position: relative;
+            z-index: 2;
         }
 
         .before-after-meta {
             display: flex;
             justify-content: space-between;
-            margin-top: 24px;
-            font-size: 11px;
+            margin-top: 12px;
+            font-size: 10px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.1em;
@@ -1849,33 +1889,197 @@
             </p>
         </div>
 
-        <div class="before-after-container reveal reveal-delay-2">
-            <div class="before-after-slider" id="baSlider">
+        <div class="restoration-grid reveal reveal-delay-2">
 
-                <div class="before-pane" id="bPane">
-                    <span class="pane-label">Before</span>
-                    <span class="pane-placeholder-text">Image TBD</span>
-                </div>
-
-                <div class="after-pane" id="aPane">
-                    <span class="pane-label" style="background:var(--blue-light);border-color:var(--blue-border);color:var(--blue);">After</span>
-                    <span class="pane-placeholder-text" style="color:var(--blue-mid);">Image TBD</span>
-                </div>
-
-                <div class="slider-divider" id="sliderDivider">
-                    <div class="slider-handle">
-                        <svg width="14" height="14" fill="none" stroke="var(--gray-400)" stroke-width="2" viewBox="0 0 24 24">
-                            <path d="M8 12H16M5 8l-3 4 3 4M19 8l3 4-3 4"/>
-                        </svg>
+            <!-- Card 1: Hood -->
+            <div class="restoration-card">
+                <div class="restoration-card-title">Hood</div>
+                <div class="before-after-container">
+                    <div class="before-after-slider ba-slider">
+                        <div class="before-pane">
+                            <img src="Hood sucio.jpg" alt="Hood before cleaning">
+                            <span class="pane-label">Before</span>
+                        </div>
+                        <div class="after-pane">
+                            <img src="Hood Clean.png" alt="Hood after cleaning">
+                            <span class="pane-label" style="background:var(--blue-light);border-color:var(--blue-border);color:var(--blue);">After</span>
+                        </div>
+                        <div class="slider-divider">
+                            <div class="slider-handle">
+                                <svg width="14" height="14" fill="none" stroke="var(--gray-400)" stroke-width="2" viewBox="0 0 24 24"><path d="M8 12H16M5 8l-3 4 3 4M19 8l3 4-3 4"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="before-after-meta">
+                        <span>Before Service</span>
+                        <span>Drag to compare</span>
+                        <span>After Restoration</span>
                     </div>
                 </div>
             </div>
 
-            <div class="before-after-meta">
-                <span>Before Service</span>
-                <span>Drag to compare</span>
-                <span>After Restoration</span>
+            <!-- Card 2: Blower Wheel -->
+            <div class="restoration-card">
+                <div class="restoration-card-title">Blower Wheel</div>
+                <div class="before-after-container">
+                    <div class="before-after-slider ba-slider">
+                        <div class="before-pane">
+                            <img src="Aspas Sucias.png" alt="Blower wheel before cleaning">
+                            <span class="pane-label">Before</span>
+                        </div>
+                        <div class="after-pane">
+                            <img src="Aspas Clean.jpg" alt="Blower wheel after cleaning">
+                            <span class="pane-label" style="background:var(--blue-light);border-color:var(--blue-border);color:var(--blue);">After</span>
+                        </div>
+                        <div class="slider-divider">
+                            <div class="slider-handle">
+                                <svg width="14" height="14" fill="none" stroke="var(--gray-400)" stroke-width="2" viewBox="0 0 24 24"><path d="M8 12H16M5 8l-3 4 3 4M19 8l3 4-3 4"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="before-after-meta">
+                        <span>Before Service</span>
+                        <span>Drag to compare</span>
+                        <span>After Restoration</span>
+                    </div>
+                </div>
             </div>
+
+            <!-- Card 3: Placeholder -->
+            <div class="restoration-card">
+                <div class="restoration-card-title">Coming Soon</div>
+                <div class="before-after-container">
+                    <div class="before-after-slider ba-slider">
+                        <div class="before-pane">
+                            <span class="pane-label">Before</span>
+                            <span class="pane-placeholder-text">Image TBD</span>
+                        </div>
+                        <div class="after-pane">
+                            <span class="pane-label" style="background:var(--blue-light);border-color:var(--blue-border);color:var(--blue);">After</span>
+                            <span class="pane-placeholder-text" style="color:var(--blue-mid);">Image TBD</span>
+                        </div>
+                        <div class="slider-divider">
+                            <div class="slider-handle">
+                                <svg width="14" height="14" fill="none" stroke="var(--gray-400)" stroke-width="2" viewBox="0 0 24 24"><path d="M8 12H16M5 8l-3 4 3 4M19 8l3 4-3 4"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="before-after-meta">
+                        <span>Before Service</span>
+                        <span>Drag to compare</span>
+                        <span>After Restoration</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4: Placeholder -->
+            <div class="restoration-card">
+                <div class="restoration-card-title">Coming Soon</div>
+                <div class="before-after-container">
+                    <div class="before-after-slider ba-slider">
+                        <div class="before-pane">
+                            <span class="pane-label">Before</span>
+                            <span class="pane-placeholder-text">Image TBD</span>
+                        </div>
+                        <div class="after-pane">
+                            <span class="pane-label" style="background:var(--blue-light);border-color:var(--blue-border);color:var(--blue);">After</span>
+                            <span class="pane-placeholder-text" style="color:var(--blue-mid);">Image TBD</span>
+                        </div>
+                        <div class="slider-divider">
+                            <div class="slider-handle">
+                                <svg width="14" height="14" fill="none" stroke="var(--gray-400)" stroke-width="2" viewBox="0 0 24 24"><path d="M8 12H16M5 8l-3 4 3 4M19 8l3 4-3 4"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="before-after-meta">
+                        <span>Before Service</span>
+                        <span>Drag to compare</span>
+                        <span>After Restoration</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5: Placeholder -->
+            <div class="restoration-card">
+                <div class="restoration-card-title">Coming Soon</div>
+                <div class="before-after-container">
+                    <div class="before-after-slider ba-slider">
+                        <div class="before-pane">
+                            <span class="pane-label">Before</span>
+                            <span class="pane-placeholder-text">Image TBD</span>
+                        </div>
+                        <div class="after-pane">
+                            <span class="pane-label" style="background:var(--blue-light);border-color:var(--blue-border);color:var(--blue);">After</span>
+                            <span class="pane-placeholder-text" style="color:var(--blue-mid);">Image TBD</span>
+                        </div>
+                        <div class="slider-divider">
+                            <div class="slider-handle">
+                                <svg width="14" height="14" fill="none" stroke="var(--gray-400)" stroke-width="2" viewBox="0 0 24 24"><path d="M8 12H16M5 8l-3 4 3 4M19 8l3 4-3 4"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="before-after-meta">
+                        <span>Before Service</span>
+                        <span>Drag to compare</span>
+                        <span>After Restoration</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6: Placeholder -->
+            <div class="restoration-card">
+                <div class="restoration-card-title">Coming Soon</div>
+                <div class="before-after-container">
+                    <div class="before-after-slider ba-slider">
+                        <div class="before-pane">
+                            <span class="pane-label">Before</span>
+                            <span class="pane-placeholder-text">Image TBD</span>
+                        </div>
+                        <div class="after-pane">
+                            <span class="pane-label" style="background:var(--blue-light);border-color:var(--blue-border);color:var(--blue);">After</span>
+                            <span class="pane-placeholder-text" style="color:var(--blue-mid);">Image TBD</span>
+                        </div>
+                        <div class="slider-divider">
+                            <div class="slider-handle">
+                                <svg width="14" height="14" fill="none" stroke="var(--gray-400)" stroke-width="2" viewBox="0 0 24 24"><path d="M8 12H16M5 8l-3 4 3 4M19 8l3 4-3 4"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="before-after-meta">
+                        <span>Before Service</span>
+                        <span>Drag to compare</span>
+                        <span>After Restoration</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 7: Placeholder -->
+            <div class="restoration-card">
+                <div class="restoration-card-title">Coming Soon</div>
+                <div class="before-after-container">
+                    <div class="before-after-slider ba-slider">
+                        <div class="before-pane">
+                            <span class="pane-label">Before</span>
+                            <span class="pane-placeholder-text">Image TBD</span>
+                        </div>
+                        <div class="after-pane">
+                            <span class="pane-label" style="background:var(--blue-light);border-color:var(--blue-border);color:var(--blue);">After</span>
+                            <span class="pane-placeholder-text" style="color:var(--blue-mid);">Image TBD</span>
+                        </div>
+                        <div class="slider-divider">
+                            <div class="slider-handle">
+                                <svg width="14" height="14" fill="none" stroke="var(--gray-400)" stroke-width="2" viewBox="0 0 24 24"><path d="M8 12H16M5 8l-3 4 3 4M19 8l3 4-3 4"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="before-after-meta">
+                        <span>Before Service</span>
+                        <span>Drag to compare</span>
+                        <span>After Restoration</span>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
     </div>
@@ -2132,12 +2336,12 @@
         });
     }
 
-    /* Before/After slider */
-    const slider = document.getElementById('baSlider');
-    const divider = document.getElementById('sliderDivider');
-    const afterPane = document.getElementById('aPane');
+    /* Before/After sliders — initialise every .ba-slider */
+    document.querySelectorAll('.ba-slider').forEach(slider => {
+        const divider = slider.querySelector('.slider-divider');
+        const afterPane = slider.querySelector('.after-pane');
+        if (!divider || !afterPane) return;
 
-    if (slider && divider && afterPane) {
         let dragging = false;
 
         const setPosition = (clientX) => {
@@ -2152,26 +2356,29 @@
         window.addEventListener('mouseup', () => { dragging = false; });
         slider.addEventListener('mousemove', e => { if (dragging) setPosition(e.clientX); });
 
-        divider.addEventListener('touchstart', e => { dragging = true; }, { passive: true });
+        divider.addEventListener('touchstart', () => { dragging = true; }, { passive: true });
         window.addEventListener('touchend', () => { dragging = false; });
         slider.addEventListener('touchmove', e => {
             if (dragging) setPosition(e.touches[0].clientX);
         }, { passive: true });
 
         /* Subtle intro animation */
-        let animDir = 1, animPos = 0.5;
+        let animDir = 1, animPos = 0.5, animActive = true;
         const animRange = 0.08;
         const animStep = 0.003;
 
         const introAnim = () => {
-            if (dragging) return;
+            if (!animActive) return;
+            if (dragging) { requestAnimationFrame(introAnim); return; }
             animPos += animStep * animDir;
             if (animPos > 0.5 + animRange || animPos < 0.5 - animRange) animDir *= -1;
             setPosition(slider.getBoundingClientRect().left + slider.offsetWidth * animPos);
             requestAnimationFrame(introAnim);
         };
 
-        /* Start animation only when section is visible */
+        slider.addEventListener('mousedown', () => { animActive = false; });
+        slider.addEventListener('touchstart', () => { animActive = false; }, { passive: true });
+
         const sliderObserver = new IntersectionObserver(entries => {
             if (entries[0].isIntersecting) {
                 introAnim();
@@ -2179,7 +2386,7 @@
             }
         }, { threshold: 0.3 });
         sliderObserver.observe(slider);
-    }
+    });
 </script>
 
 </body>
