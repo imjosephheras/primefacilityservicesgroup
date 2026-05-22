@@ -1019,7 +1019,7 @@ fclose($fp);
                 class="absolute top-1/2 left-1/2 w-[177.77vh] min-w-full h-[56.25vw] min-h-full max-w-none -translate-x-1/2 -translate-y-1/2 object-cover"
                 style="pointer-events: none;"
             >
-                <source src="WhatsApp Video 2026-05-18 at 4.13.11 PM.mp4" type="video/mp4">
+                <source src="hero-bg.mp4" type="video/mp4">
             </video>
         </div>
         
