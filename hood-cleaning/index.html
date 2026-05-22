@@ -991,6 +991,14 @@
 
         .hood-panel:hover .hood-product-frame svg { opacity: 0.28; }
 
+        .hood-product-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 7px;
+            display: block;
+        }
+
         /* Subtle corner markers — architectural */
         .hood-corner {
             position: absolute;
@@ -2727,39 +2735,7 @@
                     <span class="hood-corner hood-corner-bl"></span>
                     <span class="hood-corner hood-corner-br"></span>
                     <div class="hood-product-frame">
-                        <!-- Airflow path diagram: duct cross-section with flow arrows and static pressure annotation -->
-                        <svg width="108" height="72" fill="none" viewBox="0 0 108 72" stroke="var(--gray-400)" stroke-width="1.1">
-                            <!-- Duct body — main horizontal run -->
-                            <rect x="6" y="26" width="58" height="20" rx="1.5" fill="none"/>
-                            <!-- Transition reducer — narrowing toward outlet -->
-                            <polygon points="64,26 64,46 82,30 82,42" fill="none" stroke-width="1.1"/>
-                            <!-- Outlet collar -->
-                            <rect x="82" y="30" width="20" height="12" rx="1" fill="none"/>
-                            <!-- Flow arrows inside main duct -->
-                            <line x1="12" y1="36" x2="36" y2="36" stroke="var(--gray-300)" stroke-width="0.8"/>
-                            <polyline points="32,33 36,36 32,39" stroke="var(--gray-300)" stroke-width="0.8" fill="none"/>
-                            <line x1="22" y1="36" x2="46" y2="36" stroke="var(--gray-300)" stroke-width="0.8"/>
-                            <polyline points="42,33 46,36 42,39" stroke="var(--gray-300)" stroke-width="0.8" fill="none"/>
-                            <!-- Velocity profile tick marks on duct walls -->
-                            <line x1="18" y1="26" x2="18" y2="22" stroke="var(--gray-300)" stroke-width="0.7"/>
-                            <line x1="28" y1="26" x2="28" y2="20" stroke="var(--gray-300)" stroke-width="0.7"/>
-                            <line x1="38" y1="26" x2="38" y2="21" stroke="var(--gray-300)" stroke-width="0.7"/>
-                            <line x1="48" y1="26" x2="48" y2="22" stroke="var(--gray-300)" stroke-width="0.7"/>
-                            <line x1="56" y1="26" x2="56" y2="23" stroke="var(--gray-300)" stroke-width="0.7"/>
-                            <!-- Static pressure annotation line -->
-                            <line x1="6" y1="16" x2="82" y2="16" stroke="var(--gray-300)" stroke-width="0.6" stroke-dasharray="4 3"/>
-                            <line x1="6" y1="13" x2="6" y2="19" stroke="var(--gray-300)" stroke-width="0.6"/>
-                            <line x1="82" y1="13" x2="82" y2="19" stroke="var(--gray-300)" stroke-width="0.6"/>
-                            <!-- ΔP label placeholder ticks -->
-                            <line x1="40" y1="14" x2="40" y2="18" stroke="var(--gray-300)" stroke-width="0.6"/>
-                            <!-- Outlet flow continuation -->
-                            <line x1="102" y1="36" x2="108" y2="36" stroke="var(--gray-300)" stroke-width="0.8"/>
-                            <polyline points="104,33 108,36 104,39" stroke="var(--gray-300)" stroke-width="0.8" fill="none"/>
-                            <!-- Bottom dimension baseline -->
-                            <line x1="6" y1="58" x2="102" y2="58" stroke="var(--gray-200)" stroke-width="0.5"/>
-                            <line x1="6" y1="55" x2="6" y2="61" stroke="var(--gray-200)" stroke-width="0.5"/>
-                            <line x1="102" y1="55" x2="102" y2="61" stroke="var(--gray-200)" stroke-width="0.5"/>
-                        </svg>
+                        <img src="Ducto.png" alt="Airflow Optimization — Duct">
                     </div>
                     <span class="hood-stage-label">Capability 01 — Airflow Engineering</span>
                 </div>
@@ -2778,36 +2754,7 @@
                     <span class="hood-corner hood-corner-bl"></span>
                     <span class="hood-corner hood-corner-br"></span>
                     <div class="hood-product-frame">
-                        <!-- Access panel cut-section: duct run with access door callouts and inspection indicators -->
-                        <svg width="108" height="72" fill="none" viewBox="0 0 108 72" stroke="var(--gray-400)" stroke-width="1.1">
-                            <!-- Main duct body -->
-                            <rect x="6" y="22" width="96" height="28" rx="1.5" fill="none"/>
-                            <!-- Access panel 01 — left zone -->
-                            <rect x="18" y="22" width="20" height="28" rx="0.5" fill="none" stroke-dasharray="3 2" stroke-width="0.9"/>
-                            <!-- Access door hinge indicator -->
-                            <line x1="18" y1="36" x2="14" y2="32" stroke="var(--gray-300)" stroke-width="0.7"/>
-                            <circle cx="14" cy="32" r="1.5" fill="none" stroke="var(--gray-300)" stroke-width="0.7"/>
-                            <!-- Access panel 02 — right zone -->
-                            <rect x="70" y="22" width="20" height="28" rx="0.5" fill="none" stroke-dasharray="3 2" stroke-width="0.9"/>
-                            <line x1="90" y1="36" x2="94" y2="32" stroke="var(--gray-300)" stroke-width="0.7"/>
-                            <circle cx="94" cy="32" r="1.5" fill="none" stroke="var(--gray-300)" stroke-width="0.7"/>
-                            <!-- Inspection callout leader lines -->
-                            <line x1="28" y1="22" x2="28" y2="12" stroke="var(--gray-300)" stroke-width="0.6" stroke-dasharray="2 2"/>
-                            <line x1="28" y1="12" x2="38" y2="12" stroke="var(--gray-300)" stroke-width="0.6"/>
-                            <line x1="80" y1="22" x2="80" y2="12" stroke="var(--gray-300)" stroke-width="0.6" stroke-dasharray="2 2"/>
-                            <line x1="72" y1="12" x2="80" y2="12" stroke="var(--gray-300)" stroke-width="0.6"/>
-                            <!-- Interior grease channel line -->
-                            <line x1="6" y1="46" x2="102" y2="46" stroke="var(--gray-200)" stroke-width="0.6" stroke-dasharray="5 3"/>
-                            <!-- NFPA marker ticks at access centers -->
-                            <line x1="28" y1="36" x2="28" y2="40" stroke="var(--gray-300)" stroke-width="0.8"/>
-                            <line x1="26" y1="38" x2="30" y2="38" stroke="var(--gray-300)" stroke-width="0.8"/>
-                            <line x1="80" y1="36" x2="80" y2="40" stroke="var(--gray-300)" stroke-width="0.8"/>
-                            <line x1="78" y1="38" x2="82" y2="38" stroke="var(--gray-300)" stroke-width="0.8"/>
-                            <!-- Bottom dimension baseline -->
-                            <line x1="6" y1="60" x2="102" y2="60" stroke="var(--gray-200)" stroke-width="0.5"/>
-                            <line x1="6" y1="57" x2="6" y2="63" stroke="var(--gray-200)" stroke-width="0.5"/>
-                            <line x1="102" y1="57" x2="102" y2="63" stroke="var(--gray-200)" stroke-width="0.5"/>
-                        </svg>
+                        <img src="Access Panel.png" alt="Access Panel Integration">
                     </div>
                     <span class="hood-stage-label">Capability 02 — Access &amp; Compliance</span>
                 </div>
@@ -2826,39 +2773,7 @@
                     <span class="hood-corner hood-corner-bl"></span>
                     <span class="hood-corner hood-corner-br"></span>
                     <div class="hood-product-frame">
-                        <!-- Duct routing diagram: elbows, offsets, transitions, annotated lengths -->
-                        <svg width="108" height="72" fill="none" viewBox="0 0 108 72" stroke="var(--gray-400)" stroke-width="1.1">
-                            <!-- Horizontal run 1 (inlet) -->
-                            <rect x="6" y="30" width="28" height="12" rx="1" fill="none"/>
-                            <!-- 90° elbow — outer arc -->
-                            <path d="M34,30 Q44,30 44,20" fill="none" stroke-width="1.1"/>
-                            <!-- 90° elbow — inner arc -->
-                            <path d="M34,42 Q56,42 56,20" fill="none" stroke-width="1.1"/>
-                            <!-- Vertical rise -->
-                            <rect x="44" y="6" width="12" height="14" rx="1" fill="none"/>
-                            <!-- Offset transition — angled section -->
-                            <polygon points="56,6 68,6 72,14 60,14" fill="none" stroke-width="1.1"/>
-                            <!-- Horizontal run 2 (outlet) -->
-                            <rect x="68" y="6" width="34" height="8" rx="1" fill="none"/>
-                            <!-- Fan collar at end -->
-                            <rect x="100" y="4" width="6" height="12" rx="0.5" fill="none"/>
-                            <!-- Elbow radius annotation arc (construction) -->
-                            <path d="M34,36 Q40,36 40,30" fill="none" stroke="var(--gray-300)" stroke-width="0.6" stroke-dasharray="3 2"/>
-                            <!-- Length annotation — run 1 -->
-                            <line x1="6" y1="52" x2="34" y2="52" stroke="var(--gray-200)" stroke-width="0.5"/>
-                            <line x1="6" y1="49" x2="6" y2="55" stroke="var(--gray-200)" stroke-width="0.5"/>
-                            <line x1="34" y1="49" x2="34" y2="55" stroke="var(--gray-200)" stroke-width="0.5"/>
-                            <!-- Length annotation — run 2 -->
-                            <line x1="68" y1="62" x2="102" y2="62" stroke="var(--gray-200)" stroke-width="0.5"/>
-                            <line x1="68" y1="59" x2="68" y2="65" stroke="var(--gray-200)" stroke-width="0.5"/>
-                            <line x1="102" y1="59" x2="102" y2="65" stroke="var(--gray-200)" stroke-width="0.5"/>
-                            <!-- Airflow direction arrow -->
-                            <line x1="12" y1="36" x2="22" y2="36" stroke="var(--gray-300)" stroke-width="0.8"/>
-                            <polyline points="19,33 22,36 19,39" stroke="var(--gray-300)" stroke-width="0.8" fill="none"/>
-                            <!-- Construction centerline through elbow -->
-                            <line x1="50" y1="6" x2="50" y2="20" stroke="var(--gray-300)" stroke-width="0.5" stroke-dasharray="2 2"/>
-                            <line x1="34" y1="36" x2="56" y2="36" stroke="var(--gray-300)" stroke-width="0.5" stroke-dasharray="2 2"/>
-                        </svg>
+                        <img src="PLanos Ducto.png" alt="Ductwork Engineering — Duct Plans">
                     </div>
                     <span class="hood-stage-label">Capability 03 — Duct System Design</span>
                 </div>
