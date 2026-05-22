@@ -809,97 +809,298 @@
         .fans-copy { position: relative; z-index: 1; }
 
         /* ══════════════════════════════════════════════════════
-           SECTION 4 — HOOD SYSTEMS
+           SECTION 4 — HOOD SYSTEMS  (redesigned)
         ══════════════════════════════════════════════════════ */
         #hood-systems {
             background: var(--white);
-        }
-
-        .hoods-header {
-            text-align: center;
-            margin-bottom: 72px;
-        }
-
-        .hoods-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        .hood-card {
-            background: var(--gray-50);
-            border: 1px solid var(--gray-200);
-            border-radius: var(--radius-lg);
-            padding: 40px 32px;
-            transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+            padding: 140px 40px;
             position: relative;
             overflow: hidden;
         }
 
-        .hood-card::before {
+        /* Faint full-section blueprint grid */
+        #hood-systems::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(26,92,255,0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(26,92,255,0.025) 1px, transparent 1px);
+            background-size: 80px 80px;
+            pointer-events: none;
+        }
+
+        /* ── Header ── */
+        .hoods-header-v2 {
+            text-align: center;
+            margin-bottom: 100px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hoods-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--gray-400);
+            margin-bottom: 28px;
+        }
+
+        .hoods-eyebrow-line {
+            display: block;
+            width: 28px;
+            height: 1px;
+            background: var(--gray-300);
+        }
+
+        .hoods-main-title {
+            font-size: clamp(44px, 5.5vw, 76px);
+            font-weight: 700;
+            letter-spacing: -0.05em;
+            line-height: 1.0;
+            color: var(--gray-900);
+            margin-bottom: 22px;
+        }
+
+        .hoods-sub {
+            font-size: 17px;
+            font-weight: 400;
+            color: var(--gray-400);
+            letter-spacing: -0.01em;
+            line-height: 1.6;
+        }
+
+        /* ── Product Line Rail ── */
+        .hoods-lineup {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── Single Product Panel ── */
+        .hood-panel {
+            position: relative;
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            overflow: hidden;
+            cursor: default;
+            transition:
+                border-color 0.5s cubic-bezier(0.25,0.46,0.45,0.94),
+                box-shadow   0.5s cubic-bezier(0.25,0.46,0.45,0.94),
+                transform    0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+        }
+
+        .hood-panel:first-child  { border-radius: var(--radius-lg) 0 0 var(--radius-lg); }
+        .hood-panel:last-child   { border-radius: 0 var(--radius-lg) var(--radius-lg) 0; }
+
+        .hood-panel:hover {
+            border-color: rgba(26,92,255,0.20);
+            box-shadow: 0 32px 80px rgba(0,0,0,0.10), 0 0 0 1px rgba(26,92,255,0.08);
+            transform: translateY(-6px);
+            z-index: 2;
+        }
+
+        /* Top accent bar — reveals on hover */
+        .hood-panel::after {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--blue-border), transparent);
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(26,92,255,0.50), transparent);
             opacity: 0;
-            transition: opacity 0.3s;
+            transition: opacity 0.5s ease;
         }
 
-        .hood-card:hover {
-            border-color: var(--gray-300);
-            box-shadow: var(--shadow-md);
-            transform: translateY(-4px);
-        }
+        .hood-panel:hover::after { opacity: 1; }
 
-        .hood-card:hover::before { opacity: 1; }
-
-        .hood-card-visual {
-            height: 160px;
+        /* ── Visual Stage (product placeholder area) ── */
+        .hood-panel-stage {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4/3;
             background: var(--gray-100);
-            border: 1px solid var(--gray-200);
-            border-radius: var(--radius);
-            margin-bottom: 24px;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
-            overflow: hidden;
         }
 
-        .hood-card-visual::before {
+        /* Blueprint grid inside stage */
+        .hood-panel-stage::before {
             content: '';
             position: absolute;
             inset: 0;
             background-image:
                 linear-gradient(rgba(26,92,255,0.06) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(26,92,255,0.06) 1px, transparent 1px);
-            background-size: 20px 20px;
+            background-size: 28px 28px;
+            transition: opacity 0.5s ease;
         }
 
-        .hood-card-visual svg { opacity: 0.2; position: relative; z-index: 1; }
+        .hood-panel:hover .hood-panel-stage::before { opacity: 0.6; }
 
-        .hood-card-number {
-            font-size: 10px;
+        /* Center-axis cross-hair lines (architectural feel) */
+        .hood-panel-stage::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(90deg, transparent calc(50% - 0.5px), rgba(26,92,255,0.10) calc(50% - 0.5px), rgba(26,92,255,0.10) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
+                linear-gradient(0deg,  transparent calc(50% - 0.5px), rgba(26,92,255,0.10) calc(50% - 0.5px), rgba(26,92,255,0.10) calc(50% + 0.5px), transparent calc(50% + 0.5px));
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .hood-panel:hover .hood-panel-stage::after { opacity: 1; }
+
+        /* Product frame — the placeholder render area */
+        .hood-product-frame {
+            position: relative;
+            z-index: 1;
+            width: 56%;
+            aspect-ratio: 3/2;
+            border: 1px solid var(--gray-300);
+            border-radius: 8px;
+            background: var(--white);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition:
+                transform    0.6s cubic-bezier(0.25,0.46,0.45,0.94),
+                box-shadow   0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+        }
+
+        .hood-panel:hover .hood-product-frame {
+            transform: scale(1.04);
+            box-shadow: 0 16px 48px rgba(0,0,0,0.10);
+        }
+
+        /* SVG icon inside frame */
+        .hood-product-frame svg {
+            opacity: 0.18;
+            transition: opacity 0.5s ease;
+        }
+
+        .hood-panel:hover .hood-product-frame svg { opacity: 0.28; }
+
+        /* Subtle corner markers — architectural */
+        .hood-corner {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            opacity: 0.30;
+            transition: opacity 0.4s ease;
+        }
+        .hood-corner-tl { top: 16px; left: 16px; border-top: 1px solid var(--blue); border-left: 1px solid var(--blue); }
+        .hood-corner-tr { top: 16px; right: 16px; border-top: 1px solid var(--blue); border-right: 1px solid var(--blue); }
+        .hood-corner-bl { bottom: 16px; left: 16px; border-bottom: 1px solid var(--blue); border-left: 1px solid var(--blue); }
+        .hood-corner-br { bottom: 16px; right: 16px; border-bottom: 1px solid var(--blue); border-right: 1px solid var(--blue); }
+
+        .hood-panel:hover .hood-corner { opacity: 0.70; }
+
+        /* Stage label */
+        .hood-stage-label {
+            position: absolute;
+            bottom: 14px;
+            left: 18px;
+            font-size: 9px;
             font-weight: 700;
-            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--gray-400);
+        }
+
+        /* ── Body copy ── */
+        .hood-panel-body {
+            padding: 28px 32px 36px;
+            position: relative;
+        }
+
+        .hood-panel-index {
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
             color: var(--gray-300);
-            margin-bottom: 12px;
+            margin-bottom: 14px;
             font-variant-numeric: tabular-nums;
         }
 
-        .hood-card-title {
-            font-size: 22px;
+        .hood-panel-name {
+            font-size: clamp(18px, 1.6vw, 22px);
             font-weight: 700;
-            letter-spacing: -0.03em;
+            letter-spacing: -0.035em;
             color: var(--gray-900);
+            line-height: 1.1;
             margin-bottom: 10px;
         }
 
-        .hood-card-desc {
-            font-size: 13.5px;
+        .hood-panel-desc {
+            font-size: 13px;
             color: var(--gray-400);
             line-height: 1.7;
+            letter-spacing: -0.005em;
+        }
+
+        /* Arrow indicator — appears on hover */
+        .hood-panel-arrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--blue);
+            opacity: 0;
+            transform: translateX(-6px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .hood-panel:hover .hood-panel-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ── CTA row ── */
+        .hoods-cta-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 72px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-hoods-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            font-size: 13.5px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: var(--gray-900);
+            border: 1px solid var(--gray-300);
+            border-radius: 10px;
+            text-decoration: none;
+            background: var(--white);
+            transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+        }
+
+        .btn-hoods-cta:hover {
+            border-color: var(--gray-400);
+            box-shadow: var(--shadow-sm);
+            transform: translateY(-2px);
         }
 
         /* ══════════════════════════════════════════════════════
@@ -1421,7 +1622,9 @@
         ══════════════════════════════════════════════════════ */
         @media (max-width: 1024px) {
             .fans-layout { grid-template-columns: 1fr; gap: 48px; }
-            .hoods-grid { grid-template-columns: 1fr 1fr; }
+            .hoods-lineup { grid-template-columns: 1fr; gap: 2px; }
+            .hood-panel:first-child  { border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+            .hood-panel:last-child   { border-radius: 0 0 var(--radius-lg) var(--radius-lg); }
             .compliance-layout { grid-template-columns: 1fr 1.4fr; gap: 48px; }
             .compliance-image-col { display: none; }
             .footer-top { grid-template-columns: 1fr; gap: 40px; }
@@ -1433,9 +1636,10 @@
             .nav-links, .nav-cta { display: none; }
             .mobile-toggle { display: flex; }
             .section { padding: 80px 20px; }
+            #hood-systems { padding: 80px 20px; }
             #hero { min-height: 100svh; }
             .hero-content { padding: 100px 20px 60px; }
-            .hoods-grid { grid-template-columns: 1fr; }
+            .hoods-lineup { grid-template-columns: 1fr; }
             .compliance-cards { grid-template-columns: 1fr; }
             #compliance-strip { padding: 16px 20px; }
             .filters-header { flex-direction: column; align-items: flex-start; }
@@ -1891,65 +2095,167 @@
 
 
 <!-- ══════════════════════════════════════════════════════════
-     SECTION 4 — HOOD SYSTEMS
+     SECTION 4 — HOOD SYSTEMS  (redesigned)
 ══════════════════════════════════════════════════════════ -->
-<section class="section" id="hood-systems">
+<section id="hood-systems">
     <div class="section-inner">
 
-        <div class="hoods-header reveal">
-            <div class="section-label" style="justify-content:center;">Engineering</div>
-            <h2 class="section-title">Hood Systems</h2>
-            <p class="section-desc" style="margin:0 auto;text-align:center;max-width:480px;">
-                Precision-fabricated commercial hood infrastructure for every kitchen configuration.
-            </p>
+        <!-- Header -->
+        <div class="hoods-header-v2 reveal">
+            <div class="hoods-eyebrow">
+                <span class="hoods-eyebrow-line"></span>
+                Engineering
+                <span class="hoods-eyebrow-line"></span>
+            </div>
+            <h2 class="hoods-main-title">Commercial Hood Systems</h2>
+            <p class="hoods-sub">Engineered exhaust infrastructure for commercial kitchens.</p>
         </div>
 
-        <div class="hoods-grid">
+        <!-- Product Lineup -->
+        <div class="hoods-lineup">
 
-            <div class="hood-card reveal">
-                <div class="hood-card-visual">
-                    <!-- Future: wall mount hood render -->
-                    <svg width="72" height="72" fill="none" stroke="var(--gray-300)" stroke-width="0.8" viewBox="0 0 24 24">
-                        <polygon points="2,14 22,14 19,7 5,7"/>
-                        <rect x="9" y="14" width="6" height="7"/>
-                        <line x1="5" y1="10" x2="19" y2="10"/>
-                        <line x1="6" y1="12" x2="18" y2="12"/>
-                    </svg>
+            <!-- Panel 01 — Wall Mount -->
+            <div class="hood-panel reveal">
+                <div class="hood-panel-stage">
+                    <span class="hood-corner hood-corner-tl"></span>
+                    <span class="hood-corner hood-corner-tr"></span>
+                    <span class="hood-corner hood-corner-bl"></span>
+                    <span class="hood-corner hood-corner-br"></span>
+                    <div class="hood-product-frame">
+                        <!-- Wall mount hood outline -->
+                        <svg width="100" height="66" fill="none" viewBox="0 0 100 66" stroke="var(--gray-400)" stroke-width="1.2">
+                            <!-- Hood canopy -->
+                            <polygon points="8,42 92,42 80,18 20,18" fill="none"/>
+                            <!-- Baffle slots -->
+                            <line x1="30" y1="20" x2="28" y2="40"/>
+                            <line x1="40" y1="19" x2="38" y2="41"/>
+                            <line x1="50" y1="18" x2="50" y2="42"/>
+                            <line x1="60" y1="19" x2="62" y2="41"/>
+                            <line x1="70" y1="20" x2="72" y2="40"/>
+                            <!-- Duct collar -->
+                            <rect x="40" y="8" width="20" height="11" rx="1"/>
+                            <!-- Grease channel -->
+                            <line x1="8" y1="42" x2="92" y2="42"/>
+                            <line x1="8" y1="44" x2="92" y2="44"/>
+                            <!-- Wall mount bracket lines -->
+                            <line x1="20" y1="18" x2="20" y2="10" stroke-dasharray="3 2"/>
+                            <line x1="80" y1="18" x2="80" y2="10" stroke-dasharray="3 2"/>
+                            <!-- Dimension arrow -->
+                            <line x1="8" y1="54" x2="92" y2="54" stroke-width="0.6" stroke="var(--gray-300)"/>
+                            <line x1="8" y1="51" x2="8" y2="57" stroke-width="0.6" stroke="var(--gray-300)"/>
+                            <line x1="92" y1="51" x2="92" y2="57" stroke-width="0.6" stroke="var(--gray-300)"/>
+                        </svg>
+                    </div>
+                    <span class="hood-stage-label">System 01 — Render TBD</span>
                 </div>
-                <div class="hood-card-number">01</div>
-                <div class="hood-card-title">Wall Mount Hoods</div>
-                <div class="hood-card-desc">Engineered for wall-position installations. Stainless construction with integrated grease management channels.</div>
+                <div class="hood-panel-body">
+                    <div class="hood-panel-index">01 / 03</div>
+                    <div class="hood-panel-name">Wall Mount Hoods</div>
+                    <div class="hood-panel-desc">Low-profile commercial exhaust systems for standard kitchen layouts.</div>
+                    <div class="hood-panel-arrow">
+                        Learn more
+                        <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                </div>
             </div>
 
-            <div class="hood-card reveal reveal-delay-1">
-                <div class="hood-card-visual">
-                    <!-- Future: island hood render -->
-                    <svg width="72" height="72" fill="none" stroke="var(--gray-300)" stroke-width="0.8" viewBox="0 0 24 24">
-                        <polygon points="4,14 20,14 17,7 7,7"/>
-                        <line x1="12" y1="7" x2="12" y2="2"/>
-                        <line x1="7" y1="10" x2="17" y2="10"/>
-                        <line x1="6" y1="12" x2="18" y2="12"/>
-                        <rect x="11" y="14" width="2" height="7"/>
-                    </svg>
+            <!-- Panel 02 — Island Hoods -->
+            <div class="hood-panel reveal reveal-delay-1">
+                <div class="hood-panel-stage">
+                    <span class="hood-corner hood-corner-tl"></span>
+                    <span class="hood-corner hood-corner-tr"></span>
+                    <span class="hood-corner hood-corner-bl"></span>
+                    <span class="hood-corner hood-corner-br"></span>
+                    <div class="hood-product-frame">
+                        <!-- Island hood outline — four-sided, hanging -->
+                        <svg width="100" height="66" fill="none" viewBox="0 0 100 66" stroke="var(--gray-400)" stroke-width="1.2">
+                            <!-- Canopy (four-sided trapezoidal) -->
+                            <polygon points="12,42 88,42 76,18 24,18" fill="none"/>
+                            <!-- Baffle slots -->
+                            <line x1="32" y1="20" x2="30" y2="40"/>
+                            <line x1="42" y1="18" x2="42" y2="42"/>
+                            <line x1="50" y1="18" x2="50" y2="42"/>
+                            <line x1="58" y1="18" x2="58" y2="42"/>
+                            <line x1="68" y1="20" x2="70" y2="40"/>
+                            <!-- Duct collar centered, going up -->
+                            <rect x="42" y="4" width="16" height="14" rx="1"/>
+                            <line x1="50" y1="4" x2="50" y2="0"/>
+                            <!-- Suspension rods (island hangs from ceiling) -->
+                            <line x1="30" y1="18" x2="26" y2="4" stroke-dasharray="2 2" stroke-width="0.8"/>
+                            <line x1="70" y1="18" x2="74" y2="4" stroke-dasharray="2 2" stroke-width="0.8"/>
+                            <!-- Grease channel bottom -->
+                            <line x1="12" y1="42" x2="88" y2="42"/>
+                            <line x1="12" y1="44" x2="88" y2="44"/>
+                            <!-- Dimension -->
+                            <line x1="12" y1="54" x2="88" y2="54" stroke-width="0.6" stroke="var(--gray-300)"/>
+                            <line x1="12" y1="51" x2="12" y2="57" stroke-width="0.6" stroke="var(--gray-300)"/>
+                            <line x1="88" y1="51" x2="88" y2="57" stroke-width="0.6" stroke="var(--gray-300)"/>
+                        </svg>
+                    </div>
+                    <span class="hood-stage-label">System 02 — Render TBD</span>
                 </div>
-                <div class="hood-card-number">02</div>
-                <div class="hood-card-title">Island Hoods</div>
-                <div class="hood-card-desc">Four-sided capture for central kitchen islands. Balanced airflow geometry across all exposure faces.</div>
+                <div class="hood-panel-body">
+                    <div class="hood-panel-index">02 / 03</div>
+                    <div class="hood-panel-name">Island Hoods</div>
+                    <div class="hood-panel-desc">Centralized airflow systems engineered for open commercial kitchens.</div>
+                    <div class="hood-panel-arrow">
+                        Learn more
+                        <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                </div>
             </div>
 
-            <div class="hood-card reveal reveal-delay-2">
-                <div class="hood-card-visual">
-                    <img src="10 feet.png" alt="Custom Fabrication" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;border-radius:var(--radius);">
+            <!-- Panel 03 — Custom Fabrication -->
+            <div class="hood-panel reveal reveal-delay-2">
+                <div class="hood-panel-stage" style="background:#f0f0ee;">
+                    <span class="hood-corner hood-corner-tl"></span>
+                    <span class="hood-corner hood-corner-tr"></span>
+                    <span class="hood-corner hood-corner-bl"></span>
+                    <span class="hood-corner hood-corner-br"></span>
+                    <div class="hood-product-frame" style="background:#f8f8f7;">
+                        <!-- Custom / complex fabrication drawing -->
+                        <svg width="100" height="66" fill="none" viewBox="0 0 100 66" stroke="var(--gray-400)" stroke-width="1.2">
+                            <!-- Non-standard angled canopy -->
+                            <polygon points="6,44 60,44 72,18 18,18" fill="none"/>
+                            <!-- Extension panel -->
+                            <rect x="60" y="28" width="28" height="16" rx="1" fill="none"/>
+                            <!-- Connector duct -->
+                            <line x1="60" y1="32" x2="88" y2="32"/>
+                            <line x1="60" y1="40" x2="88" y2="40"/>
+                            <!-- Duct risers -->
+                            <rect x="28" y="4" width="14" height="14" rx="1"/>
+                            <rect x="65" y="18" width="10" height="10" rx="1"/>
+                            <!-- Construction lines -->
+                            <line x1="18" y1="18" x2="18" y2="4" stroke-dasharray="3 2" stroke-width="0.7"/>
+                            <line x1="72" y1="18" x2="72" y2="10" stroke-dasharray="3 2" stroke-width="0.7"/>
+                            <!-- Annotation tick marks -->
+                            <line x1="6" y1="52" x2="88" y2="52" stroke-width="0.6" stroke="var(--gray-300)"/>
+                            <line x1="6" y1="49" x2="6" y2="55" stroke-width="0.6" stroke="var(--gray-300)"/>
+                            <line x1="60" y1="49" x2="60" y2="55" stroke-width="0.6" stroke="var(--gray-300)"/>
+                            <line x1="88" y1="49" x2="88" y2="55" stroke-width="0.6" stroke="var(--gray-300)"/>
+                        </svg>
+                    </div>
+                    <span class="hood-stage-label">System 03 — Render TBD</span>
                 </div>
-                <div class="hood-card-number">03</div>
-                <div class="hood-card-title">Custom Fabrication</div>
-                <div class="hood-card-desc">Non-standard geometries built to architectural drawings. Curb-to-hood integration on all dimensions.</div>
+                <div class="hood-panel-body">
+                    <div class="hood-panel-index">03 / 03</div>
+                    <div class="hood-panel-name">Custom Fabrication</div>
+                    <div class="hood-panel-desc">Tailored exhaust infrastructure built for complex commercial environments.</div>
+                    <div class="hood-panel-arrow">
+                        Learn more
+                        <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                </div>
             </div>
 
         </div>
 
-        <div style="text-align:center;margin-top:56px;" class="reveal">
-            <a href="/primefacilityservicesgroup/contact/" class="btn-hero-ghost">Request Engineering Consultation</a>
+        <!-- CTA -->
+        <div class="hoods-cta-row reveal">
+            <a href="/primefacilityservicesgroup/contact/" class="btn-hoods-cta">
+                Request Engineering Consultation
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
         </div>
 
     </div>
