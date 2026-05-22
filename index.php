@@ -961,7 +961,7 @@ fclose($fp);
 
             <div class="landing-cards">
                 <!-- Hood System Cleaning Card -->
-                <a href="/hood-cleaning/" class="landing-card landing-card--hood">
+                <a href="/primefacilityservicesgroup/hood-cleaning/" class="landing-card landing-card--hood">
                     <div class="landing-card__bg"></div>
                     <div class="landing-card__content">
                         <div class="landing-card__icon">
