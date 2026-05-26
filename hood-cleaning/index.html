@@ -2605,7 +2605,7 @@
 (function() {
     const vSlides = [
         { src: 'Hood cleaning.mp4',   label: 'Hood Cleaning',       dot: '#22c55e' },
-        { src: 'vertical-2.mp4',      label: 'Video Vertical 2',    dot: '#22c55e' },
+        { src: 'Duct Cleaning.mp4',    label: 'Duct and Engine Inspection', dot: '#22c55e' },
         { src: 'vertical-3.mp4',      label: 'Video Vertical 3',    dot: '#22c55e' },
         { src: 'vertical-4.mp4',      label: 'Video Vertical 4',    dot: '#22c55e' },
         { src: 'vertical-5.mp4',      label: 'Video Vertical 5',    dot: '#22c55e' },
@@ -2640,7 +2640,8 @@
         vVideo.src = cur.src;
         vVideo.load();
         vVideo.onerror = null;
-        const isEmpty = cur.src !== 'Hood cleaning.mp4' && !cur.src.startsWith('http');
+        const knownVideos = ['Hood cleaning.mp4', 'Duct Cleaning.mp4'];
+        const isEmpty = !knownVideos.includes(cur.src) && !cur.src.startsWith('http');
         vVideo.style.display = isEmpty ? 'none' : '';
         vPlaceholder.style.display = isEmpty ? 'flex' : 'none';
         if (!isEmpty) vVideo.play().catch(() => {});
