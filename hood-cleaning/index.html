@@ -1996,21 +1996,62 @@
             cursor: pointer;
             border: none;
         }
-        /* Fullscreen expanded state */
+        /* True fullscreen overlay */
         .cinema-frame-v.is-fullscreen {
             position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) !important;
-            width: min(90vw, 420px);
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
             z-index: 9999;
+            transform: none !important;
             transition: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: none !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+        }
+        .cinema-frame-v.is-fullscreen::before,
+        .cinema-frame-v.is-fullscreen::after {
+            display: none !important;
+        }
+        .cinema-frame-v.is-fullscreen .cinema-frame-v-screen {
+            width: auto;
+            height: min(90vh, calc(90vw * 16 / 9));
+            max-width: 90vw;
+            aspect-ratio: unset;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            flex: none;
+        }
+        .cinema-frame-v.is-fullscreen .cinema-frame-v-screen video {
+            width: auto;
+            height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+        .cinema-frame-v.is-fullscreen .cinema-frame-v-tag {
+            display: none;
+        }
+        .cinema-frame-v.is-fullscreen .cinema-controls-bar {
+            opacity: 1 !important;
+            pointer-events: all !important;
+        }
+        .cinema-frame-v.is-fullscreen:hover .cinema-controls-bar {
+            opacity: 1;
         }
         .cinema-fullscreen-backdrop {
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(0,0,0,0.78);
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
             z-index: 9998;
         }
         .cinema-fullscreen-backdrop.active {
