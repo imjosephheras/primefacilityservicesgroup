@@ -2362,6 +2362,285 @@
         }
 
         /* iPhone mockup styles removed — replaced by cinema-frame-v */
+
+        /* ── Commercial Hood System Cleaning Services ── */
+        .hcs-section {
+          background: var(--ink);
+          padding: 140px 60px;
+          position: relative;
+          overflow: hidden;
+        }
+        .hcs-section::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background-image:
+            linear-gradient(var(--grid-line) 1px, transparent 1px),
+            linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+          background-size: 72px 72px;
+          pointer-events: none;
+        }
+        .hcs-section::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background:
+            radial-gradient(ellipse 55% 70% at 20% 50%, rgba(26,92,255,0.10) 0%, transparent 65%),
+            radial-gradient(ellipse 40% 55% at 85% 30%, rgba(26,92,255,0.07) 0%, transparent 55%);
+          pointer-events: none;
+        }
+        .hcs-inner {
+          position: relative;
+          z-index: 1;
+          max-width: 1440px;
+          margin: 0 auto;
+        }
+        .hcs-header { margin-bottom: 72px; }
+        .hcs-eyebrow {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          color: rgba(100,160,255,0.65);
+          margin-bottom: 20px;
+        }
+        .hcs-eyebrow-line {
+          display: inline-block;
+          width: 28px;
+          height: 1px;
+          background: rgba(100,160,255,0.4);
+        }
+        .hcs-title {
+          font-size: clamp(34px, 4vw, 58px);
+          font-weight: 900;
+          letter-spacing: -0.04em;
+          color: #fff;
+          line-height: 1.05;
+          margin-bottom: 18px;
+          max-width: 760px;
+        }
+        .hcs-title em {
+          font-style: normal;
+          background: linear-gradient(135deg, #4d88ff 0%, #1a5cff 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+        .hcs-subtitle {
+          font-size: 17px;
+          color: rgba(255,255,255,0.38);
+          line-height: 1.65;
+          max-width: 680px;
+        }
+        .hcs-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 64px;
+          align-items: start;
+        }
+        .hcs-slider-wrap { position: sticky; top: 100px; }
+        .hcs-slider-frame {
+          position: relative;
+          width: 100%;
+          aspect-ratio: 4 / 3;
+          border-radius: 20px;
+          overflow: hidden;
+          border: 1px solid rgba(26,92,255,0.18);
+          background: #0c1322;
+        }
+        .hcs-slider-frame::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background-image:
+            linear-gradient(rgba(26,92,255,0.10) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(26,92,255,0.10) 1px, transparent 1px);
+          background-size: 40px 40px;
+          z-index: 1;
+          pointer-events: none;
+          opacity: 0;
+          transition: opacity 0.4s;
+        }
+        .hcs-slider-frame.loading::before { opacity: 1; }
+        .hcs-slide {
+          position: absolute;
+          inset: 0;
+          opacity: 0;
+          transition: opacity 1.1s ease;
+          z-index: 2;
+        }
+        .hcs-slide.active { opacity: 1; }
+        .hcs-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .hcs-slide::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background:
+            linear-gradient(180deg, rgba(10,11,16,0.30) 0%, transparent 40%, rgba(10,11,16,0.65) 100%),
+            linear-gradient(90deg, rgba(10,11,16,0.15) 0%, transparent 50%);
+        }
+        .hcs-frame-tick { position: absolute; width: 16px; height: 16px; z-index: 5; }
+        .hcs-frame-tick--tl { top: 14px; left: 14px; border-top: 2px solid rgba(26,92,255,0.55); border-left: 2px solid rgba(26,92,255,0.55); border-radius: 2px 0 0 0; }
+        .hcs-frame-tick--tr { top: 14px; right: 14px; border-top: 2px solid rgba(26,92,255,0.55); border-right: 2px solid rgba(26,92,255,0.55); border-radius: 0 2px 0 0; }
+        .hcs-frame-tick--bl { bottom: 14px; left: 14px; border-bottom: 2px solid rgba(26,92,255,0.55); border-left: 2px solid rgba(26,92,255,0.55); border-radius: 0 0 0 2px; }
+        .hcs-frame-tick--br { bottom: 14px; right: 14px; border-bottom: 2px solid rgba(26,92,255,0.55); border-right: 2px solid rgba(26,92,255,0.55); border-radius: 0 0 2px 0; }
+        .hcs-slide-caption {
+          position: absolute;
+          bottom: 0; left: 0; right: 0;
+          z-index: 6;
+          padding: 18px 22px;
+          display: flex;
+          align-items: flex-end;
+          justify-content: space-between;
+          gap: 12px;
+        }
+        .hcs-caption-label { font-size: 11px; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+        .hcs-caption-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          padding: 4px 10px;
+          border-radius: 100px;
+          background: rgba(26,92,255,0.22);
+          border: 1px solid rgba(77,136,255,0.25);
+          font-size: 10px;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+          color: rgba(130,180,255,0.85);
+          white-space: nowrap;
+        }
+        .hcs-caption-badge-dot {
+          width: 5px; height: 5px;
+          border-radius: 50%;
+          background: #4d88ff;
+          animation: dotBlink 2s ease-in-out infinite;
+        }
+        @keyframes dotBlink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+        .hcs-dots { display: flex; gap: 8px; justify-content: center; margin-top: 20px; }
+        .hcs-dot {
+          width: 6px; height: 6px;
+          border-radius: 50%;
+          background: rgba(255,255,255,0.18);
+          border: none; padding: 0;
+          cursor: pointer;
+          transition: background 0.3s, transform 0.3s;
+        }
+        .hcs-dot.active { background: var(--blue-bright); transform: scale(1.35); }
+        .hcs-progress-bar { height: 2px; background: rgba(255,255,255,0.08); border-radius: 2px; margin-top: 14px; overflow: hidden; }
+        .hcs-progress-fill { height: 100%; background: linear-gradient(90deg, var(--blue), var(--blue-bright)); border-radius: 2px; width: 0%; transition: width 0.1s linear; }
+        .hcs-counter { display: flex; align-items: center; gap: 12px; margin-top: 16px; }
+        .hcs-counter-text { font-size: 11px; font-weight: 600; letter-spacing: 0.07em; color: rgba(255,255,255,0.25); }
+        .hcs-counter-num { font-size: 11px; font-weight: 700; color: rgba(130,180,255,0.6); }
+        .hcs-counter-nav { display: flex; gap: 8px; margin-left: auto; }
+        .hcs-nav-btn {
+          width: 32px; height: 32px;
+          border-radius: 8px;
+          border: 1px solid rgba(255,255,255,0.1);
+          background: rgba(255,255,255,0.04);
+          color: rgba(255,255,255,0.45);
+          display: flex; align-items: center; justify-content: center;
+          cursor: pointer;
+          transition: border-color 0.2s, background 0.2s, color 0.2s;
+        }
+        .hcs-nav-btn:hover { border-color: rgba(26,92,255,0.45); background: rgba(26,92,255,0.12); color: rgba(130,180,255,0.9); }
+        .hcs-service-list { display: flex; flex-direction: column; gap: 2px; }
+        .hcs-service-item {
+          border: 1px solid rgba(255,255,255,0.06);
+          border-radius: 14px;
+          background: rgba(255,255,255,0.03);
+          overflow: hidden;
+          transition: border-color 0.25s, background 0.25s;
+        }
+        .hcs-service-item:hover { border-color: rgba(26,92,255,0.22); background: rgba(26,92,255,0.05); }
+        .hcs-service-header { display: flex; align-items: center; gap: 16px; padding: 22px 24px; cursor: default; }
+        .hcs-service-num {
+          flex-shrink: 0;
+          width: 28px; height: 28px;
+          border-radius: 8px;
+          background: rgba(26,92,255,0.12);
+          border: 1px solid rgba(26,92,255,0.18);
+          display: flex; align-items: center; justify-content: center;
+          font-size: 10px; font-weight: 700; letter-spacing: 0.05em;
+          color: rgba(100,160,255,0.7);
+        }
+        .hcs-service-icon {
+          flex-shrink: 0;
+          width: 40px; height: 40px;
+          border-radius: 10px;
+          background: rgba(26,92,255,0.08);
+          border: 1px solid rgba(26,92,255,0.14);
+          display: flex; align-items: center; justify-content: center;
+          color: rgba(100,160,255,0.75);
+          transition: background 0.25s, border-color 0.25s;
+        }
+        .hcs-service-item:hover .hcs-service-icon { background: rgba(26,92,255,0.16); border-color: rgba(26,92,255,0.28); }
+        .hcs-service-text { flex: 1; }
+        .hcs-service-name { font-size: 15px; font-weight: 700; color: rgba(255,255,255,0.85); letter-spacing: -0.02em; margin-bottom: 4px; }
+        .hcs-service-desc { font-size: 13px; color: rgba(255,255,255,0.32); line-height: 1.55; }
+        .hcs-cta-block {
+          margin-top: 80px;
+          padding: 56px 60px;
+          border: 1px solid rgba(26,92,255,0.18);
+          border-radius: 20px;
+          background: rgba(26,92,255,0.06);
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 40px;
+          position: relative;
+          overflow: hidden;
+        }
+        .hcs-cta-block::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background-image:
+            linear-gradient(rgba(26,92,255,0.08) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(26,92,255,0.08) 1px, transparent 1px);
+          background-size: 36px 36px;
+          pointer-events: none;
+        }
+        .hcs-cta-left { position: relative; z-index: 1; }
+        .hcs-cta-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(100,160,255,0.55); margin-bottom: 12px; }
+        .hcs-cta-title { font-size: clamp(22px, 2.4vw, 32px); font-weight: 900; letter-spacing: -0.04em; color: #fff; line-height: 1.1; margin-bottom: 12px; }
+        .hcs-cta-desc { font-size: 15px; color: rgba(255,255,255,0.36); line-height: 1.6; max-width: 520px; }
+        .hcs-cta-right { position: relative; z-index: 1; flex-shrink: 0; }
+        .btn-hcs-cta {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          padding: 18px 32px;
+          background: var(--blue);
+          color: #fff;
+          font-size: 15px;
+          font-weight: 700;
+          letter-spacing: -0.01em;
+          border-radius: 12px;
+          text-decoration: none;
+          transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+          white-space: nowrap;
+        }
+        .btn-hcs-cta:hover { background: #2a6aff; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(26,92,255,0.4); }
+        @media (max-width: 1200px) {
+          .hcs-section { padding: 120px 40px; }
+          .hcs-grid { gap: 48px; }
+          .hcs-cta-block { padding: 44px 44px; }
+        }
+        @media (max-width: 1024px) {
+          .hcs-grid { grid-template-columns: 1fr; gap: 56px; }
+          .hcs-slider-wrap { position: static; }
+        }
+        @media (max-width: 768px) {
+          .hcs-cta-block { flex-direction: column; align-items: flex-start; }
+        }
+        @media (max-width: 640px) {
+          .hcs-section { padding: 80px 24px; }
+          .hcs-cta-block { padding: 32px 28px; }
+          .hcs-service-header { padding: 18px 18px; gap: 12px; }
+        }
     </style>
 </head>
 <body>
@@ -3114,6 +3393,312 @@
 
     </div>
 </section>
+
+<div class="arch-divider"></div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 3B — COMMERCIAL HOOD SYSTEM CLEANING SERVICES
+══════════════════════════════════════════════════════════ -->
+<section class="hcs-section" id="hood-cleaning-services">
+  <div class="hcs-inner">
+
+    <div class="hcs-header reveal">
+      <div class="hcs-eyebrow">
+        <span class="hcs-eyebrow-line"></span>
+        Commercial Services
+        <span class="hcs-eyebrow-line"></span>
+      </div>
+      <h2 class="hcs-title">Commercial Hood System<br><em>Cleaning Services</em></h2>
+      <p class="hcs-subtitle">Professional cleaning, inspection, and maintenance services designed to maintain exhaust system performance, fire safety compliance, and long-term operational efficiency.</p>
+    </div>
+
+    <div class="hcs-grid">
+
+      <!-- LEFT: image slider -->
+      <div class="hcs-slider-wrap reveal">
+        <div class="hcs-slider-frame" id="hcsSliderFrame">
+          <div class="hcs-frame-tick hcs-frame-tick--tl"></div>
+          <div class="hcs-frame-tick hcs-frame-tick--tr"></div>
+          <div class="hcs-frame-tick hcs-frame-tick--bl"></div>
+          <div class="hcs-frame-tick hcs-frame-tick--br"></div>
+
+          <div class="hcs-slide active" data-label="Hood Cleaning">
+            <img src="Hood Clean.png" alt="Commercial hood cleaning — cleaned hood system" loading="lazy">
+          </div>
+          <div class="hcs-slide" data-label="Hood Condition">
+            <img src="Hood sucio.jpg" alt="Commercial hood — grease accumulation assessment" loading="lazy">
+          </div>
+          <div class="hcs-slide" data-label="Exhaust Fan Cleaning">
+            <img src="Exhaust Fans.png" alt="Rooftop exhaust fan cleaning" loading="lazy">
+          </div>
+          <div class="hcs-slide" data-label="Fan Blade Service">
+            <img src="Aspas Clean.jpg" alt="Exhaust fan blade cleaning service" loading="lazy">
+          </div>
+          <div class="hcs-slide" data-label="Fan Blade Assessment">
+            <img src="Aspas Sucias.png" alt="Fan blade grease accumulation" loading="lazy">
+          </div>
+          <div class="hcs-slide" data-label="Duct Cleaning">
+            <img src="Ducto.png" alt="Exhaust duct system cleaning" loading="lazy">
+          </div>
+          <div class="hcs-slide" data-label="Grease Filter Service">
+            <img src="Filtro Hood.png" alt="Grease filter cleaning and maintenance" loading="lazy">
+          </div>
+          <div class="hcs-slide" data-label="Aluminum Filter">
+            <img src="Filtro Hood Aluminio.png" alt="Aluminum hood filter service" loading="lazy">
+          </div>
+          <div class="hcs-slide" data-label="Mesh Filter Cleaning">
+            <img src="Filtro de malla.png" alt="Mesh filter cleaning" loading="lazy">
+          </div>
+          <div class="hcs-slide" data-label="System Inspection">
+            <img src="Inspeccion de hood.png" alt="Hood system professional inspection" loading="lazy">
+          </div>
+          <div class="hcs-slide" data-label="Access Panel">
+            <img src="Access Panel.png" alt="Access panel inspection and verification" loading="lazy">
+          </div>
+          <div class="hcs-slide" data-label="Impeller Service">
+            <img src="Impeller.png" alt="Fan impeller cleaning service" loading="lazy">
+          </div>
+
+          <div class="hcs-slide-caption">
+            <span class="hcs-caption-label" id="hcsCaptionLabel">Hood Cleaning</span>
+            <span class="hcs-caption-badge">
+              <span class="hcs-caption-badge-dot"></span>
+              Professional Service
+            </span>
+          </div>
+        </div>
+
+        <div class="hcs-progress-bar">
+          <div class="hcs-progress-fill" id="hcsProgressFill"></div>
+        </div>
+
+        <div class="hcs-counter">
+          <span class="hcs-counter-text">Slide</span>
+          <span class="hcs-counter-num" id="hcsCounterNum">01 / 12</span>
+          <div class="hcs-counter-nav">
+            <button class="hcs-nav-btn" id="hcsPrev" aria-label="Previous slide">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button class="hcs-nav-btn" id="hcsNext" aria-label="Next slide">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="hcs-dots" id="hcsDots"></div>
+      </div>
+
+      <!-- RIGHT: service list -->
+      <div class="hcs-services-col reveal reveal-delay-1">
+        <div class="hcs-service-list">
+
+          <div class="hcs-service-item">
+            <div class="hcs-service-header">
+              <div class="hcs-service-num">01</div>
+              <div class="hcs-service-icon">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              </div>
+              <div class="hcs-service-text">
+                <div class="hcs-service-name">Hood Cleaning</div>
+                <div class="hcs-service-desc">Deep cleaning of commercial kitchen hood systems to remove grease accumulation and maintain fire safety compliance.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hcs-service-item">
+            <div class="hcs-service-header">
+              <div class="hcs-service-num">02</div>
+              <div class="hcs-service-icon">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="8" rx="2"/><path d="M7 8V6a2 2 0 012-2h6a2 2 0 012 2v2M7 16v2M17 16v2"/></svg>
+              </div>
+              <div class="hcs-service-text">
+                <div class="hcs-service-name">Exhaust Duct Cleaning</div>
+                <div class="hcs-service-desc">Removal of grease buildup inside horizontal and vertical duct systems to improve airflow efficiency and reduce fire hazards.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hcs-service-item">
+            <div class="hcs-service-header">
+              <div class="hcs-service-num">03</div>
+              <div class="hcs-service-icon">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+              </div>
+              <div class="hcs-service-text">
+                <div class="hcs-service-name">Exhaust Fan Cleaning</div>
+                <div class="hcs-service-desc">Cleaning and maintenance of rooftop exhaust fans, fan blades, housings, and surrounding grease accumulation areas.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hcs-service-item">
+            <div class="hcs-service-header">
+              <div class="hcs-service-num">04</div>
+              <div class="hcs-service-icon">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h7"/><path d="M15 15l2 2 4-4"/></svg>
+              </div>
+              <div class="hcs-service-text">
+                <div class="hcs-service-name">Filter Cleaning &amp; Replacement</div>
+                <div class="hcs-service-desc">Inspection, cleaning, and replacement recommendations for grease filters and filtration components.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hcs-service-item">
+            <div class="hcs-service-header">
+              <div class="hcs-service-num">05</div>
+              <div class="hcs-service-icon">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <div class="hcs-service-text">
+                <div class="hcs-service-name">Grease Containment Cleaning</div>
+                <div class="hcs-service-desc">Cleaning of rooftop grease containment systems and surrounding roof protection areas.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hcs-service-item">
+            <div class="hcs-service-header">
+              <div class="hcs-service-num">06</div>
+              <div class="hcs-service-icon">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 9h3M15 15h3"/></svg>
+              </div>
+              <div class="hcs-service-text">
+                <div class="hcs-service-name">Access Panel Inspection</div>
+                <div class="hcs-service-desc">Inspection and verification of access panel conditions, accessibility, and serviceability.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hcs-service-item">
+            <div class="hcs-service-header">
+              <div class="hcs-service-num">07</div>
+              <div class="hcs-service-icon">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v3M11 14h.01"/></svg>
+              </div>
+              <div class="hcs-service-text">
+                <div class="hcs-service-name">Technical System Inspections</div>
+                <div class="hcs-service-desc">Professional inspection of exhaust system conditions, airflow restrictions, visible deficiencies, and maintenance requirements.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hcs-service-item">
+            <div class="hcs-service-header">
+              <div class="hcs-service-num">08</div>
+              <div class="hcs-service-icon">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+              </div>
+              <div class="hcs-service-text">
+                <div class="hcs-service-name">NFPA-Oriented Cleaning Documentation</div>
+                <div class="hcs-service-desc">Service reports and cleaning documentation designed to support maintenance tracking and NFPA-oriented compliance records.</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="hcs-cta-block reveal">
+      <div class="hcs-cta-left">
+        <div class="hcs-cta-eyebrow">Schedule Service</div>
+        <div class="hcs-cta-title">Request Professional Hood<br>System Service</div>
+        <p class="hcs-cta-desc">Schedule professional cleaning, inspection, and exhaust system maintenance services for your commercial kitchen facility.</p>
+      </div>
+      <div class="hcs-cta-right">
+        <a href="/primefacilityservicesgroup/contact/" class="btn-hcs-cta">
+          Request Service Evaluation
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+(function () {
+  const slides = document.querySelectorAll('.hcs-slide');
+  const dotsContainer = document.getElementById('hcsDots');
+  const progressFill  = document.getElementById('hcsProgressFill');
+  const captionLabel  = document.getElementById('hcsCaptionLabel');
+  const counterNum    = document.getElementById('hcsCounterNum');
+  const prevBtn       = document.getElementById('hcsPrev');
+  const nextBtn       = document.getElementById('hcsNext');
+
+  if (!slides.length) return;
+
+  const total       = slides.length;
+  const INTERVAL_MS = 4500;
+  let current       = 0;
+  let timer         = null;
+  let progressTimer = null;
+  let progressStart = null;
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'hcs-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+    dot.addEventListener('click', () => goTo(i, true));
+    dotsContainer.appendChild(dot);
+  });
+  const dots = dotsContainer.querySelectorAll('.hcs-dot');
+
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+  function updateUI(idx) {
+    slides.forEach((s, i) => s.classList.toggle('active', i === idx));
+    dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    const label = slides[idx].dataset.label || '';
+    if (captionLabel) captionLabel.textContent = label;
+    if (counterNum)   counterNum.textContent = pad(idx + 1) + ' / ' + pad(total);
+  }
+
+  function startProgress() {
+    progressStart = performance.now();
+    if (progressFill) progressFill.style.width = '0%';
+    function tick(now) {
+      if (!progressStart) return;
+      const elapsed = now - progressStart;
+      const pct = Math.min((elapsed / INTERVAL_MS) * 100, 100);
+      if (progressFill) progressFill.style.width = pct + '%';
+      if (pct < 100) progressTimer = requestAnimationFrame(tick);
+    }
+    progressTimer = requestAnimationFrame(tick);
+  }
+
+  function stopProgress() {
+    if (progressTimer) cancelAnimationFrame(progressTimer);
+    progressStart = null;
+  }
+
+  function goTo(idx, manual) {
+    stopProgress();
+    clearInterval(timer);
+    current = (idx + total) % total;
+    updateUI(current);
+    startProgress();
+    timer = setInterval(autoAdvance, INTERVAL_MS);
+  }
+
+  function autoAdvance() {
+    stopProgress();
+    current = (current + 1) % total;
+    updateUI(current);
+    startProgress();
+  }
+
+  if (prevBtn) prevBtn.addEventListener('click', () => goTo(current - 1, true));
+  if (nextBtn) nextBtn.addEventListener('click', () => goTo(current + 1, true));
+
+  updateUI(0);
+  startProgress();
+  timer = setInterval(autoAdvance, INTERVAL_MS);
+})();
+</script>
 
 <div class="arch-divider"></div>
 
