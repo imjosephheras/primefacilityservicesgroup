@@ -1996,53 +1996,7 @@
             cursor: pointer;
             border: none;
         }
-        /* True fullscreen overlay */
-        .cinema-frame-v.is-fullscreen {
-            position: fixed;
-            inset: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 9999;
-            transform: none !important;
-            transition: none;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: transparent;
-            border: none !important;
-            border-radius: 0 !important;
-            box-shadow: none !important;
-            padding: 0 !important;
-        }
-        .cinema-frame-v.is-fullscreen::before,
-        .cinema-frame-v.is-fullscreen::after {
-            display: none !important;
-        }
-        .cinema-frame-v.is-fullscreen .cinema-frame-v-screen {
-            height: min(90vh, calc(90vw * 9 / 19.5));
-            width: calc(min(90vh, calc(90vw * 9 / 19.5)) * 9 / 19.5);
-            aspect-ratio: 9 / 19.5;
-            border-radius: 8px;
-            overflow: hidden;
-            position: relative;
-            flex: none;
-        }
-        .cinema-frame-v.is-fullscreen .cinema-frame-v-screen video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .cinema-frame-v.is-fullscreen .cinema-frame-v-tag {
-            display: none;
-        }
-        .cinema-frame-v.is-fullscreen .cinema-controls-bar {
-            opacity: 1 !important;
-            pointer-events: all !important;
-        }
-        .cinema-frame-v.is-fullscreen:hover .cinema-controls-bar {
-            opacity: 1;
-        }
+        /* True fullscreen modal — body-level, not constrained by any parent */
         .cinema-fullscreen-backdrop {
             display: none;
             position: fixed;
@@ -2054,6 +2008,60 @@
         }
         .cinema-fullscreen-backdrop.active {
             display: block;
+        }
+        .cinema-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+        .cinema-modal.active {
+            display: flex;
+        }
+        .cinema-modal-inner {
+            position: relative;
+            /* Vertical (portrait 9:16) video sizing */
+            height: min(90vh, calc(90vw * 16 / 9));
+            width: min(calc(90vh * 9 / 16), 50vw);
+            max-height: 90vh;
+            max-width: 90vw;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #000;
+            box-shadow: 0 32px 80px rgba(0,0,0,0.7);
+        }
+        .cinema-modal-inner video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+        @media (max-width: 600px) {
+            .cinema-modal-inner {
+                width: 92vw;
+                height: auto;
+                aspect-ratio: 9 / 16;
+            }
+        }
+        .cinema-modal-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.6);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+        .cinema-modal-close svg {
+            stroke: #fff;
         }
 
         /* Navigation arrows for vertical carousel */
@@ -2789,6 +2797,18 @@
 <!-- Fullscreen backdrop overlay -->
 <div class="cinema-fullscreen-backdrop" id="vFullBackdrop"></div>
 
+<!-- True fullscreen modal — appended to body, outside carousel DOM -->
+<div class="cinema-modal" id="vModal">
+    <div class="cinema-modal-inner" id="vModalInner">
+        <video id="vModalVideo" playsinline controls></video>
+        <button class="cinema-modal-close" id="vModalClose" aria-label="Close fullscreen">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+        </button>
+    </div>
+</div>
+
 <script>
 /* ── Vertical carousel (single video for now, extensible) ── */
 (function() {
@@ -2912,24 +2932,50 @@
         updateVolIcon(vol, vol === 0);
     });
 
-    /* ── Fullscreen expand ── */
-    var vMainFrame = document.getElementById('vMainFrame');
+    /* ── Fullscreen expand — true body-level modal ── */
     var vFullBtn = document.getElementById('vFullBtn');
     var vFullBackdrop = document.getElementById('vFullBackdrop');
     var vFullIcon = document.getElementById('vFullIcon');
+    var vModal = document.getElementById('vModal');
+    var vModalVideo = document.getElementById('vModalVideo');
+    var vModalClose = document.getElementById('vModalClose');
     var vIsFullscreen = false;
 
     function setFullscreen(on) {
         vIsFullscreen = on;
-        vMainFrame.classList.toggle('is-fullscreen', on);
         vFullBackdrop.classList.toggle('active', on);
+        vModal.classList.toggle('active', on);
         vFullIcon.innerHTML = on
             ? '<polyline points="4,14 10,14 10,20"/><polyline points="20,10 14,10 14,4"/><line x1="10" y1="14" x2="3" y2="21"/><line x1="14" y1="10" x2="21" y2="3"/>'
             : '<polyline points="15,3 21,3 21,9"/><polyline points="9,21 3,21 3,15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/>';
+        if (on) {
+            /* Mirror current video source and playback state into modal */
+            vModalVideo.src = vVideo.src || vVideo.currentSrc;
+            vModalVideo.currentTime = vVideo.currentTime;
+            vModalVideo.muted = vVideo.muted;
+            vModalVideo.volume = vVideo.volume;
+            vModalVideo.load();
+            vModalVideo.addEventListener('loadedmetadata', function onMeta() {
+                vModalVideo.currentTime = vVideo.currentTime;
+                vModalVideo.removeEventListener('loadedmetadata', onMeta);
+            });
+            vModalVideo.play().catch(function() {});
+            vVideo.pause();
+            document.body.style.overflow = 'hidden';
+        } else {
+            /* Restore carousel video from modal position */
+            var t = vModalVideo.currentTime;
+            vModalVideo.pause();
+            vModalVideo.src = '';
+            vVideo.currentTime = t;
+            vVideo.play().catch(function() {});
+            document.body.style.overflow = '';
+        }
     }
 
     vFullBtn.addEventListener('click', function() { setFullscreen(!vIsFullscreen); });
     vFullBackdrop.addEventListener('click', function() { setFullscreen(false); });
+    vModalClose.addEventListener('click', function() { setFullscreen(false); });
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && vIsFullscreen) setFullscreen(false);
     });
