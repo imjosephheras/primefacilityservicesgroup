@@ -8,9 +8,241 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/primefacilityservicesgroup/navbar.css">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ════════════════════════════════════════════════
+       NAVIGATION
+    ════════════════════════════════════════════════ */
+    #prime-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(10,11,16,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+    #prime-nav.scrolled {
+      background: rgba(10,11,16,0.98);
+      box-shadow: 0 4px 32px rgba(0,0,0,0.4);
+    }
+    .nav-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 40px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    #nav-logo-img { height: 36px; width: auto; }
+    .nav-logo-text {
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      list-style: none;
+      flex: 1;
+    }
+    .nav-item { position: relative; }
+    .nav-item > .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 8px 14px;
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.62);
+      background: none;
+      border: none;
+      cursor: pointer;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: color 0.2s, background 0.2s;
+      white-space: nowrap;
+    }
+    .nav-item > .nav-link:hover {
+      color: #fff;
+      background: rgba(255,255,255,0.06);
+    }
+    .nav-item > .nav-link svg { flex-shrink: 0; transition: transform 0.2s; }
+    .nav-item:hover > .nav-link svg { transform: rotate(180deg); }
+
+    /* Mega menu */
+    .mega-menu {
+      position: absolute;
+      top: calc(100% + 10px);
+      left: 0;
+      min-width: 280px;
+      background: #13141c;
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+      pointer-events: none;
+    }
+    .nav-item:hover .mega-menu,
+    .nav-item:focus-within .mega-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .mega-section-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.28);
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .mega-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2px;
+    }
+    .mega-grid-2 { grid-template-columns: 1fr 1fr; gap: 2px 16px; }
+    .mega-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      border-radius: 7px;
+      transition: color 0.18s, background 0.18s;
+    }
+    .mega-item:hover { color: #fff; background: rgba(255,255,255,0.06); }
+    .mega-item-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.22);
+      flex-shrink: 0;
+    }
+
+    /* Nav CTA */
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 16px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.6);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 9px;
+      text-decoration: none;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+      white-space: nowrap;
+    }
+    .btn-ghost:hover { color: #fff; border-color: rgba(255,255,255,0.35); background: rgba(255,255,255,0.06); }
+    .btn-primary-nav {
+      display: inline-flex;
+      align-items: center;
+      padding: 9px 18px;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #fff;
+      background: #1a5cff;
+      border-radius: 9px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      white-space: nowrap;
+    }
+    .btn-primary-nav:hover { background: #2a6aff; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(26,92,255,0.4); }
+
+    /* Mobile toggle */
+    .mobile-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: none;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 9px;
+      color: rgba(255,255,255,0.7);
+      cursor: pointer;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+
+    /* Mobile menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: #0a0b10;
+      padding: 80px 32px 40px;
+      flex-direction: column;
+      gap: 4px;
+      overflow-y: auto;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.06);
+      border: none;
+      border-radius: 10px;
+      color: rgba(255,255,255,0.6);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mobile-nav-link {
+      display: block;
+      padding: 14px 16px;
+      font-size: 18px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      border-radius: 10px;
+      transition: color 0.2s, background 0.2s;
+    }
+    .mobile-nav-link:hover { color: #fff; background: rgba(255,255,255,0.06); }
+
+    @media (max-width: 1024px) {
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .mobile-toggle { display: flex; }
+      .nav-inner { padding: 0 24px; }
+    }
 
     :root {
       --blue:        #1a5cff;
@@ -2213,8 +2445,16 @@
 </footer>
 
 
-<script src="/primefacilityservicesgroup/navbar.js"></script>
 <script>
+  /* nav scroll effect */
+  (function () {
+    const nav = document.getElementById('prime-nav');
+    if (!nav) return;
+    window.addEventListener('scroll', function () {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+  })();
+
   /* reveal on scroll */
   const revealEls = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
