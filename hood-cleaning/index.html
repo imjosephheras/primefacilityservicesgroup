@@ -2441,13 +2441,14 @@
           display: grid;
           grid-template-columns: 1fr 1fr;
           gap: 64px;
-          align-items: start;
+          align-items: stretch;
         }
-        .hcs-slider-wrap { position: sticky; top: 100px; }
+        .hcs-slider-wrap { display: flex; flex-direction: column; }
         .hcs-slider-frame {
           position: relative;
           width: 100%;
-          aspect-ratio: 4 / 3;
+          flex: 1;
+          min-height: 480px;
           border-radius: 20px;
           overflow: hidden;
           border: 1px solid rgba(26,92,255,0.18);
