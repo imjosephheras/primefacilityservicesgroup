@@ -93,7 +93,8 @@
             flex-shrink: 0;
         }
 
-        .nav-logo img { height: 18px; width: auto; display: block; }
+        .nav-logo img { height: 40px; width: auto; display: block; transition: height 0.3s ease; }
+        #prime-nav.scrolled .nav-logo img { height: 32px; }
 
         .nav-logo-text {
             font-size: 17px;
@@ -2371,7 +2372,7 @@
 <nav id="prime-nav">
     <div class="nav-inner">
         <a href="/primefacilityservicesgroup/hood-cleaning/" class="nav-logo">
-            <img src="/primefacilityservicesgroup/logo-prime.png" alt="PRIME" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+            <img id="nav-logo-img" src="/primefacilityservicesgroup/logo-prime2.png" alt="PRIME" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
             <span class="nav-logo-text" style="display:none;">PRIME</span>
         </a>
 
@@ -3773,8 +3774,15 @@
 <script>
     /* Navbar scroll */
     const nav = document.getElementById('prime-nav');
+    const navLogoImg = document.getElementById('nav-logo-img');
     window.addEventListener('scroll', () => {
-        nav.classList.toggle('scrolled', window.scrollY > 20);
+        const scrolled = window.scrollY > 20;
+        nav.classList.toggle('scrolled', scrolled);
+        if (navLogoImg) {
+            navLogoImg.src = scrolled
+                ? '/primefacilityservicesgroup/logo-prime.png'
+                : '/primefacilityservicesgroup/logo-prime2.png';
+        }
     }, { passive: true });
 
     /* Mega menu */
