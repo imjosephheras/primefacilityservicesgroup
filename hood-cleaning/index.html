@@ -3106,10 +3106,10 @@
 
         <!-- CTA -->
         <div class="hoods-cta-row reveal">
-            <a href="/primefacilityservicesgroup/contact/" class="btn-hoods-cta">
+            <button onclick="document.getElementById('ductModalOverlay').classList.add('open')" class="btn-hoods-cta">
                 Request Engineering Consultation
                 <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
+            </button>
         </div>
 
     </div>
@@ -3952,6 +3952,575 @@
             if (Math.abs(dx) > 40) goTo(current + (dx < 0 ? 1 : -1));
         });
     })();
+</script>
+
+<!-- ══════════════════════════════════════════════════════════
+     DUCTWORK ENGINEERING — CONSULTATION MODAL
+══════════════════════════════════════════════════════════ -->
+<div id="ductModalOverlay" class="duct-overlay" role="dialog" aria-modal="true" aria-labelledby="ductModalTitle">
+  <div class="duct-modal" id="ductModal">
+
+    <!-- Header -->
+    <div class="duct-modal-header">
+      <div class="duct-modal-header-left">
+        <span class="duct-modal-eyebrow">Ductwork Engineering — Exhaust System Visualization</span>
+        <h2 class="duct-modal-title" id="ductModalTitle">Select an Engineering Package</h2>
+        <p class="duct-modal-subtitle">Technical documentation and airflow analysis for commercial kitchen exhaust systems.</p>
+      </div>
+      <button class="duct-modal-close" onclick="document.getElementById('ductModalOverlay').classList.remove('open')" aria-label="Close">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Packages -->
+    <div class="duct-packages">
+
+      <!-- ── PACKAGE 01 ─────────────────────────────── -->
+      <div class="duct-pkg">
+        <div class="duct-pkg-visual">
+          <div class="duct-pkg-img-placeholder">
+            <div class="duct-pkg-img-inner">
+              <svg class="duct-img-icon" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 64 64">
+                <rect x="8" y="28" width="48" height="8" rx="2"/>
+                <path d="M20 28V20M44 28V20M8 36v4M56 36v4"/>
+                <path d="M12 20h40" stroke-dasharray="3 3"/>
+                <circle cx="32" cy="14" r="4"/>
+                <path d="M32 18v2" stroke-linecap="round"/>
+                <path d="M24 36l-8 8M40 36l8 8" stroke-dasharray="2 2"/>
+              </svg>
+              <span class="duct-img-label">System Layout Render</span>
+              <span class="duct-img-sublabel">Side-view technical visualization</span>
+            </div>
+          </div>
+        </div>
+        <div class="duct-pkg-info">
+          <div class="duct-pkg-badge">Package 01</div>
+          <h3 class="duct-pkg-title">System Layout Visualization</h3>
+          <p class="duct-pkg-desc">Technical side-view visualization of the exhaust duct system showing airflow direction, duct routing, primary dimensions, elbows, rooftop termination, and visible access panels.</p>
+
+          <div class="duct-section-label">Includes</div>
+          <ul class="duct-list">
+            <li>Side-view system layout</li>
+            <li>Main duct measurements</li>
+            <li>Airflow direction indicators</li>
+            <li>Elbow locations</li>
+            <li>Visible access panels</li>
+            <li>Rooftop termination point</li>
+          </ul>
+
+          <div class="duct-two-col">
+            <div>
+              <div class="duct-section-label">Deliverables</div>
+              <ul class="duct-list">
+                <li>1 technical rendered image</li>
+                <li>PDF export</li>
+              </ul>
+            </div>
+            <div>
+              <div class="duct-section-label">Ideal For</div>
+              <ul class="duct-list">
+                <li>Basic system documentation</li>
+                <li>Maintenance reference</li>
+                <li>Visual system overview</li>
+              </ul>
+            </div>
+          </div>
+
+          <a href="/primefacilityservicesgroup/contact/" class="duct-pkg-cta">
+            Request Package 01
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- ── PACKAGE 02 ─────────────────────────────── -->
+      <div class="duct-pkg">
+        <div class="duct-pkg-visual">
+          <div class="duct-pkg-img-placeholder">
+            <div class="duct-pkg-img-inner">
+              <svg class="duct-img-icon" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 64 64">
+                <rect x="6" y="24" width="20" height="16" rx="2"/>
+                <rect x="38" y="24" width="20" height="16" rx="2"/>
+                <rect x="22" y="12" width="20" height="10" rx="2"/>
+                <rect x="22" y="42" width="20" height="10" rx="2"/>
+                <path d="M26 24V22M38 24V22M26 40v2M38 40v2" stroke-linecap="round"/>
+                <path d="M6 32h6M52 32h6M32 12V6M32 52v6" stroke-linecap="round" stroke-dasharray="2 2"/>
+              </svg>
+              <span class="duct-img-label">Multi-Angle Package</span>
+              <span class="duct-img-sublabel">Front · Rear · Left · Right views</span>
+            </div>
+          </div>
+        </div>
+        <div class="duct-pkg-info">
+          <div class="duct-pkg-badge duct-pkg-badge--02">Package 02</div>
+          <h3 class="duct-pkg-title">Multi-Angle Technical Mapping</h3>
+          <p class="duct-pkg-desc">Comprehensive technical visualization package showing the exhaust system from multiple angles for detailed documentation, accessibility planning, and maintenance coordination.</p>
+
+          <div class="duct-section-label">Includes</div>
+          <ul class="duct-list duct-list-grid">
+            <li>Front view</li>
+            <li>Rear view</li>
+            <li>Left-side view</li>
+            <li>Right-side view</li>
+            <li>Main measurements</li>
+            <li>Access panel locations</li>
+            <li>Elbows &amp; duct transitions</li>
+            <li>Full airflow routing visualization</li>
+          </ul>
+
+          <div class="duct-two-col">
+            <div>
+              <div class="duct-section-label">Deliverables</div>
+              <ul class="duct-list">
+                <li>Multi-angle image package</li>
+                <li>Professional PDF documentation</li>
+              </ul>
+            </div>
+            <div>
+              <div class="duct-section-label">Ideal For</div>
+              <ul class="duct-list">
+                <li>Facilities management</li>
+                <li>Contractors</li>
+                <li>NFPA-oriented documentation</li>
+                <li>Maintenance planning</li>
+              </ul>
+            </div>
+          </div>
+
+          <a href="/primefacilityservicesgroup/contact/" class="duct-pkg-cta duct-pkg-cta--02">
+            Request Package 02
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- ── PACKAGE 03 ─────────────────────────────── -->
+      <div class="duct-pkg duct-pkg--premium">
+        <div class="duct-pkg-visual duct-pkg-visual--premium">
+          <div class="duct-pkg-img-placeholder duct-pkg-img-placeholder--premium">
+            <div class="duct-pkg-img-inner">
+              <svg class="duct-img-icon" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 64 64">
+                <path d="M10 46L32 12l22 34H10z" stroke-linejoin="round"/>
+                <path d="M10 46h44" stroke-linecap="round"/>
+                <path d="M32 12v34M10 46l22-12 22 12" stroke-dasharray="3 2"/>
+                <circle cx="32" cy="30" r="3"/>
+                <path d="M32 27v-6M25 33l-4 3M39 33l4 3" stroke-linecap="round"/>
+                <path d="M18 46l7-8M46 46l-7-8" stroke-dasharray="2 2" stroke-linecap="round"/>
+              </svg>
+              <span class="duct-img-label">3D Engineering Model</span>
+              <span class="duct-img-sublabel">Full system · Airflow analysis · Video</span>
+            </div>
+          </div>
+          <div class="duct-premium-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            Advanced Engineering
+          </div>
+        </div>
+        <div class="duct-pkg-info">
+          <div class="duct-pkg-badge duct-pkg-badge--03">Package 03 — Advanced</div>
+          <h3 class="duct-pkg-title">3D Engineering &amp; Airflow Analysis</h3>
+          <p class="duct-pkg-desc">Advanced engineering-focused documentation package including full 3D system visualization, animated airflow walkthrough, duct performance evaluation, and technical extraction analysis.</p>
+
+          <div class="duct-pkg-cols">
+            <div class="duct-pkg-col">
+              <div class="duct-section-label">Includes</div>
+              <ul class="duct-list">
+                <li>Full 3D duct system model</li>
+                <li>Animated walkthrough video</li>
+                <li>Airflow visualization</li>
+                <li>Complete duct measurements</li>
+                <li>Physical duct length</li>
+                <li>Effective duct length analysis</li>
+                <li>Elbow &amp; restriction analysis</li>
+                <li>Access panel mapping</li>
+                <li>Material identification</li>
+                <li>Exhaust efficiency evaluation</li>
+                <li>Technical system assessment</li>
+                <li>Performance recommendations</li>
+              </ul>
+            </div>
+            <div class="duct-pkg-col">
+              <div class="duct-section-label">Technical Analysis</div>
+              <ul class="duct-list">
+                <li>Airflow restriction evaluation</li>
+                <li>Elbow resistance impact</li>
+                <li>Static pressure considerations</li>
+                <li>Exhaust fan performance impact</li>
+                <li>Extraction efficiency analysis</li>
+              </ul>
+              <div class="duct-section-label" style="margin-top:16px">Optional Recommendations</div>
+              <ul class="duct-list">
+                <li>Higher CFM fan upgrade</li>
+                <li>Booster fan recommendation</li>
+                <li>Additional access panels</li>
+                <li>Airflow optimization</li>
+                <li>System reconfiguration</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="duct-two-col">
+            <div>
+              <div class="duct-section-label">Deliverables</div>
+              <ul class="duct-list">
+                <li>Technical 3D video</li>
+                <li>Full PDF engineering report</li>
+                <li>Technical rendered images</li>
+                <li>System documentation package</li>
+                <li>Engineering analysis summary</li>
+              </ul>
+            </div>
+            <div>
+              <div class="duct-section-label">Ideal For</div>
+              <ul class="duct-list">
+                <li>Hotels &amp; hospitals</li>
+                <li>Large commercial kitchens</li>
+                <li>Complex exhaust systems</li>
+                <li>Premium engineering evaluations</li>
+              </ul>
+            </div>
+          </div>
+
+          <a href="/primefacilityservicesgroup/contact/" class="duct-pkg-cta duct-pkg-cta--03">
+            Request Package 03
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div><!-- /duct-packages -->
+  </div><!-- /duct-modal -->
+</div><!-- /duct-overlay -->
+
+<style>
+/* ══ MODAL OVERLAY ═══════════════════════════════════════════════════ */
+.duct-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  background: rgba(8,10,16,0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 24px 16px 40px;
+  overflow-y: auto;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.duct-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+.duct-modal {
+  background: #fff;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 1120px;
+  box-shadow: 0 32px 100px rgba(0,0,0,0.28);
+  overflow: hidden;
+  transform: translateY(24px);
+  transition: transform 0.35s cubic-bezier(0.22,1,0.36,1);
+}
+.duct-overlay.open .duct-modal {
+  transform: translateY(0);
+}
+
+/* ══ HEADER ══════════════════════════════════════════════════════════ */
+.duct-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 36px 40px 32px;
+  border-bottom: 1px solid #efefed;
+  background: #fafaf8;
+}
+.duct-modal-eyebrow {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: #1a5cff;
+  margin-bottom: 8px;
+}
+.duct-modal-title {
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 700;
+  color: #111110;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+.duct-modal-subtitle {
+  font-size: 14px;
+  color: #6e6e6a;
+  line-height: 1.5;
+  max-width: 520px;
+}
+.duct-modal-close {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid #e0e0dd;
+  background: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6e6e6a;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.duct-modal-close:hover {
+  background: #111110;
+  color: #fff;
+  border-color: #111110;
+}
+
+/* ══ PACKAGES WRAPPER ════════════════════════════════════════════════ */
+.duct-packages {
+  padding: 0 0 8px;
+}
+
+/* ══ SINGLE PACKAGE ROW ══════════════════════════════════════════════ */
+.duct-pkg {
+  display: grid;
+  grid-template-columns: 44% 1fr;
+  min-height: 340px;
+  border-bottom: 1px solid #efefed;
+}
+.duct-pkg:last-child { border-bottom: none; }
+
+/* ── Visual (left) ── */
+.duct-pkg-visual {
+  position: relative;
+  background: #f5f5f3;
+  display: flex;
+  align-items: stretch;
+  border-right: 1px solid #efefed;
+}
+.duct-pkg-visual--premium {
+  background: linear-gradient(140deg, #0d1b3e 0%, #0f2562 60%, #1a3a8a 100%);
+  border-right-color: rgba(255,255,255,0.08);
+}
+.duct-pkg-img-placeholder {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 32px;
+}
+.duct-pkg-img-placeholder--premium {
+  background: transparent;
+}
+.duct-pkg-img-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+.duct-img-icon {
+  color: rgba(26,92,255,0.45);
+  flex-shrink: 0;
+}
+.duct-pkg-visual--premium .duct-img-icon {
+  color: rgba(100,160,255,0.6);
+}
+.duct-img-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #4a4a46;
+  letter-spacing: -0.01em;
+}
+.duct-pkg-visual--premium .duct-img-label {
+  color: rgba(255,255,255,0.85);
+}
+.duct-img-sublabel {
+  font-size: 11px;
+  color: #9a9a96;
+  letter-spacing: 0.02em;
+}
+.duct-pkg-visual--premium .duct-img-sublabel {
+  color: rgba(255,255,255,0.45);
+}
+
+/* premium badge */
+.duct-premium-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(26,92,255,0.9);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+.duct-premium-badge svg { flex-shrink: 0; }
+
+/* ── Info (right) ── */
+.duct-pkg-info {
+  padding: 36px 40px 36px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.duct-pkg--premium .duct-pkg-info {
+  background: #fafaf8;
+}
+
+/* badge */
+.duct-pkg-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: #1a5cff;
+  background: #e8f0ff;
+  border: 1px solid rgba(26,92,255,0.18);
+  padding: 3px 10px;
+  border-radius: 20px;
+  width: fit-content;
+}
+.duct-pkg-badge--02 {
+  color: #0f7e5a;
+  background: #e6f7f1;
+  border-color: rgba(15,126,90,0.2);
+}
+.duct-pkg-badge--03 {
+  color: #7c3ae8;
+  background: #f0eaff;
+  border-color: rgba(124,58,232,0.2);
+}
+
+.duct-pkg-title {
+  font-size: clamp(16px, 2vw, 20px);
+  font-weight: 700;
+  color: #111110;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+.duct-pkg-desc {
+  font-size: 13.5px;
+  color: #6e6e6a;
+  line-height: 1.65;
+  max-width: 480px;
+}
+.duct-section-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: #9a9a96;
+  margin-bottom: 6px;
+}
+.duct-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.duct-list li {
+  font-size: 12.5px;
+  color: #4a4a46;
+  padding-left: 14px;
+  position: relative;
+  line-height: 1.5;
+}
+.duct-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #c8c8c4;
+}
+.duct-list-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 12px;
+}
+.duct-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 24px;
+}
+.duct-pkg-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 24px;
+}
+.duct-pkg-col { display: flex; flex-direction: column; gap: 14px; }
+
+/* CTA */
+.duct-pkg-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 12.5px;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  background: #111110;
+  color: #fff;
+  border: 1px solid #111110;
+  width: fit-content;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.duct-pkg-cta:hover { background: #1a5cff; border-color: #1a5cff; }
+.duct-pkg-cta--02:hover { background: #0f7e5a; border-color: #0f7e5a; }
+.duct-pkg-cta--03 {
+  background: #1a5cff;
+  border-color: #1a5cff;
+}
+.duct-pkg-cta--03:hover { background: #0f44d0; border-color: #0f44d0; }
+
+/* ══ RESPONSIVE ══════════════════════════════════════════════════════ */
+@media (max-width: 800px) {
+  .duct-modal-header { padding: 24px 20px 20px; }
+  .duct-pkg { grid-template-columns: 1fr; min-height: auto; }
+  .duct-pkg-visual { border-right: none; border-bottom: 1px solid #efefed; min-height: 180px; }
+  .duct-pkg-visual--premium { border-bottom-color: rgba(255,255,255,0.08); }
+  .duct-pkg-img-placeholder { padding: 24px 20px; }
+  .duct-pkg-info { padding: 24px 20px; }
+  .duct-two-col,
+  .duct-pkg-cols { grid-template-columns: 1fr; gap: 14px; }
+  .duct-list-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .duct-overlay { padding: 0; align-items: flex-end; }
+  .duct-modal { border-radius: 20px 20px 0 0; max-height: 94vh; overflow-y: auto; }
+}
+</style>
+
+<script>
+(function() {
+  const overlay = document.getElementById('ductModalOverlay');
+  if (!overlay) return;
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) overlay.classList.remove('open');
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') overlay.classList.remove('open');
+  });
+})();
 </script>
 
 </body>
