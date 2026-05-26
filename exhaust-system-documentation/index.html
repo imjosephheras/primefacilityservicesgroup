@@ -14,16 +14,21 @@
 
     :root {
       --blue:        #1a5cff;
+      --blue-bright: #4d88ff;
       --blue-dim:    rgba(26,92,255,0.08);
       --blue-mid:    rgba(26,92,255,0.18);
-      --ink:         #0d0e12;
-      --ink-2:       #1c1d23;
+      --ink:         #0a0b10;
+      --ink-2:       #13141c;
+      --ink-3:       #1c1e28;
       --muted:       #6b6f7d;
-      --rule:        rgba(255,255,255,0.07);
-      --grid-line:   rgba(26,92,255,0.10);
+      --muted-light: #9499a8;
+      --rule:        rgba(255,255,255,0.08);
+      --rule-light:  rgba(255,255,255,0.05);
+      --grid-line:   rgba(26,92,255,0.09);
       --white:       #ffffff;
-      --off-white:   #f7f7f5;
-      --border:      #e8e8e5;
+      --off-white:   #f8f8f6;
+      --border:      #e4e4e0;
+      --border-dark: #2a2c38;
       --font:        'Inter', system-ui, sans-serif;
     }
 
@@ -36,29 +41,32 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── util ── */
+    /* ── reveal animation ── */
     .reveal {
       opacity: 0;
-      transform: translateY(22px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
     }
     .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.12s; }
+    .reveal-delay-2 { transition-delay: 0.24s; }
+    .reveal-delay-3 { transition-delay: 0.36s; }
 
     /* ════════════════════════════════════════════════
-       HERO
+       HERO — CINEMATIC TWO-COLUMN
     ════════════════════════════════════════════════ */
     .esd-hero {
       position: relative;
-      min-height: 92vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       background: var(--ink);
       overflow: hidden;
-      padding: 120px 40px 80px;
+      padding: 120px 60px 80px;
     }
 
-    /* engineering grid background */
+    /* engineering grid */
     .esd-hero::before {
       content: '';
       position: absolute;
@@ -66,31 +74,23 @@
       background-image:
         linear-gradient(var(--grid-line) 1px, transparent 1px),
         linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-      background-size: 60px 60px;
+      background-size: 72px 72px;
       pointer-events: none;
     }
 
-    /* radial gradient overlay */
+    /* glow overlay */
     .esd-hero::after {
       content: '';
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 80% 60% at 50% 40%, rgba(26,92,255,0.18) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 50% at 100% 0%, rgba(26,92,255,0.12) 0%, transparent 60%),
-        linear-gradient(180deg, rgba(13,14,18,0) 40%, rgba(13,14,18,0.85) 100%);
+        radial-gradient(ellipse 60% 80% at 30% 50%, rgba(26,92,255,0.14) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 60% at 80% 20%, rgba(26,92,255,0.10) 0%, transparent 55%),
+        linear-gradient(180deg, rgba(10,11,16,0) 50%, rgba(10,11,16,0.92) 100%);
       pointer-events: none;
     }
 
-    .esd-hero-inner {
-      position: relative;
-      z-index: 2;
-      max-width: 1200px;
-      margin: 0 auto;
-      width: 100%;
-    }
-
-    /* animated airflow lines */
+    /* ── airflow animation lines ── */
     .esd-airflow-canvas {
       position: absolute;
       inset: 0;
@@ -101,147 +101,359 @@
     .esd-flow-line {
       position: absolute;
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(26,92,255,0.4), rgba(26,92,255,0.15), transparent);
-      animation: flowRight 4s ease-in-out infinite;
+      animation: flowRight 5s ease-in-out infinite;
       opacity: 0;
     }
-    .esd-flow-line:nth-child(1) { top: 22%; width: 340px; left: -340px; animation-delay: 0s; }
-    .esd-flow-line:nth-child(2) { top: 38%; width: 280px; left: -280px; animation-delay: 0.9s; }
-    .esd-flow-line:nth-child(3) { top: 55%; width: 400px; left: -400px; animation-delay: 1.8s; }
-    .esd-flow-line:nth-child(4) { top: 70%; width: 220px; left: -220px; animation-delay: 2.6s; }
-    .esd-flow-line:nth-child(5) { top: 30%; width: 300px; right: -300px; left: auto; animation: flowLeft 5s ease-in-out infinite; animation-delay: 0.4s; }
-    .esd-flow-line:nth-child(6) { top: 62%; width: 260px; right: -260px; left: auto; animation: flowLeft 4.5s ease-in-out infinite; animation-delay: 1.5s; }
+    .esd-flow-line:nth-child(1) {
+      top: 18%; width: 480px; left: -480px;
+      background: linear-gradient(90deg, transparent, rgba(26,92,255,0.5), rgba(26,92,255,0.2), transparent);
+      animation-delay: 0s;
+    }
+    .esd-flow-line:nth-child(2) {
+      top: 34%; width: 360px; left: -360px;
+      background: linear-gradient(90deg, transparent, rgba(26,92,255,0.3), transparent);
+      animation-delay: 1.1s;
+    }
+    .esd-flow-line:nth-child(3) {
+      top: 52%; width: 520px; left: -520px;
+      background: linear-gradient(90deg, transparent, rgba(26,92,255,0.45), rgba(100,160,255,0.2), transparent);
+      animation-delay: 2.2s;
+    }
+    .esd-flow-line:nth-child(4) {
+      top: 68%; width: 300px; left: -300px;
+      background: linear-gradient(90deg, transparent, rgba(26,92,255,0.25), transparent);
+      animation-delay: 0.7s;
+    }
+    .esd-flow-line:nth-child(5) {
+      top: 28%; width: 440px; right: -440px; left: auto;
+      background: linear-gradient(270deg, transparent, rgba(26,92,255,0.35), transparent);
+      animation: flowLeft 6s ease-in-out infinite; animation-delay: 0.5s;
+    }
+    .esd-flow-line:nth-child(6) {
+      top: 60%; width: 320px; right: -320px; left: auto;
+      background: linear-gradient(270deg, transparent, rgba(26,92,255,0.28), transparent);
+      animation: flowLeft 5.5s ease-in-out infinite; animation-delay: 1.8s;
+    }
+    .esd-flow-line:nth-child(7) {
+      top: 44%; width: 600px; left: -600px;
+      background: linear-gradient(90deg, transparent, rgba(77,136,255,0.2), transparent);
+      animation-delay: 3s;
+    }
 
     @keyframes flowRight {
-      0%   { left: -400px; opacity: 0; }
-      10%  { opacity: 1; }
-      80%  { opacity: 0.6; }
+      0%   { left: -600px; opacity: 0; }
+      8%   { opacity: 1; }
+      85%  { opacity: 0.5; }
       100% { left: 110%; opacity: 0; }
     }
     @keyframes flowLeft {
-      0%   { right: -400px; opacity: 0; }
-      10%  { opacity: 1; }
-      80%  { opacity: 0.6; }
+      0%   { right: -600px; opacity: 0; }
+      8%   { opacity: 1; }
+      85%  { opacity: 0.5; }
       100% { right: 110%; opacity: 0; }
     }
+
+    /* ── hero two-column layout ── */
+    .esd-hero-grid {
+      position: relative;
+      z-index: 2;
+      max-width: 1440px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    /* ── left: engineering visualization ── */
+    .esd-hero-visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .esd-vis-frame {
+      position: relative;
+      width: 100%;
+      max-width: 560px;
+      aspect-ratio: 1 / 1;
+      border: 1px solid rgba(26,92,255,0.15);
+      border-radius: 24px;
+      background: rgba(13,14,22,0.8);
+      overflow: hidden;
+      backdrop-filter: blur(2px);
+    }
+
+    .esd-vis-frame::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(26,92,255,0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26,92,255,0.10) 1px, transparent 1px);
+      background-size: 40px 40px;
+      border-radius: 24px;
+    }
+
+    /* corner accent marks */
+    .esd-vis-frame::after {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 24px;
+      background:
+        linear-gradient(135deg, rgba(26,92,255,0.4) 0%, transparent 30%) border-box,
+        linear-gradient(315deg, rgba(26,92,255,0.25) 0%, transparent 30%) border-box;
+      -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    .esd-vis-svg-wrap {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+    }
+
+    /* glow dot behind icon */
+    .esd-vis-glow {
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(26,92,255,0.22) 0%, transparent 70%);
+      pointer-events: none;
+      animation: glowPulse 4s ease-in-out infinite;
+    }
+
+    @keyframes glowPulse {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50%       { transform: scale(1.15); opacity: 1; }
+    }
+
+    /* vis label bar */
+    .esd-vis-label-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      padding: 20px 28px;
+      background: linear-gradient(0deg, rgba(10,11,16,0.95) 0%, transparent 100%);
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+    .esd-vis-label-text {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+    .esd-vis-label-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 100px;
+      background: rgba(26,92,255,0.18);
+      border: 1px solid rgba(77,136,255,0.22);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: rgba(130,180,255,0.85);
+    }
+    .esd-vis-label-badge-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #4d88ff;
+      animation: dotBlink 2s ease-in-out infinite;
+    }
+    @keyframes dotBlink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.3; }
+    }
+
+    /* corner ticks */
+    .esd-vis-tick {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      z-index: 3;
+    }
+    .esd-vis-tick--tl { top: 16px; left: 16px; border-top: 2px solid rgba(26,92,255,0.5); border-left: 2px solid rgba(26,92,255,0.5); }
+    .esd-vis-tick--tr { top: 16px; right: 16px; border-top: 2px solid rgba(26,92,255,0.5); border-right: 2px solid rgba(26,92,255,0.5); }
+    .esd-vis-tick--bl { bottom: 16px; left: 16px; border-bottom: 2px solid rgba(26,92,255,0.5); border-left: 2px solid rgba(26,92,255,0.5); }
+    .esd-vis-tick--br { bottom: 16px; right: 16px; border-bottom: 2px solid rgba(26,92,255,0.5); border-right: 2px solid rgba(26,92,255,0.5); }
+
+    /* floating data chips */
+    .esd-vis-chip {
+      position: absolute;
+      z-index: 4;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      background: rgba(13,14,22,0.92);
+      border: 1px solid rgba(26,92,255,0.2);
+      border-radius: 10px;
+      backdrop-filter: blur(8px);
+    }
+    .esd-vis-chip--tl { top: 48px; left: 32px; }
+    .esd-vis-chip--tr { top: 48px; right: 32px; }
+    .esd-vis-chip--bl { bottom: 64px; left: 32px; }
+    .esd-vis-chip-icon {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--blue-bright);
+      flex-shrink: 0;
+    }
+    .esd-vis-chip-text {
+      font-size: 11px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+    .esd-vis-chip-val {
+      font-size: 11px;
+      font-weight: 700;
+      color: rgba(130,180,255,0.9);
+      letter-spacing: 0.03em;
+    }
+
+    /* ── right: text content ── */
+    .esd-hero-content {}
 
     .esd-hero-eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.14em;
+      gap: 12px;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--blue);
-      margin-bottom: 28px;
+      color: var(--blue-bright);
+      margin-bottom: 32px;
     }
     .esd-hero-eyebrow-bar {
       display: inline-block;
-      width: 28px;
+      width: 36px;
       height: 2px;
-      background: var(--blue);
+      background: linear-gradient(90deg, var(--blue), var(--blue-bright));
     }
 
     .esd-hero-title {
-      font-size: clamp(42px, 6.5vw, 88px);
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      line-height: 1.0;
+      font-size: clamp(52px, 6vw, 96px);
+      font-weight: 900;
+      letter-spacing: -0.045em;
+      line-height: 0.95;
       color: var(--white);
-      max-width: 760px;
-      margin-bottom: 28px;
+      margin-bottom: 32px;
     }
     .esd-hero-title em {
       font-style: normal;
-      color: var(--blue);
+      background: linear-gradient(135deg, #4d88ff 0%, #1a5cff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .esd-hero-sub {
-      font-size: clamp(15px, 1.6vw, 18px);
-      color: rgba(255,255,255,0.55);
+      font-size: clamp(16px, 1.6vw, 20px);
+      color: rgba(255,255,255,0.48);
       line-height: 1.65;
-      max-width: 560px;
+      max-width: 520px;
       margin-bottom: 48px;
       font-weight: 400;
     }
 
     .esd-hero-actions {
       display: flex;
-      gap: 14px;
+      gap: 16px;
       flex-wrap: wrap;
+      margin-bottom: 56px;
     }
 
     .btn-esd-primary {
       display: inline-flex;
       align-items: center;
-      gap: 9px;
-      padding: 15px 28px;
+      gap: 10px;
+      padding: 18px 32px;
       background: var(--blue);
       color: #fff;
-      font-size: 14px;
-      font-weight: 600;
+      font-size: 15px;
+      font-weight: 700;
       letter-spacing: -0.01em;
-      border-radius: 10px;
+      border-radius: 12px;
       text-decoration: none;
-      transition: background 0.2s, transform 0.15s;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 0 0 0 rgba(26,92,255,0);
     }
-    .btn-esd-primary:hover { background: #1249e0; transform: translateY(-1px); }
+    .btn-esd-primary:hover {
+      background: #2a6aff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(26,92,255,0.4);
+    }
 
     .btn-esd-ghost {
       display: inline-flex;
       align-items: center;
-      gap: 9px;
-      padding: 14px 26px;
-      border: 1px solid rgba(255,255,255,0.2);
-      color: rgba(255,255,255,0.75);
-      font-size: 14px;
-      font-weight: 500;
-      border-radius: 10px;
+      gap: 10px;
+      padding: 17px 30px;
+      border: 1px solid rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.7);
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 12px;
       text-decoration: none;
       transition: border-color 0.2s, color 0.2s, background 0.2s;
     }
     .btn-esd-ghost:hover {
-      border-color: rgba(255,255,255,0.5);
+      border-color: rgba(255,255,255,0.45);
       color: #fff;
-      background: rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.07);
     }
 
-    /* hero stats row */
+    /* hero stats grid — 4 columns inline */
     .esd-hero-stats {
-      position: relative;
-      z-index: 2;
-      max-width: 1200px;
-      margin: 0 auto;
-      width: 100%;
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       gap: 0;
       border-top: 1px solid var(--rule);
-      margin-top: 64px;
-      padding-top: 40px;
+      padding-top: 36px;
     }
     .esd-stat {
-      flex: 1;
-      padding-right: 40px;
+      padding-right: 24px;
     }
     .esd-stat + .esd-stat {
-      padding-left: 40px;
+      padding-left: 24px;
       border-left: 1px solid var(--rule);
     }
     .esd-stat-num {
-      font-size: 32px;
-      font-weight: 800;
+      font-size: 36px;
+      font-weight: 900;
       color: #fff;
-      letter-spacing: -0.04em;
+      letter-spacing: -0.05em;
       line-height: 1;
       margin-bottom: 6px;
     }
     .esd-stat-label {
-      font-size: 12px;
-      color: rgba(255,255,255,0.38);
-      letter-spacing: 0.06em;
+      font-size: 11px;
+      color: rgba(255,255,255,0.32);
+      letter-spacing: 0.07em;
       text-transform: uppercase;
       font-weight: 500;
+      line-height: 1.4;
     }
 
     /* ════════════════════════════════════════════════
@@ -250,13 +462,13 @@
     .esd-section-eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      font-size: 10.5px;
+      gap: 9px;
+      font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--blue);
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
     .esd-section-eyebrow-dot {
       width: 5px;
@@ -269,78 +481,75 @@
        PACKAGES SECTION
     ════════════════════════════════════════════════ */
     .esd-packages-section {
-      background: var(--white);
-      padding: 120px 40px;
+      background: var(--off-white);
+      padding: 140px 60px;
     }
 
     .esd-packages-header {
-      max-width: 1200px;
-      margin: 0 auto 72px;
+      max-width: 1440px;
+      margin: 0 auto 80px;
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      gap: 40px;
+      gap: 48px;
     }
-    .esd-packages-header-left {}
     .esd-packages-title {
-      font-size: clamp(28px, 3.5vw, 44px);
-      font-weight: 800;
-      letter-spacing: -0.035em;
+      font-size: clamp(34px, 4vw, 56px);
+      font-weight: 900;
+      letter-spacing: -0.04em;
       color: var(--ink);
-      line-height: 1.1;
-      max-width: 480px;
+      line-height: 1.05;
+      max-width: 560px;
     }
     .esd-packages-sub {
-      font-size: 15px;
+      font-size: 17px;
       color: var(--muted);
-      line-height: 1.6;
-      margin-top: 12px;
-      max-width: 360px;
-    }
-    .esd-packages-header-right {
-      flex-shrink: 0;
+      line-height: 1.65;
+      margin-top: 16px;
+      max-width: 440px;
     }
     .esd-pkg-count {
       font-size: 11px;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--muted);
+      white-space: nowrap;
     }
 
     /* package list */
     .esd-pkg-list {
-      max-width: 1200px;
+      max-width: 1440px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      gap: 20px;
     }
 
     /* single package card */
     .esd-pkg-card {
       display: grid;
-      grid-template-columns: 420px 1fr;
-      min-height: 380px;
+      grid-template-columns: 480px 1fr;
+      min-height: 460px;
       border: 1px solid var(--border);
-      border-radius: 20px;
+      border-radius: 24px;
       overflow: hidden;
       background: #fff;
-      transition: box-shadow 0.25s ease, transform 0.25s ease;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
     }
     .esd-pkg-card:hover {
-      box-shadow: 0 16px 60px rgba(0,0,0,0.09);
-      transform: translateY(-2px);
+      box-shadow: 0 24px 80px rgba(0,0,0,0.10);
+      transform: translateY(-3px);
     }
 
     /* visual pane (left) */
     .esd-pkg-visual {
       position: relative;
-      background: #f4f4f1;
+      background: #eeeee9;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 48px 40px;
+      padding: 60px 50px;
       border-right: 1px solid var(--border);
       overflow: hidden;
     }
@@ -349,25 +558,23 @@
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(26,92,255,0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(26,92,255,0.06) 1px, transparent 1px);
-      background-size: 32px 32px;
+        linear-gradient(rgba(26,92,255,0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26,92,255,0.07) 1px, transparent 1px);
+      background-size: 36px 36px;
     }
-    .esd-pkg-visual--02 {
-      background: #0f1520;
-    }
+    .esd-pkg-visual--02 { background: #0c1322; }
     .esd-pkg-visual--02::before {
       background-image:
-        linear-gradient(rgba(26,92,255,0.12) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(26,92,255,0.12) 1px, transparent 1px);
+        linear-gradient(rgba(26,92,255,0.13) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26,92,255,0.13) 1px, transparent 1px);
     }
     .esd-pkg-visual--03 {
-      background: linear-gradient(145deg, #070c1a 0%, #0d1b3e 55%, #122060 100%);
+      background: linear-gradient(145deg, #060a16 0%, #0b1530 50%, #0f1e52 100%);
     }
     .esd-pkg-visual--03::before {
       background-image:
-        linear-gradient(rgba(26,92,255,0.15) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(26,92,255,0.15) 1px, transparent 1px);
+        linear-gradient(rgba(26,92,255,0.16) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26,92,255,0.16) 1px, transparent 1px);
     }
 
     .esd-pkg-visual-inner {
@@ -376,71 +583,68 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 16px;
+      gap: 18px;
       text-align: center;
     }
     .esd-pkg-icon-wrap {
-      width: 88px;
-      height: 88px;
-      border-radius: 20px;
+      width: 108px;
+      height: 108px;
+      border-radius: 24px;
       background: rgba(26,92,255,0.10);
       border: 1px solid rgba(26,92,255,0.18);
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: box-shadow 0.3s;
+    }
+    .esd-pkg-card:hover .esd-pkg-icon-wrap {
+      box-shadow: 0 0 40px rgba(26,92,255,0.2);
     }
     .esd-pkg-visual--02 .esd-pkg-icon-wrap,
     .esd-pkg-visual--03 .esd-pkg-icon-wrap {
-      background: rgba(26,92,255,0.14);
-      border-color: rgba(100,160,255,0.22);
+      background: rgba(26,92,255,0.15);
+      border-color: rgba(100,160,255,0.25);
     }
-    .esd-pkg-icon-wrap svg {
-      color: var(--blue);
-    }
+    .esd-pkg-icon-wrap svg { color: var(--blue); }
     .esd-pkg-visual--02 .esd-pkg-icon-wrap svg,
-    .esd-pkg-visual--03 .esd-pkg-icon-wrap svg {
-      color: rgba(130,180,255,0.9);
-    }
+    .esd-pkg-visual--03 .esd-pkg-icon-wrap svg { color: rgba(130,180,255,0.9); }
+
     .esd-pkg-visual-tag {
       font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.10em;
+      font-weight: 700;
+      letter-spacing: 0.11em;
       text-transform: uppercase;
-      color: rgba(26,92,255,0.7);
+      color: rgba(26,92,255,0.65);
     }
     .esd-pkg-visual--02 .esd-pkg-visual-tag,
-    .esd-pkg-visual--03 .esd-pkg-visual-tag {
-      color: rgba(130,180,255,0.65);
-    }
+    .esd-pkg-visual--03 .esd-pkg-visual-tag { color: rgba(130,180,255,0.6); }
+
     .esd-pkg-visual-label {
-      font-size: 14px;
-      font-weight: 600;
-      color: #3a3a38;
-      letter-spacing: -0.01em;
+      font-size: 16px;
+      font-weight: 700;
+      color: #2a2a28;
+      letter-spacing: -0.02em;
     }
     .esd-pkg-visual--02 .esd-pkg-visual-label,
-    .esd-pkg-visual--03 .esd-pkg-visual-label {
-      color: rgba(255,255,255,0.75);
-    }
+    .esd-pkg-visual--03 .esd-pkg-visual-label { color: rgba(255,255,255,0.8); }
+
     .esd-pkg-visual-sub {
-      font-size: 12px;
-      color: #9a9896;
+      font-size: 13px;
+      color: #8a8a87;
     }
     .esd-pkg-visual--02 .esd-pkg-visual-sub,
-    .esd-pkg-visual--03 .esd-pkg-visual-sub {
-      color: rgba(255,255,255,0.35);
-    }
+    .esd-pkg-visual--03 .esd-pkg-visual-sub { color: rgba(255,255,255,0.32); }
 
     /* premium badge */
     .esd-premium-badge {
       position: absolute;
-      top: 20px;
-      right: 20px;
+      top: 24px;
+      right: 24px;
       z-index: 2;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 5px 12px;
+      padding: 6px 14px;
       border-radius: 100px;
       background: rgba(26,92,255,0.18);
       border: 1px solid rgba(100,160,255,0.22);
@@ -453,7 +657,7 @@
 
     /* info pane (right) */
     .esd-pkg-info {
-      padding: 44px 48px;
+      padding: 52px 60px;
       display: flex;
       flex-direction: column;
     }
@@ -463,66 +667,64 @@
       gap: 6px;
       font-size: 10px;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.13em;
       text-transform: uppercase;
       color: var(--blue);
       background: var(--blue-dim);
       border: 1px solid rgba(26,92,255,0.15);
-      padding: 4px 10px;
+      padding: 5px 12px;
       border-radius: 6px;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
       width: fit-content;
     }
     .esd-pkg-badge--02 { color: #0066cc; background: rgba(0,102,204,0.07); border-color: rgba(0,102,204,0.15); }
     .esd-pkg-badge--03 { color: #a87af0; background: rgba(168,122,240,0.08); border-color: rgba(168,122,240,0.18); }
 
     .esd-pkg-title {
-      font-size: clamp(20px, 2vw, 26px);
+      font-size: clamp(22px, 2.2vw, 30px);
       font-weight: 800;
       letter-spacing: -0.03em;
       color: var(--ink);
       line-height: 1.15;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
     }
     .esd-pkg-desc {
-      font-size: 14px;
+      font-size: 15px;
       color: var(--muted);
-      line-height: 1.65;
-      margin-bottom: 28px;
-      max-width: 520px;
+      line-height: 1.7;
+      margin-bottom: 32px;
+      max-width: 600px;
     }
 
     .esd-pkg-body {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 28px;
+      gap: 32px;
       flex: 1;
     }
-    .esd-pkg-body--3col {
-      grid-template-columns: 1fr 1fr 1fr;
-    }
+    .esd-pkg-body--3col { grid-template-columns: 1fr 1fr 1fr; }
 
     .esd-pkg-col-label {
       font-size: 10px;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.13em;
       text-transform: uppercase;
       color: var(--muted);
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
     .esd-pkg-ul {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 8px;
     }
     .esd-pkg-ul li {
-      font-size: 13px;
-      color: #3a3a38;
+      font-size: 14px;
+      color: #383836;
       line-height: 1.4;
       display: flex;
       align-items: flex-start;
-      gap: 8px;
+      gap: 10px;
     }
     .esd-pkg-ul li::before {
       content: '';
@@ -532,39 +734,39 @@
       border-radius: 50%;
       background: var(--blue);
       opacity: 0.5;
-      margin-top: 5px;
+      margin-top: 6px;
     }
 
     .esd-pkg-footer {
-      margin-top: 28px;
-      padding-top: 24px;
+      margin-top: 32px;
+      padding-top: 28px;
       border-top: 1px solid var(--border);
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 20px;
     }
     .btn-pkg-cta {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 12px 22px;
+      gap: 9px;
+      padding: 14px 26px;
       background: var(--ink);
       color: #fff;
-      font-size: 13px;
-      font-weight: 600;
+      font-size: 14px;
+      font-weight: 700;
       letter-spacing: -0.01em;
-      border-radius: 8px;
+      border-radius: 10px;
       text-decoration: none;
-      transition: background 0.2s, transform 0.15s;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
     }
-    .btn-pkg-cta:hover { background: var(--ink-2); transform: translateY(-1px); }
+    .btn-pkg-cta:hover { background: var(--ink-2); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,0,0,0.18); }
     .btn-pkg-cta--02 { background: #0a1f6e; }
     .btn-pkg-cta--02:hover { background: #07184f; }
     .btn-pkg-cta--03 { background: linear-gradient(135deg, #1a5cff 0%, #5a2dd6 100%); }
-    .btn-pkg-cta--03:hover { filter: brightness(1.08); }
+    .btn-pkg-cta--03:hover { filter: brightness(1.1); box-shadow: 0 6px 24px rgba(26,92,255,0.4); }
 
     .esd-pkg-deliverables-note {
-      font-size: 12px;
+      font-size: 12.5px;
       color: var(--muted);
       line-height: 1.5;
     }
@@ -574,7 +776,7 @@
     ════════════════════════════════════════════════ */
     .esd-cta-section {
       background: var(--ink);
-      padding: 120px 40px;
+      padding: 160px 60px;
       position: relative;
       overflow: hidden;
     }
@@ -585,59 +787,65 @@
       background-image:
         linear-gradient(var(--grid-line) 1px, transparent 1px),
         linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-      background-size: 60px 60px;
+      background-size: 72px 72px;
       pointer-events: none;
     }
     .esd-cta-section::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(26,92,255,0.15) 0%, transparent 70%);
+      background:
+        radial-gradient(ellipse 60% 80% at 50% 50%, rgba(26,92,255,0.14) 0%, transparent 65%),
+        radial-gradient(ellipse 30% 40% at 15% 20%, rgba(26,92,255,0.08) 0%, transparent 55%),
+        radial-gradient(ellipse 30% 40% at 85% 80%, rgba(26,92,255,0.08) 0%, transparent 55%);
       pointer-events: none;
     }
     .esd-cta-inner {
       position: relative;
       z-index: 1;
-      max-width: 720px;
+      max-width: 800px;
       margin: 0 auto;
       text-align: center;
     }
     .esd-cta-eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      font-size: 10.5px;
+      gap: 10px;
+      font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(100,160,255,0.7);
-      margin-bottom: 24px;
+      color: rgba(100,160,255,0.65);
+      margin-bottom: 28px;
     }
     .esd-cta-title {
-      font-size: clamp(28px, 4vw, 52px);
-      font-weight: 800;
-      letter-spacing: -0.04em;
+      font-size: clamp(36px, 5vw, 68px);
+      font-weight: 900;
+      letter-spacing: -0.045em;
       color: #fff;
-      line-height: 1.1;
-      margin-bottom: 20px;
+      line-height: 1.05;
+      margin-bottom: 24px;
     }
     .esd-cta-desc {
-      font-size: 16px;
-      color: rgba(255,255,255,0.5);
+      font-size: 18px;
+      color: rgba(255,255,255,0.45);
       line-height: 1.65;
-      margin-bottom: 44px;
+      margin-bottom: 52px;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
     }
     .esd-cta-actions {
       display: flex;
-      gap: 14px;
+      gap: 16px;
       justify-content: center;
       flex-wrap: wrap;
     }
     .esd-cta-note {
-      margin-top: 24px;
+      margin-top: 28px;
       font-size: 12px;
-      color: rgba(255,255,255,0.25);
-      letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.05em;
     }
 
     /* ════════════════════════════════════════════════
@@ -645,7 +853,7 @@
     ════════════════════════════════════════════════ */
     .esd-footer-bar {
       background: #06070b;
-      padding: 28px 40px;
+      padding: 32px 60px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -654,32 +862,43 @@
     }
     .esd-footer-bar a { color: rgba(255,255,255,0.35); text-decoration: none; font-size: 13px; transition: color 0.2s; }
     .esd-footer-bar a:hover { color: rgba(255,255,255,0.7); }
-    .esd-footer-copy { font-size: 12px; color: rgba(255,255,255,0.2); }
+    .esd-footer-copy { font-size: 12px; color: rgba(255,255,255,0.18); }
 
     /* ════════════════════════════════════════════════
        RESPONSIVE
     ════════════════════════════════════════════════ */
-    @media (max-width: 960px) {
-      .esd-pkg-card {
-        grid-template-columns: 1fr;
-      }
-      .esd-pkg-visual {
-        min-height: 200px;
-        border-right: none;
-        border-bottom: 1px solid var(--border);
-      }
-      .esd-pkg-info { padding: 32px 28px; }
-      .esd-packages-header { flex-direction: column; align-items: flex-start; gap: 16px; }
-      .esd-hero-stats { flex-direction: column; gap: 24px; }
-      .esd-stat + .esd-stat { border-left: none; padding-left: 0; border-top: 1px solid var(--rule); padding-top: 24px; }
+    @media (max-width: 1200px) {
+      .esd-hero { padding: 120px 40px 80px; }
+      .esd-hero-grid { gap: 56px; }
+      .esd-pkg-card { grid-template-columns: 380px 1fr; }
+      .esd-pkg-info { padding: 44px 48px; }
+      .esd-packages-section { padding: 120px 40px; }
+      .esd-cta-section { padding: 140px 40px; }
+      .esd-footer-bar { padding: 28px 40px; }
     }
+
+    @media (max-width: 1024px) {
+      .esd-hero-grid { grid-template-columns: 1fr; gap: 48px; }
+      .esd-hero-visual { display: none; }
+      .esd-hero-title { font-size: clamp(52px, 10vw, 80px); }
+      .esd-hero-stats { grid-template-columns: repeat(4, 1fr); }
+      .esd-pkg-card { grid-template-columns: 1fr; }
+      .esd-pkg-visual { min-height: 260px; border-right: none; border-bottom: 1px solid var(--border); }
+      .esd-packages-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+    }
+
     @media (max-width: 640px) {
       .esd-hero { padding: 100px 24px 60px; }
-      .esd-packages-section { padding: 72px 24px; }
-      .esd-cta-section { padding: 80px 24px; }
+      .esd-packages-section { padding: 80px 24px; }
+      .esd-cta-section { padding: 100px 24px; }
+      .esd-footer-bar { flex-direction: column; align-items: flex-start; gap: 16px; padding: 24px; }
       .esd-pkg-body { grid-template-columns: 1fr; }
       .esd-pkg-body--3col { grid-template-columns: 1fr; }
-      .esd-footer-bar { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .esd-pkg-info { padding: 36px 28px; }
+      .esd-hero-stats { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+      .esd-stat + .esd-stat:nth-child(2) { border-left: none; padding-left: 0; }
+      .esd-stat + .esd-stat:nth-child(3) { border-left: none; padding-left: 0; border-top: 1px solid var(--rule); padding-top: 20px; }
+      .esd-stat + .esd-stat:nth-child(4) { border-top: 1px solid var(--rule); padding-top: 20px; }
     }
   </style>
 </head>
@@ -795,7 +1014,7 @@
 
 
 <!-- ════════════════════════════════════════════════
-     SECTION 01 — HERO
+     SECTION 01 — HERO (CINEMATIC)
 ════════════════════════════════════════════════ -->
 <section class="esd-hero">
 
@@ -807,55 +1026,198 @@
     <div class="esd-flow-line"></div>
     <div class="esd-flow-line"></div>
     <div class="esd-flow-line"></div>
+    <div class="esd-flow-line"></div>
   </div>
 
-  <div class="esd-hero-inner reveal">
-    <div class="esd-hero-eyebrow">
-      <span class="esd-hero-eyebrow-bar"></span>
-      Engineering Documentation
+  <div class="esd-hero-grid">
+
+    <!-- LEFT: engineering visualization frame -->
+    <div class="esd-hero-visual reveal">
+      <div class="esd-vis-frame">
+        <!-- corner ticks -->
+        <div class="esd-vis-tick esd-vis-tick--tl"></div>
+        <div class="esd-vis-tick esd-vis-tick--tr"></div>
+        <div class="esd-vis-tick esd-vis-tick--bl"></div>
+        <div class="esd-vis-tick esd-vis-tick--br"></div>
+
+        <!-- floating data chips -->
+        <div class="esd-vis-chip esd-vis-chip--tl">
+          <span class="esd-vis-chip-icon"></span>
+          <span class="esd-vis-chip-text">CFM Rating</span>
+          <span class="esd-vis-chip-val">2,400</span>
+        </div>
+        <div class="esd-vis-chip esd-vis-chip--tr">
+          <span class="esd-vis-chip-icon"></span>
+          <span class="esd-vis-chip-text">NFPA 96</span>
+          <span class="esd-vis-chip-val">Compliant</span>
+        </div>
+        <div class="esd-vis-chip esd-vis-chip--bl">
+          <span class="esd-vis-chip-icon"></span>
+          <span class="esd-vis-chip-text">Duct Length</span>
+          <span class="esd-vis-chip-val">42.6 ft</span>
+        </div>
+
+        <!-- glow + main SVG -->
+        <div class="esd-vis-svg-wrap">
+          <div class="esd-vis-glow"></div>
+          <svg width="320" height="320" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:relative;z-index:1;">
+
+            <!-- duct system isometric view -->
+            <!-- main horizontal duct body -->
+            <rect x="40" y="136" width="240" height="48" rx="4" stroke="rgba(26,92,255,0.5)" stroke-width="1.5" fill="rgba(26,92,255,0.06)"/>
+
+            <!-- duct interior grid lines (depth indicator) -->
+            <line x1="40" y1="150" x2="280" y2="150" stroke="rgba(26,92,255,0.15)" stroke-width="1" stroke-dasharray="6 4"/>
+            <line x1="40" y1="170" x2="280" y2="170" stroke="rgba(26,92,255,0.15)" stroke-width="1" stroke-dasharray="6 4"/>
+
+            <!-- elbow connectors -->
+            <path d="M 80 136 L 80 96 Q 80 80 96 80 L 160 80" stroke="rgba(26,92,255,0.45)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <path d="M 80 136 L 80 96 Q 80 80 96 80 L 160 80" stroke="rgba(26,92,255,0.06)" stroke-width="10" fill="none" stroke-linecap="round"/>
+
+            <path d="M 240 136 L 240 88 Q 240 72 256 72 L 280 72" stroke="rgba(26,92,255,0.45)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <path d="M 240 136 L 240 88 Q 240 72 256 72 L 280 72" stroke="rgba(26,92,255,0.06)" stroke-width="10" fill="none" stroke-linecap="round"/>
+
+            <!-- vertical riser to roof -->
+            <rect x="148" y="40" width="24" height="96" rx="3" stroke="rgba(26,92,255,0.4)" stroke-width="1.5" fill="rgba(26,92,255,0.05)"/>
+            <line x1="155" y1="40" x2="155" y2="136" stroke="rgba(26,92,255,0.12)" stroke-width="1" stroke-dasharray="4 3"/>
+            <line x1="165" y1="40" x2="165" y2="136" stroke="rgba(26,92,255,0.12)" stroke-width="1" stroke-dasharray="4 3"/>
+
+            <!-- rooftop exhaust fan cap -->
+            <ellipse cx="160" cy="40" rx="28" ry="10" stroke="rgba(26,92,255,0.5)" stroke-width="1.5" fill="rgba(26,92,255,0.10)"/>
+            <ellipse cx="160" cy="36" rx="18" ry="7" stroke="rgba(26,92,255,0.35)" stroke-width="1" fill="rgba(26,92,255,0.06)"/>
+            <line x1="160" y1="29" x2="160" y2="18" stroke="rgba(26,92,255,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="160" cy="15" r="5" stroke="rgba(26,92,255,0.5)" stroke-width="1.5" fill="rgba(26,92,255,0.2)"/>
+
+            <!-- kitchen hood base -->
+            <path d="M 50 184 L 40 210 L 280 210 L 270 184" stroke="rgba(26,92,255,0.35)" stroke-width="1.5" fill="rgba(26,92,255,0.05)" stroke-linejoin="round"/>
+            <rect x="40" y="210" width="240" height="12" rx="2" stroke="rgba(26,92,255,0.25)" stroke-width="1" fill="rgba(26,92,255,0.04)"/>
+
+            <!-- filters inside hood -->
+            <line x1="88" y1="184" x2="88" y2="210" stroke="rgba(26,92,255,0.22)" stroke-width="1" stroke-dasharray="3 2"/>
+            <line x1="120" y1="184" x2="120" y2="210" stroke="rgba(26,92,255,0.22)" stroke-width="1" stroke-dasharray="3 2"/>
+            <line x1="152" y1="184" x2="152" y2="210" stroke="rgba(26,92,255,0.22)" stroke-width="1" stroke-dasharray="3 2"/>
+            <line x1="184" y1="184" x2="184" y2="210" stroke="rgba(26,92,255,0.22)" stroke-width="1" stroke-dasharray="3 2"/>
+            <line x1="216" y1="184" x2="216" y2="210" stroke="rgba(26,92,255,0.22)" stroke-width="1" stroke-dasharray="3 2"/>
+            <line x1="248" y1="184" x2="248" y2="210" stroke="rgba(26,92,255,0.22)" stroke-width="1" stroke-dasharray="3 2"/>
+
+            <!-- airflow arrows inside duct -->
+            <g stroke="rgba(77,136,255,0.7)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M 68 160 L 82 160 M 78 155 L 82 160 L 78 165"/>
+              <path d="M 106 160 L 120 160 M 116 155 L 120 160 L 116 165"/>
+              <path d="M 144 160 L 158 160 M 154 155 L 158 160 L 154 165"/>
+              <path d="M 182 160 L 196 160 M 192 155 L 196 160 L 192 165"/>
+              <path d="M 220 160 L 234 160 M 230 155 L 234 160 L 230 165"/>
+            </g>
+
+            <!-- airflow rising particles (animated) -->
+            <g fill="rgba(77,136,255,0.6)">
+              <circle cx="90" cy="226" r="2">
+                <animate attributeName="cy" values="226;196;226" dur="2.8s" repeatCount="indefinite" begin="0s"/>
+                <animate attributeName="opacity" values="0.6;0;0.6" dur="2.8s" repeatCount="indefinite" begin="0s"/>
+              </circle>
+              <circle cx="130" cy="230" r="1.5">
+                <animate attributeName="cy" values="230;200;230" dur="3.2s" repeatCount="indefinite" begin="0.5s"/>
+                <animate attributeName="opacity" values="0.5;0;0.5" dur="3.2s" repeatCount="indefinite" begin="0.5s"/>
+              </circle>
+              <circle cx="160" cy="224" r="2">
+                <animate attributeName="cy" values="224;194;224" dur="2.5s" repeatCount="indefinite" begin="1s"/>
+                <animate attributeName="opacity" values="0.7;0;0.7" dur="2.5s" repeatCount="indefinite" begin="1s"/>
+              </circle>
+              <circle cx="200" cy="228" r="1.5">
+                <animate attributeName="cy" values="228;198;228" dur="3s" repeatCount="indefinite" begin="1.5s"/>
+                <animate attributeName="opacity" values="0.5;0;0.5" dur="3s" repeatCount="indefinite" begin="1.5s"/>
+              </circle>
+              <circle cx="240" cy="225" r="2">
+                <animate attributeName="cy" values="225;195;225" dur="2.7s" repeatCount="indefinite" begin="0.8s"/>
+                <animate attributeName="opacity" values="0.6;0;0.6" dur="2.7s" repeatCount="indefinite" begin="0.8s"/>
+              </circle>
+            </g>
+
+            <!-- dimension lines -->
+            <!-- horizontal span -->
+            <line x1="40" y1="250" x2="280" y2="250" stroke="rgba(26,92,255,0.25)" stroke-width="1"/>
+            <line x1="40" y1="246" x2="40" y2="254" stroke="rgba(26,92,255,0.25)" stroke-width="1"/>
+            <line x1="280" y1="246" x2="280" y2="254" stroke="rgba(26,92,255,0.25)" stroke-width="1"/>
+            <text x="160" y="265" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="rgba(26,92,255,0.5)" font-weight="600">240 in system span</text>
+
+            <!-- vertical riser dimension -->
+            <line x1="298" y1="40" x2="298" y2="184" stroke="rgba(26,92,255,0.2)" stroke-width="1"/>
+            <line x1="294" y1="40" x2="302" y2="40" stroke="rgba(26,92,255,0.2)" stroke-width="1"/>
+            <line x1="294" y1="184" x2="302" y2="184" stroke="rgba(26,92,255,0.2)" stroke-width="1"/>
+            <text x="312" y="116" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="rgba(26,92,255,0.45)" font-weight="600" transform="rotate(90,312,116)">18 ft riser</text>
+
+            <!-- access panel markers -->
+            <rect x="108" y="133" width="16" height="8" rx="1.5" fill="rgba(26,92,255,0.15)" stroke="rgba(26,92,255,0.35)" stroke-width="1"/>
+            <rect x="196" y="133" width="16" height="8" rx="1.5" fill="rgba(26,92,255,0.15)" stroke="rgba(26,92,255,0.35)" stroke-width="1"/>
+
+            <!-- "AP" labels on access panels -->
+            <text x="116" y="140" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="rgba(26,92,255,0.7)" font-weight="700">AP</text>
+            <text x="204" y="140" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="rgba(26,92,255,0.7)" font-weight="700">AP</text>
+
+          </svg>
+        </div>
+
+        <!-- bottom label bar -->
+        <div class="esd-vis-label-bar">
+          <span class="esd-vis-label-text">Commercial Kitchen Exhaust · Side-View</span>
+          <span class="esd-vis-label-badge">
+            <span class="esd-vis-label-badge-dot"></span>
+            Live System Render
+          </span>
+        </div>
+      </div>
     </div>
 
-    <h1 class="esd-hero-title">
-      Exhaust System<br>
-      <em>Technical</em><br>
-      Documentation
-    </h1>
+    <!-- RIGHT: text content -->
+    <div class="esd-hero-content reveal reveal-delay-1">
+      <div class="esd-hero-eyebrow">
+        <span class="esd-hero-eyebrow-bar"></span>
+        Engineering Documentation
+      </div>
 
-    <p class="esd-hero-sub">
-      Advanced duct system visualization, airflow analysis, and engineering-focused exhaust mapping for commercial kitchen systems.
-    </p>
+      <h1 class="esd-hero-title">
+        Exhaust System<br>
+        <em>Technical</em><br>
+        Documentation
+      </h1>
 
-    <div class="esd-hero-actions">
-      <a href="#packages" class="btn-esd-primary">
-        Request Technical Survey
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-      <a href="#packages" class="btn-esd-ghost">
-        View Documentation Packages
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
-      </a>
-    </div>
-  </div>
+      <p class="esd-hero-sub">
+        Advanced duct system visualization, airflow analysis, and engineering-focused exhaust mapping for commercial kitchen systems.
+      </p>
 
-  <div class="esd-hero-stats reveal">
-    <div class="esd-stat">
-      <div class="esd-stat-num">3</div>
-      <div class="esd-stat-label">Engineering Packages</div>
-    </div>
-    <div class="esd-stat">
-      <div class="esd-stat-num">360°</div>
-      <div class="esd-stat-label">Multi-Angle Coverage</div>
-    </div>
-    <div class="esd-stat">
-      <div class="esd-stat-num">3D</div>
-      <div class="esd-stat-label">Airflow Visualization</div>
-    </div>
-    <div class="esd-stat">
-      <div class="esd-stat-num">NFPA</div>
-      <div class="esd-stat-label">96 Compliance Ready</div>
-    </div>
-  </div>
+      <div class="esd-hero-actions">
+        <a href="#packages" class="btn-esd-primary">
+          Request Technical Survey
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#packages" class="btn-esd-ghost">
+          View Documentation Packages
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </a>
+      </div>
 
+      <!-- stats -->
+      <div class="esd-hero-stats">
+        <div class="esd-stat">
+          <div class="esd-stat-num">3</div>
+          <div class="esd-stat-label">Engineering Packages</div>
+        </div>
+        <div class="esd-stat">
+          <div class="esd-stat-num">360°</div>
+          <div class="esd-stat-label">Multi-Angle Coverage</div>
+        </div>
+        <div class="esd-stat">
+          <div class="esd-stat-num">3D</div>
+          <div class="esd-stat-label">Airflow Visualization</div>
+        </div>
+        <div class="esd-stat">
+          <div class="esd-stat-num">NFPA</div>
+          <div class="esd-stat-label">96 Compliance Ready</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /hero-grid -->
 </section>
 
 
@@ -886,17 +1248,15 @@
       <div class="esd-pkg-visual">
         <div class="esd-pkg-visual-inner">
           <div class="esd-pkg-icon-wrap">
-            <svg width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 64 64">
+            <svg width="52" height="52" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 64 64">
               <rect x="6" y="26" width="52" height="10" rx="2"/>
               <path d="M18 26V18M46 26V18" stroke-linecap="round"/>
               <path d="M8 36v6M56 36v6" stroke-linecap="round"/>
               <path d="M10 18h44" stroke-dasharray="4 3" stroke-linecap="round"/>
               <circle cx="32" cy="12" r="4"/>
               <path d="M32 16v2" stroke-linecap="round"/>
-              <!-- airflow arrows -->
               <path d="M14 31l4 0M22 31l4 0M30 31l4 0M38 31l4 0" stroke-linecap="round" stroke-width="1.8"/>
               <path d="M24 28l3 3-3 3" stroke-linecap="round" stroke-linejoin="round"/>
-              <!-- access panel marks -->
               <rect x="22" y="24" width="6" height="2" rx="0.5" fill="currentColor" opacity="0.3"/>
               <rect x="36" y="24" width="6" height="2" rx="0.5" fill="currentColor" opacity="0.3"/>
             </svg>
@@ -930,7 +1290,7 @@
               <li>1 technical rendered image</li>
               <li>PDF export</li>
             </ul>
-            <div class="esd-pkg-col-label" style="margin-top:20px;">Ideal For</div>
+            <div class="esd-pkg-col-label" style="margin-top:24px;">Ideal For</div>
             <ul class="esd-pkg-ul">
               <li>Basic system documentation</li>
               <li>Maintenance reference</li>
@@ -942,7 +1302,7 @@
         <div class="esd-pkg-footer">
           <a href="/primefacilityservicesgroup/contact/" class="btn-pkg-cta">
             Request Package 01
-            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
           <span class="esd-pkg-deliverables-note">1 rendered image &amp; PDF export</span>
         </div>
@@ -957,18 +1317,12 @@
       <div class="esd-pkg-visual esd-pkg-visual--02">
         <div class="esd-pkg-visual-inner">
           <div class="esd-pkg-icon-wrap">
-            <svg width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 64 64">
-              <!-- front view -->
+            <svg width="52" height="52" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 64 64">
               <rect x="4" y="22" width="18" height="14" rx="2"/>
-              <!-- rear view -->
               <rect x="42" y="22" width="18" height="14" rx="2"/>
-              <!-- top view -->
               <rect x="20" y="6" width="24" height="14" rx="2"/>
-              <!-- bottom view -->
               <rect x="20" y="38" width="24" height="14" rx="2" stroke-dasharray="3 2"/>
-              <!-- center connectors -->
               <path d="M22 29h-4M46 29h4M32 20V16M32 44v-4" stroke-linecap="round"/>
-              <!-- multi-angle labels -->
               <circle cx="13" cy="29" r="2" fill="currentColor" opacity="0.25"/>
               <circle cx="51" cy="29" r="2" fill="currentColor" opacity="0.25"/>
               <circle cx="32" cy="13" r="2" fill="currentColor" opacity="0.25"/>
@@ -1005,7 +1359,7 @@
               <li>Multi-angle image package</li>
               <li>Professional PDF documentation</li>
             </ul>
-            <div class="esd-pkg-col-label" style="margin-top:20px;">Ideal For</div>
+            <div class="esd-pkg-col-label" style="margin-top:24px;">Ideal For</div>
             <ul class="esd-pkg-ul">
               <li>Facilities management</li>
               <li>Contractors</li>
@@ -1018,7 +1372,7 @@
         <div class="esd-pkg-footer">
           <a href="/primefacilityservicesgroup/contact/" class="btn-pkg-cta btn-pkg-cta--02">
             Request Package 02
-            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
           <span class="esd-pkg-deliverables-note">Image package &amp; professional PDF</span>
         </div>
@@ -1037,16 +1391,13 @@
         </div>
         <div class="esd-pkg-visual-inner">
           <div class="esd-pkg-icon-wrap">
-            <svg width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 64 64">
-              <!-- 3D box / duct isometric -->
+            <svg width="52" height="52" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 64 64">
               <path d="M32 8L54 20v24L32 56 10 44V20L32 8z" stroke-linejoin="round"/>
               <path d="M32 8v48M10 20l22 12 22-12" stroke-dasharray="3 2" stroke-linecap="round"/>
-              <!-- airflow particles -->
               <circle cx="32" cy="32" r="3" fill="currentColor" opacity="0.35"/>
               <circle cx="22" cy="27" r="2" fill="currentColor" opacity="0.2"/>
               <circle cx="42" cy="27" r="2" fill="currentColor" opacity="0.2"/>
               <circle cx="32" cy="42" r="2" fill="currentColor" opacity="0.2"/>
-              <!-- arrows -->
               <path d="M26 29l-4-2M38 29l4-2M32 38l0 4" stroke-linecap="round" stroke-width="1.8"/>
             </svg>
           </div>
@@ -1088,7 +1439,7 @@
               <li>Exhaust fan performance impact</li>
               <li>Extraction efficiency analysis</li>
             </ul>
-            <div class="esd-pkg-col-label" style="margin-top:20px;">Optional Recommendations</div>
+            <div class="esd-pkg-col-label" style="margin-top:24px;">Optional Recommendations</div>
             <ul class="esd-pkg-ul">
               <li>Higher CFM fan upgrade</li>
               <li>Booster fan recommendation</li>
@@ -1106,7 +1457,7 @@
               <li>System documentation package</li>
               <li>Engineering analysis summary</li>
             </ul>
-            <div class="esd-pkg-col-label" style="margin-top:20px;">Ideal For</div>
+            <div class="esd-pkg-col-label" style="margin-top:24px;">Ideal For</div>
             <ul class="esd-pkg-ul">
               <li>Hotels &amp; hospitals</li>
               <li>Large commercial kitchens</li>
@@ -1119,7 +1470,7 @@
         <div class="esd-pkg-footer">
           <a href="/primefacilityservicesgroup/contact/" class="btn-pkg-cta btn-pkg-cta--03">
             Request Package 03
-            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
           <span class="esd-pkg-deliverables-note">3D video · Full PDF · Rendered images · Engineering summary</span>
         </div>
@@ -1138,9 +1489,9 @@
 <section class="esd-cta-section">
   <div class="esd-cta-inner reveal">
     <div class="esd-cta-eyebrow">
-      <span style="display:inline-block;width:22px;height:1px;background:rgba(100,160,255,0.5);"></span>
+      <span style="display:inline-block;width:28px;height:1px;background:rgba(100,160,255,0.4);"></span>
       Technical Consultation
-      <span style="display:inline-block;width:22px;height:1px;background:rgba(100,160,255,0.5);"></span>
+      <span style="display:inline-block;width:28px;height:1px;background:rgba(100,160,255,0.4);"></span>
     </div>
 
     <h2 class="esd-cta-title">Request a Technical<br>System Evaluation</h2>
@@ -1152,10 +1503,10 @@
     <div class="esd-cta-actions">
       <a href="/primefacilityservicesgroup/contact/" class="btn-esd-primary">
         Request Technical Survey
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
       <a href="tel:7133382553" class="btn-esd-ghost">
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.22 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.22 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
         (713) 338-2553
       </a>
     </div>
@@ -1170,7 +1521,7 @@
 ════════════════════════════════════════════════ -->
 <footer class="esd-footer-bar">
   <span class="esd-footer-copy">&copy; 2025 Prime Facility Services Group</span>
-  <div style="display:flex;gap:24px;align-items:center;">
+  <div style="display:flex;gap:28px;align-items:center;">
     <a href="/primefacilityservicesgroup/hood-cleaning/">Hood Cleaning</a>
     <a href="/primefacilityservicesgroup/contact/">Contact</a>
     <a href="tel:7133382553">(713) 338-2553</a>
@@ -1189,7 +1540,7 @@
         observer.unobserve(el.target);
       }
     });
-  }, { threshold: 0.10, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
   revealEls.forEach(el => observer.observe(el));
 
   /* mobile menu */
