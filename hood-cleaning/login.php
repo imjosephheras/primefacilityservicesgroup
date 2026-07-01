@@ -271,7 +271,7 @@ unset($_SESSION['login_error'], $_SESSION['login_email'], $_SESSION['login_redir
         </div>
         <?php endif; ?>
 
-        <form method="POST" action="<?= APP_URL ?>/auth.php" id="loginForm" novalidate>
+        <form method="POST" action="auth.php" id="loginForm" novalidate>
             <input type="hidden" name="redirect" value="<?= htmlspecialchars($redirect, ENT_QUOTES, 'UTF-8') ?>">
 
             <div class="form-group">
