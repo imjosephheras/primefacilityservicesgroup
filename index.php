@@ -1,4 +1,7 @@
 <?php
+/* Visitor Tracking */
+@include_once __DIR__ . '/admin/visitors/tracker.php';
+
 // =======================================
 // Contador de Visitas Diarias
 // =======================================
