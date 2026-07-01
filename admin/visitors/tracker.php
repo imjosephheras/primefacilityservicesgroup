@@ -1,81 +1,112 @@
 <?php
-/**
- * Visitor Tracker — include this file in any page you want to track,
- * OR call it via AJAX/pixel from the frontend.
- *
- * Usage (server-side include):
- *   <?php require_once '/path/to/admin/visitors/tracker.php'; ?>
- *
- * Usage (pixel / AJAX):
- *   <img src="/admin/visitors/tracker.php?url=...&ref=..." width="1" height="1" style="display:none">
- */
+/* ─────────────────────────────────────────────
+   Visitor Tracker
+   Include this file at the top of any PHP page,
+   or request it as a 1×1 transparent pixel:
+     <img src="/admin/visitors/tracker.php" style="display:none" aria-hidden="true">
+   ───────────────────────────────────────────── */
 
 require_once __DIR__ . '/../includes/config.php';
 
-$ua  = $_SERVER['HTTP_USER_AGENT'] ?? '';
-$ip  = vtGetRealIP();
-$url = $_GET['url'] ?? $_SERVER['REQUEST_URI'] ?? '';
-$ref = $_GET['ref'] ?? $_SERVER['HTTP_REFERER'] ?? '';
-
-// Skip tracking requests to the tracker itself / admin panel
-$skipPatterns = ['/admin/', '/tracker.php'];
-foreach ($skipPatterns as $p) {
-    if (str_contains($url, $p)) {
-        if (headers_sent() === false) {
-            header('Content-Type: image/gif');
-            echo base64_decode('R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
-        }
-        exit;
-    }
+/* ── Skip bots ───────────────────────────────── */
+$ua = $_SERVER['HTTP_USER_AGENT'] ?? '';
+if (vtIsBot($ua) || empty($ua)) {
+    vtPixelResponse();
 }
 
-// Bots filter
-if (preg_match('/(bot|crawl|slurp|spider|curl|wget|python|java|perl|ruby|go-http|scan|check)/i', $ua)) {
-    if (headers_sent() === false) {
-        header('Content-Type: image/gif');
-        echo base64_decode('R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
-    }
-    exit;
-}
-
-$browserInfo = vtDetectBrowser($ua);
-$os          = vtDetectOS($ua);
-$device      = vtDetectDevice($ua);
-$geo         = vtGeoIP($ip);
-
-// Logged-in user (if using sessions from other modules)
-$username = '';
-if (session_status() !== PHP_SESSION_NONE || @session_start()) {
-    $username = $_SESSION['username'] ?? $_SESSION['user'] ?? $_SESSION['admin_user'] ?? '';
-}
-
-try {
-    $db = vtGetDB();
-    $db->prepare("
-        INSERT INTO vt_visits (ip_address, country, city, isp, browser, browser_ver, os, device, url_visited, referer, user_agent, username)
-        VALUES (:ip, :country, :city, :isp, :browser, :bver, :os, :device, :url, :ref, :ua, :user)
-    ")->execute([
-        ':ip'      => $ip,
-        ':country' => $geo['country'],
-        ':city'    => $geo['city'],
-        ':isp'     => $geo['isp'],
-        ':browser' => $browserInfo['browser'],
-        ':bver'    => $browserInfo['ver'],
-        ':os'      => $os,
-        ':device'  => $device,
-        ':url'     => substr($url, 0, 500),
-        ':ref'     => substr($ref, 0, 500),
-        ':ua'      => substr($ua, 0, 500),
-        ':user'    => $username,
+/* ── Visitor ID cookie (permanent, 1 year) ───── */
+$visitorId = $_COOKIE['vt_vid'] ?? null;
+if (!$visitorId || !preg_match('/^[0-9a-f\-]{36}$/', $visitorId)) {
+    $visitorId = vtUuid();
+    setcookie('vt_vid', $visitorId, [
+        'expires'  => time() + 365 * 24 * 3600,
+        'path'     => '/',
+        'httponly' => true,
+        'samesite' => 'Lax',
     ]);
-} catch (Exception $e) {
-    // Silent fail — never break the tracked page
 }
 
-// If called directly (pixel mode), return 1×1 GIF
-if (basename($_SERVER['SCRIPT_FILENAME']) === 'tracker.php') {
-    header('Content-Type: image/gif');
-    header('Cache-Control: no-cache, no-store');
-    echo base64_decode('R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
+/* ── Session ID cookie (per visit, session lifetime) ─ */
+$sessionId = $_COOKIE['vt_sid'] ?? null;
+if (!$sessionId || !preg_match('/^[0-9a-f\-]{36}$/', $sessionId)) {
+    $sessionId = vtUuid();
+    setcookie('vt_sid', $sessionId, [
+        'expires'  => 0,
+        'path'     => '/',
+        'httponly' => true,
+        'samesite' => 'Lax',
+    ]);
+}
+
+/* ── Gather data ────────────────────────────── */
+$ip       = vtGetRealIP();
+$geo      = vtGeoIP($ip);
+$bInfo    = vtDetectBrowser($ua);
+$os       = vtDetectOS($ua);
+$device   = vtDetectDevice($ua);
+$url      = $_SERVER['HTTP_REFERER'] ?? ($_GET['url'] ?? '');
+$referer  = $_SERVER['HTTP_REFERER'] ?? ($_GET['ref'] ?? '');
+$language = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? 'unknown', 0, 35);
+
+/* ── Determine actual visited URL ────────────── */
+if (isset($_GET['url'])) {
+    $url = filter_var($_GET['url'], FILTER_SANITIZE_URL);
+} else {
+    $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+    $host   = $_SERVER['HTTP_HOST'] ?? '';
+    $uri    = $_SERVER['REQUEST_URI'] ?? '';
+    $url    = $host ? $scheme . '://' . $host . $uri : $uri;
+}
+
+/* ── Determine referer ───────────────────────── */
+$referer = $_SERVER['HTTP_REFERER'] ?? ($_GET['ref'] ?? '');
+
+/* ── Insert visit ───────────────────────────── */
+try {
+    $db   = vtGetDB();
+    $stmt = $db->prepare("
+        INSERT INTO vt_visits
+            (visitor_id, session_id, ip_address, country, state, city, isp,
+             browser, browser_ver, os, device, user_agent, url_visited, referer, language, timestamp)
+        VALUES
+            (:vid, :sid, :ip, :country, :state, :city, :isp,
+             :browser, :browser_ver, :os, :device, :ua, :url, :ref, :lang, :ts)
+    ");
+    $stmt->execute([
+        ':vid'         => $visitorId,
+        ':sid'         => $sessionId,
+        ':ip'          => $ip,
+        ':country'     => $geo['country'],
+        ':state'       => $geo['state'],
+        ':city'        => $geo['city'],
+        ':isp'         => $geo['isp'],
+        ':browser'     => $bInfo['browser'],
+        ':browser_ver' => $bInfo['ver'],
+        ':os'          => $os,
+        ':device'      => $device,
+        ':ua'          => $ua,
+        ':url'         => $url,
+        ':ref'         => $referer,
+        ':lang'        => $language,
+        ':ts'          => time(),
+    ]);
+} catch (PDOException $e) {
+    // Fail silently — never break the user experience
+}
+
+/* ── Respond: pixel if direct request, nothing if included ── */
+if (basename(__FILE__) === basename($_SERVER['SCRIPT_FILENAME'] ?? '')) {
+    vtPixelResponse();
+}
+
+/* ── Return 1×1 transparent GIF (for pixel requests) ── */
+function vtPixelResponse(): never {
+    if (!headers_sent()) {
+        header('Content-Type: image/gif');
+        header('Cache-Control: no-store, no-cache, must-revalidate');
+        header('Pragma: no-cache');
+        header('Expires: 0');
+    }
+    echo "\x47\x49\x46\x38\x39\x61\x01\x00\x01\x00\x80\x00\x00\xff\xff\xff\x00\x00\x00\x21\xf9\x04\x01\x00\x00\x00\x00\x2c\x00\x00\x00\x00\x01\x00\x01\x00\x00\x02\x02\x44\x01\x00\x3b";
     exit;
 }
