@@ -1,7 +1,7 @@
 <?php
 define('VT_SESSION_NAME', 'vt_admin_session');
-define('VT_DB_PATH', __DIR__ . '/db/visitor_tracking.db');
-define('VT_BASE_URL', '/modules/admin/visitor_tracking');
+define('VT_DB_PATH', __DIR__ . '/../db/visitor_tracking.db');
+define('VT_BASE_URL', '/admin');
 define('ADMIN_USER', 'admin');
 define('ADMIN_PASS', '123');
 
@@ -21,7 +21,7 @@ function vtSession(): void {
 function vtRequireLogin(): void {
     vtSession();
     if (empty($_SESSION['vt_logged_in'])) {
-        header('Location: ' . VT_BASE_URL . '/login.php');
+        header('Location: ' . VT_BASE_URL . '/login/');
         exit;
     }
 }

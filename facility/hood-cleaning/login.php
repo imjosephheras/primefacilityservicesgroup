@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/config.php';
+require_once __DIR__ . '/includes/config.php';
 startSession();
 
 // Already logged in
@@ -22,7 +22,7 @@ unset($_SESSION['login_error'], $_SESSION['login_email'], $_SESSION['login_redir
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login — PRIME Facility Services</title>
     <meta name="robots" content="noindex, nofollow">
-    <link rel="icon" href="/primefacilityservicesgroup/logo-prime.svg" type="image/svg+xml">
+    <link rel="icon" href="/assets/logos/logo-prime.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700&display=swap" rel="stylesheet">
@@ -240,8 +240,8 @@ unset($_SESSION['login_error'], $_SESSION['login_email'], $_SESSION['login_redir
 <body>
 
 <nav class="nav">
-    <a href="/primefacilityservicesgroup/hood-cleaning/">
-        <img src="/primefacilityservicesgroup/logo-prime.png" alt="PRIME"
+    <a href="/facility/hood-cleaning/">
+        <img src="/assets/logos/logo-prime.png" alt="PRIME"
              onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
         <span class="nav-brand" style="display:none;">PRIME</span>
     </a>
@@ -271,7 +271,7 @@ unset($_SESSION['login_error'], $_SESSION['login_email'], $_SESSION['login_redir
         </div>
         <?php endif; ?>
 
-        <form method="POST" action="auth.php" id="loginForm" novalidate>
+        <form method="POST" action="api/auth.php" id="loginForm" novalidate>
             <input type="hidden" name="redirect" value="<?= htmlspecialchars($redirect, ENT_QUOTES, 'UTF-8') ?>">
 
             <div class="form-group">
@@ -322,7 +322,7 @@ unset($_SESSION['login_error'], $_SESSION['login_email'], $_SESSION['login_redir
 </main>
 
 <footer>
-    <p>© 2025 Prime Facility Services Group &nbsp;·&nbsp; <a href="/primefacilityservicesgroup/privacy/">Privacy Policy</a></p>
+    <p>© 2025 Prime Facility Services Group &nbsp;·&nbsp; <a href="/pages/privacy/">Privacy Policy</a></p>
 </footer>
 
 <script>

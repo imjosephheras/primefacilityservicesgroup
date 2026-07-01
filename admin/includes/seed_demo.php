@@ -1,7 +1,7 @@
 <?php
 /**
  * Demo data seeder — run once to populate sample visits.
- * Access: /modules/admin/visitor_tracking/seed_demo.php?key=seed2024
+ * Access: /admin/includes/seed_demo.php?key=seed2024
  */
 if (($_GET['key'] ?? '') !== 'seed2024') {
     http_response_code(403); exit('Forbidden');

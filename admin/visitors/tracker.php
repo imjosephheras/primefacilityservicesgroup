@@ -4,13 +4,13 @@
  * OR call it via AJAX/pixel from the frontend.
  *
  * Usage (server-side include):
- *   <?php require_once '/path/to/modules/admin/visitor_tracking/tracker.php'; ?>
+ *   <?php require_once '/path/to/admin/visitors/tracker.php'; ?>
  *
  * Usage (pixel / AJAX):
- *   <img src="/modules/admin/visitor_tracking/tracker.php?url=...&ref=..." width="1" height="1" style="display:none">
+ *   <img src="/admin/visitors/tracker.php?url=...&ref=..." width="1" height="1" style="display:none">
  */
 
-require_once __DIR__ . '/config.php';
+require_once __DIR__ . '/../includes/config.php';
 
 $ua  = $_SERVER['HTTP_USER_AGENT'] ?? '';
 $ip  = vtGetRealIP();
@@ -18,7 +18,7 @@ $url = $_GET['url'] ?? $_SERVER['REQUEST_URI'] ?? '';
 $ref = $_GET['ref'] ?? $_SERVER['HTTP_REFERER'] ?? '';
 
 // Skip tracking requests to the tracker itself / admin panel
-$skipPatterns = ['/visitor_tracking/', '/tracker.php'];
+$skipPatterns = ['/admin/', '/tracker.php'];
 foreach ($skipPatterns as $p) {
     if (str_contains($url, $p)) {
         if (headers_sent() === false) {

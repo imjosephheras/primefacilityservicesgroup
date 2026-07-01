@@ -12,9 +12,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 }
 
 // Cargar configuración SMTP, clase mailer y DB
-require_once 'smtp_config.php';
-require_once 'smtp_mailer.php';
-require_once 'db_config.php';
+require_once __DIR__ . '/../../core/mail/smtp_config.php';
+require_once __DIR__ . '/../../core/mail/smtp_mailer.php';
+
+// db_config.php provides getDBConnection() for saving form submissions
+// Load if available; failures are non-fatal (email still sends)
+$dbConfigPath = __DIR__ . '/../../core/config/db_config.php';
+if (file_exists($dbConfigPath)) {
+    require_once $dbConfigPath;
+}
 
 // CONFIGURACIÓN DEL MAIL
 $to = EMAIL_TO; // Puede ser uno o varios emails separados por coma
@@ -74,6 +80,9 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
 // GUARDAR EN BASE DE DATOS
 try {
+    if (!function_exists('getDBConnection')) {
+        throw new Exception('DB not configured');
+    }
     $db = getDBConnection();
 
     $sql = "INSERT INTO form (full_name, company_name, email, phone, service_type, service_frequency, property_type, message)
