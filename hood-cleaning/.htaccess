@@ -1,0 +1,8 @@
+DirectoryIndex index.html login.php
+Options -Indexes
+
+# Block direct access to sensitive files
+<FilesMatch "^(\.env|config\.php|auth\.php)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
