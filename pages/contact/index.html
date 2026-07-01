@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Prime Facility Services Group</title>
+    
+    <!-- 
+    ====================================
+    UNIFIED CONTACT PAGE - DOCUMENTATION
+    ====================================
+    This is the MAIN contact page for the entire website.
+    
+    IMPORTANT NOTES:
+    - This replaces both the old contact.html and contact-form.html
+    - All contact links should point to this page
+    - DO NOT use contact-form.html as iframe anymore
+    - This page includes navbar and footer
+    
+    FORM FIELDS:
+    1. Full Name (required)
+    2. Company Name (required) 
+    3. Email (required)
+    4. Phone (required)
+    5. Service Type (required)
+    6. Service Frequency (optional)
+    7. Property Type (optional)
+    8. Message (optional)
+    
+    Last Updated: January 2025
+    ====================================
+    -->
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    screens: {
+                        'xs': '475px',
+                    },
+                },
+            },
+        }
+    </script>
+    
+    <!-- Navbar CSS -->
+    <link rel="stylesheet" href="/assets/css/navbar.css">
+    
+    <!-- Preloader CSS -->
+    <link rel="stylesheet" href="/assets/css/preloader.css">
+    
+    <!-- Image Protection CSS -->
+    <link rel="stylesheet" href="/assets/css/image-protection.css">
+    
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        html {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-section {
+            background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+        }
+        
+        .contact-card {
+            background: linear-gradient(135deg, #03143A 0%, #0a1e4a 100%);
+        }
+        
+        .hover-lift {
+            transition: all 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        /* Enhanced form styling */
+        .form-input:focus {
+            box-shadow: 0 0 0 3px rgba(199, 5, 50, 0.1);
+        }
+        
+        /* Button hover animation */
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(199, 5, 50, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(199, 5, 50, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(199, 5, 50, 0);
+            }
+        }
+        
+        .btn-submit:hover {
+            animation: pulse 2s infinite;
+        }
+        
+        /* Fade-in animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        .animate-fade-in-delay {
+            animation: fadeIn 0.8s ease-out 0.2s both;
+        }
+        
+        /* Contact info cards hover effect */
+        .contact-info-card {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-info-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(199, 5, 50, 0.05) 0%, transparent 70%);
+            transform: scale(0);
+            transition: transform 0.6s ease;
+        }
+        
+        .contact-info-card:hover::before {
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Preloader will be injected here by preloader.js -->
+
+    <!-- Navbar will be injected here by navbar.js -->
+
+    <!-- Hero Section - Simplified -->
+    <section class="relative pt-32 pb-20 overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="hero-contact.jpg" alt="Contact Hero" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-br from-[#03143A]/90 to-[#0a1e4a]/90"></div>
+        </div>
+        
+        <!-- Subtle decorative elements -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-[#C70532]/10 rounded-full filter blur-3xl transform translate-x-32 -translate-y-32"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-white/5 rounded-full filter blur-3xl transform -translate-x-48 translate-y-48"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <!-- Badge -->
+                <div class="mb-6" data-aos="fade-down">
+                    <span class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-sm font-medium">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+                        </svg>
+                        24/7 Emergency Support
+                    </span>
+                </div>
+                
+                <!-- Main Heading -->
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6" data-aos="fade-up">
+                    Get in Touch
+                </h1>
+                
+                <!-- Subheading -->
+                <p class="text-lg sm:text-xl text-white/80 max-w-2xl mx-auto mb-8 sm:mb-10 px-4" data-aos="fade-up" data-aos-delay="100">
+                    We're here to help transform your facility management experience. Contact us for a free consultation and custom quote.
+                </p>
+                
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center" data-aos="fade-up" data-aos-delay="200">
+                    <a href="tel:+17133382553" class="inline-flex items-center gap-2 px-6 py-3.5 bg-[#C70532] text-white rounded-lg font-semibold hover:bg-[#a00328] transition-all duration-300 shadow-lg min-h-[44px]">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                        </svg>
+                        (713) 338-2553
+                    </a>
+                    <a href="#contactForm" class="inline-flex items-center gap-2 px-6 py-3.5 bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-lg font-semibold hover:bg-white/20 transition-all duration-300 min-h-[44px]">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                        Send Message
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Information Section -->
+    <section class="py-20 px-4 relative overflow-hidden gradient-section">
+        
+        <div class="container mx-auto max-w-7xl relative z-10">
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12 md:mb-16">
+                <!-- Phone Card -->
+                <div class="text-center p-6 sm:p-8 bg-white/95 backdrop-blur-sm rounded-xl shadow-lg hover-lift border border-gray-100 contact-info-card">
+                    <div class="w-16 h-16 bg-[#C70532] rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-semibold text-[#03143A] mb-2">Call Us</h3>
+                    <a href="tel:+17133382553" class="text-lg text-[#C70532] hover:underline">(713) 338-2553</a>
+                    <p class="text-gray-600 mt-2">Available 24/7 for emergencies</p>
+                </div>
+
+                <!-- Email Card -->
+                <div class="text-center p-6 sm:p-8 bg-white/95 backdrop-blur-sm rounded-xl shadow-lg hover-lift border border-gray-100 contact-info-card">
+                    <div class="w-16 h-16 bg-[#C70532] rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-semibold text-[#03143A] mb-2">Email Us</h3>
+                    <a href="mailto:info@primefsg.com" class="text-lg text-[#C70532] hover:underline">info@primefsg.com</a>
+                    <p class="text-gray-600 mt-2">Response within 24 hours</p>
+                </div>
+
+                <!-- Location Card -->
+                <div class="text-center p-6 sm:p-8 bg-white/95 backdrop-blur-sm rounded-xl shadow-lg hover-lift border border-gray-100 contact-info-card">
+                    <div class="w-16 h-16 bg-[#C70532] rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-semibold text-[#03143A] mb-2">Visit Us</h3>
+                    <p class="text-gray-600">Houston, Texas</p>
+                    <p class="text-gray-600 mt-2">Serving the Greater Houston Area</p>
+                </div>
+            </div>
+
+            <!-- Contact Form Section -->
+            <div class="grid lg:grid-cols-2 gap-6 lg:gap-12 items-start">
+                <!-- Form -->
+                <div class="bg-white p-6 sm:p-8 rounded-xl shadow-lg border border-gray-100">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-[#03143A] mb-4 sm:mb-6">Send Us a Message</h2>
+                    <!-- UNIFIED CONTACT FORM - All fields standardized across the site -->
+                    <form id="contactForm" class="space-y-6">
+                        <!-- Name and Company Row -->
+                        <div class="grid md:grid-cols-2 gap-4 md:gap-6">
+                            <div>
+                                <label for="fullName" class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                                <input type="text" id="fullName" name="fullName" required
+                                    class="w-full px-4 py-3.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#C70532] focus:border-transparent transition form-input min-h-[44px]"
+                                    placeholder="John Smith">
+                            </div>
+                            <div>
+                                <label for="company" class="block text-sm font-medium text-gray-700 mb-2">Company Name *</label>
+                                <input type="text" id="company" name="company" required
+                                    class="w-full px-4 py-3.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#C70532] focus:border-transparent transition form-input min-h-[44px]"
+                                    placeholder="ABC Corporation">
+                            </div>
+                        </div>
+
+                        <!-- Contact Information Row -->
+                        <div class="grid md:grid-cols-2 gap-4 md:gap-6">
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+                                <input type="email" id="email" name="email" required
+                                    class="w-full px-4 py-3.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#C70532] focus:border-transparent transition form-input min-h-[44px]"
+                                    placeholder="john@company.com">
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required
+                                    class="w-full px-4 py-3.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#C70532] focus:border-transparent transition form-input min-h-[44px]"
+                                    placeholder="(555) 123-4567">
+                            </div>
+                        </div>
+
+                        <!-- Service Selection Row -->
+                        <div class="grid md:grid-cols-2 gap-4 md:gap-6">
+                            <div>
+                                <label for="service" class="block text-sm font-medium text-gray-700 mb-2">Service Type *</label>
+                                <select id="service" name="service" required
+                                    class="w-full px-4 py-3.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#C70532] focus:border-transparent transition form-input min-h-[44px]">
+                                    <option value="">Select a service</option>
+                                    <option value="staffing">Professional Staffing</option>
+                                    <option value="kitchen">Kitchen Cleaning</option>
+                                    <option value="janitorial">Janitorial Services</option>
+                                    <option value="floor">Floor Care</option>
+                                    <option value="window">Window Cleaning</option>
+                                    <option value="valet">Valet Parking</option>
+                                    <option value="multiple">Multiple Services</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="frequency" class="block text-sm font-medium text-gray-700 mb-2">Service Frequency</label>
+                                <select id="frequency" name="frequency"
+                                    class="w-full px-4 py-3.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#C70532] focus:border-transparent transition form-input min-h-[44px]">
+                                    <option value="">Select frequency</option>
+                                    <option value="daily">Daily</option>
+                                    <option value="weekly">Weekly</option>
+                                    <option value="biweekly">Bi-Weekly</option>
+                                    <option value="monthly">Monthly</option>
+                                    <option value="onetime">One-Time</option>
+                                    <option value="asneeded">As Needed</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Property Type (New Field) -->
+                        <div>
+                            <label for="propertyType" class="block text-sm font-medium text-gray-700 mb-2">Property Type</label>
+                            <select id="propertyType" name="propertyType"
+                                class="w-full px-4 py-3.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#C70532] focus:border-transparent transition min-h-[44px]">
+                                <option value="">Select property type</option>
+                                <option value="office">Office Building</option>
+                                <option value="retail">Retail Store</option>
+                                <option value="restaurant">Restaurant</option>
+                                <option value="hotel">Hotel/Hospitality</option>
+                                <option value="healthcare">Healthcare Facility</option>
+                                <option value="residential">Residential Complex</option>
+                                <option value="industrial">Industrial/Warehouse</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <!-- Message Field -->
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Additional Details</label>
+                            <textarea id="message" name="message" rows="4"
+                                class="w-full px-4 py-3.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#C70532] focus:border-transparent transition resize-none"
+                                placeholder="Tell us about your facility size, specific needs, or any special requirements..."></textarea>
+                        </div>
+
+                        <button type="submit" 
+                            class="w-full bg-[#C70532] text-white font-semibold py-4 rounded-lg hover:bg-[#a00328] transition-all duration-300 transform hover:scale-[1.02] btn-submit">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Info Section -->
+                <div class="lg:pl-12">
+                    <div class="contact-card text-white p-8 rounded-xl shadow-lg mb-8">
+                        <h3 class="text-2xl font-semibold mb-4">Why Choose Prime FSG?</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <svg class="w-6 h-6 text-[#C70532] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>24/7 Emergency Response</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-6 h-6 text-[#C70532] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>Fully Licensed & Insured</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-6 h-6 text-[#C70532] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>Customized Service Solutions</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-6 h-6 text-[#C70532] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>Competitive Pricing</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-gray-100 p-8 rounded-xl">
+                        <h3 class="text-xl font-semibold text-[#03143A] mb-4">Business Hours</h3>
+                        <div class="space-y-2 text-gray-700">
+                            <div class="flex justify-between">
+                                <span>Monday - Friday</span>
+                                <span class="font-medium">8:30 AM - 5:30 PM</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Lunch Break</span>
+                                <span class="font-medium">12:00 PM - 1:00 PM</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Saturday - Sunday</span>
+                                <span class="font-medium">Closed</span>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-sm text-[#C70532] font-medium">
+                            24/7 Emergency Services Available
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="py-16 bg-gradient-to-b from-gray-50 to-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl font-bold text-[#03143A] mb-4" data-aos="fade-up">Visit Our Office</h2>
+                <p class="text-lg sm:text-xl text-gray-600" data-aos="fade-up" data-aos-delay="100">
+                    8303 Westglen Dr, Houston, TX 77063
+                </p>
+            </div>
+            
+            <div class="max-w-6xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
+                    <div class="grid lg:grid-cols-3 gap-0">
+                        <!-- Map Container -->
+                        <div class="lg:col-span-2 h-[300px] sm:h-[350px] md:h-[400px] lg:h-[500px]">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3464.8970370831924!2d-95.55841492380156!3d29.72285223493892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640c35db5b7e4d1%3A0x73e4ec4163eb24c7!2s8303%20Westglen%20Dr%2C%20Houston%2C%20TX%2077063!5e0!3m2!1sen!2sus!4v1705431234567!5m2!1sen!2sus"
+                                width="100%" 
+                                height="100%" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                        
+                        <!-- Office Info Panel -->
+                        <div class="bg-gradient-to-br from-[#03143A] to-[#0a1e4a] text-white p-6 sm:p-8 flex flex-col justify-center">
+                            <h3 class="text-2xl font-bold mb-6">Prime Facility Services Group</h3>
+                            
+                            <div class="space-y-4">
+                                <div class="flex items-start gap-3">
+                                    <svg class="w-6 h-6 text-[#C70532] flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    </svg>
+                                    <div>
+                                        <p class="font-semibold">Office Location</p>
+                                        <p class="text-sm text-gray-300">8303 Westglen Dr<br>Houston, TX 77063</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start gap-3">
+                                    <svg class="w-6 h-6 text-[#C70532] flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                    </svg>
+                                    <div>
+                                        <p class="font-semibold">Phone</p>
+                                        <a href="tel:+17133382553" class="text-sm text-gray-300 hover:text-white transition">(713) 338-2553</a>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start gap-3">
+                                    <svg class="w-6 h-6 text-[#C70532] flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                    </svg>
+                                    <div>
+                                        <p class="font-semibold">Email</p>
+                                        <a href="mailto:its@primefacilityservicesgroup.com" class="text-sm text-gray-300 hover:text-white transition">its@primefacilityservicesgroup.com</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-8">
+                                <a href="https://www.google.com/maps/dir//8303+Westglen+Dr,+Houston,+TX+77063" 
+                                   target="_blank"
+                                   class="inline-flex items-center gap-2 bg-[#C70532] text-white px-6 py-3 rounded-lg hover:bg-[#a00328] transition-all">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
+                                    </svg>
+                                    Get Directions
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#03143A] text-white py-12 px-4">
+        <div class="container mx-auto max-w-7xl">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <img src="/assets/logos/logo-prime-facility-white.png" alt="Prime Facility Services Group" class="h-12 w-auto mb-4">
+                    <p class="text-gray-400 text-sm">
+                        Professional facility management services in Houston, Texas.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="/hospitality/staffing/views/" class="hover:text-white transition">Professional Staffing</a></li>
+                        <li><a href="/facility/" class="hover:text-white transition">Cleaning Services</a></li>
+                        <li><a href="/hospitality/valet/views/" class="hover:text-white transition">Valet Parking</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="/pages/about/" class="hover:text-white transition">About Us</a></li>
+                        <li><a href="/pages/contact/" class="hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Contact Info</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li>Houston, Texas</li>
+                        <li><a href="tel:+17133382553" class="hover:text-white transition">(713) 338-2553</a></li>
+                        <li><a href="mailto:info@primefsg.com" class="hover:text-white transition">info@primefsg.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 pt-8 text-center text-gray-400 text-sm">
+                <p>&copy; 2025 Prime Facility Services Group. All rights reserved.</p>
+
+            </div>
+        </div>
+    </footer>
+
+  
+    <script src="/assets/js/navbar.js"></script>
+    <script src="/assets/js/preloader.js"></script>
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData);
+
+    // DEBUG: Verificar que los datos se estén capturando
+    console.log("Datos del formulario:", data);
+    console.log("Datos en JSON:", JSON.stringify(data));
+
+    const submitBtn = e.target.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+
+    submitBtn.textContent = "Sending...";
+    submitBtn.disabled = true;
+
+    fetch('https://dallas.primefsgroup.com/send_mail.php', {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        // Verificar si la respuesta es OK
+        if (!response.ok) {
+            return response.json().then(err => {
+                throw new Error(err.message || 'Error en el servidor');
+            });
+        }
+        return response.json();
+    })
+    .then(result => {
+        console.log("Respuesta del servidor:", result);
+
+        if (result.status === "success" || result.status === "test_success") {
+            alert("✅ Mensaje enviado exitosamente. ¡Gracias por contactarnos!");
+            e.target.reset();
+        } else {
+            alert("❌ " + (result.message || "Error al enviar el mensaje. Inténtalo más tarde."));
+        }
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("❌ Error: " + (error.message || "Error de conexión. Por favor verifica tu conexión a internet."));
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+    });
+});
+</script>
+
+
+    
+    <!-- Image Protection Script -->
+    <script>
+        // Disable right-click on images
+        document.addEventListener('contextmenu', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+                return false;
+            }
+        });
+        
+        // Disable drag on images
+        document.addEventListener('dragstart', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+                return false;
+            }
+        });
+        
+        // Disable image selection with keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Disable Ctrl+A when an image is focused
+            if ((e.ctrlKey || e.metaKey) && e.key === 'a') {
+                if (document.activeElement.tagName === 'IMG') {
+                    e.preventDefault();
+                    return false;
+                }
+            }
+            // Disable Ctrl+S (Save)
+            if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+                e.preventDefault();
+                return false;
+            }
+        });
+        
+        // Disable long press on mobile devices
+        document.addEventListener('touchstart', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+            }
+        });
+    </script>
+    
+    <!-- Job Application Button -->
+    <script src="/assets/js/job-application-button.js"></script>
+</body>
+</html>

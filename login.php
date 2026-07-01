@@ -1,3 +1,3 @@
 <?php
-header('Location: /modules/admin/visitor_tracking/login.php');
+header('Location: /admin/login/');
 exit;

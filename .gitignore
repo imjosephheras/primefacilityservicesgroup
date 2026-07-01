@@ -6,6 +6,16 @@ node_modules/
 vendor/
 .env
 storage/*.key
+storage/logs/*.log
+storage/temp/*
+!storage/temp/.gitkeep
+storage/exports/*
+!storage/exports/.gitkeep
+storage/uploads/*
+!storage/uploads/.gitkeep
+storage/backups/*
+!storage/backups/.gitkeep
+contador_*.txt
 *.mp4
 *.mov
 *.avi

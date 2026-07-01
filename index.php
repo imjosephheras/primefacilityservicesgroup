@@ -85,13 +85,13 @@ fclose($fp);
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     
     <!-- Preloader CSS -->
-    <link rel="stylesheet" href="/preloader.css">
+    <link rel="stylesheet" href="/assets/css/preloader.css">
     
     <!-- Navbar CSS -->
-    <link rel="stylesheet" href="/navbar.css">
+    <link rel="stylesheet" href="/assets/css/navbar.css">
     
     <!-- Image Protection CSS -->
-    <link rel="stylesheet" href="/image-protection.css">
+    <link rel="stylesheet" href="/assets/css/image-protection.css">
     
     <style>
         body { font-family: 'Montserrat', sans-serif; }
@@ -619,14 +619,14 @@ fclose($fp);
         }
 
         .pfsg-employers {
-            background-image: url('/images/Services-pic-2.png');
+            background-image: url('/assets/images/Services-pic-2.png');
             background-size: cover;
             background-position: right center !important;
             position: relative;
         }
 
         .pfsg-jobseekers {
-            background-image: url('/images/Services-pic-3.png');
+            background-image: url('/assets/images/Services-pic-3.png');
             background-size: cover;
             background-position: right center !important;
             position: relative;
@@ -955,13 +955,13 @@ fclose($fp);
         <div class="landing-selector-inner">
             <!-- Logo -->
             <div class="landing-logo">
-                <img src="/logo-prime-facility-white.png" alt="Prime Facility Services Group">
+                <img src="/assets/logos/logo-prime-facility-white.png" alt="Prime Facility Services Group">
             </div>
             <p class="landing-tagline">Select a division to continue</p>
 
             <div class="landing-cards">
                 <!-- Hood System Cleaning Card -->
-                <a href="/primefacilityservicesgroup/hood-cleaning/" class="landing-card landing-card--hood">
+                <a href="/facility/hood-cleaning/" class="landing-card landing-card--hood">
                     <div class="landing-card__bg"></div>
                     <div class="landing-card__content">
                         <div class="landing-card__icon">
@@ -1063,7 +1063,7 @@ fclose($fp);
                 
                 <!-- CTA Buttons -->
                 <div class="flex flex-col sm:flex-row gap-4 sm:gap-5 justify-center items-center mb-12 sm:mb-16" data-aos="fade-up" data-aos-delay="300">
-                    <a href="/contact/" class="btn-primary">
+                    <a href="/pages/contact/" class="btn-primary">
                         <span style="color: white !important;">Get Started Today</span>
                         <svg class="w-5 h-5" fill="none" stroke="white" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
@@ -1142,7 +1142,7 @@ fclose($fp);
                     <div class="relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                         <!-- Image Section -->
                         <div class="relative overflow-hidden" style="padding-bottom: 75%;">
-                            <img src="/images/services/professional-staffing-team.jpg" 
+                            <img src="/assets/images/services/professional-staffing-team.jpg" 
                                  alt="Professional staffing" 
                                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                  loading="lazy">
@@ -1184,7 +1184,7 @@ fclose($fp);
                                 </li>
                             </ul>
                             
-                            <a href="/staffing/" class="group/btn inline-flex items-center gap-2 text-[#C70532] font-semibold hover:gap-4 transition-all">
+                            <a href="/hospitality/staffing/views/" class="group/btn inline-flex items-center gap-2 text-[#C70532] font-semibold hover:gap-4 transition-all">
                                 Explore Staffing
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
@@ -1204,7 +1204,7 @@ fclose($fp);
                         
                         <!-- Image Section -->
                         <div class="relative overflow-hidden" style="padding-bottom: 75%;">
-                            <img src="/images/services/commercial-cleaning-service.png" 
+                            <img src="/assets/images/services/commercial-cleaning-service.png" 
                                  alt="Professional cleaning" 
                                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                  style="object-position: center 20%;"
@@ -1247,7 +1247,7 @@ fclose($fp);
                                 </li>
                             </ul>
                             
-                            <a href="/cleaning/" class="group/btn inline-flex items-center gap-2 text-[#C70532] font-semibold hover:gap-4 transition-all">
+                            <a href="/facility/" class="group/btn inline-flex items-center gap-2 text-[#C70532] font-semibold hover:gap-4 transition-all">
                                 Explore Cleaning
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
@@ -1262,7 +1262,7 @@ fclose($fp);
                     <div class="relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                         <!-- Image Section -->
                         <div class="relative overflow-hidden" style="padding-bottom: 75%;">
-                            <img src="/images/services/valet-parking-professional.png" 
+                            <img src="/assets/images/services/valet-parking-professional.png" 
                                  alt="Valet parking" 
                                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                  loading="lazy">
@@ -1304,7 +1304,7 @@ fclose($fp);
                                 </li>
                             </ul>
                             
-                            <a href="/valet/" class="group/btn inline-flex items-center gap-2 text-[#C70532] font-semibold hover:gap-4 transition-all">
+                            <a href="/hospitality/valet/views/" class="group/btn inline-flex items-center gap-2 text-[#C70532] font-semibold hover:gap-4 transition-all">
                                 Explore Valet
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
@@ -1318,7 +1318,7 @@ fclose($fp);
             <!-- Bottom CTA -->
             <div class="mt-16 text-center" data-aos="fade-up" data-aos-delay="400">
                 <p class="text-[#666] mb-6">Need a custom solution for your facility?</p>
-                <a href="/contact/" class="inline-flex items-center gap-3 px-8 py-4 bg-[#03143A] text-white rounded-full font-semibold hover:bg-[#03143A]/90 transition-all duration-300 shadow-lg hover:shadow-xl">
+                <a href="/pages/contact/" class="inline-flex items-center gap-3 px-8 py-4 bg-[#03143A] text-white rounded-full font-semibold hover:bg-[#03143A]/90 transition-all duration-300 shadow-lg hover:shadow-xl">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
                     </svg>
@@ -1343,7 +1343,7 @@ fclose($fp);
                         </div>
                         <h2>Staffing Solutions</h2>
                         <p>Elevate your hospitality business with our expert staffing solutions. We provide skilled professionals for hotels, restaurants, events, and more.</p>
-                        <a href="/staffing/" class="pfsg-btn" role="button">
+                        <a href="/hospitality/staffing/views/" class="pfsg-btn" role="button">
                             Find Staff 
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
@@ -1498,7 +1498,7 @@ fclose($fp);
                 
                 <!-- CTA -->
                 <div class="text-center mt-16" data-aos="fade-up" data-aos-delay="900">
-                    <a href="/contact/" class="inline-flex items-center gap-3 px-10 py-5 bg-[#C70532] text-white rounded-full font-bold text-lg hover:bg-[#a00328] transition-all duration-300 shadow-2xl hover:shadow-[#C70532]/50">
+                    <a href="/pages/contact/" class="inline-flex items-center gap-3 px-10 py-5 bg-[#C70532] text-white rounded-full font-bold text-lg hover:bg-[#a00328] transition-all duration-300 shadow-2xl hover:shadow-[#C70532]/50">
                         Experience the Prime Difference
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
@@ -1640,54 +1640,54 @@ fclose($fp);
                 <div class="flex logo-scroll">
                     <div class="flex space-x-16 pr-16 items-center">
                         <div class="h-24 w-40 bg-white rounded-lg p-4 flex items-center justify-center shadow-md">
-                            <img src="/Company Logo/logo-marriott.png" alt="Marriott" class="max-h-16 w-auto object-contain" loading="lazy">
+                            <img src="/assets/logos/clients/logo-marriott.png" alt="Marriott" class="max-h-16 w-auto object-contain" loading="lazy">
                         </div>
                         <div class="h-24 w-40 bg-white rounded-lg p-4 flex items-center justify-center shadow-md">
-                            <img src="/Company Logo/logo-hyatt-regency.png" alt="Hyatt Regency" class="max-h-16 w-auto object-contain" loading="lazy">
+                            <img src="/assets/logos/clients/logo-hyatt-regency.png" alt="Hyatt Regency" class="max-h-16 w-auto object-contain" loading="lazy">
                         </div>
                         <div class="h-24 w-40 bg-white rounded-lg p-4 flex items-center justify-center shadow-md">
-                            <img src="/Company Logo/logo-omni.png" alt="Omni Hotels" class="max-h-16 w-auto object-contain" loading="lazy">
+                            <img src="/assets/logos/clients/logo-omni.png" alt="Omni Hotels" class="max-h-16 w-auto object-contain" loading="lazy">
                         </div>
                         <div class="h-24 w-40 bg-white rounded-lg p-4 flex items-center justify-center shadow-md">
-                            <img src="/Company Logo/logo-baymont.png" alt="Baymont" class="max-h-16 w-auto object-contain" loading="lazy">
+                            <img src="/assets/logos/clients/logo-baymont.png" alt="Baymont" class="max-h-16 w-auto object-contain" loading="lazy">
                         </div>
                         <div class="h-24 w-40 bg-white rounded-lg p-4 flex items-center justify-center shadow-md">
-                            <img src="/Company Logo/logo-houston-rodeo.png" alt="Houston Rodeo" class="max-h-16 w-auto object-contain" loading="lazy">
+                            <img src="/assets/logos/clients/logo-houston-rodeo.png" alt="Houston Rodeo" class="max-h-16 w-auto object-contain" loading="lazy">
                         </div>
                         <div class="h-24 w-40 bg-white rounded-lg p-4 flex items-center justify-center shadow-md">
-                            <img src="/Company Logo/logo-the-woodlands.png" alt="The Woodlands" class="max-h-16 w-auto object-contain" loading="lazy">
+                            <img src="/assets/logos/clients/logo-the-woodlands.png" alt="The Woodlands" class="max-h-16 w-auto object-contain" loading="lazy">
                         </div>
                         <div class="h-24 w-40 bg-white rounded-lg p-4 flex items-center justify-center shadow-md">
-                            <img src="/Company Logo/logo-otg.png" alt="OTG" class="max-h-16 w-auto object-contain" loading="lazy">
+                            <img src="/assets/logos/clients/logo-otg.png" alt="OTG" class="max-h-16 w-auto object-contain" loading="lazy">
                         </div>
                         <div class="h-24 w-40 bg-white rounded-lg p-4 flex items-center justify-center shadow-md">
-                            <img src="/Company Logo/logo-icon.png" alt="Icon" class="max-h-16 w-auto object-contain" loading="lazy">
+                            <img src="/assets/logos/clients/logo-icon.png" alt="Icon" class="max-h-16 w-auto object-contain" loading="lazy">
                         </div>
                     </div>
                     <div class="flex space-x-16 pr-16 items-center">
                         <div class="h-24 w-40 bg-white rounded-lg p-4 flex items-center justify-center shadow-md">
-                            <img src="/Company Logo/logo-marriott.png" alt="Marriott" class="max-h-16 w-auto object-contain" loading="lazy">
+                            <img src="/assets/logos/clients/logo-marriott.png" alt="Marriott" class="max-h-16 w-auto object-contain" loading="lazy">
                         </div>
                         <div class="h-24 w-40 bg-white rounded-lg p-4 flex items-center justify-center shadow-md">
-                            <img src="/Company Logo/logo-hyatt-regency.png" alt="Hyatt Regency" class="max-h-16 w-auto object-contain" loading="lazy">
+                            <img src="/assets/logos/clients/logo-hyatt-regency.png" alt="Hyatt Regency" class="max-h-16 w-auto object-contain" loading="lazy">
                         </div>
                         <div class="h-24 w-40 bg-white rounded-lg p-4 flex items-center justify-center shadow-md">
-                            <img src="/Company Logo/logo-omni.png" alt="Omni Hotels" class="max-h-16 w-auto object-contain" loading="lazy">
+                            <img src="/assets/logos/clients/logo-omni.png" alt="Omni Hotels" class="max-h-16 w-auto object-contain" loading="lazy">
                         </div>
                         <div class="h-24 w-40 bg-white rounded-lg p-4 flex items-center justify-center shadow-md">
-                            <img src="/Company Logo/logo-baymont.png" alt="Baymont" class="max-h-16 w-auto object-contain" loading="lazy">
+                            <img src="/assets/logos/clients/logo-baymont.png" alt="Baymont" class="max-h-16 w-auto object-contain" loading="lazy">
                         </div>
                         <div class="h-24 w-40 bg-white rounded-lg p-4 flex items-center justify-center shadow-md">
-                            <img src="/Company Logo/logo-houston-rodeo.png" alt="Houston Rodeo" class="max-h-16 w-auto object-contain" loading="lazy">
+                            <img src="/assets/logos/clients/logo-houston-rodeo.png" alt="Houston Rodeo" class="max-h-16 w-auto object-contain" loading="lazy">
                         </div>
                         <div class="h-24 w-40 bg-white rounded-lg p-4 flex items-center justify-center shadow-md">
-                            <img src="/Company Logo/logo-the-woodlands.png" alt="The Woodlands" class="max-h-16 w-auto object-contain" loading="lazy">
+                            <img src="/assets/logos/clients/logo-the-woodlands.png" alt="The Woodlands" class="max-h-16 w-auto object-contain" loading="lazy">
                         </div>
                         <div class="h-24 w-40 bg-white rounded-lg p-4 flex items-center justify-center shadow-md">
-                            <img src="/Company Logo/logo-otg.png" alt="OTG" class="max-h-16 w-auto object-contain" loading="lazy">
+                            <img src="/assets/logos/clients/logo-otg.png" alt="OTG" class="max-h-16 w-auto object-contain" loading="lazy">
                         </div>
                         <div class="h-24 w-40 bg-white rounded-lg p-4 flex items-center justify-center shadow-md">
-                            <img src="/Company Logo/logo-icon.png" alt="Icon" class="max-h-16 w-auto object-contain" loading="lazy">
+                            <img src="/assets/logos/clients/logo-icon.png" alt="Icon" class="max-h-16 w-auto object-contain" loading="lazy">
                         </div>
                     </div>
                 </div>
@@ -1723,7 +1723,7 @@ fclose($fp);
                     <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center">
                         <div class="relative mb-6">
                             <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full mx-auto shadow-lg overflow-hidden group-hover:scale-105 transition-transform duration-300">
-                                <img src="/Team-Profile-Pictures/team-patty-perez.png" alt="Patty Perez" class="w-full h-full object-cover" loading="lazy">
+                                <img src="/team/photos/team-patty-perez.png" alt="Patty Perez" class="w-full h-full object-cover" loading="lazy">
                             </div>
                             <div class="absolute -bottom-2 -right-2 w-16 h-16 bg-[#C70532]/10 rounded-full blur-2xl"></div>
                         </div>
@@ -1738,7 +1738,7 @@ fclose($fp);
                     <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center">
                         <div class="relative mb-6">
                             <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full mx-auto shadow-lg overflow-hidden group-hover:scale-105 transition-transform duration-300">
-                                <img src="/Team-Profile-Pictures/team-rafael-perez.png" alt="Rafael Perez" class="w-full h-full object-cover" loading="lazy">
+                                <img src="/team/photos/team-rafael-perez.png" alt="Rafael Perez" class="w-full h-full object-cover" loading="lazy">
                             </div>
                             <div class="absolute -bottom-2 -right-2 w-16 h-16 bg-[#03143A]/10 rounded-full blur-2xl"></div>
                         </div>
@@ -1753,7 +1753,7 @@ fclose($fp);
                     <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center">
                         <div class="relative mb-6">
                             <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full mx-auto shadow-lg overflow-hidden group-hover:scale-105 transition-transform duration-300">
-                                <img src="/Team-Profile-Pictures/team-sergio-biolley.png" alt="Sergio Biolley" class="w-full h-full object-cover" loading="lazy">
+                                <img src="/team/photos/team-sergio-biolley.png" alt="Sergio Biolley" class="w-full h-full object-cover" loading="lazy">
                             </div>
                             <div class="absolute -bottom-2 -right-2 w-16 h-16 bg-[#C70532]/10 rounded-full blur-2xl"></div>
                         </div>
@@ -1825,7 +1825,7 @@ fclose($fp);
                 </div>
                 
                 <div class="mt-8 text-center">
-                    <a href="/about/" class="inline-flex items-center gap-2 text-[#C70532] font-semibold hover:text-[#03143A] transition-colors">
+                    <a href="/pages/about/" class="inline-flex items-center gap-2 text-[#C70532] font-semibold hover:text-[#03143A] transition-colors">
                         Meet Our Full Team
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
@@ -1882,7 +1882,7 @@ fclose($fp);
                 Let's discuss how Prime Facility Services Group can elevate your operations to new heights
             </p>
             <div class="flex flex-col md:flex-row gap-6 justify-center" data-aos="fade-up" data-aos-delay="200">
-                <a href="/contact/" class="btn-primary flex items-center justify-center">
+                <a href="/pages/contact/" class="btn-primary flex items-center justify-center">
                     <span style="color: white !important;">Get Started Today</span>
                     <svg class="w-5 h-5 ml-2" fill="none" stroke="white" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
@@ -1982,7 +1982,7 @@ fclose($fp);
                                          class="h-5 w-auto">
                                     Read All Reviews
                                 </a>
-                                <a href="/contact/" 
+                                <a href="/pages/contact/" 
                                    class="inline-flex items-center gap-2 px-8 py-4 bg-[#C70532] text-white rounded-full font-semibold hover:bg-[#E91E63] transition-all duration-300 transform hover:scale-105 shadow-lg">
                                     Get Started Today
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -2001,7 +2001,7 @@ fclose($fp);
     <section class="py-24 relative overflow-hidden" id="contact-section">
         <!-- Background Image -->
         <div class="absolute inset-0">
-            <img src="/images/contact-us-background.png" 
+            <img src="/assets/images/contact-us-background.png" 
                  alt="Contact background" 
                  class="w-full h-full object-cover object-bottom"
                  loading="lazy">
@@ -2153,7 +2153,7 @@ fclose($fp);
                                 <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
                                     Transform your facility with Prime's comprehensive range of professional services. Let's discuss how we can meet your specific needs.
                                 </p>
-                                <a href="/contact/" class="inline-flex items-center gap-3 px-8 py-4 bg-[#C70532] text-white rounded-full font-bold hover:bg-[#E91E63] transition-all duration-300 transform hover:scale-105 shadow-lg">
+                                <a href="/pages/contact/" class="inline-flex items-center gap-3 px-8 py-4 bg-[#C70532] text-white rounded-full font-bold hover:bg-[#E91E63] transition-all duration-300 transform hover:scale-105 shadow-lg">
                                     Get Your Free Quote
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
@@ -2424,7 +2424,7 @@ fclose($fp);
                 </div>
                 <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-[#03143A] mb-4 sm:mb-6" data-aos="fade-up">Frequently Asked Questions</h2>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
-                    Everything you need to know about our services. Can't find what you're looking for? <a href="/contact/" class="text-[#C70532] font-semibold hover:underline">Contact our team</a>
+                    Everything you need to know about our services. Can't find what you're looking for? <a href="/pages/contact/" class="text-[#C70532] font-semibold hover:underline">Contact our team</a>
                 </p>
             </div>
             
@@ -2644,7 +2644,7 @@ fclose($fp);
             <div class="mt-16 text-center" data-aos="fade-up" data-aos-delay="300">
                 <p class="text-lg text-gray-600 mb-6">Still have questions? We're here to help!</p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="/contact/" class="inline-flex items-center gap-2 px-8 py-4 bg-[#C70532] text-white rounded-full font-semibold hover:bg-[#a00328] transition-all duration-300 shadow-lg">
+                    <a href="/pages/contact/" class="inline-flex items-center gap-2 px-8 py-4 bg-[#C70532] text-white rounded-full font-semibold hover:bg-[#a00328] transition-all duration-300 shadow-lg">
                         Contact Our Team
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
@@ -2692,10 +2692,10 @@ fclose($fp);
                     <h3 class="font-bold text-lg mb-6">Quick Links</h3>
                     <ul class="space-y-3">
                         <li><a href="/" class="hover:text-[#C70532] transition-colors">Home</a></li>
-                        <li><a href="/staffing/" class="hover:text-[#C70532] transition-colors">Staffing</a></li>
-                        <li><a href="/cleaning/" class="hover:text-[#C70532] transition-colors">Cleaning Services</a></li>
-                        <li><a href="/valet/" class="hover:text-[#C70532] transition-colors">Valet Parking</a></li>
-                        <li><a href="/about/" class="hover:text-[#C70532] transition-colors">About Us</a></li>
+                        <li><a href="/hospitality/staffing/views/" class="hover:text-[#C70532] transition-colors">Staffing</a></li>
+                        <li><a href="/facility/" class="hover:text-[#C70532] transition-colors">Cleaning Services</a></li>
+                        <li><a href="/hospitality/valet/views/" class="hover:text-[#C70532] transition-colors">Valet Parking</a></li>
+                        <li><a href="/pages/about/" class="hover:text-[#C70532] transition-colors">About Us</a></li>
                         <li><a href="#" class="hover:text-[#C70532] transition-colors">Blog</a></li>
                     </ul>
                 </div>
@@ -3202,13 +3202,13 @@ fclose($fp);
     
     
     <!-- Job Application Floating Button -->
-    <script src="/job-application-button.js"></script>
+    <script src="/assets/js/job-application-button.js"></script>
     
     <!-- Navbar Script -->
-    <script src="/navbar.js"></script>
+    <script src="/assets/js/navbar.js"></script>
     
     <!-- Preloader Script -->
-    <script src="/preloader.js"></script>
+    <script src="/assets/js/preloader.js"></script>
     
     <!-- Image Protection Script -->
     <script>

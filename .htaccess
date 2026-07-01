@@ -1,0 +1,42 @@
+Options -Indexes
+
+# ── Backward-compatible 301 redirects after project restructure ──────────────
+# Old asset paths → new locations under assets/
+Redirect 301 /navbar.css /assets/css/navbar.css
+Redirect 301 /preloader.css /assets/css/preloader.css
+Redirect 301 /image-protection.css /assets/css/image-protection.css
+Redirect 301 /navbar.js /assets/js/navbar.js
+Redirect 301 /preloader.js /assets/js/preloader.js
+Redirect 301 /job-application-button.js /assets/js/job-application-button.js
+
+# Old logo paths
+Redirect 301 /logo-prime.png /assets/logos/logo-prime.png
+Redirect 301 /logo-prime2.png /assets/logos/logo-prime2.png
+Redirect 301 /logo-prime-facility-white.png /assets/logos/logo-prime-facility-white.png
+
+# Old hero image paths
+Redirect 301 /hero-banquet-event.jpeg /assets/media/hero-banquet-event.jpeg
+Redirect 301 /hero-hiring.jpeg /assets/media/hero-hiring.jpeg
+Redirect 301 /hero-staffing.jpeg /assets/media/hero-staffing.jpeg
+
+# Old page URLs → new locations
+Redirect 301 /about/ /pages/about/
+Redirect 301 /contact/ /pages/contact/
+Redirect 301 /privacy/ /pages/privacy/
+Redirect 301 /cleaning/ /facility/
+Redirect 301 /staffing/ /hospitality/staffing/views/
+Redirect 301 /valet/ /hospitality/valet/views/
+Redirect 301 /hood-cleaning/ /facility/hood-cleaning/
+Redirect 301 /exhaust-system-documentation/ /facility/hood-cleaning/documents/exhaust-system/
+
+# Old admin panel
+Redirect 301 /modules/admin/visitor_tracking/ /admin/
+
+# Old profile and team picture paths
+Redirect 301 /profile/ /team/
+
+# Old internal tools
+Redirect 301 /app/ /tools/
+
+# Old contact API
+Redirect 301 /send_mail.php /api/contact/send.php
