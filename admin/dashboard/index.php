@@ -279,6 +279,9 @@ body{font-family:'Inter',sans-serif;background:#f0f2f5;color:#1e293b;display:fle
 
 /* Section title */
 .section-title{font-size:13.5px;font-weight:700;color:#0f1729;margin-bottom:14px}
+
+/* Canvas sizing */
+canvas{max-width:100%;height:auto!important}
 </style>
 </head>
 <body>
@@ -400,7 +403,9 @@ body{font-family:'Inter',sans-serif;background:#f0f2f5;color:#1e293b;display:fle
           <span class="panel-title">Devices</span>
         </div>
         <div class="panel-body">
-          <canvas id="deviceChart" height="130" style="margin-bottom:16px"></canvas>
+          <div style="position:relative;height:130px;margin-bottom:16px">
+            <canvas id="deviceChart"></canvas>
+          </div>
           <div class="device-list">
             <?php foreach ($deviceDist as $d):
               $pct = round($d['cnt'] / $totalDevices * 100);
