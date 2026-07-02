@@ -550,7 +550,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     submitBtn.textContent = "Sending...";
     submitBtn.disabled = true;
 
-    fetch('https://dallas.primefsgroup.com/send_mail.php', {
+    fetch('/api/contact/send.php', {
         method: 'POST',
         headers: {
             "Content-Type": "application/json"

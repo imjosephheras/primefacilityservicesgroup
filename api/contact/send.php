@@ -11,16 +11,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit();
 }
 
-// Cargar configuración SMTP, clase mailer y DB
+// Cargar configuración SMTP, clase mailer y almacenamiento de mensajes
 require_once __DIR__ . '/../../core/mail/smtp_config.php';
 require_once __DIR__ . '/../../core/mail/smtp_mailer.php';
-
-// db_config.php provides getDBConnection() for saving form submissions
-// Load if available; failures are non-fatal (email still sends)
-$dbConfigPath = __DIR__ . '/../../core/config/db_config.php';
-if (file_exists($dbConfigPath)) {
-    require_once $dbConfigPath;
-}
+require_once __DIR__ . '/../../core/helpers/messages_store.php';
 
 // CONFIGURACIÓN DEL MAIL
 $to = EMAIL_TO; // Puede ser uno o varios emails separados por coma
@@ -78,15 +72,12 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     exit();
 }
 
-// GUARDAR EN BASE DE DATOS
+// GUARDAR EN BASE DE DATOS (visible luego en el panel admin > Mensajes)
 try {
-    if (!function_exists('getDBConnection')) {
-        throw new Exception('DB not configured');
-    }
-    $db = getDBConnection();
+    $db = getMessagesDB();
 
-    $sql = "INSERT INTO form (full_name, company_name, email, phone, service_type, service_frequency, property_type, message)
-            VALUES (:full_name, :company_name, :email, :phone, :service_type, :service_frequency, :property_type, :message)";
+    $sql = "INSERT INTO contact_messages (full_name, company_name, email, phone, service_type, service_frequency, property_type, message, source_url)
+            VALUES (:full_name, :company_name, :email, :phone, :service_type, :service_frequency, :property_type, :message, :source_url)";
 
     $stmt = $db->prepare($sql);
     $stmt->execute([
@@ -97,7 +88,8 @@ try {
         ':service_type' => $service,
         ':service_frequency' => $frequency,
         ':property_type' => $propertyType,
-        ':message' => $message
+        ':message' => $message,
+        ':source_url' => $data['pageUrl'] ?? ($_SERVER['HTTP_REFERER'] ?? '')
     ]);
 
     $form_id = $db->lastInsertId();
