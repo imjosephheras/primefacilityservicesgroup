@@ -240,7 +240,7 @@ unset($_SESSION['login_error'], $_SESSION['login_email'], $_SESSION['login_redir
 <body>
 
 <nav class="nav">
-    <a href="/facility/hood-cleaning/">
+    <a href="/primefacilityservicesgroup/facility/hood-cleaning/">
         <img src="/assets/logos/logo-prime.png" alt="PRIME"
              onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
         <span class="nav-brand" style="display:none;">PRIME</span>
