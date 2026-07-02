@@ -1,8 +1,12 @@
 <?php
 require_once __DIR__ . '/../includes/config.php';
 vtRequireLogin();
+require_once __DIR__ . '/../../core/helpers/messages_store.php';
 
 $db = vtGetDB();
+
+/* ── Unread message count (for sidebar badge) ─────────────────────────── */
+$unreadMsgCount = (int)getMessagesDB()->query("SELECT COUNT(*) FROM contact_messages WHERE is_read = 0")->fetchColumn();
 
 /* ── Filters ─────────────────────────────────────────────────────────── */
 $fIp      = trim($_GET['ip']      ?? '');
@@ -159,6 +163,7 @@ body{font-family:'Inter',sans-serif;background:#f0f2f5;color:#1e293b;display:fle
 .nav-item.active{background:rgba(26,92,255,.22);color:#fff}
 .nav-item svg{width:17px;height:17px;flex-shrink:0;opacity:.8;fill:currentColor}
 .nav-item.active svg{opacity:1}
+.nav-badge{margin-left:auto;background:#ef4444;color:#fff;font-size:10.5px;font-weight:700;padding:1px 7px;border-radius:20px}
 .sidebar-footer{margin-top:auto;padding:16px;border-top:1px solid rgba(255,255,255,.07)}
 .user-row{display:flex;align-items:center;gap:10px}
 .user-avatar{width:34px;height:34px;background:linear-gradient(135deg,#1a5cff,#7c3aed);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;flex-shrink:0}
@@ -289,6 +294,11 @@ body{font-family:'Inter',sans-serif;background:#f0f2f5;color:#1e293b;display:fle
   <a class="nav-item active" href="index.php">
     <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
     Visitor Tracking
+  </a>
+  <a class="nav-item" href="../messages/index.php">
+    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+    Messages &amp; Quotes
+    <?php if (($unreadMsgCount ?? 0) > 0): ?><span class="nav-badge"><?= $unreadMsgCount ?></span><?php endif; ?>
   </a>
 
   <div class="sidebar-section">System</div>
