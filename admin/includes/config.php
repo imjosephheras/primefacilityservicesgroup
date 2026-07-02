@@ -98,6 +98,69 @@ function vtSetupDB(PDO $pdo): void {
         );
 
         CREATE INDEX IF NOT EXISTS idx_lh_logged_at ON vt_login_history(logged_at);
+
+        CREATE TABLE IF NOT EXISTS visitors (
+            id                  INTEGER PRIMARY KEY AUTOINCREMENT,
+            created_at          DATETIME DEFAULT (datetime('now')),
+            updated_at          DATETIME DEFAULT (datetime('now')),
+            full_name           TEXT NOT NULL,
+            email               TEXT,
+            phone               TEXT,
+            company_name        TEXT,
+            job_title           TEXT,
+            website             TEXT,
+            address             TEXT,
+            city                TEXT,
+            state               TEXT,
+            country             TEXT,
+            postal_code         TEXT,
+            notes               TEXT,
+            status              TEXT DEFAULT 'active',
+            ip_address          TEXT,
+            source              TEXT,
+            last_contact_at     DATETIME,
+            is_favorite         INTEGER DEFAULT 0
+        );
+
+        CREATE INDEX IF NOT EXISTS idx_visitors_created_at ON visitors(created_at);
+        CREATE INDEX IF NOT EXISTS idx_visitors_email ON visitors(email);
+        CREATE INDEX IF NOT EXISTS idx_visitors_phone ON visitors(phone);
+        CREATE INDEX IF NOT EXISTS idx_visitors_company ON visitors(company_name);
+        CREATE INDEX IF NOT EXISTS idx_visitors_status ON visitors(status);
+
+        CREATE TABLE IF NOT EXISTS quote_requests (
+            id                  INTEGER PRIMARY KEY AUTOINCREMENT,
+            created_at          DATETIME DEFAULT (datetime('now')),
+            updated_at          DATETIME DEFAULT (datetime('now')),
+            visitor_id          INTEGER,
+            full_name           TEXT NOT NULL,
+            email               TEXT NOT NULL,
+            phone               TEXT,
+            company_name        TEXT,
+            service_type        TEXT,
+            service_frequency   TEXT,
+            property_type       TEXT,
+            property_size       TEXT,
+            estimated_budget    TEXT,
+            message             TEXT,
+            attachment_url      TEXT,
+            source_url          TEXT,
+            source_page         TEXT,
+            status              TEXT DEFAULT 'new',
+            assigned_to         TEXT,
+            priority            TEXT DEFAULT 'normal',
+            estimated_date      DATETIME,
+            is_read             INTEGER DEFAULT 0,
+            is_archived         INTEGER DEFAULT 0,
+            notes               TEXT,
+            FOREIGN KEY (visitor_id) REFERENCES visitors(id)
+        );
+
+        CREATE INDEX IF NOT EXISTS idx_qr_created_at ON quote_requests(created_at);
+        CREATE INDEX IF NOT EXISTS idx_qr_email ON quote_requests(email);
+        CREATE INDEX IF NOT EXISTS idx_qr_status ON quote_requests(status);
+        CREATE INDEX IF NOT EXISTS idx_qr_visitor_id ON quote_requests(visitor_id);
+        CREATE INDEX IF NOT EXISTS idx_qr_assigned_to ON quote_requests(assigned_to);
     ");
 }
 
