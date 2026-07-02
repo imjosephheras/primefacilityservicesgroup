@@ -5,7 +5,7 @@
 
 define('VT_SESSION_NAME', 'vt_admin_session');
 define('VT_DB_PATH',      __DIR__ . '/../db/visitor_tracking.db');
-define('VT_BASE_URL',     '/admin');
+define('VT_BASE_URL',     '/primefacilityservicesgroup/admin');
 define('ADMIN_USER',      'admin');
 define('ADMIN_PASS_HASH', '$2y$12$s8wJ2ecn7DVC1HpAlrhJ7uDyazQfXY63iVxElHuS8TMeyIcTdxPiG'); // admin123
 

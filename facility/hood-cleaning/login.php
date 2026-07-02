@@ -1,3 +1,3 @@
 <?php
-header('Location: /admin/login/');
+header('Location: /primefacilityservicesgroup/admin/login/');
 exit;
