@@ -2795,7 +2795,7 @@
                         <div class="cinema-frame-v" id="vMainFrame">
                             <div class="cinema-frame-v-screen" id="vScreen">
                                 <video id="vVideo" playsinline muted loop>
-                                    <source src="videos/Hood cleaning.mp4" type="video/mp4">
+                                    <source src="videos/hero-bg.mp4" type="video/mp4">
                                 </video>
                                 <div class="cinema-play-overlay" id="vPlayOverlay">
                                     <div class="cinema-play-btn" id="vPlayBtn">
@@ -3058,16 +3058,7 @@
 /* ── Vertical carousel (single video for now, extensible) ── */
 (function() {
     const vSlides = [
-        { src: 'Hood cleaning.mp4',   label: 'Hood Cleaning',       dot: '#22c55e' },
-        { src: 'Duct Cleaning.mp4',    label: 'Duct and Engine Inspection', dot: '#22c55e' },
-        { src: 'vertical-3.mp4',      label: 'Video Vertical 3',    dot: '#22c55e' },
-        { src: 'vertical-4.mp4',      label: 'Video Vertical 4',    dot: '#22c55e' },
-        { src: 'vertical-5.mp4',      label: 'Video Vertical 5',    dot: '#22c55e' },
-        { src: 'vertical-6.mp4',      label: 'Video Vertical 6',    dot: '#22c55e' },
-        { src: 'vertical-7.mp4',      label: 'Video Vertical 7',    dot: '#22c55e' },
-        { src: 'vertical-8.mp4',      label: 'Video Vertical 8',    dot: '#22c55e' },
-        { src: 'vertical-9.mp4',      label: 'Video Vertical 9',    dot: '#22c55e' },
-        { src: 'vertical-10.mp4',     label: 'Video Vertical 10',   dot: '#22c55e' },
+        { src: 'videos/hero-bg.mp4',   label: 'Hood Cleaning',       dot: '#22c55e' },
     ];
     let vIdx = 0;
     const vVideo = document.getElementById('vVideo');
@@ -3094,7 +3085,7 @@
         vVideo.src = cur.src;
         vVideo.load();
         vVideo.onerror = null;
-        const knownVideos = ['Hood cleaning.mp4', 'Duct Cleaning.mp4'];
+        const knownVideos = ['videos/hero-bg.mp4'];
         const isEmpty = !knownVideos.includes(cur.src) && !cur.src.startsWith('http');
         vVideo.style.display = isEmpty ? 'none' : '';
         vPlaceholder.style.display = isEmpty ? 'flex' : 'none';
@@ -4303,8 +4294,8 @@
         nav.classList.toggle('scrolled', scrolled);
         if (navLogoImg) {
             navLogoImg.src = scrolled
-                ? '/primefacilityservicesgroup/logo-prime.png'
-                : '/primefacilityservicesgroup/logo-prime2.png';
+                ? '/assets/logos/logo-prime.png'
+                : '/assets/logos/logo-prime2.png';
         }
     }, { passive: true });
 
