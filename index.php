@@ -1,4 +1,7 @@
 <?php
+/* Load Helpers */
+require_once __DIR__ . '/core/helpers/functions.php';
+
 /* Visitor Tracking */
 @include_once __DIR__ . '/admin/visitors/tracker.php';
 
@@ -1842,7 +1845,7 @@ fclose($fp);
                 </div>
                 
                 <div class="mt-8 text-center">
-                    <a href="/pages/about/" class="inline-flex items-center gap-2 text-[#C70532] font-semibold hover:text-[#03143A] transition-colors">
+                    <a href="<?php echo route('pages.about'); ?>" class="inline-flex items-center gap-2 text-[#C70532] font-semibold hover:text-[#03143A] transition-colors">
                         Meet Our Full Team
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
