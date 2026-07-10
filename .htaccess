@@ -1,5 +1,11 @@
 Options -Indexes
 
+# ── URL Rewriting for SPA (Single Page Application) ──────────────────────────
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [L]
+
 # ── Backward-compatible 301 redirects after project restructure ──────────────
 # Old asset paths → new locations under assets/
 Redirect 301 /navbar.css /assets/css/navbar.css
