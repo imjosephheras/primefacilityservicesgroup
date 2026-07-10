@@ -1798,7 +1798,6 @@ fclose($fp);
                             </svg>
                         </div>
                         <h4 class="font-bold text-[#03143A] mb-1">Operations</h4>
-                        <p class="text-sm text-gray-600">3 Coordinators</p>
                     </div>
                     
                     <!-- Sales & Marketing -->
@@ -1809,7 +1808,6 @@ fclose($fp);
                             </svg>
                         </div>
                         <h4 class="font-bold text-[#03143A] mb-1">Sales & Marketing</h4>
-                        <p class="text-sm text-gray-600">3 Professionals</p>
                     </div>
                     
                     <!-- Finance -->
@@ -1820,7 +1818,6 @@ fclose($fp);
                             </svg>
                         </div>
                         <h4 class="font-bold text-[#03143A] mb-1">Finance</h4>
-                        <p class="text-sm text-gray-600">2 Accountants</p>
                     </div>
                     
                     <!-- HR -->
@@ -1831,7 +1828,6 @@ fclose($fp);
                             </svg>
                         </div>
                         <h4 class="font-bold text-[#03143A] mb-1">Human Resources</h4>
-                        <p class="text-sm text-gray-600">2 Specialists</p>
                     </div>
                     
                     <!-- Administrative -->
@@ -1842,7 +1838,6 @@ fclose($fp);
                             </svg>
                         </div>
                         <h4 class="font-bold text-[#03143A] mb-1">Administrative</h4>
-                        <p class="text-sm text-gray-600">2 Coordinators</p>
                     </div>
                 </div>
                 
