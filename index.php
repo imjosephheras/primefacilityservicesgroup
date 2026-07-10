@@ -1720,7 +1720,7 @@ fclose($fp);
             </div>
             
             <!-- Executive Leadership Preview -->
-            <div class="grid md:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto mb-12">
+            <div class="grid md:grid-cols-4 gap-6 sm:gap-8 max-w-6xl mx-auto mb-12">
                 <!-- President -->
                 <div class="group" data-aos="fade-up" data-aos-delay="100">
                     <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center">
@@ -1763,6 +1763,25 @@ fclose($fp);
                         <h3 class="text-xl sm:text-2xl font-bold text-[#03143A] mb-1">Sergio Biolley</h3>
                         <p class="text-[#C70532] font-semibold mb-3">Director of Operations</p>
                         <p class="text-gray-600 text-sm">Ensuring seamless operations and quality service delivery</p>
+                    </div>
+                </div>
+
+                <!-- Vice President, HR Business Services -->
+                <div class="group" data-aos="fade-up" data-aos-delay="400">
+                    <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center">
+                        <div class="relative mb-6">
+                            <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full mx-auto shadow-lg overflow-hidden group-hover:scale-105 transition-transform duration-300 bg-gradient-to-br from-gray-300 to-gray-400">
+                                <div class="w-full h-full flex items-center justify-center">
+                                    <svg class="w-20 h-20 sm:w-24 sm:h-24 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="absolute -bottom-2 -right-2 w-16 h-16 bg-[#03143A]/10 rounded-full blur-2xl"></div>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-[#03143A] mb-1">Amy Geallis</h3>
+                        <p class="text-[#C70532] font-semibold mb-3">Vice President, HR Business Services</p>
+                        <p class="text-gray-600 text-sm">Building stronger teams and delivering effective HR solutions</p>
                     </div>
                 </div>
             </div>
