@@ -58,3 +58,28 @@ function appLog(string $message, string $level = 'info'): void
     $line = sprintf("[%s] [%s] %s\n", date('Y-m-d H:i:s'), strtoupper($level), $message);
     @file_put_contents($logFile, $line, FILE_APPEND | LOCK_EX);
 }
+
+/**
+ * Generate a URL for a named route.
+ * This function maps route names to their corresponding paths.
+ */
+function route(string $name, array $parameters = []): string
+{
+    $routes = [
+        'pages.about' => '/pages/about/',
+        'pages.contact' => '/pages/contact/',
+        'pages.privacy' => '/pages/privacy/',
+    ];
+
+    if (!isset($routes[$name])) {
+        return '/';
+    }
+
+    $path = $routes[$name];
+
+    foreach ($parameters as $key => $value) {
+        $path = str_replace('{' . $key . '}', (string)$value, $path);
+    }
+
+    return $path;
+}
