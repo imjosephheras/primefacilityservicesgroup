@@ -2616,7 +2616,7 @@
 <nav id="prime-nav">
     <div class="nav-inner">
         <a href="/primefacilityservicesgroup/facility/hood-cleaning/" class="nav-logo">
-            <img id="nav-logo-img" src="/assets/logos/logo-prime2.png" alt="PRIME" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+            <img id="nav-logo-img" src="/assets/logos/facility-1.png" alt="PRIME" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
             <span class="nav-logo-text" style="display:none;">PRIME</span>
         </a>
 
@@ -4289,15 +4289,58 @@
     /* Navbar scroll */
     const nav = document.getElementById('prime-nav');
     const navLogoImg = document.getElementById('nav-logo-img');
+
+    function getScrolledSectionBackgroundColor() {
+        const sections = document.querySelectorAll('section, [id*="hero"], [id*="filters"], [id*="fans"], [id*="systems"], [id*="restoration"], [id*="compliance"], [id*="cta"], [id*="footer"], [id*="videos"], [id*="components"]');
+        let currentSection = null;
+        let maxIntersection = 0;
+
+        sections.forEach(section => {
+            const rect = section.getBoundingClientRect();
+            if (rect.bottom > 0 && rect.top < window.innerHeight) {
+                const intersection = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+                if (intersection > maxIntersection) {
+                    maxIntersection = intersection;
+                    currentSection = section;
+                }
+            }
+        });
+
+        if (currentSection) {
+            const bgColor = window.getComputedStyle(currentSection).backgroundColor;
+            return bgColor;
+        }
+        return null;
+    }
+
+    function isWhiteBackground(bgColor) {
+        if (!bgColor) return true;
+        const rgb = bgColor.match(/\d+/g);
+        if (!rgb || rgb.length < 3) return true;
+        const r = parseInt(rgb[0]);
+        const g = parseInt(rgb[1]);
+        const b = parseInt(rgb[2]);
+        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+        return brightness > 200;
+    }
+
+    function updateLogoBasedOnBackground() {
+        const bgColor = getScrolledSectionBackgroundColor();
+        const isWhite = isWhiteBackground(bgColor);
+        if (navLogoImg) {
+            navLogoImg.src = isWhite
+                ? '/assets/logos/facility-1.png'
+                : '/assets/logos/facility-2.png';
+        }
+    }
+
     window.addEventListener('scroll', () => {
         const scrolled = window.scrollY > 20;
         nav.classList.toggle('scrolled', scrolled);
-        if (navLogoImg) {
-            navLogoImg.src = scrolled
-                ? '/assets/logos/logo-prime.png'
-                : '/assets/logos/logo-prime2.png';
-        }
+        updateLogoBasedOnBackground();
     }, { passive: true });
+
+    updateLogoBasedOnBackground();
 
     /* Mega menu */
     document.querySelectorAll('.nav-item').forEach(item => {
