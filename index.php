@@ -91,13 +91,13 @@ fclose($fp);
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     
     <!-- Preloader CSS -->
-    <link rel="stylesheet" href="/assets/css/preloader.css">
+    <link rel="stylesheet" href="./assets/css/preloader.css">
     
     <!-- Navbar CSS -->
-    <link rel="stylesheet" href="/assets/css/navbar.css">
+    <link rel="stylesheet" href="./assets/css/navbar.css">
     
     <!-- Image Protection CSS -->
-    <link rel="stylesheet" href="/assets/css/image-protection.css">
+    <link rel="stylesheet" href="./assets/css/image-protection.css">
     
     <style>
         body { font-family: 'Montserrat', sans-serif; }
@@ -625,14 +625,14 @@ fclose($fp);
         }
 
         .pfsg-employers {
-            background-image: url('/assets/images/Services-pic-2.png');
+            background-image: url('./assets/images/Services-pic-2.png');
             background-size: cover;
             background-position: right center !important;
             position: relative;
         }
 
         .pfsg-jobseekers {
-            background-image: url('/assets/images/Services-pic-3.png');
+            background-image: url('./assets/images/Services-pic-3.png');
             background-size: cover;
             background-position: right center !important;
             position: relative;
@@ -961,7 +961,7 @@ fclose($fp);
         <div class="landing-selector-inner">
             <!-- Logo -->
             <div class="landing-logo">
-                <img src="/assets/logos/logo-prime-facility-white.png" alt="Prime Facility Services Group">
+                <img src="./assets/logos/logo-prime-facility-white.png" alt="Prime Facility Services Group">
             </div>
             <p class="landing-tagline">Select a division to continue</p>
 
@@ -1148,7 +1148,7 @@ fclose($fp);
                     <div class="relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                         <!-- Image Section -->
                         <div class="relative overflow-hidden" style="padding-bottom: 75%;">
-                            <img src="/assets/images/services/professional-staffing-team.jpg" 
+                            <img src="./assets/images/services/professional-staffing-team.jpg" 
                                  alt="Professional staffing" 
                                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                  loading="lazy">
@@ -1210,7 +1210,7 @@ fclose($fp);
                         
                         <!-- Image Section -->
                         <div class="relative overflow-hidden" style="padding-bottom: 75%;">
-                            <img src="/assets/images/services/commercial-cleaning-service.png" 
+                            <img src="./assets/images/services/commercial-cleaning-service.png" 
                                  alt="Professional cleaning" 
                                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                  style="object-position: center 20%;"
@@ -1268,7 +1268,7 @@ fclose($fp);
                     <div class="relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                         <!-- Image Section -->
                         <div class="relative overflow-hidden" style="padding-bottom: 75%;">
-                            <img src="/assets/images/services/valet-parking-professional.png" 
+                            <img src="./assets/images/services/valet-parking-professional.png" 
                                  alt="Valet parking" 
                                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                  loading="lazy">
@@ -1646,54 +1646,54 @@ fclose($fp);
                 <div class="flex logo-scroll">
                     <div class="flex space-x-16 pr-16 items-center">
                         <div class="h-24 w-40 bg-white rounded-lg p-4 flex items-center justify-center shadow-md">
-                            <img src="/assets/logos/clients/logo-marriott.png" alt="Marriott" class="max-h-16 w-auto object-contain" loading="lazy">
+                            <img src="./assets/logos/clients/logo-marriott.png" alt="Marriott" class="max-h-16 w-auto object-contain" loading="lazy">
                         </div>
                         <div class="h-24 w-40 bg-white rounded-lg p-4 flex items-center justify-center shadow-md">
-                            <img src="/assets/logos/clients/logo-hyatt-regency.png" alt="Hyatt Regency" class="max-h-16 w-auto object-contain" loading="lazy">
+                            <img src="./assets/logos/clients/logo-hyatt-regency.png" alt="Hyatt Regency" class="max-h-16 w-auto object-contain" loading="lazy">
                         </div>
                         <div class="h-24 w-40 bg-white rounded-lg p-4 flex items-center justify-center shadow-md">
-                            <img src="/assets/logos/clients/logo-omni.png" alt="Omni Hotels" class="max-h-16 w-auto object-contain" loading="lazy">
+                            <img src="./assets/logos/clients/logo-omni.png" alt="Omni Hotels" class="max-h-16 w-auto object-contain" loading="lazy">
                         </div>
                         <div class="h-24 w-40 bg-white rounded-lg p-4 flex items-center justify-center shadow-md">
-                            <img src="/assets/logos/clients/logo-baymont.png" alt="Baymont" class="max-h-16 w-auto object-contain" loading="lazy">
+                            <img src="./assets/logos/clients/logo-baymont.png" alt="Baymont" class="max-h-16 w-auto object-contain" loading="lazy">
                         </div>
                         <div class="h-24 w-40 bg-white rounded-lg p-4 flex items-center justify-center shadow-md">
-                            <img src="/assets/logos/clients/logo-houston-rodeo.png" alt="Houston Rodeo" class="max-h-16 w-auto object-contain" loading="lazy">
+                            <img src="./assets/logos/clients/logo-houston-rodeo.png" alt="Houston Rodeo" class="max-h-16 w-auto object-contain" loading="lazy">
                         </div>
                         <div class="h-24 w-40 bg-white rounded-lg p-4 flex items-center justify-center shadow-md">
-                            <img src="/assets/logos/clients/logo-the-woodlands.png" alt="The Woodlands" class="max-h-16 w-auto object-contain" loading="lazy">
+                            <img src="./assets/logos/clients/logo-the-woodlands.png" alt="The Woodlands" class="max-h-16 w-auto object-contain" loading="lazy">
                         </div>
                         <div class="h-24 w-40 bg-white rounded-lg p-4 flex items-center justify-center shadow-md">
-                            <img src="/assets/logos/clients/logo-otg.png" alt="OTG" class="max-h-16 w-auto object-contain" loading="lazy">
+                            <img src="./assets/logos/clients/logo-otg.png" alt="OTG" class="max-h-16 w-auto object-contain" loading="lazy">
                         </div>
                         <div class="h-24 w-40 bg-white rounded-lg p-4 flex items-center justify-center shadow-md">
-                            <img src="/assets/logos/clients/logo-icon.png" alt="Icon" class="max-h-16 w-auto object-contain" loading="lazy">
+                            <img src="./assets/logos/clients/logo-icon.png" alt="Icon" class="max-h-16 w-auto object-contain" loading="lazy">
                         </div>
                     </div>
                     <div class="flex space-x-16 pr-16 items-center">
                         <div class="h-24 w-40 bg-white rounded-lg p-4 flex items-center justify-center shadow-md">
-                            <img src="/assets/logos/clients/logo-marriott.png" alt="Marriott" class="max-h-16 w-auto object-contain" loading="lazy">
+                            <img src="./assets/logos/clients/logo-marriott.png" alt="Marriott" class="max-h-16 w-auto object-contain" loading="lazy">
                         </div>
                         <div class="h-24 w-40 bg-white rounded-lg p-4 flex items-center justify-center shadow-md">
-                            <img src="/assets/logos/clients/logo-hyatt-regency.png" alt="Hyatt Regency" class="max-h-16 w-auto object-contain" loading="lazy">
+                            <img src="./assets/logos/clients/logo-hyatt-regency.png" alt="Hyatt Regency" class="max-h-16 w-auto object-contain" loading="lazy">
                         </div>
                         <div class="h-24 w-40 bg-white rounded-lg p-4 flex items-center justify-center shadow-md">
-                            <img src="/assets/logos/clients/logo-omni.png" alt="Omni Hotels" class="max-h-16 w-auto object-contain" loading="lazy">
+                            <img src="./assets/logos/clients/logo-omni.png" alt="Omni Hotels" class="max-h-16 w-auto object-contain" loading="lazy">
                         </div>
                         <div class="h-24 w-40 bg-white rounded-lg p-4 flex items-center justify-center shadow-md">
-                            <img src="/assets/logos/clients/logo-baymont.png" alt="Baymont" class="max-h-16 w-auto object-contain" loading="lazy">
+                            <img src="./assets/logos/clients/logo-baymont.png" alt="Baymont" class="max-h-16 w-auto object-contain" loading="lazy">
                         </div>
                         <div class="h-24 w-40 bg-white rounded-lg p-4 flex items-center justify-center shadow-md">
-                            <img src="/assets/logos/clients/logo-houston-rodeo.png" alt="Houston Rodeo" class="max-h-16 w-auto object-contain" loading="lazy">
+                            <img src="./assets/logos/clients/logo-houston-rodeo.png" alt="Houston Rodeo" class="max-h-16 w-auto object-contain" loading="lazy">
                         </div>
                         <div class="h-24 w-40 bg-white rounded-lg p-4 flex items-center justify-center shadow-md">
-                            <img src="/assets/logos/clients/logo-the-woodlands.png" alt="The Woodlands" class="max-h-16 w-auto object-contain" loading="lazy">
+                            <img src="./assets/logos/clients/logo-the-woodlands.png" alt="The Woodlands" class="max-h-16 w-auto object-contain" loading="lazy">
                         </div>
                         <div class="h-24 w-40 bg-white rounded-lg p-4 flex items-center justify-center shadow-md">
-                            <img src="/assets/logos/clients/logo-otg.png" alt="OTG" class="max-h-16 w-auto object-contain" loading="lazy">
+                            <img src="./assets/logos/clients/logo-otg.png" alt="OTG" class="max-h-16 w-auto object-contain" loading="lazy">
                         </div>
                         <div class="h-24 w-40 bg-white rounded-lg p-4 flex items-center justify-center shadow-md">
-                            <img src="/assets/logos/clients/logo-icon.png" alt="Icon" class="max-h-16 w-auto object-contain" loading="lazy">
+                            <img src="./assets/logos/clients/logo-icon.png" alt="Icon" class="max-h-16 w-auto object-contain" loading="lazy">
                         </div>
                     </div>
                 </div>
@@ -1729,7 +1729,7 @@ fclose($fp);
                     <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center">
                         <div class="relative mb-6">
                             <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full mx-auto shadow-lg overflow-hidden group-hover:scale-105 transition-transform duration-300">
-                                <img src="/team/photos/team-patty-perez.png" alt="Patty Perez" class="w-full h-full object-cover" loading="lazy">
+                                <img src="./team/patty/profile-patty-perez.png" alt="Patty Perez" class="w-full h-full object-cover" loading="lazy">
                             </div>
                             <div class="absolute -bottom-2 -right-2 w-16 h-16 bg-[#C70532]/10 rounded-full blur-2xl"></div>
                         </div>
@@ -1744,7 +1744,7 @@ fclose($fp);
                     <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center">
                         <div class="relative mb-6">
                             <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full mx-auto shadow-lg overflow-hidden group-hover:scale-105 transition-transform duration-300">
-                                <img src="/team/photos/team-rafael-perez.png" alt="Rafael Perez" class="w-full h-full object-cover" loading="lazy">
+                                <img src="./team/rafael/profile-rafael-perez.png" alt="Rafael Perez" class="w-full h-full object-cover" loading="lazy">
                             </div>
                             <div class="absolute -bottom-2 -right-2 w-16 h-16 bg-[#03143A]/10 rounded-full blur-2xl"></div>
                         </div>
@@ -1759,7 +1759,7 @@ fclose($fp);
                     <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center">
                         <div class="relative mb-6">
                             <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full mx-auto shadow-lg overflow-hidden group-hover:scale-105 transition-transform duration-300">
-                                <img src="/team/photos/team-sergio-biolley.png" alt="Sergio Biolley" class="w-full h-full object-cover" loading="lazy">
+                                <img src="./team/sergio/profile-sergio-biolley.png" alt="Sergio Biolley" class="w-full h-full object-cover" loading="lazy">
                             </div>
                             <div class="absolute -bottom-2 -right-2 w-16 h-16 bg-[#C70532]/10 rounded-full blur-2xl"></div>
                         </div>
@@ -2021,7 +2021,7 @@ fclose($fp);
     <section class="py-24 relative overflow-hidden" id="contact-section">
         <!-- Background Image -->
         <div class="absolute inset-0">
-            <img src="/assets/images/contact-us-background.png" 
+            <img src="./assets/images/contact-us-background.png" 
                  alt="Contact background" 
                  class="w-full h-full object-cover object-bottom"
                  loading="lazy">
@@ -3222,13 +3222,13 @@ fclose($fp);
     
     
     <!-- Job Application Floating Button -->
-    <script src="/assets/js/job-application-button.js"></script>
+    <script src="./assets/js/job-application-button.js"></script>
     
     <!-- Navbar Script -->
-    <script src="/assets/js/navbar.js"></script>
+    <script src="./assets/js/navbar.js"></script>
     
     <!-- Preloader Script -->
-    <script src="/assets/js/preloader.js"></script>
+    <script src="./assets/js/preloader.js"></script>
     
     <!-- Image Protection Script -->
     <script>
