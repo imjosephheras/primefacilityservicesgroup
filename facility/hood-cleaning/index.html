@@ -4286,18 +4286,58 @@
      SCRIPTS
 ══════════════════════════════════════════════════════════ -->
 <script>
-    /* Navbar scroll */
+    /* Navbar scroll and logo background detection */
     const nav = document.getElementById('prime-nav');
     const navLogoImg = document.getElementById('nav-logo-img');
-    window.addEventListener('scroll', () => {
+
+    function isLightColor(color) {
+        if (!color || color === 'transparent' || color === 'rgba(0, 0, 0, 0)') return true;
+        const rgb = color.match(/\d+/g);
+        if (!rgb) return true;
+        const r = parseInt(rgb[0]);
+        const g = parseInt(rgb[1]);
+        const b = parseInt(rgb[2]);
+        const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+        return luminance > 0.5;
+    }
+
+    function getVisibleSection() {
+        const sections = document.querySelectorAll('section, main, [id*="hero"], [id*="hero-"], #filters, #exhaust-fans, #featured-components, #compliance, #final-cta');
+        let visibleSection = null;
+        let maxIntersection = 0;
+
+        sections.forEach(section => {
+            const rect = section.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            const intersectionHeight = Math.min(rect.bottom, windowHeight) - Math.max(rect.top, 0);
+
+            if (intersectionHeight > maxIntersection) {
+                maxIntersection = intersectionHeight;
+                visibleSection = section;
+            }
+        });
+
+        return visibleSection;
+    }
+
+    function updateLogoForSection() {
         const scrolled = window.scrollY > 20;
         nav.classList.toggle('scrolled', scrolled);
+
         if (navLogoImg) {
-            navLogoImg.src = scrolled
-                ? '/assets/logos/logo-prime.png'
-                : '/assets/logos/logo-prime2.png';
+            const visibleSection = getVisibleSection();
+            if (visibleSection) {
+                const bgColor = window.getComputedStyle(visibleSection).backgroundColor;
+                const isLight = isLightColor(bgColor);
+                navLogoImg.src = isLight
+                    ? '/team/LOGO/Facility 1.png'
+                    : '/team/LOGO/Facility 2.png';
+            }
         }
-    }, { passive: true });
+    }
+
+    window.addEventListener('scroll', updateLogoForSection, { passive: true });
+    updateLogoForSection();
 
     /* Mega menu */
     document.querySelectorAll('.nav-item').forEach(item => {
