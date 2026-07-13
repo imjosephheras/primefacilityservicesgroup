@@ -4290,45 +4290,10 @@
     const nav = document.getElementById('prime-nav');
     const navLogoImg = document.getElementById('nav-logo-img');
 
-    function getScrolledSectionBackgroundColor() {
-        const sections = document.querySelectorAll('section, [id*="hero"], [id*="filters"], [id*="fans"], [id*="systems"], [id*="restoration"], [id*="compliance"], [id*="cta"], [id*="footer"], [id*="videos"], [id*="components"]');
-        let currentSection = null;
-        let maxIntersection = 0;
-
-        sections.forEach(section => {
-            const rect = section.getBoundingClientRect();
-            if (rect.bottom > 0 && rect.top < window.innerHeight) {
-                const intersection = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
-                if (intersection > maxIntersection) {
-                    maxIntersection = intersection;
-                    currentSection = section;
-                }
-            }
-        });
-
-        if (currentSection) {
-            const bgColor = window.getComputedStyle(currentSection).backgroundColor;
-            return bgColor;
-        }
-        return null;
-    }
-
-    function isWhiteBackground(bgColor) {
-        if (!bgColor) return true;
-        const rgb = bgColor.match(/\d+/g);
-        if (!rgb || rgb.length < 3) return true;
-        const r = parseInt(rgb[0]);
-        const g = parseInt(rgb[1]);
-        const b = parseInt(rgb[2]);
-        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
-        return brightness > 200;
-    }
-
     function updateLogoBasedOnBackground() {
-        const bgColor = getScrolledSectionBackgroundColor();
-        const isWhite = isWhiteBackground(bgColor);
+        const isScrolled = nav.classList.contains('scrolled');
         if (navLogoImg) {
-            navLogoImg.src = isWhite
+            navLogoImg.src = isScrolled
                 ? '/primefacilityservicesgroup/assets/logos/facility-1.png'
                 : '/primefacilityservicesgroup/assets/logos/facility-2.png';
         }
