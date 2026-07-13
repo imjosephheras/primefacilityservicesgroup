@@ -4,36 +4,6 @@ require_once __DIR__ . '/core/helpers/functions.php';
 
 /* Visitor Tracking */
 @include_once __DIR__ . '/admin/visitors/tracker.php';
-
-// =======================================
-// Contador de Visitas Diarias
-// =======================================
-// Obtener la fecha actual (formato: "2025-11-11")
-$fecha = date("Y-m-d");
-
-// Nombre del archivo según la fecha
-$archivo = "contador_" . $fecha . ".txt";
-
-// Si no existe el archivo para hoy, crearlo con valor 0
-if (!file_exists($archivo)) {
-    file_put_contents($archivo, "0");
-}
-
-// Bloquear archivo para evitar problemas con visitas simultáneas
-$fp = fopen($archivo, "r+");
-if (flock($fp, LOCK_EX)) {
-    // Leer el valor actual
-    $contador = (int)fgets($fp);
-    // Incrementar contador
-    $contador++;
-    // Reescribir el nuevo valor
-    ftruncate($fp, 0);
-    rewind($fp);
-    fwrite($fp, $contador);
-    // Desbloquear
-    flock($fp, LOCK_UN);
-}
-fclose($fp);
 ?>
 <!DOCTYPE html>
 <html lang="en">
