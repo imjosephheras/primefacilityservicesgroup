@@ -7,7 +7,7 @@
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center py-4">
                 <!-- Logo -->
-                <a href="/primefacilityservicesgroup/" class="flex items-center space-x-3 group">
+                <a href="/primefacilityservicesgroup/hospitality/" class="flex items-center space-x-3 group">
                     <img src="/primefacilityservicesgroup/assets/logos/hospitality-navbar.png" alt="Prime Facility Services Group" class="h-12 w-auto transition-transform duration-300 group-hover:scale-105">
                 </a>
                 
