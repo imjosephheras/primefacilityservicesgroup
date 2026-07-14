@@ -1,0 +1,8 @@
+DirectoryIndex index.html
+Options -Indexes
+
+# Block direct access to sensitive files
+<FilesMatch "^(\.env|\.env\.example|config\.php)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
