@@ -1,23 +1,37 @@
 Options -Indexes
 
-# ── URL Rewriting for SPA (Single Page Application) ──────────────────────────
+# ── URL Rewriting for Routing Architecture ─────────────────────────────────────
 RewriteEngine On
+RewriteBase /primefacilityservicesgroup/
 
-# Redirect root URL to /staff/ for immediate server-side redirect without rendering landing page
-RewriteCond %{REQUEST_URI} ^/?$
-RewriteRule ^/?$ /staff/ [L,R=301]
+# ── Division-Specific Routing ──────────────────────────────────────────────────
+# Route /hood/ to /facility/hood-cleaning/ (internal rewrite, URL stays /hood/)
+RewriteRule ^hood(/.*)?$ facility/hood-cleaning$1 [L]
 
-# Exclude existing files
+# Route /staff/ to /hospitality/staffing/views/ (internal rewrite, URL stays /staff/)
+RewriteRule ^staff(/.*)?$ hospitality/staffing/views$1 [L]
+
+# ── General Routing for Division Selector ──────────────────────────────────────
+# Exclude existing files from rewriting
 RewriteCond %{REQUEST_FILENAME} !-f
-# Exclude existing directories
+# Exclude existing directories from rewriting
 RewriteCond %{REQUEST_FILENAME} !-d
-# Exclude specific static directories to prevent image loading issues
+# Exclude specific static directories
 RewriteCond %{REQUEST_URI} !^/assets/
 RewriteCond %{REQUEST_URI} !^/team/
 RewriteCond %{REQUEST_URI} !^/api/
-RewriteCond %{REQUEST_URI} !^/staff/
+RewriteCond %{REQUEST_URI} !^/admin/
+RewriteCond %{REQUEST_URI} !^/storage/
+RewriteCond %{REQUEST_URI} !^/database/
+RewriteCond %{REQUEST_URI} !^/facility/
+RewriteCond %{REQUEST_URI} !^/hospitality/
+RewriteCond %{REQUEST_URI} !^/pages/
+RewriteCond %{REQUEST_URI} !^/core/
+RewriteCond %{REQUEST_URI} !^/tools/
+RewriteCond %{REQUEST_URI} !^/app/
 
-RewriteRule ^(.*)$ index.php [L]
+# Route all other non-file, non-directory requests to index.php for division selector
+RewriteRule ^(.*)$ index.php?_route=$1 [QSA,L]
 
 # ── Backward-compatible 301 redirects after project restructure ──────────────
 # Default /staff/ route → staffing division

@@ -4,6 +4,41 @@ require_once __DIR__ . '/core/helpers/functions.php';
 
 /* Visitor Tracking */
 @include_once __DIR__ . '/admin/visitors/tracker.php';
+
+/* ────────────────────────────────────────────────────────────────────────
+   ROUTING ARCHITECTURE - Division Selection & Routing
+   ──────────────────────────────────────────────────────────────────────── */
+
+function getCurrentRoute() {
+    $requestUri = $_SERVER['REQUEST_URI'] ?? '/';
+    $basePath = '/primefacilityservicesgroup';
+
+    // Remove base path from request URI
+    if (strpos($requestUri, $basePath) === 0) {
+        $route = substr($requestUri, strlen($basePath));
+    } else {
+        $route = $requestUri;
+    }
+
+    // Clean up the route (remove query strings, trailing slashes)
+    $route = parse_url($route, PHP_URL_PATH);
+    $route = trim($route, '/');
+
+    return $route;
+}
+
+$currentRoute = getCurrentRoute();
+$isDivisionSelector = empty($currentRoute) || $currentRoute === '';
+$isHoodRoute = $currentRoute === 'hood' || strpos($currentRoute, 'hood/') === 0;
+$isStaffRoute = $currentRoute === 'staff' || strpos($currentRoute, 'staff/') === 0;
+
+// Determine which division page to load
+$division = null;
+if ($isHoodRoute) {
+    $division = 'hood';
+} elseif ($isStaffRoute) {
+    $division = 'staff';
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -926,8 +961,8 @@ require_once __DIR__ . '/core/helpers/functions.php';
     </style>
 </head>
 <body class="bg-white">
-    <!-- Landing Selector Overlay -->
-    <div id="landing-selector" class="landing-selector-overlay">
+    <!-- Landing Selector Overlay - Division Selector (only on root) -->
+    <div id="landing-selector" class="landing-selector-overlay <?php echo !$isDivisionSelector ? 'hidden' : ''; ?>">
         <div class="landing-selector-inner">
             <!-- Logo -->
             <div class="landing-logo">
@@ -937,7 +972,7 @@ require_once __DIR__ . '/core/helpers/functions.php';
 
             <div class="landing-cards">
                 <!-- Hood System Cleaning Card -->
-                <a href="/primefacilityservicesgroup/facility/hood-cleaning/" class="landing-card landing-card--hood">
+                <a href="/primefacilityservicesgroup/hood/" class="landing-card landing-card--hood">
                     <div class="landing-card__bg"></div>
                     <div class="landing-card__content">
                         <div class="landing-card__icon">
@@ -956,7 +991,7 @@ require_once __DIR__ . '/core/helpers/functions.php';
                 </a>
 
                 <!-- Staff Card -->
-                <button id="landing-staff-btn" class="landing-card landing-card--staff">
+                <a href="/primefacilityservicesgroup/staff/" class="landing-card landing-card--staff">
                     <div class="landing-card__bg"></div>
                     <div class="landing-card__content">
                         <div class="landing-card__icon">
@@ -973,7 +1008,7 @@ require_once __DIR__ . '/core/helpers/functions.php';
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </span>
                     </div>
-                </button>
+                </a>
             </div>
         </div>
     </div>
@@ -3241,17 +3276,14 @@ require_once __DIR__ . '/core/helpers/functions.php';
             }
         });
         
-        // Landing Selector
+        // Landing Selector - Only hide body overflow when overlay is visible
         document.addEventListener('DOMContentLoaded', function() {
             var overlay = document.getElementById('landing-selector');
-            var staffBtn = document.getElementById('landing-staff-btn');
-            if (staffBtn) {
-                staffBtn.addEventListener('click', function() {
-                    overlay.classList.add('hidden');
-                    document.body.style.overflow = '';
-                });
+            if (overlay && !overlay.classList.contains('hidden')) {
+                document.body.style.overflow = 'hidden';
+            } else if (overlay && overlay.classList.contains('hidden')) {
+                document.body.style.overflow = '';
             }
-            document.body.style.overflow = 'hidden';
         });
 
         // Split Container Animation
