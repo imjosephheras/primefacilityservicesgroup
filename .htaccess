@@ -4,7 +4,6 @@ Options -Indexes
 RewriteEngine On
 RewriteBase /primefacilityservicesgroup/
 
-<<<<<<< HEAD
 # ── Division-Specific Routing ──────────────────────────────────────────────────
 # Route /hood/ to /facility/hood-cleaning/ (internal rewrite, URL stays /hood/)
 RewriteRule ^hood(/.*)?$ facility/hood-cleaning$1 [L]
@@ -14,9 +13,6 @@ RewriteRule ^staff(/.*)?$ hospitality/staffing/views$1 [L]
 
 # ── General Routing for Division Selector ──────────────────────────────────────
 # Exclude existing files from rewriting
-=======
-# Exclude existing files
->>>>>>> parent of cdcf506 (Merge pull request #93 from imjosephheras/claude/prime-facility-default-homepage-2jkj9u)
 RewriteCond %{REQUEST_FILENAME} !-f
 # Exclude existing directories from rewriting
 RewriteCond %{REQUEST_FILENAME} !-d
@@ -24,7 +20,6 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_URI} !^/assets/
 RewriteCond %{REQUEST_URI} !^/team/
 RewriteCond %{REQUEST_URI} !^/api/
-<<<<<<< HEAD
 RewriteCond %{REQUEST_URI} !^/admin/
 RewriteCond %{REQUEST_URI} !^/storage/
 RewriteCond %{REQUEST_URI} !^/database/
@@ -34,8 +29,6 @@ RewriteCond %{REQUEST_URI} !^/pages/
 RewriteCond %{REQUEST_URI} !^/core/
 RewriteCond %{REQUEST_URI} !^/tools/
 RewriteCond %{REQUEST_URI} !^/app/
-=======
->>>>>>> parent of cdcf506 (Merge pull request #93 from imjosephheras/claude/prime-facility-default-homepage-2jkj9u)
 
 # Route all other non-file, non-directory requests to index.php for division selector
 RewriteRule ^(.*)$ index.php?_route=$1 [QSA,L]
