@@ -8,7 +8,7 @@
             <div class="flex justify-between items-center py-4">
                 <!-- Logo -->
                 <a href="/primefacilityservicesgroup/" class="flex items-center space-x-3 group">
-                    <img src="./assets/logos/hospitality-navbar.png" alt="Prime Facility Services Group" class="h-12 w-auto transition-transform duration-300 group-hover:scale-105">
+                    <img src="/primefacilityservicesgroup/assets/logos/hospitality-navbar.png" alt="Prime Facility Services Group" class="h-12 w-auto transition-transform duration-300 group-hover:scale-105">
                 </a>
                 
                 <!-- Desktop Navigation -->
@@ -94,7 +94,7 @@
         <div class="mobile-menu-content fixed right-0 top-0 h-full w-80 bg-white shadow-2xl">
             <div class="p-6 border-b border-gray-100">
                 <div class="flex justify-between items-center">
-                    <img src="./assets/logos/hospitality-navbar.png" alt="Prime Facility Services Group" class="h-10 w-auto" style="filter: brightness(0) saturate(100%);">
+                    <img src="/primefacilityservicesgroup/assets/logos/hospitality-navbar.png" alt="Prime Facility Services Group" class="h-10 w-auto" style="filter: brightness(0) saturate(100%);">
                     <button id="mobile-menu-close" class="p-2 hover:bg-gray-100 rounded-lg transition-colors">
                         <svg class="w-6 h-6 text-[#03143A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
