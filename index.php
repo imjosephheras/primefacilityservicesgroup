@@ -453,6 +453,15 @@ if ($isHoodRoute) {
             visibility: hidden;
             pointer-events: none;
         }
+
+        /* Hide main content when Division Selector is shown */
+        body.division-selector-mode > section,
+        body.division-selector-mode > nav,
+        body.division-selector-mode > footer,
+        body.division-selector-mode > .navbar,
+        body.division-selector-mode > .preloader {
+            display: none !important;
+        }
         .landing-selector-inner {
             text-align: center;
             padding: 2rem 1rem;
@@ -960,7 +969,7 @@ if ($isHoodRoute) {
         }
     </style>
 </head>
-<body class="bg-white">
+<body class="bg-white <?php echo $isDivisionSelector ? 'division-selector-mode' : ''; ?>">
     <!-- Landing Selector Overlay - Division Selector (only on root) -->
     <div id="landing-selector" class="landing-selector-overlay <?php echo !$isDivisionSelector ? 'hidden' : ''; ?>">
         <div class="landing-selector-inner">
