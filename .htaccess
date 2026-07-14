@@ -9,6 +9,8 @@ RewriteBase /primefacilityservicesgroup/
 RewriteRule ^hood(/.*)?$ facility/hood-cleaning$1 [L]
 
 # Route /hospitality/ to /hospitality/staffing/views/ (internal rewrite, URL stays /hospitality/)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^hospitality(/.*)?$ hospitality/staffing/views$1 [L]
 
 # ── General Routing for Division Selector ──────────────────────────────────────
