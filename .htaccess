@@ -3,6 +3,10 @@ Options -Indexes
 # ── URL Rewriting for SPA (Single Page Application) ──────────────────────────
 RewriteEngine On
 
+# Redirect root URL to /staff/ for immediate server-side redirect without rendering landing page
+RewriteCond %{REQUEST_URI} ^/?$
+RewriteRule ^/?$ /staff/ [L,R=301]
+
 # Exclude existing files
 RewriteCond %{REQUEST_FILENAME} !-f
 # Exclude existing directories
@@ -11,10 +15,14 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_URI} !^/assets/
 RewriteCond %{REQUEST_URI} !^/team/
 RewriteCond %{REQUEST_URI} !^/api/
+RewriteCond %{REQUEST_URI} !^/staff/
 
 RewriteRule ^(.*)$ index.php [L]
 
 # ── Backward-compatible 301 redirects after project restructure ──────────────
+# Default /staff/ route → staffing division
+Redirect 301 /staff/ /hospitality/staffing/views/
+
 # Old asset paths → new locations under assets/
 Redirect 301 /navbar.css /assets/css/navbar.css
 Redirect 301 /preloader.css /assets/css/preloader.css
