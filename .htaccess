@@ -29,7 +29,6 @@ RewriteCond %{REQUEST_URI} !^/facility/
 RewriteCond %{REQUEST_URI} !^/hospitality/
 RewriteCond %{REQUEST_URI} !^/pages/
 RewriteCond %{REQUEST_URI} !^/core/
-RewriteCond %{REQUEST_URI} !^/tools/
 RewriteCond %{REQUEST_URI} !^/app/
 
 # Route all other non-file, non-directory requests to index.php for division selector
@@ -72,9 +71,6 @@ Redirect 301 /modules/admin/visitor_tracking/ /admin/
 
 # Old profile and team picture paths
 Redirect 301 /profile/ /team/
-
-# Old internal tools
-Redirect 301 /app/ /tools/
 
 # Old contact API
 Redirect 301 /send_mail.php /api/contact/send.php
