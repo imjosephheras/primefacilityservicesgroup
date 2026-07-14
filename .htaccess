@@ -4,6 +4,10 @@ Options -Indexes
 RewriteEngine On
 RewriteBase /primefacilityservicesgroup/
 
+# ── Root Division Selector ─────────────────────────────────────────────────────
+# Route root URL to division-selector.php (independent Division Selector page)
+RewriteRule ^/?$ division-selector.php [L]
+
 # ── Division-Specific Routing ──────────────────────────────────────────────────
 # Route /hood/ to /facility/hood-cleaning/ (internal rewrite, URL stays /hood/)
 RewriteRule ^hood(/.*)?$ facility/hood-cleaning$1 [L]
