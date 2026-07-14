@@ -8,8 +8,8 @@ RewriteBase /primefacilityservicesgroup/
 # Route /hood/ to /facility/hood-cleaning/ (internal rewrite, URL stays /hood/)
 RewriteRule ^hood(/.*)?$ facility/hood-cleaning$1 [L]
 
-# Route /staff/ to /hospitality/staffing/views/ (internal rewrite, URL stays /staff/)
-RewriteRule ^staff(/.*)?$ hospitality/staffing/views$1 [L]
+# Route /hospitality/ to /hospitality/staffing/views/ (internal rewrite, URL stays /hospitality/)
+RewriteRule ^hospitality(/.*)?$ hospitality/staffing/views$1 [L]
 
 # ── General Routing for Division Selector ──────────────────────────────────────
 # Exclude existing files from rewriting
@@ -34,6 +34,9 @@ RewriteCond %{REQUEST_URI} !^/app/
 RewriteRule ^(.*)$ index.php?_route=$1 [QSA,L]
 
 # ── Backward-compatible 301 redirects after project restructure ──────────────
+# Old division routes
+Redirect 301 /primefacilityservicesgroup/staff/ /primefacilityservicesgroup/hospitality/
+
 # Old asset paths → new locations under assets/
 Redirect 301 /navbar.css /assets/css/navbar.css
 Redirect 301 /preloader.css /assets/css/preloader.css
@@ -57,7 +60,7 @@ Redirect 301 /about/ /pages/about/
 Redirect 301 /contact/ /pages/contact/
 Redirect 301 /privacy/ /pages/privacy/
 Redirect 301 /cleaning/ /facility/
-Redirect 301 /staffing/ /hospitality/staffing/views/
+Redirect 301 /staffing/ /hospitality/
 Redirect 301 /valet/ /hospitality/valet/views/
 Redirect 301 /hood-cleaning/ /facility/hood-cleaning/
 Redirect 301 /exhaust-system-documentation/ /facility/hood-cleaning/documents/exhaust-system/

@@ -30,14 +30,14 @@ function getCurrentRoute() {
 $currentRoute = getCurrentRoute();
 $isDivisionSelector = empty($currentRoute) || $currentRoute === '';
 $isHoodRoute = $currentRoute === 'hood' || strpos($currentRoute, 'hood/') === 0;
-$isStaffRoute = $currentRoute === 'staff' || strpos($currentRoute, 'staff/') === 0;
+$isHospitalityRoute = $currentRoute === 'hospitality' || strpos($currentRoute, 'hospitality/') === 0;
 
 // Determine which division page to load
 $division = null;
 if ($isHoodRoute) {
     $division = 'hood';
-} elseif ($isStaffRoute) {
-    $division = 'staff';
+} elseif ($isHospitalityRoute) {
+    $division = 'hospitality';
 }
 ?>
 <!DOCTYPE html>
@@ -509,7 +509,7 @@ if ($isHoodRoute) {
         .landing-card--hood .landing-card__bg {
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
         }
-        .landing-card--staff .landing-card__bg {
+        .landing-card--hospitality .landing-card__bg {
             background: linear-gradient(135deg, #7b0a1e 0%, #C70532 50%, #e91e63 100%);
         }
         .landing-card__content {
@@ -990,8 +990,8 @@ if ($isHoodRoute) {
                     </div>
                 </a>
 
-                <!-- Staff Card -->
-                <a href="/primefacilityservicesgroup/staff/" class="landing-card landing-card--staff">
+                <!-- Hospitality Card -->
+                <a href="/primefacilityservicesgroup/hospitality/" class="landing-card landing-card--hospitality">
                     <div class="landing-card__bg"></div>
                     <div class="landing-card__content">
                         <div class="landing-card__icon">
