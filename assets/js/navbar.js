@@ -7,13 +7,13 @@
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center py-4">
                 <!-- Logo -->
-                <a href="/" class="flex items-center space-x-3 group">
+                <a href="/primefacilityservicesgroup/" class="flex items-center space-x-3 group">
                     <img src="./assets/logos/hospitality-navbar.png" alt="Prime Facility Services Group" class="h-12 w-auto transition-transform duration-300 group-hover:scale-105">
                 </a>
                 
                 <!-- Desktop Navigation -->
                 <div class="hidden lg:flex items-center space-x-1">
-                    <a href="/" class="nav-link text-white hover:text-[#C70532] font-medium" data-page="home">Home</a>
+                    <a href="/primefacilityservicesgroup/" class="nav-link text-white hover:text-[#C70532] font-medium" data-page="home">Home</a>
                     
                     <!-- Services Dropdown -->
                     <div class="dropdown relative">
@@ -105,7 +105,7 @@
             
             <div class="py-6">
                 <div class="px-6 space-y-1">
-                    <a href="/" class="block py-3 text-[#03143A] hover:text-[#C70532] font-medium transition-colors">Home</a>
+                    <a href="/primefacilityservicesgroup/" class="block py-3 text-[#03143A] hover:text-[#C70532] font-medium transition-colors">Home</a>
                     
                     <!-- Mobile Services Section -->
                     <div class="py-3">
