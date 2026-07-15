@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hood System Products — PRIME Facility Services</title>
+    <meta name="description" content="Premium hood system components including filters, belts, exhaust fans, motors, and more. High-quality OEM products for commercial kitchens.">
+    <link rel="icon" href="/logo-prime.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/assets/css/preloader.css">
+    <link rel="stylesheet" href="/assets/css/navbar.css">
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --white:       #ffffff;
+            --off-white:   #f8f8f6;
+            --gray-50:     #f5f5f3;
+            --gray-100:    #efefed;
+            --gray-200:    #e0e0dd;
+            --gray-300:    #c8c8c4;
+            --gray-400:    #9a9a96;
+            --gray-500:    #6e6e6a;
+            --gray-600:    #4a4a46;
+            --gray-900:    #111110;
+            --blue:        #1a5cff;
+            --blue-light:  #e8f0ff;
+            --blue-mid:    #3b6fd4;
+            --blue-dim:    rgba(26,92,255,0.08);
+            --blue-border: rgba(26,92,255,0.18);
+            --shadow-xs:   0 1px 3px rgba(0,0,0,0.06);
+            --shadow-sm:   0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md:   0 8px 24px rgba(0,0,0,0.08);
+            --shadow-lg:   0 24px 64px rgba(0,0,0,0.10);
+            --font:        'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --radius:      12px;
+            --radius-lg:   20px;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--white);
+            color: var(--gray-900);
+            font-family: var(--font);
+            font-size: 16px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--gray-50); }
+        ::-webkit-scrollbar-thumb { background: var(--gray-300); border-radius: 3px; }
+
+        /* ══════════════════════════════════════════════════════
+           NAVBAR
+        ══════════════════════════════════════════════════════ */
+        #prime-nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
+            transition: background 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease;
+            border-bottom: 1px solid transparent;
+        }
+
+        #prime-nav.scrolled {
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border-bottom-color: var(--gray-200);
+            box-shadow: var(--shadow-xs);
+        }
+
+        .nav-inner {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            margin-right: 48px;
+            flex-shrink: 0;
+        }
+
+        .nav-logo img { height: 40px; width: auto; display: block; transition: height 0.3s ease; }
+        #prime-nav.scrolled .nav-logo img { height: 32px; }
+
+        .nav-logo-text {
+            font-size: 17px;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            color: var(--gray-900);
+        }
+
+        .nav-links { display: flex; align-items: center; gap: 2px; flex: 1; list-style: none; }
+        .nav-item { position: relative; }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 6px 12px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--gray-500);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: color 0.2s, background 0.2s;
+            white-space: nowrap;
+            cursor: pointer;
+            background: none;
+            border: none;
+            letter-spacing: -0.01em;
+        }
+
+        .nav-link:hover, .nav-item.open > .nav-link { color: var(--gray-900); background: var(--gray-100); }
+
+        .nav-link svg { transition: transform 0.25s ease; flex-shrink: 0; }
+        .nav-item.open > .nav-link svg { transform: rotate(180deg); }
+
+        .nav-cta { margin-left: auto; display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+
+        .btn-ghost {
+            padding: 7px 16px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--gray-500);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: color 0.2s, background 0.2s;
+            white-space: nowrap;
+            letter-spacing: -0.01em;
+        }
+        .btn-ghost:hover { color: var(--gray-900); background: var(--gray-100); }
+
+        .btn-primary-nav {
+            padding: 8px 18px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--white);
+            background: var(--gray-900);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, transform 0.2s;
+            white-space: nowrap;
+            letter-spacing: -0.01em;
+        }
+        .btn-primary-nav:hover { background: var(--gray-600); }
+
+        .mega-menu {
+            position: absolute;
+            top: calc(100% + 12px);
+            left: 50%;
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            min-width: 480px;
+            box-shadow: var(--shadow-lg);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-50%) translateY(-8px);
+            transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+            pointer-events: none;
+        }
+
+        .nav-item.open > .mega-menu, .nav-item:hover > .mega-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+            pointer-events: all;
+        }
+
+        .mega-menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .mega-menu-col h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-900); margin-bottom: 12px; }
+        .mega-menu-col a { display: block; padding: 6px 0; font-size: 13px; color: var(--gray-500); text-decoration: none; transition: color 0.2s; }
+        .mega-menu-col a:hover { color: var(--blue); }
+
+        /* ══════════════════════════════════════════════════════
+           HERO
+        ══════════════════════════════════════════════════════ */
+        #hero {
+            position: relative;
+            min-height: 70svh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: var(--gray-900);
+            padding-top: 60px;
+        }
+
+        .hero-blueprint {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(26,92,255,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(26,92,255,0.05) 1px, transparent 1px);
+            background-size: 56px 56px;
+            mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, black 20%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .hero-radial {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 70% 60% at 50% 40%, rgba(230,238,255,0.12) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 30% at 20% 80%, rgba(220,232,255,0.08) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 80px 40px;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--blue);
+            margin-bottom: 24px;
+            padding: 6px 16px;
+            border: 1px solid var(--blue-border);
+            border-radius: 100px;
+            background: var(--blue-dim);
+        }
+
+        .hero-eyebrow-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--blue);
+            animation: pulse-dot 2.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.7); }
+        }
+
+        .hero-h1 {
+            font-size: clamp(44px, 7vw, 88px);
+            font-weight: 700;
+            line-height: 1.02;
+            letter-spacing: -0.04em;
+            color: #fff;
+            margin-bottom: 28px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-desc {
+            font-size: 18px;
+            color: rgba(255,255,255,0.70);
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .btn-hero-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            background: var(--white);
+            color: var(--gray-900);
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 10px;
+            text-decoration: none;
+            letter-spacing: -0.01em;
+            transition: background 0.2s, transform 0.25s;
+        }
+        .btn-hero-primary:hover { background: var(--gray-100); transform: translateY(-2px); }
+
+        /* ══════════════════════════════════════════════════════
+           SECTION SHARED
+        ══════════════════════════════════════════════════════ */
+        .section {
+            padding: 120px 40px;
+        }
+
+        .section-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--blue);
+            margin-bottom: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-label::before {
+            content: '';
+            display: block;
+            width: 20px;
+            height: 1px;
+            background: var(--blue);
+        }
+
+        .section-title {
+            font-size: clamp(36px, 4vw, 60px);
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            line-height: 1.05;
+            color: var(--gray-900);
+            margin-bottom: 20px;
+        }
+
+        .section-desc {
+            font-size: 17px;
+            color: var(--gray-400);
+            line-height: 1.75;
+            max-width: 480px;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+        }
+
+        .arch-divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gray-200) 20%, var(--gray-200) 80%, transparent);
+        }
+
+        /* ══════════════════════════════════════════════════════
+           PRODUCTS GRID
+        ══════════════════════════════════════════════════════ */
+        #products {
+            background: var(--white);
+            overflow: hidden;
+        }
+
+        .products-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 72px;
+            flex-wrap: wrap;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .product-card {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+        }
+
+        .product-card:hover {
+            border-color: var(--gray-300);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+        }
+
+        .product-visual {
+            height: 200px;
+            background: var(--gray-100);
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-visual::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(26,92,255,0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(26,92,255,0.06) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        .product-visual svg {
+            opacity: 0.25;
+            width: 60px;
+            height: 60px;
+        }
+
+        .product-visual-label {
+            position: absolute;
+            bottom: 12px;
+            left: 16px;
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--gray-400);
+        }
+
+        .product-body {
+            padding: 28px;
+        }
+
+        .product-name {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: var(--gray-900);
+            margin-bottom: 12px;
+        }
+
+        .product-desc {
+            font-size: 13px;
+            color: var(--gray-400);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .btn-view-product {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--blue);
+            text-decoration: none;
+            border-bottom: 1px solid var(--blue);
+            transition: color 0.2s;
+        }
+
+        .btn-view-product:hover {
+            color: var(--blue-mid);
+            border-color: var(--blue-mid);
+        }
+
+        /* ══════════════════════════════════════════════════════
+           FINAL CTA
+        ══════════════════════════════════════════════════════ */
+        #final-cta {
+            padding: 120px 40px;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: clamp(40px, 5vw, 64px);
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+            color: var(--gray-900);
+            margin-bottom: 24px;
+        }
+
+        .cta-desc {
+            font-size: 18px;
+            color: var(--gray-400);
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .cta-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn-cta-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--white);
+            background: var(--blue);
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.2s;
+            letter-spacing: -0.01em;
+        }
+
+        .btn-cta-primary:hover {
+            background: var(--blue-mid);
+            transform: translateY(-2px);
+        }
+
+        /* ══════════════════════════════════════════════════════
+           FOOTER
+        ══════════════════════════════════════════════════════ */
+        #footer {
+            background: var(--gray-900);
+            color: var(--white);
+            padding: 64px 40px 32px;
+        }
+
+        .footer-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 80px;
+            margin-bottom: 64px;
+            padding-bottom: 48px;
+            border-bottom: 1px solid rgba(255,255,255,0.10);
+        }
+
+        .footer-brand-name {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 12px;
+        }
+
+        .footer-brand-desc {
+            font-size: 14px;
+            color: rgba(255,255,255,0.60);
+            line-height: 1.7;
+        }
+
+        .footer-cols {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-col-title {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 16px;
+            color: var(--white);
+        }
+
+        .footer-col a, .footer-col p {
+            display: block;
+            font-size: 13px;
+            color: rgba(255,255,255,0.60);
+            text-decoration: none;
+            line-height: 1.8;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover { color: var(--white); }
+
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-size: 13px;
+            color: rgba(255,255,255,0.60);
+        }
+
+        .footer-bottom a {
+            color: rgba(255,255,255,0.60);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-bottom a:hover { color: var(--white); }
+
+        /* ══════════════════════════════════════════════════════
+           BREADCRUMB
+        ══════════════════════════════════════════════════════ */
+        .breadcrumb {
+            padding: 12px 40px;
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            max-width: 1280px;
+            margin: 60px auto 0;
+            font-size: 13px;
+            color: var(--gray-400);
+        }
+
+        .breadcrumb a {
+            color: var(--blue);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .breadcrumb a:hover { color: var(--blue-mid); }
+
+        /* ══════════════════════════════════════════════════════
+           RESPONSIVE
+        ══════════════════════════════════════════════════════ */
+        @media (max-width: 768px) {
+            .section { padding: 80px 24px; }
+            #prime-nav { padding: 0 20px; }
+            .hero-content { padding: 60px 24px; }
+
+            .products-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+
+            .mega-menu { min-width: 100%; left: 0; transform: translateY(-8px); }
+            .mega-menu-grid { grid-template-columns: 1fr; }
+
+            .footer-top { grid-template-columns: 1fr; gap: 40px; }
+            .footer-cols { grid-template-columns: 1fr 1fr; }
+
+            .cta-actions { flex-direction: column; }
+            .btn-cta-primary { width: 100%; justify-content: center; }
+        }
+
+        @media (max-width: 480px) {
+            #prime-nav { padding: 0 20px; }
+            .nav-links { flex: 1; }
+            .nav-link { padding: 4px 6px; font-size: 11px; }
+
+            .hero-content { padding: 60px 16px; }
+            .hero-h1 { font-size: clamp(32px, 5vw, 56px); }
+
+            .section { padding: 60px 16px; }
+            .breadcrumb { padding: 12px 16px; margin-top: 60px; }
+
+            .products-grid { grid-template-columns: 1fr; }
+            .footer-cols { grid-template-columns: 1fr; }
+        }
+
+        /* ══════════════════════════════════════════════════════
+           ANIMATIONS
+        ══════════════════════════════════════════════════════ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .reveal.visible {
+            animation: reveal-in 0.7s ease-out forwards;
+        }
+
+        .reveal-delay-1 { animation-delay: 0.1s; }
+        .reveal-delay-2 { animation-delay: 0.2s; }
+        .reveal-delay-3 { animation-delay: 0.3s; }
+
+        @keyframes reveal-in {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ══════════════════════ NAVIGATION ══════════════════════ -->
+    <nav id="prime-nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">
+                <img src="/logo-prime.svg" alt="PRIME Logo">
+                <span class="nav-logo-text">PRIME</span>
+            </a>
+            <ul class="nav-links">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Services <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></a>
+                    <div class="mega-menu">
+                        <div class="mega-menu-grid">
+                            <div class="mega-menu-col">
+                                <h4>Hood System</h4>
+                                <a href="/hood/system/">Overview</a>
+                                <a href="/hood/system/diagnostics-reports/">Diagnostics</a>
+                                <a href="/hood/system/hood-cleaning/">Hood Cleaning</a>
+                                <a href="/hood/system/products/">Products</a>
+                            </div>
+                            <div class="mega-menu-col">
+                                <h4>Other Services</h4>
+                                <a href="/facility/">Cleaning Services</a>
+                                <a href="/hospitality/staffing/">Staffing</a>
+                                <a href="/hospitality/valet/">Valet Parking</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="/pages/about/" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="/pages/contact/" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="tel:+17133382553" class="btn-ghost">(713) 338-2553</a>
+                <a href="/pages/contact/" class="btn-primary-nav">Get Quote</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ══════════════════════ BREADCRUMB ══════════════════════ -->
+    <div class="breadcrumb">
+        <a href="/hood/system/">Hood System</a> / Products
+    </div>
+
+    <!-- ══════════════════════ HERO ══════════════════════ -->
+    <section id="hero">
+        <div class="hero-blueprint"></div>
+        <div class="hero-radial"></div>
+        <div class="hero-content">
+            <div class="hero-eyebrow">
+                <span class="hero-eyebrow-dot"></span>
+                Premium Components
+            </div>
+            <h1 class="hero-h1">Hood System Products</h1>
+            <p class="hero-desc">High-quality OEM components for professional hood system installation and maintenance.</p>
+            <a href="/pages/contact/" class="btn-hero-primary">Request Product Info</a>
+        </div>
+    </section>
+
+    <div class="arch-divider"></div>
+
+    <!-- ══════════════════════ PRODUCTS ══════════════════════ -->
+    <section id="products" class="section">
+        <div class="section-inner">
+            <div class="products-header reveal">
+                <div>
+                    <div class="section-label">Our Catalog</div>
+                    <h2 class="section-title">Premium Products</h2>
+                </div>
+            </div>
+            <div class="products-grid">
+                <!-- Filters -->
+                <div class="product-card reveal reveal-delay-1">
+                    <div class="product-visual">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+                        <span class="product-visual-label">Filters — Image Pending</span>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-name">Filters</h3>
+                        <p class="product-desc">High-efficiency replacement filters for superior grease capture and system performance.</p>
+                        <a href="/hood/system/products/filters/" class="btn-view-product">View Product →</a>
+                    </div>
+                </div>
+
+                <!-- Belts -->
+                <div class="product-card reveal reveal-delay-2">
+                    <div class="product-visual">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 8h16M4 12h16M4 16h16"/></svg>
+                        <span class="product-visual-label">Belts — Image Pending</span>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-name">Belts</h3>
+                        <p class="product-desc">Durable drive belts designed for consistent fan operation and extended service life.</p>
+                        <a href="/hood/system/products/belts/" class="btn-view-product">View Product →</a>
+                    </div>
+                </div>
+
+                <!-- Exhaust Fans -->
+                <div class="product-card reveal reveal-delay-3">
+                    <div class="product-visual">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="8"/><path d="M12 4v16M4 12h16"/></svg>
+                        <span class="product-visual-label">Fans — Image Pending</span>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-name">Exhaust Fans</h3>
+                        <p class="product-desc">Engineered exhaust fans built for commercial kitchen environments with superior airflow.</p>
+                        <a href="/hood/system/products/exhaust-fans/" class="btn-view-product">View Product →</a>
+                    </div>
+                </div>
+
+                <!-- Motors -->
+                <div class="product-card reveal">
+                    <div class="product-visual">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+                        <span class="product-visual-label">Motors — Image Pending</span>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-name">Motors</h3>
+                        <p class="product-desc">High-performance motors built for reliability and efficiency in commercial applications.</p>
+                        <a href="/hood/system/products/motors/" class="btn-view-product">View Product →</a>
+                    </div>
+                </div>
+
+                <!-- Fan Blades -->
+                <div class="product-card reveal">
+                    <div class="product-visual">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M2 12h20M21 12l-3-3M21 12l-3 3M3 12l3-3M3 12l3 3"/></svg>
+                        <span class="product-visual-label">Fan Blades — Image Pending</span>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-name">Fan Blades</h3>
+                        <p class="product-desc">Precision-engineered blades for optimal airflow and vibration-free operation.</p>
+                        <a href="/hood/system/products/fan-blades/" class="btn-view-product">View Product →</a>
+                    </div>
+                </div>
+
+                <!-- Hinges -->
+                <div class="product-card reveal">
+                    <div class="product-visual">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7h2a2 2 0 012-2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"/></svg>
+                        <span class="product-visual-label">Hinges — Image Pending</span>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-name">Hinges</h3>
+                        <p class="product-desc">Heavy-duty stainless steel hinges for access panels and removable components.</p>
+                        <a href="/hood/system/products/hinges/" class="btn-view-product">View Product →</a>
+                    </div>
+                </div>
+
+                <!-- Grease Cup -->
+                <div class="product-card reveal">
+                    <div class="product-visual">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+                        <span class="product-visual-label">Grease Cup — Image Pending</span>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-name">Grease Cup</h3>
+                        <p class="product-desc">Convenient grease collection and disposal system for simplified maintenance.</p>
+                        <a href="/hood/system/products/grease-cup/" class="btn-view-product">View Product →</a>
+                    </div>
+                </div>
+
+                <!-- Pillow Block Bearing -->
+                <div class="product-card reveal">
+                    <div class="product-visual">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>
+                        <span class="product-visual-label">Bearing — Image Pending</span>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-name">Pillow Block Bearing</h3>
+                        <p class="product-desc">Industrial-grade bearings for smooth fan operation and reduced vibration.</p>
+                        <a href="/hood/system/products/pillow-block-bearing/" class="btn-view-product">View Product →</a>
+                    </div>
+                </div>
+
+                <!-- Light Fixture -->
+                <div class="product-card reveal">
+                    <div class="product-visual">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l1 6h6l-5 4 1.5 6-5.5-4-5.5 4 1.5-6-5-4h6l1-6z"/></svg>
+                        <span class="product-visual-label">Light — Image Pending</span>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-name">Light Fixture</h3>
+                        <p class="product-desc">Commercial-grade LED lighting for hood system inspection and cleaning.</p>
+                        <a href="/hood/system/products/light-fixture/" class="btn-view-product">View Product →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="arch-divider"></div>
+
+    <!-- ══════════════════════ FINAL CTA ══════════════════════ -->
+    <section id="final-cta">
+        <div class="cta-content">
+            <div class="reveal">
+                <h2 class="cta-title">Need Help Selecting Products?</h2>
+                <p class="cta-desc">Our experts can help you choose the right components for your specific hood system requirements.</p>
+                <div class="cta-actions" style="margin-top: 32px;">
+                    <a href="/pages/contact/" class="btn-cta-primary">Contact Our Team</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════ FOOTER ══════════════════════ -->
+    <footer id="footer">
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div>
+                    <div class="footer-brand-name">PRIME Facility Services</div>
+                    <p class="footer-brand-desc">Professional facility management and commercial kitchen solutions. Committed to safety, compliance, and operational excellence.</p>
+                </div>
+                <div class="footer-cols">
+                    <div class="footer-col">
+                        <div class="footer-col-title">Hood Services</div>
+                        <a href="/hood/system/">Overview</a>
+                        <a href="/hood/system/diagnostics-reports/">Diagnostics</a>
+                        <a href="/hood/system/hood-cleaning/">Hood Cleaning</a>
+                        <a href="/hood/system/products/">Products</a>
+                    </div>
+                    <div class="footer-col">
+                        <div class="footer-col-title">Company</div>
+                        <a href="/">Home</a>
+                        <a href="/pages/about/">About Us</a>
+                        <a href="/pages/contact/">Contact</a>
+                        <a href="/pages/privacy/">Privacy Policy</a>
+                    </div>
+                    <div class="footer-col">
+                        <div class="footer-col-title">Contact</div>
+                        <p>8303 Westglen Dr<br>Houston TX 77063</p>
+                        <a href="tel:+17133382553">+1 713 338 2553</a>
+                        <a href="mailto:its@primefacilityservicesgroup.com">its@primefacilityservicesgroup.com</a>
+                    </div>
+                    <div class="footer-col">
+                        <div class="footer-col-title">Coverage</div>
+                        <p>Houston, TX</p>
+                        <p>Dallas, TX</p>
+                        <p>National coverage available</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2025 Prime Facility Services Group. All rights reserved.</span>
+                <a href="/pages/privacy/">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Navbar scroll effect
+        const nav = document.getElementById('prime-nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Scroll reveal
+        const revealEls = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(el => {
+                if (el.isIntersecting) {
+                    el.target.classList.add('visible');
+                    observer.unobserve(el.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        revealEls.forEach(el => observer.observe(el));
+
+        // Mega menu toggle
+        document.querySelectorAll('.nav-item').forEach(item => {
+            const link = item.querySelector('.nav-link');
+            if (link && item.querySelector('.mega-menu')) {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('open'));
+                    item.classList.add('open');
+                });
+            }
+        });
+
+        // Close mega menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-item')) {
+                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('open'));
+            }
+        });
+
+        // Image protection
+        document.addEventListener('contextmenu', e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
+        document.addEventListener('dragstart', e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
+        document.addEventListener('keydown', e => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 's') e.preventDefault();
+        });
+    </script>
+</body>
+</html>
