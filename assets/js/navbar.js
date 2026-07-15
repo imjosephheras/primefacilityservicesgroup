@@ -23,34 +23,54 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                             </svg>
                         </button>
-                        <div class="dropdown-menu absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-2xl overflow-hidden">
-                            <a href="/hospitality/" class="block px-6 py-4 text-[#03143A] hover:bg-[#F5F5F5] hover:text-[#C70532] transition-all group">
-                                <div class="font-semibold flex items-center gap-2">
-                                    <svg class="w-5 h-5 text-[#C70532]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                                    </svg>
-                                    Professional Staffing
+                        <div class="dropdown-menu absolute top-full left-0 mt-2 w-96 bg-white rounded-xl shadow-2xl overflow-hidden">
+                            <!-- Main Services Section -->
+                            <div>
+                                <a href="/hospitality/" class="block px-6 py-4 text-[#03143A] hover:bg-[#F5F5F5] hover:text-[#C70532] transition-all group">
+                                    <div class="font-semibold flex items-center gap-2">
+                                        <svg class="w-5 h-5 text-[#C70532]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                        </svg>
+                                        Professional Staffing
+                                    </div>
+                                    <p class="text-sm text-gray-600 mt-1">Elite hospitality & event professionals</p>
+                                </a>
+                                <a href="/cleaning/" class="block px-6 py-4 text-[#03143A] hover:bg-[#F5F5F5] hover:text-[#C70532] transition-all group">
+                                    <div class="font-semibold flex items-center gap-2">
+                                        <svg class="w-5 h-5 text-[#C70532]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                                        </svg>
+                                        Cleaning Services
+                                    </div>
+                                    <p class="text-sm text-gray-600 mt-1">Commercial & facility cleaning</p>
+                                </a>
+                                <a href="/valet/" class="block px-6 py-4 text-[#03143A] hover:bg-[#F5F5F5] hover:text-[#C70532] transition-all group">
+                                    <div class="font-semibold flex items-center gap-2">
+                                        <svg class="w-5 h-5 text-[#C70532]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path>
+                                        </svg>
+                                        Valet Parking
+                                    </div>
+                                    <p class="text-sm text-gray-600 mt-1">Professional parking solutions</p>
+                                </a>
+                            </div>
+
+                            <!-- Hood System Section -->
+                            <div class="border-t border-gray-200">
+                                <div class="px-6 py-3 bg-gray-50 border-b border-gray-200">
+                                    <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Hood System Services</p>
                                 </div>
-                                <p class="text-sm text-gray-600 mt-1">Elite hospitality & event professionals</p>
-                            </a>
-                            <a href="/cleaning/" class="block px-6 py-4 text-[#03143A] hover:bg-[#F5F5F5] hover:text-[#C70532] transition-all group">
-                                <div class="font-semibold flex items-center gap-2">
-                                    <svg class="w-5 h-5 text-[#C70532]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                                    </svg>
-                                    Cleaning Services
+                                <div class="space-y-0">
+                                    <a href="/primefacilityservicesgroup/hood/system/diagnostics-reports/" class="block px-6 py-3 text-[#03143A] hover:bg-[#F5F5F5] hover:text-[#C70532] transition-all text-sm">Diagnostics & Reports</a>
+                                    <a href="/primefacilityservicesgroup/hood/system/hood-cleaning/" class="block px-6 py-3 text-[#03143A] hover:bg-[#F5F5F5] hover:text-[#C70532] transition-all text-sm">Hood Cleaning</a>
+                                    <a href="/primefacilityservicesgroup/hood/system/access-panels/" class="block px-6 py-3 text-[#03143A] hover:bg-[#F5F5F5] hover:text-[#C70532] transition-all text-sm">Access Panels</a>
+                                    <a href="/primefacilityservicesgroup/hood/system/emergency-ansul-clean-up/" class="block px-6 py-3 text-[#03143A] hover:bg-[#F5F5F5] hover:text-[#C70532] transition-all text-sm">Emergency Ansul Clean-up</a>
+                                    <a href="/primefacilityservicesgroup/hood/system/duct-cleaning/" class="block px-6 py-3 text-[#03143A] hover:bg-[#F5F5F5] hover:text-[#C70532] transition-all text-sm">Duct Cleaning</a>
+                                    <a href="/primefacilityservicesgroup/hood/system/exhaust-system-diagram/" class="block px-6 py-3 text-[#03143A] hover:bg-[#F5F5F5] hover:text-[#C70532] transition-all text-sm">Exhaust System Diagram</a>
+                                    <a href="/primefacilityservicesgroup/hood/system/variable-frequency-drive/" class="block px-6 py-3 text-[#03143A] hover:bg-[#F5F5F5] hover:text-[#C70532] transition-all text-sm">Variable Frequency Drive</a>
+                                    <a href="/primefacilityservicesgroup/hood/system/products/" class="block px-6 py-3 text-[#03143A] hover:bg-[#F5F5F5] hover:text-[#C70532] transition-all text-sm font-semibold border-t border-gray-200">View All Products</a>
                                 </div>
-                                <p class="text-sm text-gray-600 mt-1">Commercial & facility cleaning</p>
-                            </a>
-                            <a href="/valet/" class="block px-6 py-4 text-[#03143A] hover:bg-[#F5F5F5] hover:text-[#C70532] transition-all group">
-                                <div class="font-semibold flex items-center gap-2">
-                                    <svg class="w-5 h-5 text-[#C70532]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path>
-                                    </svg>
-                                    Valet Parking
-                                </div>
-                                <p class="text-sm text-gray-600 mt-1">Professional parking solutions</p>
-                            </a>
+                            </div>
                         </div>
                     </div>
                     
@@ -109,11 +129,26 @@
                     
                     <!-- Mobile Services Section -->
                     <div class="py-3">
-                        <p class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Services</p>
+                        <p class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Main Services</p>
                         <div class="space-y-1 ml-4">
                             <a href="/hospitality/" class="block py-2 text-[#03143A] hover:text-[#C70532] transition-colors">Professional Staffing</a>
                             <a href="/cleaning/" class="block py-2 text-[#03143A] hover:text-[#C70532] transition-colors">Cleaning Services</a>
                             <a href="/valet/" class="block py-2 text-[#03143A] hover:text-[#C70532] transition-colors">Valet Parking</a>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Hood System Section -->
+                    <div class="py-3">
+                        <p class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Hood System Services</p>
+                        <div class="space-y-1 ml-4">
+                            <a href="/primefacilityservicesgroup/hood/system/diagnostics-reports/" class="block py-2 text-[#03143A] hover:text-[#C70532] transition-colors">Diagnostics & Reports</a>
+                            <a href="/primefacilityservicesgroup/hood/system/hood-cleaning/" class="block py-2 text-[#03143A] hover:text-[#C70532] transition-colors">Hood Cleaning</a>
+                            <a href="/primefacilityservicesgroup/hood/system/access-panels/" class="block py-2 text-[#03143A] hover:text-[#C70532] transition-colors">Access Panels</a>
+                            <a href="/primefacilityservicesgroup/hood/system/emergency-ansul-clean-up/" class="block py-2 text-[#03143A] hover:text-[#C70532] transition-colors">Emergency Ansul Clean-up</a>
+                            <a href="/primefacilityservicesgroup/hood/system/duct-cleaning/" class="block py-2 text-[#03143A] hover:text-[#C70532] transition-colors">Duct Cleaning</a>
+                            <a href="/primefacilityservicesgroup/hood/system/exhaust-system-diagram/" class="block py-2 text-[#03143A] hover:text-[#C70532] transition-colors">Exhaust System Diagram</a>
+                            <a href="/primefacilityservicesgroup/hood/system/variable-frequency-drive/" class="block py-2 text-[#03143A] hover:text-[#C70532] transition-colors">Variable Frequency Drive</a>
+                            <a href="/primefacilityservicesgroup/hood/system/products/" class="block py-2 text-[#03143A] hover:text-[#C70532] transition-colors font-semibold text-sm mt-2 pt-2 border-t border-gray-200">Products</a>
                         </div>
                     </div>
                     
@@ -165,7 +200,7 @@
         // Determine which section we're in based on the path
         if (currentPath.includes('/about/')) {
             activePage = 'about';
-        } else if (currentPath.includes('/hospitality/') || currentPath.includes('/staffing/') || currentPath.includes('/cleaning/') || currentPath.includes('/valet/')) {
+        } else if (currentPath.includes('/hospitality/') || currentPath.includes('/staffing/') || currentPath.includes('/cleaning/') || currentPath.includes('/valet/') || currentPath.includes('/hood/system/')) {
             activePage = 'services';
         } else if (currentPath.includes('/contact/')) {
             activePage = 'contact';
