@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnostics & Reports — Hood System | PRIME Facility Services</title>
+    <meta name="description" content="Professional hood system diagnostics, comprehensive reporting, and NFPA 96 compliance documentation. Expert analysis for commercial kitchen exhaust systems.">
+    <link rel="icon" href="/logo-prime.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/assets/css/preloader.css">
+    <link rel="stylesheet" href="/assets/css/navbar.css">
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --white:       #ffffff;
+            --off-white:   #f8f8f6;
+            --gray-50:     #f5f5f3;
+            --gray-100:    #efefed;
+            --gray-200:    #e0e0dd;
+            --gray-300:    #c8c8c4;
+            --gray-400:    #9a9a96;
+            --gray-500:    #6e6e6a;
+            --gray-600:    #4a4a46;
+            --gray-900:    #111110;
+            --blue:        #1a5cff;
+            --blue-light:  #e8f0ff;
+            --blue-mid:    #3b6fd4;
+            --blue-dim:    rgba(26,92,255,0.08);
+            --blue-border: rgba(26,92,255,0.18);
+            --shadow-xs:   0 1px 3px rgba(0,0,0,0.06);
+            --shadow-sm:   0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md:   0 8px 24px rgba(0,0,0,0.08);
+            --shadow-lg:   0 24px 64px rgba(0,0,0,0.10);
+            --font:        'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --radius:      12px;
+            --radius-lg:   20px;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--white);
+            color: var(--gray-900);
+            font-family: var(--font);
+            font-size: 16px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--gray-50); }
+        ::-webkit-scrollbar-thumb { background: var(--gray-300); border-radius: 3px; }
+
+        /* ══════════════════════════════════════════════════════
+           NAVBAR
+        ══════════════════════════════════════════════════════ */
+        #prime-nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
+            transition: background 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease;
+            border-bottom: 1px solid transparent;
+        }
+
+        #prime-nav.scrolled {
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border-bottom-color: var(--gray-200);
+            box-shadow: var(--shadow-xs);
+        }
+
+        .nav-inner {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            margin-right: 48px;
+            flex-shrink: 0;
+        }
+
+        .nav-logo img { height: 40px; width: auto; display: block; transition: height 0.3s ease; }
+        #prime-nav.scrolled .nav-logo img { height: 32px; }
+
+        .nav-logo-text {
+            font-size: 17px;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            color: var(--gray-900);
+        }
+
+        .nav-links { display: flex; align-items: center; gap: 2px; flex: 1; list-style: none; }
+        .nav-item { position: relative; }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 6px 12px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--gray-500);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: color 0.2s, background 0.2s;
+            white-space: nowrap;
+            cursor: pointer;
+            background: none;
+            border: none;
+            letter-spacing: -0.01em;
+        }
+
+        .nav-link:hover, .nav-item.open > .nav-link { color: var(--gray-900); background: var(--gray-100); }
+
+        .nav-link svg { transition: transform 0.25s ease; flex-shrink: 0; }
+        .nav-item.open > .nav-link svg { transform: rotate(180deg); }
+
+        .nav-cta { margin-left: auto; display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+
+        .btn-ghost {
+            padding: 7px 16px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--gray-500);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: color 0.2s, background 0.2s;
+            white-space: nowrap;
+            letter-spacing: -0.01em;
+        }
+        .btn-ghost:hover { color: var(--gray-900); background: var(--gray-100); }
+
+        .btn-primary-nav {
+            padding: 8px 18px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--white);
+            background: var(--gray-900);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, transform 0.2s;
+            white-space: nowrap;
+            letter-spacing: -0.01em;
+        }
+        .btn-primary-nav:hover { background: var(--gray-600); }
+
+        .mega-menu {
+            position: absolute;
+            top: calc(100% + 12px);
+            left: 50%;
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            min-width: 480px;
+            box-shadow: var(--shadow-lg);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-50%) translateY(-8px);
+            transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+            pointer-events: none;
+        }
+
+        .nav-item.open > .mega-menu, .nav-item:hover > .mega-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+            pointer-events: all;
+        }
+
+        .mega-menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .mega-menu-col h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-900); margin-bottom: 12px; }
+        .mega-menu-col a { display: block; padding: 6px 0; font-size: 13px; color: var(--gray-500); text-decoration: none; transition: color 0.2s; }
+        .mega-menu-col a:hover { color: var(--blue); }
+
+        /* ══════════════════════════════════════════════════════
+           HERO
+        ══════════════════════════════════════════════════════ */
+        #hero {
+            position: relative;
+            min-height: 70svh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: var(--gray-900);
+            padding-top: 60px;
+        }
+
+        .hero-blueprint {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(26,92,255,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(26,92,255,0.05) 1px, transparent 1px);
+            background-size: 56px 56px;
+            mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, black 20%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .hero-radial {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 70% 60% at 50% 40%, rgba(230,238,255,0.12) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 30% at 20% 80%, rgba(220,232,255,0.08) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: left;
+            padding: 80px 40px;
+            max-width: 1280px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--blue);
+            margin-bottom: 24px;
+            padding: 6px 16px;
+            border: 1px solid var(--blue-border);
+            border-radius: 100px;
+            background: var(--blue-dim);
+        }
+
+        .hero-eyebrow-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--blue);
+            animation: pulse-dot 2.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.7); }
+        }
+
+        .hero-h1 {
+            font-size: clamp(36px, 5vw, 64px);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.04em;
+            color: #fff;
+            margin-bottom: 20px;
+            max-width: 600px;
+        }
+
+        .hero-desc {
+            font-size: 18px;
+            color: rgba(255,255,255,0.70);
+            line-height: 1.8;
+            max-width: 600px;
+            margin-bottom: 40px;
+        }
+
+        .btn-hero-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            background: var(--white);
+            color: var(--gray-900);
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 10px;
+            text-decoration: none;
+            letter-spacing: -0.01em;
+            transition: background 0.2s, transform 0.25s;
+        }
+        .btn-hero-primary:hover { background: var(--gray-100); transform: translateY(-2px); }
+
+        /* ══════════════════════════════════════════════════════
+           SECTION SHARED
+        ══════════════════════════════════════════════════════ */
+        .section {
+            padding: 120px 40px;
+        }
+
+        .section-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--blue);
+            margin-bottom: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-label::before {
+            content: '';
+            display: block;
+            width: 20px;
+            height: 1px;
+            background: var(--blue);
+        }
+
+        .section-title {
+            font-size: clamp(32px, 4vw, 52px);
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+            color: var(--gray-900);
+            margin-bottom: 24px;
+        }
+
+        .section-desc {
+            font-size: 16px;
+            color: var(--gray-400);
+            line-height: 1.8;
+            max-width: 620px;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+        }
+
+        .arch-divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gray-200) 20%, var(--gray-200) 80%, transparent);
+        }
+
+        /* ══════════════════════════════════════════════════════
+           MAIN IMAGE SECTION
+        ══════════════════════════════════════════════════════ */
+        .main-visual-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .main-visual {
+            aspect-ratio: 1;
+            background: var(--gray-100);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-visual::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(26,92,255,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(26,92,255,0.05) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+
+        .main-visual svg {
+            opacity: 0.20;
+            width: 120px;
+            height: 120px;
+        }
+
+        .main-visual-label {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--gray-400);
+        }
+
+        .main-content h2 {
+            font-size: clamp(28px, 3.5vw, 44px);
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .main-content p {
+            font-size: 16px;
+            color: var(--gray-500);
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        /* ══════════════════════════════════════════════════════
+           BENEFITS SECTION
+        ══════════════════════════════════════════════════════ */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+
+        .benefit-item {
+            padding: 32px;
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-lg);
+            transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+        }
+
+        .benefit-item:hover {
+            border-color: var(--blue-border);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+        }
+
+        .benefit-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--blue-dim);
+            border: 1px solid var(--blue-border);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--blue);
+            font-weight: 700;
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+
+        .benefit-title {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: var(--gray-900);
+            margin-bottom: 12px;
+        }
+
+        .benefit-desc {
+            font-size: 14px;
+            color: var(--gray-400);
+            line-height: 1.7;
+        }
+
+        /* ══════════════════════════════════════════════════════
+           PROCESS SECTION
+        ══════════════════════════════════════════════════════ */
+        .process-timeline {
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .timeline-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 48px;
+        }
+
+        .timeline-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background: var(--blue);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .timeline-title {
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+        }
+
+        .timeline-desc {
+            font-size: 14px;
+            color: var(--gray-400);
+            line-height: 1.7;
+        }
+
+        /* ══════════════════════════════════════════════════════
+           GALLERY SECTION
+        ══════════════════════════════════════════════════════ */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            background: var(--gray-100);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(26,92,255,0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(26,92,255,0.06) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        .gallery-item svg {
+            opacity: 0.20;
+            width: 80px;
+            height: 80px;
+        }
+
+        .gallery-label {
+            position: absolute;
+            bottom: 12px;
+            left: 16px;
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--gray-400);
+        }
+
+        /* ══════════════════════════════════════════════════════
+           FAQ SECTION
+        ══════════════════════════════════════════════════════ */
+        .faq-list {
+            max-width: 800px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--gray-200);
+            padding: 24px 0;
+            cursor: pointer;
+            transition: padding 0.2s;
+        }
+
+        .faq-item:last-child { border-bottom: none; }
+        .faq-item.active { padding: 24px 0; }
+
+        .faq-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .faq-question {
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: var(--gray-900);
+        }
+
+        .faq-toggle {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--blue-dim);
+            border: 1px solid var(--blue-border);
+            border-radius: 6px;
+            color: var(--blue);
+            font-weight: 700;
+            flex-shrink: 0;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            font-size: 14px;
+            color: var(--gray-400);
+            line-height: 1.7;
+            margin-top: 16px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        /* ══════════════════════════════════════════════════════
+           FINAL CTA
+        ══════════════════════════════════════════════════════ */
+        #final-cta {
+            padding: 120px 40px;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: clamp(36px, 4.5vw, 56px);
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            line-height: 1.15;
+            color: var(--gray-900);
+            margin-bottom: 24px;
+        }
+
+        .cta-desc {
+            font-size: 16px;
+            color: var(--gray-400);
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .cta-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn-cta-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--white);
+            background: var(--blue);
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.2s;
+            letter-spacing: -0.01em;
+        }
+
+        .btn-cta-primary:hover {
+            background: var(--blue-mid);
+            transform: translateY(-2px);
+        }
+
+        /* ══════════════════════════════════════════════════════
+           FOOTER
+        ══════════════════════════════════════════════════════ */
+        #footer {
+            background: var(--gray-900);
+            color: var(--white);
+            padding: 64px 40px 32px;
+        }
+
+        .footer-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 80px;
+            margin-bottom: 64px;
+            padding-bottom: 48px;
+            border-bottom: 1px solid rgba(255,255,255,0.10);
+        }
+
+        .footer-brand-name {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 12px;
+        }
+
+        .footer-brand-desc {
+            font-size: 14px;
+            color: rgba(255,255,255,0.60);
+            line-height: 1.7;
+        }
+
+        .footer-cols {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-col-title {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 16px;
+            color: var(--white);
+        }
+
+        .footer-col a, .footer-col p {
+            display: block;
+            font-size: 13px;
+            color: rgba(255,255,255,0.60);
+            text-decoration: none;
+            line-height: 1.8;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover { color: var(--white); }
+
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-size: 13px;
+            color: rgba(255,255,255,0.60);
+        }
+
+        .footer-bottom a {
+            color: rgba(255,255,255,0.60);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-bottom a:hover { color: var(--white); }
+
+        /* ══════════════════════════════════════════════════════
+           BREADCRUMB
+        ══════════════════════════════════════════════════════ */
+        .breadcrumb {
+            padding: 12px 40px;
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            max-width: 1280px;
+            margin: 60px auto 0;
+            font-size: 13px;
+            color: var(--gray-400);
+        }
+
+        .breadcrumb a {
+            color: var(--blue);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .breadcrumb a:hover { color: var(--blue-mid); }
+
+        /* ══════════════════════════════════════════════════════
+           RESPONSIVE
+        ══════════════════════════════════════════════════════ */
+        @media (max-width: 768px) {
+            .section { padding: 80px 24px; }
+            #prime-nav { padding: 0 20px; }
+            .hero-content { padding: 60px 24px; }
+
+            .main-visual-section {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .mega-menu { min-width: 100%; left: 0; transform: translateY(-8px); }
+            .mega-menu-grid { grid-template-columns: 1fr; }
+
+            .benefits-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+            .timeline-items { grid-template-columns: 1fr; }
+
+            .footer-top { grid-template-columns: 1fr; gap: 40px; }
+            .footer-cols { grid-template-columns: 1fr 1fr; }
+
+            .cta-actions { flex-direction: column; }
+            .btn-cta-primary { width: 100%; justify-content: center; }
+        }
+
+        @media (max-width: 480px) {
+            #prime-nav { padding: 0 20px; }
+            .nav-links { flex: 1; }
+            .nav-link { padding: 4px 6px; font-size: 11px; }
+
+            .hero-content { padding: 60px 16px; }
+            .hero-h1 { font-size: clamp(28px, 4vw, 40px); }
+
+            .section { padding: 60px 16px; }
+            .breadcrumb { padding: 12px 16px; margin-top: 60px; }
+
+            .benefits-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .timeline-items { grid-template-columns: 1fr; }
+
+            .footer-cols { grid-template-columns: 1fr; }
+        }
+
+        /* ══════════════════════════════════════════════════════
+           ANIMATIONS
+        ══════════════════════════════════════════════════════ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .reveal.visible {
+            animation: reveal-in 0.7s ease-out forwards;
+        }
+
+        .reveal-delay-1 { animation-delay: 0.1s; }
+        .reveal-delay-2 { animation-delay: 0.2s; }
+        .reveal-delay-3 { animation-delay: 0.3s; }
+
+        @keyframes reveal-in {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ══════════════════════ NAVIGATION ══════════════════════ -->
+    <nav id="prime-nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">
+                <img src="/logo-prime.svg" alt="PRIME Logo">
+                <span class="nav-logo-text">PRIME</span>
+            </a>
+            <ul class="nav-links">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Services <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></a>
+                    <div class="mega-menu">
+                        <div class="mega-menu-grid">
+                            <div class="mega-menu-col">
+                                <h4>Hood System</h4>
+                                <a href="/hood/system/">Overview</a>
+                                <a href="/hood/system/diagnostics-reports/">Diagnostics</a>
+                                <a href="/hood/system/hood-cleaning/">Hood Cleaning</a>
+                            </div>
+                            <div class="mega-menu-col">
+                                <h4>Other Services</h4>
+                                <a href="/facility/">Cleaning Services</a>
+                                <a href="/hospitality/staffing/">Staffing</a>
+                                <a href="/hospitality/valet/">Valet Parking</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="/pages/about/" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="/pages/contact/" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="tel:+17133382553" class="btn-ghost">(713) 338-2553</a>
+                <a href="/pages/contact/" class="btn-primary-nav">Get Quote</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ══════════════════════ BREADCRUMB ══════════════════════ -->
+    <div class="breadcrumb">
+        <a href="/hood/system/">Hood System</a> / Diagnostics & Reports
+    </div>
+
+    <!-- ══════════════════════ HERO ══════════════════════ -->
+    <section id="hero">
+        <div class="hero-blueprint"></div>
+        <div class="hero-radial"></div>
+        <div class="hero-content">
+            <div class="hero-eyebrow">
+                <span class="hero-eyebrow-dot"></span>
+                Professional Analysis
+            </div>
+            <h1 class="hero-h1">Hood System Diagnostics & Reports</h1>
+            <p class="hero-desc">Comprehensive system analysis, compliance documentation, and detailed reporting for complete hood system assessment.</p>
+            <a href="/pages/contact/" class="btn-hero-primary">Request Diagnostics</a>
+        </div>
+    </section>
+
+    <div class="arch-divider"></div>
+
+    <!-- ══════════════════════ MAIN CONTENT ══════════════════════ -->
+    <section class="section">
+        <div class="section-inner">
+            <div class="main-visual-section">
+                <div class="main-visual reveal">
+                    <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 11l3 3L22 4M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <span class="main-visual-label">Diagnostics Report — Image Pending</span>
+                </div>
+                <div class="main-content reveal reveal-delay-1">
+                    <h2>Comprehensive System Assessment</h2>
+                    <p>Our diagnostic services provide detailed analysis of your hood system's current condition, performance metrics, and compliance status. We identify potential issues before they become costly problems.</p>
+                    <p>Each diagnostic includes complete documentation suitable for regulatory compliance, insurance purposes, and operational planning.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="arch-divider"></div>
+
+    <!-- ══════════════════════ BENEFITS ══════════════════════ -->
+    <section class="section" style="background: var(--gray-50);">
+        <div class="section-inner">
+            <div class="reveal">
+                <div class="section-label">Key Benefits</div>
+                <h2 class="section-title">Why Professional Diagnostics Matter</h2>
+            </div>
+            <div class="benefits-grid" style="margin-top: 64px;">
+                <div class="benefit-item reveal reveal-delay-1">
+                    <div class="benefit-icon">✓</div>
+                    <h3 class="benefit-title">Compliance Documentation</h3>
+                    <p class="benefit-desc">Comprehensive reports that satisfy regulatory and insurance requirements for hood system maintenance.</p>
+                </div>
+                <div class="benefit-item reveal reveal-delay-2">
+                    <div class="benefit-icon">⚡</div>
+                    <h3 class="benefit-title">Identify Issues Early</h3>
+                    <p class="benefit-desc">Detect potential problems before they impact operation or create safety hazards.</p>
+                </div>
+                <div class="benefit-item reveal reveal-delay-3">
+                    <div class="benefit-icon">📊</div>
+                    <h3 class="benefit-title">Data-Driven Insights</h3>
+                    <p class="benefit-desc">Detailed metrics and recommendations for optimizing system performance and efficiency.</p>
+                </div>
+                <div class="benefit-item reveal">
+                    <div class="benefit-icon">💰</div>
+                    <h3 class="benefit-title">Cost Optimization</h3>
+                    <p class="benefit-desc">Identify maintenance priorities and plan upgrades to minimize unexpected expenses.</p>
+                </div>
+                <div class="benefit-item reveal">
+                    <div class="benefit-icon">🛡️</div>
+                    <h3 class="benefit-title">Safety Assurance</h3>
+                    <p class="benefit-desc">Verify that your system meets NFPA 96 standards and operates safely.</p>
+                </div>
+                <div class="benefit-item reveal">
+                    <div class="benefit-icon">📈</div>
+                    <h3 class="benefit-title">Performance Tracking</h3>
+                    <p class="benefit-desc">Establish baseline metrics for monitoring system health and efficiency over time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="arch-divider"></div>
+
+    <!-- ══════════════════════ PROCESS ══════════════════════ -->
+    <section class="section">
+        <div class="section-inner">
+            <div class="reveal">
+                <div class="section-label">Our Method</div>
+                <h2 class="section-title">Diagnostic Process</h2>
+                <p class="section-desc">A systematic approach to comprehensive system analysis and documentation.</p>
+            </div>
+            <div class="process-timeline" style="margin-top: 64px;">
+                <div class="timeline-items">
+                    <div class="timeline-item reveal reveal-delay-1">
+                        <div class="timeline-number">1</div>
+                        <h3 class="timeline-title">System Inspection</h3>
+                        <p class="timeline-desc">Visual and mechanical inspection of all hood system components and connections.</p>
+                    </div>
+                    <div class="timeline-item reveal reveal-delay-2">
+                        <div class="timeline-number">2</div>
+                        <h3 class="timeline-title">Performance Testing</h3>
+                        <p class="timeline-desc">Measure airflow, filtration efficiency, and operational parameters.</p>
+                    </div>
+                    <div class="timeline-item reveal reveal-delay-3">
+                        <div class="timeline-number">3</div>
+                        <h3 class="timeline-title">Compliance Verification</h3>
+                        <p class="timeline-desc">Verify adherence to NFPA 96 standards and local code requirements.</p>
+                    </div>
+                    <div class="timeline-item reveal">
+                        <div class="timeline-number">4</div>
+                        <h3 class="timeline-title">Report Generation</h3>
+                        <p class="timeline-desc">Comprehensive documentation with findings, recommendations, and maintenance plan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="arch-divider"></div>
+
+    <!-- ══════════════════════ GALLERY ══════════════════════ -->
+    <section class="section" style="background: var(--gray-50);">
+        <div class="section-inner">
+            <div class="reveal">
+                <div class="section-label">Documentation</div>
+                <h2 class="section-title">Included in Your Report</h2>
+            </div>
+            <div class="gallery-grid" style="margin-top: 64px;">
+                <div class="gallery-item reveal reveal-delay-1">
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><path d="M13 2v7h7"/></svg>
+                    <span class="gallery-label">Inspection Report</span>
+                </div>
+                <div class="gallery-item reveal reveal-delay-2">
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12h18M12 3v18M3 9h18M3 15h18"/></svg>
+                    <span class="gallery-label">Performance Data</span>
+                </div>
+                <div class="gallery-item reveal reveal-delay-3">
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3L5 7v10a2 2 0 002 2h10a2 2 0 002-2V7l-4-4M9 13h6"/></svg>
+                    <span class="gallery-label">System Diagram</span>
+                </div>
+                <div class="gallery-item reveal">
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M2 12h20"/></svg>
+                    <span class="gallery-label">Compliance Check</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="arch-divider"></div>
+
+    <!-- ══════════════════════ FAQ ══════════════════════ -->
+    <section class="section">
+        <div class="section-inner">
+            <div class="reveal">
+                <div class="section-label">Questions</div>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-list" style="margin-top: 48px;">
+                <div class="faq-item reveal reveal-delay-1">
+                    <div class="faq-header">
+                        <h3 class="faq-question">How often should hood systems be diagnosed?</h3>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">Professional diagnostics should be performed annually at minimum, and more frequently for high-volume kitchens or systems with history of issues. We recommend quarterly or semi-annual diagnostics as part of a comprehensive maintenance program.</div>
+                </div>
+
+                <div class="faq-item reveal reveal-delay-2">
+                    <div class="faq-header">
+                        <h3 class="faq-question">What makes your reports NFPA 96 compliant?</h3>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">All our technicians hold current NFPA 96 certifications and our reports include complete compliance verification, component assessment, and recommendations aligned with all applicable standards and regulations.</div>
+                </div>
+
+                <div class="faq-item reveal reveal-delay-3">
+                    <div class="faq-header">
+                        <h3 class="faq-question">How long does a diagnostic take?</h3>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">A comprehensive diagnostic typically takes 2-4 hours depending on system complexity. We work around your schedule to minimize operational disruption, and can often accommodate off-hours inspections.</div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <div class="faq-header">
+                        <h3 class="faq-question">Can you provide emergency diagnostics?</h3>
+                        <div class="faq-toggle">+</div>
+                    </div>
+                    <div class="faq-answer">Yes, we offer 24/7 emergency diagnostic services. Contact us immediately if you have concerns about your hood system's operation, and our certified technicians will provide rapid assessment and recommendations.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="arch-divider"></div>
+
+    <!-- ══════════════════════ FINAL CTA ══════════════════════ -->
+    <section id="final-cta">
+        <div class="cta-content">
+            <div class="reveal">
+                <h2 class="cta-title">Schedule Your Hood System Diagnostic</h2>
+                <p class="cta-desc">Get comprehensive analysis and compliance documentation from our NFPA 96 certified experts.</p>
+                <div class="cta-actions" style="margin-top: 32px;">
+                    <a href="/pages/contact/" class="btn-cta-primary">Request Diagnostic Service</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════ FOOTER ══════════════════════ -->
+    <footer id="footer">
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div>
+                    <div class="footer-brand-name">PRIME Facility Services</div>
+                    <p class="footer-brand-desc">Professional facility management and commercial kitchen solutions. Committed to safety, compliance, and operational excellence.</p>
+                </div>
+                <div class="footer-cols">
+                    <div class="footer-col">
+                        <div class="footer-col-title">Hood Services</div>
+                        <a href="/hood/system/">Overview</a>
+                        <a href="/hood/system/diagnostics-reports/">Diagnostics</a>
+                        <a href="/hood/system/hood-cleaning/">Hood Cleaning</a>
+                        <a href="/hood/system/products/">Products</a>
+                    </div>
+                    <div class="footer-col">
+                        <div class="footer-col-title">Company</div>
+                        <a href="/">Home</a>
+                        <a href="/pages/about/">About Us</a>
+                        <a href="/pages/contact/">Contact</a>
+                        <a href="/pages/privacy/">Privacy Policy</a>
+                    </div>
+                    <div class="footer-col">
+                        <div class="footer-col-title">Contact</div>
+                        <p>8303 Westglen Dr<br>Houston TX 77063</p>
+                        <a href="tel:+17133382553">+1 713 338 2553</a>
+                        <a href="mailto:its@primefacilityservicesgroup.com">its@primefacilityservicesgroup.com</a>
+                    </div>
+                    <div class="footer-col">
+                        <div class="footer-col-title">Coverage</div>
+                        <p>Houston, TX</p>
+                        <p>Dallas, TX</p>
+                        <p>National coverage available</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2025 Prime Facility Services Group. All rights reserved.</span>
+                <a href="/pages/privacy/">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Navbar scroll effect
+        const nav = document.getElementById('prime-nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Scroll reveal
+        const revealEls = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(el => {
+                if (el.isIntersecting) {
+                    el.target.classList.add('visible');
+                    observer.unobserve(el.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        revealEls.forEach(el => observer.observe(el));
+
+        // FAQ toggle
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', function() {
+                this.classList.toggle('active');
+            });
+        });
+
+        // Mega menu toggle
+        document.querySelectorAll('.nav-item').forEach(item => {
+            const link = item.querySelector('.nav-link');
+            if (link && item.querySelector('.mega-menu')) {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('open'));
+                    item.classList.add('open');
+                });
+            }
+        });
+
+        // Close mega menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-item')) {
+                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('open'));
+            }
+        });
+
+        // Image protection
+        document.addEventListener('contextmenu', e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
+        document.addEventListener('dragstart', e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
+        document.addEventListener('keydown', e => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 's') e.preventDefault();
+        });
+    </script>
+</body>
+</html>
